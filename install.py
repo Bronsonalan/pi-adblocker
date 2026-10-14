@@ -30,6 +30,7 @@ from piadblock.files import atomic_write  # noqa: E402
 from piadblock.forward import lookup  # noqa: E402
 from piadblock.paths import (  # noqa: E402
     BLOCKLIST_DIR,
+    CANONICAL_CONFIG_PATHS,
     CONFIG_DIR,
     CONFIG_PATH,
     DHCPCD_CONF,
@@ -37,12 +38,16 @@ from piadblock.paths import (  # noqa: E402
     LOG_DIR,
     NM_CONF,
     OPT_ROOT,
+    PREFIX,
     RESOLV_CONF,
     RESOLVED_DROPIN,
     STATE_DIR,
+    UNIT_DIR,
+    locate,
 )
-from piadblock.portcheck import classify, describe, listeners_on  # noqa: E402
+from piadblock.portcheck import describe, listeners_on  # noqa: E402
 from piadblock.systemfix import (  # noqa: E402
+    classify,
     render_dhcpcd_block,
     render_nm_conf,
     render_resolv_conf,
@@ -80,7 +85,7 @@ def main(argv: list[str] | None = None) -> int:
         _install_units()
         _start_service()
         _self_check(config)
-        _finish()
+        _finish(config)
     except InstallError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
@@ -99,6 +104,9 @@ def _require_python() -> None:
 
 
 def _require_root() -> None:
+    # PIADBLOCK_PREFIX is the test install root. It is unset for a real Pi install.
+    if PREFIX:
+        return
     if hasattr(os, "geteuid") and os.geteuid() != 0:
         raise InstallError(
             "This installer needs root so it can listen on port 53 and install a systemd service.\n"
@@ -134,7 +142,16 @@ def _ensure_config() -> None:
     example = ROOT / "config.example.json"
     if not example.exists():
         raise InstallError(f"missing {example}")
-    shutil.copy(example, path)
+    if PREFIX:
+        data = json.loads(example.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise InstallError(f"{example} is not a JSON object")
+        for key, canonical in CANONICAL_CONFIG_PATHS.items():
+            if data.get(key) == canonical:
+                data[key] = locate(canonical)
+        atomic_write(path, json.dumps(data, indent=2) + "\n")
+    else:
+        shutil.copy(example, path)
     os.chmod(path, 0o644)
     say(f"config: wrote {path}")
 
@@ -176,27 +193,28 @@ def _download(config) -> None:
 def _free_port_53(config) -> None:
     """Stop our previous process, then systemd-resolved's stub and dnsmasq.
 
-    Anything else bound to port 53 is reported and left running. piadblock
-    will not kill an unknown daemon.
+    Anything else bound to the configured DNS port is reported and left
+    running. piadblock will not kill an unknown daemon. The default port is 53.
     """
     state = _load_state()
+    port = config.port
     for _ in range(4):
-        groups = classify(listeners_on(53))
+        groups = classify(listeners_on(port))
         if not any(groups.values()):
-            say("port 53: free")
+            say(f"port {port}: free")
             return
         if groups["ours"]:
-            say("port 53: stopping the piadblock service already running")
+            say(f"port {port}: stopping the piadblock service already running")
             _systemctl("stop", "piadblock.service")
             time.sleep(0.4)
             continue
         if groups["resolved"]:
-            say("port 53: systemd-resolved is using port 53; disabling DNSStubListener")
+            say(f"port {port}: systemd-resolved is using port {port}; disabling DNSStubListener")
             _disable_resolved_stub(config, state)
             time.sleep(0.6)
             continue
         if groups["dnsmasq"]:
-            say("port 53: stopping and disabling dnsmasq")
+            say(f"port {port}: stopping and disabling dnsmasq")
             _systemctl("stop", "dnsmasq.service")
             _systemctl("disable", "dnsmasq.service")
             state["disabled_dnsmasq"] = True
@@ -205,15 +223,15 @@ def _free_port_53(config) -> None:
             continue
         break
 
-    listeners = listeners_on(53)
+    listeners = listeners_on(port)
     groups = classify(listeners)
     if any(groups.values()):
-        raise InstallError(_port_busy_message(listeners, groups))
-    say("port 53: free")
+        raise InstallError(_port_busy_message(listeners, groups, port))
+    say(f"port {port}: free")
 
 
-def _port_busy_message(listeners, groups) -> str:
-    lines = ["port 53 is still in use:"]
+def _port_busy_message(listeners, groups, port: int) -> str:
+    lines = [f"port {port} is still in use:"]
     for item in listeners:
         lines.append(f"  {describe(item)}")
     lines.append("Stop that program, then run the installer again.")
@@ -334,9 +352,12 @@ def _install_units() -> None:
         )
     python = shutil.which("python3") or sys.executable
     kill = shutil.which("kill") or "/bin/kill"
-    unit_dir = Path("/etc/systemd/system")
+    unit_dir = Path(UNIT_DIR)
     unit_dir.mkdir(parents=True, exist_ok=True)
-    (unit_dir / "piadblock.service").write_text(service_unit(python, OPT_ROOT, kill), encoding="utf-8")
+    (unit_dir / "piadblock.service").write_text(
+        service_unit(python, OPT_ROOT, kill, prefix=PREFIX),
+        encoding="utf-8",
+    )
     say("systemd: installed piadblock.service")
     reload = _systemctl("daemon-reload")
     if reload.returncode != 0:
@@ -363,13 +384,14 @@ def _self_check(config) -> None:
         say("warning: check /etc/piadblock/denylist.txt")
         return
 
-    say("self-check: querying 127.0.0.1")
+    host, port = _query_target(config)
+    say(f"self-check: querying {host}")
     deadline = time.time() + 15
     last_error = "no response"
     blocked = None
     while time.time() < deadline:
         try:
-            blocked = lookup("127.0.0.1", 53, "doubleclick.net", A, timeout=1.0)
+            blocked = lookup(host, port, "doubleclick.net", A, timeout=1.0)
         except (OSError, DnsError) as exc:
             last_error = str(exc)
             time.sleep(0.4)
@@ -386,7 +408,7 @@ def _self_check(config) -> None:
         raise InstallError(f"self-check failed for doubleclick.net ({last_error})")
 
     try:
-        aaaa = lookup("127.0.0.1", 53, "doubleclick.net", AAAA, timeout=2.0)
+        aaaa = lookup(host, port, "doubleclick.net", AAAA, timeout=2.0)
     except (OSError, DnsError) as exc:
         raise InstallError(f"AAAA self-check failed: {exc}") from exc
     address6 = rdata_ip(aaaa.answers[0]) if aaaa.answers else None
@@ -395,7 +417,7 @@ def _self_check(config) -> None:
         raise InstallError(f"AAAA self-check returned {address6!r}, expected {config.block_ipv6}")
 
     try:
-        forwarded = lookup("127.0.0.1", 53, "example.com", A, timeout=config.upstream_timeout + 1)
+        forwarded = lookup(host, port, "example.com", A, timeout=config.upstream_timeout + 1)
     except (OSError, DnsError) as exc:
         say(f"warning: example.com forward failed ({exc}). Blocking works; check the upstream resolver.")
         return
@@ -409,11 +431,17 @@ def _self_check(config) -> None:
     )
 
 
-def _finish() -> None:
+def _query_target(config) -> tuple[str, int]:
+    listen = config.listen
+    host = "127.0.0.1" if listen in {"0.0.0.0", "::", ""} else listen
+    return host, config.port
+
+
+def _finish(config) -> None:
     ip = _lan_ip()
     say("")
     say("Pi Adblock is installed and will start on boot.")
-    say("DNS is listening on port 53.")
+    say(f"DNS is listening on port {config.port}.")
     say(f"Point your router DHCP DNS at {ip}.")
     say(f"Status page: http://{ip}:8080/")
     say(f"Check a block: nslookup doubleclick.net {ip}")

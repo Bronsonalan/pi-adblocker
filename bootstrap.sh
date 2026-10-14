@@ -4,10 +4,14 @@
 
 set -eu
 
+# PIADBLOCK_PREFIX relocates the install (used by tests). PIADBLOCK_URL
+# overrides the archive (default is the main branch tarball).
 if [ "$(id -u)" -ne 0 ]; then
-  echo "piadblock: this installer needs root." >&2
-  echo "Run: curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/main/bootstrap.sh | sudo bash" >&2
-  exit 1
+  if [ -z "${PIADBLOCK_PREFIX:-}" ]; then
+    echo "piadblock: this installer needs root." >&2
+    echo "Run: curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/main/bootstrap.sh | sudo bash" >&2
+    exit 1
+  fi
 fi
 
 if ! command -v python3 >/dev/null 2>&1; then
@@ -20,7 +24,7 @@ if ! command -v curl >/dev/null 2>&1 || ! command -v tar >/dev/null 2>&1; then
   exit 1
 fi
 
-url="https://github.com/Bronsonalan/pi-adblocker/archive/refs/heads/main.tar.gz"
+url="${PIADBLOCK_URL:-https://github.com/Bronsonalan/pi-adblocker/archive/refs/heads/main.tar.gz}"
 tmpdir=$(mktemp -d)
 cleanup() {
   rm -rf "$tmpdir"
