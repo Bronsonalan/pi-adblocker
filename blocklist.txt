@@ -16,3 +16,5 @@ reddit.com
 redd.it
 redditstatic.com
 redditmedia.com
+mask.icloud.com
+mask-h2.icloud.com
