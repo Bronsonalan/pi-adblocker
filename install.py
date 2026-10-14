@@ -499,13 +499,26 @@ def _install_units(access) -> None:
     if reload.returncode != 0:
         detail = (reload.stderr or reload.stdout or "daemon-reload failed").strip()
         raise InstallError(detail)
+    # enable installs the boot symlink. The DNS service is started below with
+    # restart. A timer that is only enabled stays inactive (dead) with
+    # Trigger: n/a until the next boot, so --now starts it in this session too.
     _systemctl("enable", "piadblock.service")
     for timer_name in (PULL_TIMER_NAME, HEARTBEAT_TIMER_NAME, STATS_TIMER_NAME):
-        _systemctl("enable", timer_name)
+        result = _systemctl("enable", "--now", timer_name)
+        if result.returncode != 0:
+            detail = (result.stderr or result.stdout or "systemctl enable --now failed").strip()
+            say(f"warning: {timer_name} was not started ({detail}). Blocking is unchanged.")
+        else:
+            say(f"systemd: started {timer_name}")
 
 
 def _start_git_timers() -> None:
-    """Run one pull, heartbeat, and stats pass. A git failure must not abort install."""
+    """Run one pull, heartbeat, and stats pass now.
+
+    The timers were already started with ``enable --now``. These oneshots
+    are the install-time run, so the first pull does not wait for the next
+    minute. A git failure must not abort install.
+    """
     for service in (PULL_SERVICE_NAME, HEARTBEAT_SERVICE_NAME, STATS_SERVICE_NAME):
         result = _systemctl("start", service)
         if result.returncode != 0:

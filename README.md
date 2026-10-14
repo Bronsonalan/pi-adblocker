@@ -2,7 +2,7 @@
 
 Pi Adblock is a small DNS server for a Raspberry Pi. It answers `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
 
-v1 blocks these 10 names, and every subdomain under them:
+v1 blocks these names, and every subdomain under them:
 
 - `doubleclick.net`
 - `googlesyndication.com`
@@ -14,6 +14,7 @@ v1 blocks these 10 names, and every subdomain under them:
 - `outbrain.com`
 - `scorecardresearch.com`
 - `amazon-adsystem.com`
+- `reddit.com`
 
 So `doubleclick.net` and `ads.doubleclick.net` are both blocked. `example.com` and `google.com` are not. Nothing is downloaded. The block list is `blocklist.txt` in this repo. The Pi checks that file out and pulls it once a minute. To stop blocking a name, delete its line. The allowlist stays a separate file on the Pi.
 
@@ -68,6 +69,9 @@ git: checkout /opt/piadblock tracking git@github.com:Bronsonalan/pi-adblocker.gi
 systemd: installed piadblock-pull.timer
 systemd: installed piadblock-heartbeat.timer
 systemd: installed piadblock-stats.timer
+systemd: started piadblock-pull.timer
+systemd: started piadblock-heartbeat.timer
+systemd: started piadblock-stats.timer
 systemd: started piadblock.service
 self-check: doubleclick.net A -> 0.0.0.0
 self-check: doubleclick.net AAAA -> ::
@@ -90,7 +94,15 @@ warning: git pull failed (...). Blocking is unchanged.
 warning: git push failed (...). Blocking is unchanged.
 ```
 
-### 3. Confirm the pull timer
+### 3. Confirm the timers are waiting, not dead
+
+```bash
+systemctl status piadblock-pull.timer piadblock-heartbeat.timer piadblock-stats.timer --no-pager
+```
+
+This prints the three timers and exits. Each one should be `enabled` and `Active: active (waiting)`, with a `Trigger:` time. `inactive (dead)` and `Trigger: n/a` means the unit was enabled but not started. Rerunning the installer above starts them in this session and leaves them enabled for the next boot.
+
+Then read the last pull:
 
 ```bash
 sudo journalctl -u piadblock-pull -n 20 --no-pager
@@ -220,6 +232,9 @@ systemd: installed piadblock.service
 systemd: installed piadblock-pull.timer
 systemd: installed piadblock-heartbeat.timer
 systemd: installed piadblock-stats.timer
+systemd: started piadblock-pull.timer
+systemd: started piadblock-heartbeat.timer
+systemd: started piadblock-stats.timer
 systemd: started piadblock.service
 self-check: querying 127.0.0.1
 self-check: doubleclick.net A -> 0.0.0.0
@@ -436,7 +451,7 @@ Ctrl-C stops following. Expected output is a stream of `BLOCKED` and `OK` lines,
 Startup also logs the list sizes. With the default denylist and no downloaded list:
 
 ```text
-lists: 0 blocklist, 0 allow, 10 deny
+lists: 0 blocklist, 0 allow, 11 deny
 ```
 
 ## Port 53 is already in use
@@ -700,7 +715,7 @@ Expected output:
 doubleclick.net
 blocked
 reason: denylist (doubleclick.net)
-lists: 0 blocked, 0 allowed, 10 denied
+lists: 0 blocked, 0 allowed, 11 denied
 ```
 
 ```bash
@@ -713,7 +728,7 @@ Expected output:
 example.com
 allowed
 reason: not listed
-lists: 0 blocked, 0 allowed, 10 denied
+lists: 0 blocked, 0 allowed, 11 denied
 ```
 
 ## Uninstall
@@ -772,7 +787,7 @@ Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 72 tests in 41.374s
+Ran 74 tests in 39.442s
 
 OK
 ```

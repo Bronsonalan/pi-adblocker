@@ -97,7 +97,7 @@ class DecideTests(unittest.TestCase):
 
 
 class DefaultDenylistTests(unittest.TestCase):
-    def test_shipped_denylist_is_exactly_ten_domains(self):
+    def test_shipped_blocklist_domains(self):
         path = Path(__file__).resolve().parents[1] / "blocklist.txt"
         lines = [
             line.strip()
@@ -115,6 +115,7 @@ class DefaultDenylistTests(unittest.TestCase):
             "outbrain.com",
             "scorecardresearch.com",
             "amazon-adsystem.com",
+            "reddit.com",
         ]
         self.assertEqual(lines, expected)
         domains = parse_domain_list(path.read_text(encoding="utf-8"), allow_single_label=True)
