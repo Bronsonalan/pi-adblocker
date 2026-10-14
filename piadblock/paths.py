@@ -21,7 +21,7 @@ CANONICAL_RESOLV_CONF = "/etc/resolv.conf"
 CANONICAL_CONFIG_PATHS = {
     "blocklist_dir": CANONICAL_STATE_DIR + "/blocklists",
     "allowlist": CANONICAL_CONFIG_DIR + "/allowlist.txt",
-    "denylist": CANONICAL_CONFIG_DIR + "/denylist.txt",
+    "denylist": CANONICAL_OPT_ROOT + "/blocklist.txt",
     "log_file": CANONICAL_LOG_DIR + "/piadblock.log",
     "stats_file": CANONICAL_STATE_DIR + "/stats.json",
 }
@@ -56,7 +56,8 @@ STATE_DIR = locate(CANONICAL_STATE_DIR)
 LOG_DIR = locate(CANONICAL_LOG_DIR)
 CONFIG_PATH = CONFIG_DIR + "/config.json"
 ALLOWLIST_PATH = CONFIG_DIR + "/allowlist.txt"
-DENYLIST_PATH = CONFIG_DIR + "/denylist.txt"
+DENYLIST_PATH = OPT_ROOT + "/blocklist.txt"
+LEGACY_DENYLIST_PATH = CONFIG_DIR + "/denylist.txt"
 BLOCKLIST_DIR = STATE_DIR + "/blocklists"
 MERGED_PATH = BLOCKLIST_DIR + "/merged.txt"
 META_PATH = BLOCKLIST_DIR + "/meta.json"
@@ -69,6 +70,15 @@ UNIT_DIR = locate(CANONICAL_UNIT_DIR)
 SERVICE_NAME = "piadblock"
 UPDATE_SERVICE_NAME = "piadblock-update"
 UPDATE_TIMER_NAME = "piadblock-update.timer"
+PULL_SERVICE_NAME = "piadblock-pull.service"
+PULL_TIMER_NAME = "piadblock-pull.timer"
+HEARTBEAT_SERVICE_NAME = "piadblock-heartbeat.service"
+HEARTBEAT_TIMER_NAME = "piadblock-heartbeat.timer"
+STATS_SERVICE_NAME = "piadblock-stats.service"
+STATS_TIMER_NAME = "piadblock-stats.timer"
+
+# SSH remote. The Pi pushes and pulls with a deploy key, not HTTPS.
+DEFAULT_REMOTE = "git@github.com:Bronsonalan/pi-adblocker.git"
 
 # Marker wrapped around the lines we add to dhcpcd.conf so uninstall can
 # remove them without touching the rest of the file.

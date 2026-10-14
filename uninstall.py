@@ -55,15 +55,24 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     say("piadblock uninstall")
-    _systemctl("stop", "piadblock.service")
-    _systemctl("disable", "piadblock.service")
-    _systemctl("stop", "piadblock-update.timer")
-    _systemctl("disable", "piadblock-update.timer")
-    _systemctl("stop", "piadblock-update.service")
+    units = (
+        "piadblock-pull.timer",
+        "piadblock-heartbeat.timer",
+        "piadblock-stats.timer",
+        "piadblock-update.timer",
+        "piadblock-pull.service",
+        "piadblock-heartbeat.service",
+        "piadblock-stats.service",
+        "piadblock-update.service",
+        "piadblock.service",
+    )
+    for name in units:
+        _systemctl("stop", name)
+        _systemctl("disable", name)
     say("stopped piadblock.service")
 
     unit_dir = Path(UNIT_DIR)
-    for name in ("piadblock.service", "piadblock-update.service", "piadblock-update.timer"):
+    for name in units:
         path = unit_dir / name
         if path.exists() or path.is_symlink():
             path.unlink()

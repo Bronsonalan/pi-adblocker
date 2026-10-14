@@ -5,9 +5,11 @@ from __future__ import annotations
 import io
 import socket
 import struct
+import tempfile
 import threading
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 
 import helpers  # noqa: F401
 
@@ -191,6 +193,85 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(failed.answers, [])
         blocked = ask(self.server.port, "ads.example.com", A, qid=62)
         self.assertEqual(rdata_ip(blocked.answers[0]), "0.0.0.0")
+
+
+class ReloadTests(unittest.TestCase):
+    """Deleting a denylist line unblocks. The allowlist stays a separate override."""
+
+    def setUp(self):
+        self._stdout = io.StringIO()
+        self._stdout_ctx = redirect_stdout(self._stdout)
+        self._stdout_ctx.__enter__()
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        directory = Path(self.tmp.name)
+        self.denylist = directory / "deny.txt"
+        self.allowlist = directory / "allow.txt"
+        self.denylist.write_text("doubleclick.net\ngooglesyndication.com\n", encoding="utf-8")
+        self.allowlist.write_text("", encoding="utf-8")
+        (directory / "merged.txt").write_text("", encoding="utf-8")
+        self.upstream = Upstream()
+        self.upstream.start()
+        self.config = Config(
+            listen="127.0.0.1",
+            port=0,
+            tcp=False,
+            ipv6=False,
+            upstream=["127.0.0.1"],
+            upstream_port=self.upstream.port,
+            upstream_timeout=0.5,
+            cache_size=128,
+            workers=4,
+            status_enabled=False,
+            auto_update=False,
+            auto_reload=False,
+            log_file="",
+            stats_file="",
+            blocklists=[],
+            blocklist_dir=str(directory),
+            allowlist=str(self.allowlist),
+            denylist=str(self.denylist),
+        )
+        self.server = DnsServer(self.config)
+        self.server.start_background()
+
+    def tearDown(self):
+        self.server.stop()
+        self.upstream.stop()
+        self._stdout_ctx.__exit__(None, None, None)
+
+    def test_deleting_a_line_unblocks_and_allowlist_still_overrides(self):
+        blocked = ask(self.server.port, "doubleclick.net", A, qid=81)
+        self.assertEqual(rdata_ip(blocked.answers[0]), "0.0.0.0")
+
+        self.denylist.write_text("googlesyndication.com\n", encoding="utf-8")
+        self.server._reload_lists()
+        forwarded = ask(self.server.port, "doubleclick.net", A, qid=82)
+        self.assertEqual(rdata_ip(forwarded.answers[0]), "93.184.216.34")
+        sibling = ask(self.server.port, "googlesyndication.com", A, qid=83)
+        self.assertEqual(rdata_ip(sibling.answers[0]), "0.0.0.0")
+
+        # A positive answer may now be cached. Putting the name back still blocks,
+        # because the block check runs before the cache.
+        self.denylist.write_text("doubleclick.net\ngooglesyndication.com\n", encoding="utf-8")
+        self.server._reload_lists()
+        blocked_again = ask(self.server.port, "doubleclick.net", A, qid=84)
+        self.assertEqual(rdata_ip(blocked_again.answers[0]), "0.0.0.0")
+
+        self.denylist.unlink()
+        self.server._reload_lists()
+        kept = ask(self.server.port, "googlesyndication.com", A, qid=85)
+        self.assertEqual(rdata_ip(kept.answers[0]), "0.0.0.0")
+
+        self.denylist.write_text("doubleclick.net\ngooglesyndication.com\n", encoding="utf-8")
+        self.allowlist.write_text("doubleclick.net\n", encoding="utf-8")
+        self.server._reload_lists()
+        allowed = ask(self.server.port, "doubleclick.net", A, qid=86)
+        self.assertEqual(rdata_ip(allowed.answers[0]), "93.184.216.34")
+        self.assertIn("doubleclick.net", self.denylist.read_text(encoding="utf-8"))
+        still = ask(self.server.port, "googlesyndication.com", A, qid=87)
+        self.assertEqual(rdata_ip(still.answers[0]), "0.0.0.0")
+        self.assertGreaterEqual(self.upstream.queries, 1)
 
 
 if __name__ == "__main__":

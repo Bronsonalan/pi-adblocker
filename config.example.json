@@ -18,7 +18,7 @@
   "blocklists": [],
   "blocklist_dir": "/var/lib/piadblock/blocklists",
   "allowlist": "/etc/piadblock/allowlist.txt",
-  "denylist": "/etc/piadblock/denylist.txt",
+  "denylist": "/opt/piadblock/blocklist.txt",
   "update_interval_hours": 24,
   "log_file": "/var/log/piadblock/piadblock.log",
   "log_level": "INFO",

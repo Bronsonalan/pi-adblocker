@@ -1,0 +1,14 @@
+# One domain per line. That name and every subdomain are blocked.
+# The Pi reads this file from its checkout and reloads when the line changes.
+# To stop blocking a name, delete its line. Allow exceptions go in the allowlist.
+
+doubleclick.net
+googlesyndication.com
+googleadservices.com
+adnxs.com
+adsrvr.org
+criteo.com
+taboola.com
+outbrain.com
+scorecardresearch.com
+amazon-adsystem.com

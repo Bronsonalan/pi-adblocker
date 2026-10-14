@@ -221,6 +221,9 @@ class DnsServer:
                     break
                 try:
                     readable, _, _ = select.select(list(self._sockets), [], [], 0.5)
+                except InterruptedError:
+                    # SIGHUP arrives here. Keep the sockets open and reload on the next pass.
+                    continue
                 except (OSError, ValueError):
                     break
                 for sock in readable:
@@ -364,6 +367,12 @@ class DnsServer:
             self._reload_lists()
 
     def _reload_lists(self) -> None:
+        denylist = Path(self.config.denylist) if self.config.denylist else None
+        if denylist is not None and not denylist.is_file():
+            # git checkout replaces the file by rename. A missing file mid-pull
+            # must not replace the live list with an empty one.
+            logger.warning("denylist missing (%s); keeping the lists already loaded", denylist)
+            return
         matcher = Matcher.load(self.config.merged_path, self.config.allowlist, self.config.denylist)
         self._matcher = matcher
         logger.info(
@@ -404,7 +413,7 @@ class DnsServer:
 
     def _maybe_save(self) -> None:
         now = time.monotonic()
-        if now - self._last_save < 60:
+        if now - self._last_save < 1:
             return
         self._last_save = now
         self.stats.save()
