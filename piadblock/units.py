@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 
-def service_unit(python: str, root: str, kill: str) -> str:
+def service_unit(python: str, root: str, kill: str, prefix: str = "") -> str:
+    # A prefixed install has to pass the same root to the service. A normal
+    # install leaves this line out so the unit matches a stock Pi.
+    prefix_line = f"Environment=PIADBLOCK_PREFIX={prefix}\n" if prefix else ""
     return f"""[Unit]
 Description=Pi Adblock DNS server
 After=network-online.target
@@ -16,7 +19,7 @@ Type=simple
 WorkingDirectory={root}
 Environment=PYTHONPATH={root}
 Environment=PYTHONUNBUFFERED=1
-ExecStart={python} -m piadblock serve
+{prefix_line}ExecStart={python} -m piadblock serve
 ExecReload={kill} -HUP $MAINPID
 Restart=on-failure
 RestartSec=2

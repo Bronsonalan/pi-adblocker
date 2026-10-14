@@ -33,6 +33,7 @@ from piadblock.paths import (  # noqa: E402
     RESOLV_CONF,
     RESOLVED_DROPIN,
     STATE_DIR,
+    UNIT_DIR,
 )
 from piadblock.systemfix import remove_marked_block  # noqa: E402
 
@@ -61,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
     _systemctl("stop", "piadblock-update.service")
     say("stopped piadblock.service")
 
-    unit_dir = Path("/etc/systemd/system")
+    unit_dir = Path(UNIT_DIR)
     for name in ("piadblock.service", "piadblock-update.service", "piadblock-update.timer"):
         path = unit_dir / name
         if path.exists() or path.is_symlink():

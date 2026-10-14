@@ -651,13 +651,13 @@ From a checkout of this repository:
 python3 -m unittest discover -s tests
 ```
 
-This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, and a local server that blocks, forwards, and prints lookup lines. It does not need root and it does not bind port 53.
+This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, and a bootstrap install into a temporary directory. It does not need root and it does not bind port 53.
 
 Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 60 tests in 8.052s
+Ran 63 tests in 9.198s
 
 OK
 ```
