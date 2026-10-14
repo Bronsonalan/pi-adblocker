@@ -43,6 +43,7 @@ DENYLIST = [
     "outbrain.com",
     "scorecardresearch.com",
     "amazon-adsystem.com",
+    "reddit.com",
 ]
 
 ENTRYPOINTS = (
@@ -248,20 +249,28 @@ class BootstrapTests(unittest.TestCase):
                 self.assertIn(f"Environment=PIADBLOCK_GIT_USER={git_user}", pull_unit)
                 self.assertIn(f"Environment=PIADBLOCK_REMOTE={bare}", pull_unit)
                 self.assertNotIn("\nUser=", pull_unit)
-                for name in (
-                    "piadblock-pull.timer",
-                    "piadblock-heartbeat.timer",
-                    "piadblock-stats.timer",
-                ):
-                    self.assertTrue((prefix / "etc/systemd/system" / name).is_file(), name)
+                timer_calendars = {
+                    "piadblock-pull.timer": "minutely",
+                    "piadblock-heartbeat.timer": "hourly",
+                    "piadblock-stats.timer": "daily",
+                }
+                for name, calendar in timer_calendars.items():
+                    text = (prefix / "etc/systemd/system" / name).read_text(encoding="utf-8")
+                    self.assertIn("[Timer]", text, name)
+                    self.assertIn(f"OnCalendar={calendar}", text, name)
+                    self.assertIn("[Install]", text, name)
+                    self.assertIn("WantedBy=timers.target", text, name)
+                    self.assertNotIn("OnUnitActiveSec=", text, name)
+                    self.assertIn(f"systemd: started {name}", completed.stdout)
                 self.assertFalse((prefix / "etc/systemd/system/piadblock-update.timer").exists())
                 self.assertFalse((prefix / "etc/systemd/system/piadblock-update.service").exists())
 
                 calls = systemctl_log.read_text(encoding="utf-8")
                 self.assertIn("daemon-reload", calls)
                 self.assertIn("enable piadblock.service", calls)
-                self.assertIn("enable piadblock-pull.timer", calls)
                 self.assertIn("restart piadblock.service", calls)
+                for name in timer_calendars:
+                    self.assertIn(f"enable --now {name}", calls)
                 self.assertIn("blocklist unchanged", calls)
                 self.assertNotIn("piadblock-update", calls)
 
