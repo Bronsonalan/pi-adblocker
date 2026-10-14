@@ -1,13 +1,28 @@
 {
   "date": "2026-10-14",
-  "queries": 3,
-  "blocked": 2,
+  "queries": 652,
+  "blocked": 12,
   "blocked_domains": {
-    "doubleclick.net": 2
+    "alb.reddit.com": 2,
+    "doubleclick.net": 5,
+    "reddit.com": 2,
+    "www.reddit.com": 3
   },
   "top_blocked": [
     {
       "domain": "doubleclick.net",
+      "count": 5
+    },
+    {
+      "domain": "www.reddit.com",
+      "count": 3
+    },
+    {
+      "domain": "alb.reddit.com",
+      "count": 2
+    },
+    {
+      "domain": "reddit.com",
       "count": 2
     }
   ]
