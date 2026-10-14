@@ -11,8 +11,10 @@ from pathlib import Path
 from piadblock import __version__
 from piadblock.blocklist import Matcher
 from piadblock.config import ConfigError, load_config
+from piadblock.gitrepo import Repo, blocklist_changed_message, load_access
 from piadblock.log import setup_logging
-from piadblock.paths import SERVICE_NAME
+from piadblock.paths import OPT_ROOT, SERVICE_NAME
+from piadblock.report import daily_stats_document, dump_document, heartbeat_document
 from piadblock.server import DnsServer
 from piadblock.updater import update_blocklists
 
@@ -39,6 +41,9 @@ def main(argv: list[str] | None = None) -> int:
     check.add_argument("domain")
 
     sub.add_parser("stats", help="print the counters last saved by the server")
+    sub.add_parser("pull", help="git pull --rebase and reload if blocklist.txt changed")
+    sub.add_parser("heartbeat", help="write heartbeat.json and push it")
+    sub.add_parser("daily", help="write stats/YYYY-MM-DD.json and push it")
 
     args = parser.parse_args(argv)
     try:
@@ -56,6 +61,12 @@ def main(argv: list[str] | None = None) -> int:
         return _check(config, args.domain)
     if args.command == "stats":
         return _stats(config)
+    if args.command == "pull":
+        return _pull()
+    if args.command == "heartbeat":
+        return _heartbeat(config)
+    if args.command == "daily":
+        return _daily(config)
     parser.error(f"unknown command {args.command}")
     return 2
 
@@ -105,6 +116,125 @@ def _check(config, domain: str) -> int:
         f"{matcher.allow_count} allowed, {matcher.deny_count} denied"
     )
     return 0
+
+
+def _warn(message: str) -> None:
+    if message:
+        print(f"warning: {message}" if not message.startswith("warning:") else message, flush=True)
+
+
+def _pull() -> int:
+    try:
+        repo = Repo(OPT_ROOT, load_access())
+        changed, warning = repo.pull()
+        _warn(warning)
+        if changed:
+            _request_reload()
+        print(blocklist_changed_message(changed), flush=True)
+    except Exception as exc:
+        print(f"warning: git pull failed ({exc}). Blocking is unchanged.", flush=True)
+    return 0
+
+
+def _heartbeat(config) -> int:
+    try:
+        from datetime import datetime, timezone
+
+        uptime = 0
+        path = Path(config.stats_file) if config.stats_file else None
+        if path is not None and path.is_file():
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+                uptime = int(data.get("uptime_seconds", 0))
+            except (OSError, json.JSONDecodeError, TypeError, ValueError):
+                uptime = 0
+        document = heartbeat_document(datetime.now(timezone.utc), uptime, __version__)
+        target = Path(OPT_ROOT) / "heartbeat.json"
+        target.write_text(dump_document(document), encoding="utf-8")
+        warning = Repo(OPT_ROOT, load_access()).publish(["heartbeat.json"], f"heartbeat: {document['timestamp']}")
+        _warn(warning)
+        if warning:
+            print("heartbeat: not pushed", flush=True)
+        else:
+            print(f"heartbeat: {target}", flush=True)
+    except Exception as exc:
+        print(f"warning: heartbeat failed ({exc}). Blocking is unchanged.", flush=True)
+    return 0
+
+
+def _daily(config) -> int:
+    try:
+        path = Path(config.stats_file) if config.stats_file else None
+        days: dict = {}
+        if path is not None and path.is_file():
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+                if isinstance(data.get("days"), dict):
+                    days = data["days"]
+            except (OSError, json.JSONDecodeError):
+                days = {}
+        if not days:
+            print("daily: no per-domain counts saved yet", flush=True)
+            return 0
+        written: list[str] = []
+        labels: list[str] = []
+        for day in sorted(days):
+            bucket = days[day]
+            if not isinstance(bucket, dict):
+                continue
+            domains = bucket.get("domains") if isinstance(bucket.get("domains"), dict) else {}
+            document = daily_stats_document(
+                day,
+                int(bucket.get("queries", 0)),
+                int(bucket.get("blocked", 0)),
+                {str(name): int(count) for name, count in domains.items()},
+            )
+            relative = f"stats/{day}.json"
+            target = Path(OPT_ROOT) / relative
+            text = dump_document(document)
+            if target.is_file() and target.read_text(encoding="utf-8") == text:
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(text, encoding="utf-8")
+            written.append(relative)
+            labels.append(day)
+        if not written:
+            print("daily: stats unchanged", flush=True)
+            return 0
+        warning = Repo(OPT_ROOT, load_access()).publish(written, "stats: " + ", ".join(labels))
+        _warn(warning)
+        if warning:
+            print("daily: not pushed", flush=True)
+        else:
+            print("daily: " + " ".join(written), flush=True)
+    except Exception as exc:
+        print(f"warning: daily stats failed ({exc}). Blocking is unchanged.", flush=True)
+    return 0
+
+
+def _request_reload() -> None:
+    import shutil
+
+    systemctl = shutil.which("systemctl")
+    if systemctl is None:
+        print(
+            "warning: systemctl is missing; the server re-reads blocklist.txt within a few seconds",
+            flush=True,
+        )
+        return
+    result = subprocess.run(
+        [systemctl, "kill", "-s", "HUP", SERVICE_NAME],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or "systemctl kill failed").strip()
+        print(
+            f"warning: could not signal reload ({detail}). "
+            "The server re-reads blocklist.txt within a few seconds.",
+            flush=True,
+        )
 
 
 def _stats(config) -> int:

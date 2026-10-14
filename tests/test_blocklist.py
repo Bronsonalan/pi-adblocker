@@ -98,8 +98,12 @@ class DecideTests(unittest.TestCase):
 
 class DefaultDenylistTests(unittest.TestCase):
     def test_shipped_denylist_is_exactly_ten_domains(self):
-        path = Path(__file__).resolve().parents[1] / "lists" / "denylist.txt"
-        lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        path = Path(__file__).resolve().parents[1] / "blocklist.txt"
+        lines = [
+            line.strip()
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.strip().startswith("#")
+        ]
         expected = [
             "doubleclick.net",
             "googlesyndication.com",

@@ -1,6 +1,6 @@
 # Pi Adblock
 
-Pi Adblock is a small DNS server for a Raspberry Pi. It answers a fixed denylist with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
+Pi Adblock is a small DNS server for a Raspberry Pi. It answers `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
 
 v1 blocks these 10 names, and every subdomain under them:
 
@@ -15,9 +15,9 @@ v1 blocks these 10 names, and every subdomain under them:
 - `scorecardresearch.com`
 - `amazon-adsystem.com`
 
-So `doubleclick.net` and `ads.doubleclick.net` are both blocked. `example.com` and `google.com` are not. Nothing is downloaded. There is no daily blocklist update. You grow the list later by editing the denylist.
+So `doubleclick.net` and `ads.doubleclick.net` are both blocked. `example.com` and `google.com` are not. Nothing is downloaded. The block list is `blocklist.txt` in this repo. The Pi checks that file out and pulls it once a minute. To stop blocking a name, delete its line. The allowlist stays a separate file on the Pi.
 
-The program is plain Python 3 from the standard library. Raspberry Pi OS already has `python3`. Do not install packages with pip or apt for this.
+The program is plain Python 3 from the standard library. Raspberry Pi OS already has `python3` and `git`. The installer uses apt only when `git` is missing, and it says so. Do not install anything with pip.
 
 ## One-command install
 
@@ -32,6 +32,91 @@ That downloads this repository, unpacks it, and runs the installer as root. The 
 You should see `piadblock: downloading ...`, then `piadblock: running installer`, then the installer transcript in the next section. It finishes with `done`.
 
 The same transcript is what you get from the step-by-step install below. Use that path if you want to run each command yourself.
+
+## Update an existing Pi
+
+Updating is the same installer again. It keeps `/etc/piadblock/config.json`, makes `/opt/piadblock` a git checkout if it is not one yet, and starts three timers: pull every minute, heartbeat every hour, and daily stats once a day. The DNS service still starts on boot.
+
+### 1. Allow the existing deploy key to push
+
+This step is in the browser, not on the Pi. The Pi (user `techexplain`) already has an ed25519 key at `/home/techexplain/.ssh/pi_adblocker_deploy` and a `Host github.com` entry in `~/.ssh/config` that points at it. Write access on that GitHub deploy key has to be turned on once.
+
+1. Open [the repository deploy keys](https://github.com/Bronsonalan/pi-adblocker/settings/keys).
+2. Open the key that matches `/home/techexplain/.ssh/pi_adblocker_deploy`.
+3. Check **Allow write access** and save.
+
+The installer reuses that key and the SSH config. It generates a new key only when both are missing. If the installer prints `deploy key: wrote ...` followed by a public key, add that key on the same page with **Allow write access** checked, then run the installer once more.
+
+### 2. Run the installer
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/main/bootstrap.sh | sudo bash
+```
+
+This downloads the current `main` branch and runs the installer as root. The DNS server stays root so it can bind port 53 and reload itself. Every git command runs as `techexplain` through `runuser`, because OpenSSH refuses a private key owned by another user. When `~/.ssh/config` already has `Host github.com`, that entry chooses the key, and the installer does not set `GIT_SSH_COMMAND`.
+
+On a Pi that is already a checkout, expected output includes:
+
+```text
+git: already installed (/usr/bin/git)
+checkout: keeping the git repo at /opt/piadblock
+blocklist: /opt/piadblock/blocklist.txt
+git user: techexplain (git pull and push run as this user; the DNS service stays root)
+deploy key: reusing /home/techexplain/.ssh/pi_adblocker_deploy (from ~/.ssh/config Host github.com)
+git remote: git@github.com:Bronsonalan/pi-adblocker.git
+git: checkout /opt/piadblock tracking git@github.com:Bronsonalan/pi-adblocker.git
+systemd: installed piadblock-pull.timer
+systemd: installed piadblock-heartbeat.timer
+systemd: installed piadblock-stats.timer
+systemd: started piadblock.service
+self-check: doubleclick.net A -> 0.0.0.0
+self-check: doubleclick.net AAAA -> ::
+systemd: started piadblock-pull.service
+systemd: started piadblock-heartbeat.service
+systemd: started piadblock-stats.service
+done
+```
+
+The first update from an older install has no `.git` yet, so that run prints `installing files to /opt/piadblock` instead of `checkout: keeping the git repo`. If `git` was not installed, the line before the git user line is:
+
+```text
+git: not found, installing it with apt (Raspberry Pi OS normally includes git)
+```
+
+A failed fetch or push does not fail the install and does not stop DNS. You then see one of:
+
+```text
+warning: git pull failed (...). Blocking is unchanged.
+warning: git push failed (...). Blocking is unchanged.
+```
+
+### 3. Confirm the pull timer
+
+```bash
+sudo journalctl -u piadblock-pull -n 20 --no-pager
+```
+
+This prints the last pull and exits.
+
+Expected output includes either:
+
+```text
+blocklist unchanged
+```
+
+or, after `blocklist.txt` changed on GitHub:
+
+```text
+blocklist changed; reloaded
+```
+
+If the key cannot push yet, the same journal shows:
+
+```text
+warning: git push failed (...). Blocking is unchanged.
+```
+
+Queries keep being answered. The next pull retries the push after write access is on.
 
 ## Step by step
 
@@ -105,11 +190,12 @@ This needs root so it can bind port 53 and install a systemd unit. It:
 
 - copies the code to `/opt/piadblock`
 - writes `/etc/piadblock/config.json` (upstream `1.1.1.1`)
-- writes the allowlist and the 10-domain denylist
+- writes the allowlist, and uses `/opt/piadblock/blocklist.txt` from the git checkout as the block list
 - does **not** download a blocklist
+- reuses the existing deploy key (or writes one if none exists) and tracks `git@github.com:Bronsonalan/pi-adblocker.git`
 - frees port 53 if `systemd-resolved` or `dnsmasq` has it (see below)
 - points the Pi's own resolver at `1.1.1.1` when `/etc/resolv.conf` currently points at localhost or the router, so the Pi does not loop once the LAN uses the Pi for DNS
-- enables and starts `piadblock.service` (no update timer)
+- enables and starts `piadblock.service`, plus a minutely pull timer, an hourly heartbeat timer, and a daily stats timer (no blocklist-download timer)
 
 On a typical Raspberry Pi OS image, where `systemd-resolved` is holding port 53 and `/etc/resolv.conf` points at `127.0.0.53` or the router, expected output looks like this (`192.168.1.50` will be your Pi's address, and the `example.com` address will be whatever `1.1.1.1` returns that day):
 
@@ -119,18 +205,29 @@ python3: Python 3.11.2
 installing files to /opt/piadblock
 config: wrote /etc/piadblock/config.json
 allowlist.txt: wrote /etc/piadblock/allowlist.txt
-denylist.txt: wrote /etc/piadblock/denylist.txt
+blocklist: /opt/piadblock/blocklist.txt
 blocklists: none configured, download skipped
 port 53: systemd-resolved is using port 53; disabling DNSStubListener
 port 53: free
 resolver: backed up /etc/resolv.conf
 resolver: pointed this Pi at 1.1.1.1
+git: already installed (/usr/bin/git)
+git user: techexplain (git pull and push run as this user; the DNS service stays root)
+deploy key: reusing /home/techexplain/.ssh/pi_adblocker_deploy (from ~/.ssh/config Host github.com)
+git remote: git@github.com:Bronsonalan/pi-adblocker.git
+git: checkout /opt/piadblock tracking git@github.com:Bronsonalan/pi-adblocker.git
 systemd: installed piadblock.service
+systemd: installed piadblock-pull.timer
+systemd: installed piadblock-heartbeat.timer
+systemd: installed piadblock-stats.timer
 systemd: started piadblock.service
 self-check: querying 127.0.0.1
 self-check: doubleclick.net A -> 0.0.0.0
 self-check: doubleclick.net AAAA -> ::
 self-check: example.com A -> 172.66.147.243
+systemd: started piadblock-pull.service
+systemd: started piadblock-heartbeat.service
+systemd: started piadblock-stats.service
 
 Pi Adblock is installed and will start on boot.
 DNS is listening on port 53.
@@ -491,16 +588,20 @@ A second upstream is used only when the first one fails. Example:
 "upstream": ["1.1.1.1", "1.0.0.1"]
 ```
 
-### Denylist and allowlist
+### Block list and allowlist
 
-`/etc/piadblock/denylist.txt` is the block list. One domain per line. That name and every subdomain are blocked. Do not add a bare suffix such as `com`.
+`blocklist.txt` at the root of this repo is the block list. On the Pi that file is `/opt/piadblock/blocklist.txt`. One domain per line. `#` starts a comment. That name and every subdomain are blocked. Do not add a bare suffix such as `com`.
 
-`/etc/piadblock/allowlist.txt` is the exception list, same format. An allow entry beats a deny entry of the same name. A more specific deny still wins: allow `good.com` but deny `ads.good.com`, and `ads.good.com` stays blocked.
+Edit it on GitHub (or in a clone you push to `main`). Within a minute, `piadblock-pull` runs `git pull --rebase` and, only when `blocklist.txt` changed, reloads the running server. The reload does not restart the process and does not drop the listening sockets.
 
-Add a name:
+To stop blocking a name, delete its line and let that pull land. The next query for that name is forwarded. Putting the line back blocks it again, even if a previous answer was cached.
+
+`/etc/piadblock/allowlist.txt` is a separate override, same one-domain-per-line format. It is not in the git checkout. An allow entry beats a blocklist entry of the same name. A more specific block still wins: allow `good.com` but list `ads.good.com` in `blocklist.txt`, and `ads.good.com` stays blocked.
+
+Allow one name that is still on the block list:
 
 ```bash
-echo track.example.net | sudo tee -a /etc/piadblock/denylist.txt
+echo track.example.net | sudo tee -a /etc/piadblock/allowlist.txt
 ```
 
 Expected output:
@@ -509,23 +610,13 @@ Expected output:
 track.example.net
 ```
 
-The running server re-reads the file within a few seconds. To reload immediately:
+The running server re-reads the allowlist within a few seconds. To reload immediately:
 
 ```bash
 sudo systemctl reload piadblock
 ```
 
-Expected output: no text, exit code 0. The journal then contains:
-
-```text
-lists reloaded: 0 blocklist, 0 allow, 11 deny
-```
-
-```bash
-nslookup track.example.net 192.168.1.50
-```
-
-Expected output includes `Address: 0.0.0.0`.
+Expected output: no text, exit code 0. The journal then contains a `lists reloaded:` line. `track.example.net` is answered from upstream while it remains on `blocklist.txt`. A different name that is still listed, such as `doubleclick.net`, stays `0.0.0.0`.
 
 ### Remote lists later
 
@@ -561,7 +652,7 @@ Saved counters:
 sudo PYTHONPATH=/opt/piadblock python3 -m piadblock stats
 ```
 
-Expected output, once the server has flushed counters (about once a minute, and on shutdown):
+Expected output, once the server has flushed counters (about once a second, and on shutdown):
 
 ```text
 queries:   12
@@ -571,6 +662,30 @@ forwarded: 6
 errors:    0
 uptime:    120s
 file:      /var/lib/piadblock/stats.json
+```
+
+That file is the server's state. Once a day, `piadblock-stats` copies the whole UTC day into the repo and pushes it. The path is `stats/YYYY-MM-DD.json` (on the Pi, `/opt/piadblock/stats/YYYY-MM-DD.json`). `blocked_domains` is every blocked name that day and its count, reloaded from the state file when the process starts, so a restart does not zero the day. `top_blocked` is that same map sorted by count, then by name. The 40-line recent sample on the status page is not written here.
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "queries": 0,
+  "blocked": 0,
+  "blocked_domains": {"doubleclick.net": 2},
+  "top_blocked": [{"domain": "doubleclick.net", "count": 2}]
+}
+```
+
+`heartbeat.json` at the repo root is overwritten every hour and pushed:
+
+```json
+{"timestamp": "YYYY-MM-DDTHH:MM:SSZ", "uptime_seconds": 0, "version": "0.1.0"}
+```
+
+The Pi commits only `heartbeat.json` and `stats/`. `blocklist.txt` is edited upstream. A rejected push is logged and ignored:
+
+```text
+warning: git push failed (...). Blocking is unchanged.
 ```
 
 Check one name against the files on disk, without sending a query:
@@ -607,7 +722,7 @@ lists: 0 blocked, 0 allowed, 10 denied
 sudo python3 /opt/piadblock/uninstall.py
 ```
 
-This stops and disables the service, removes the unit file, and restores `/etc/resolv.conf` and the systemd-resolved stub listener if the installer changed them. Config, the denylist, and logs are kept.
+This stops and disables the DNS service and the pull, heartbeat, and stats timers, removes those unit files, and restores `/etc/resolv.conf` and the systemd-resolved stub listener if the installer changed them. Config, the allowlist, and logs are kept. The git checkout under `/opt/piadblock` is removed.
 
 Expected output when the installer had changed resolved and resolv.conf:
 
@@ -657,7 +772,7 @@ Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 63 tests in 9.198s
+Ran 72 tests in 41.374s
 
 OK
 ```
@@ -667,7 +782,7 @@ The elapsed time varies. `OK` is the result that matters.
 ## What the server does
 
 1. A client sends a DNS query to the Pi on UDP port 53 (TCP is accepted too, for large answers).
-2. If the name, or a parent of the name, is on the denylist and not covered by a more specific allow entry, the Pi answers immediately: A is `0.0.0.0`, AAAA is `::`, other types are an empty NOERROR. The line in the journal starts with `BLOCKED`.
+2. If the name, or a parent of the name, is on `blocklist.txt` and not covered by a more specific allow entry, the Pi answers immediately: A is `0.0.0.0`, AAAA is `::`, other types are an empty NOERROR. The line in the journal starts with `BLOCKED`.
 3. Otherwise the Pi returns a cached answer or forwards the query to `1.1.1.1`, and the journal line starts with `OK`.
 
 Other query types for a blocked name are not forwarded, so a client cannot skip the block by asking for a TXT or HTTPS record.

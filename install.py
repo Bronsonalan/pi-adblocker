@@ -28,20 +28,30 @@ from piadblock.config import ConfigError, load_config  # noqa: E402
 from piadblock.dns import A, AAAA, DnsError, rdata_ip  # noqa: E402
 from piadblock.files import atomic_write  # noqa: E402
 from piadblock.forward import lookup  # noqa: E402
+from piadblock.gitrepo import discover_git_access, save_access  # noqa: E402
+from piadblock.gitrepo import Repo as GitRepo  # noqa: E402
 from piadblock.paths import (  # noqa: E402
     BLOCKLIST_DIR,
     CANONICAL_CONFIG_PATHS,
     CONFIG_DIR,
     CONFIG_PATH,
+    DENYLIST_PATH,
     DHCPCD_CONF,
+    HEARTBEAT_SERVICE_NAME,
+    HEARTBEAT_TIMER_NAME,
     INSTALL_STATE_PATH,
+    LEGACY_DENYLIST_PATH,
     LOG_DIR,
     NM_CONF,
     OPT_ROOT,
     PREFIX,
+    PULL_SERVICE_NAME,
+    PULL_TIMER_NAME,
     RESOLV_CONF,
     RESOLVED_DROPIN,
     STATE_DIR,
+    STATS_SERVICE_NAME,
+    STATS_TIMER_NAME,
     UNIT_DIR,
     locate,
 )
@@ -55,7 +65,7 @@ from piadblock.systemfix import (  # noqa: E402
     resolver_should_be_replaced,
     upsert_marked_block,
 )
-from piadblock.units import service_unit  # noqa: E402
+from piadblock.units import calendar_timer_unit, git_oneshot_unit, service_unit  # noqa: E402
 from piadblock.updater import update_blocklists  # noqa: E402
 
 
@@ -77,14 +87,17 @@ def main(argv: list[str] | None = None) -> int:
         _install_files()
         _ensure_dirs()
         _ensure_config()
+        _migrate_denylist()
         _ensure_lists()
         config = load_config(CONFIG_PATH)
         _download(config)
         _free_port_53(config)
         _fix_resolver(config)
-        _install_units()
+        access = _setup_git()
+        _install_units(access)
         _start_service()
         _self_check(config)
+        _start_git_timers()
         _finish(config)
     except InstallError as exc:
         print(f"error: {exc}", file=sys.stderr)
@@ -118,6 +131,9 @@ def _install_files() -> None:
     dest = Path(OPT_ROOT)
     if ROOT.resolve() == dest.resolve():
         say(f"installing files to {dest}")
+        return
+    if (dest / ".git").is_dir():
+        say(f"checkout: keeping the git repo at {dest}")
         return
     if dest.exists():
         shutil.rmtree(dest)
@@ -157,14 +173,113 @@ def _ensure_config() -> None:
 
 
 def _ensure_lists() -> None:
-    for name in ("allowlist.txt", "denylist.txt"):
-        dest = Path(CONFIG_DIR) / name
-        if dest.exists():
-            say(f"{name}: keeping {dest}")
-            continue
-        shutil.copy(ROOT / "lists" / name, dest)
+    dest = Path(CONFIG_DIR) / "allowlist.txt"
+    if dest.exists():
+        say(f"allowlist.txt: keeping {dest}")
+    else:
+        shutil.copy(ROOT / "lists" / "allowlist.txt", dest)
         os.chmod(dest, 0o644)
-        say(f"{name}: wrote {dest}")
+        say(f"allowlist.txt: wrote {dest}")
+    blocklist = Path(DENYLIST_PATH)
+    if blocklist.is_file():
+        say(f"blocklist: {blocklist}")
+    else:
+        say(f"warning: {blocklist} is missing. Blocking still starts once that file is present.")
+
+
+def _migrate_denylist() -> None:
+    path = Path(CONFIG_PATH)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+    if not isinstance(data, dict):
+        return
+    current = data.get("denylist")
+    legacy = {LEGACY_DENYLIST_PATH, "/etc/piadblock/denylist.txt"}
+    if current in legacy and current != DENYLIST_PATH:
+        data["denylist"] = DENYLIST_PATH
+        atomic_write(path, json.dumps(data, indent=2) + "\n")
+        os.chmod(path, 0o644)
+        say(f"config: denylist is now {DENYLIST_PATH}")
+
+
+def _ensure_git() -> None:
+    found = shutil.which("git")
+    if found:
+        say(f"git: already installed ({found})")
+        return
+    say("git: not found, installing it with apt (Raspberry Pi OS normally includes git)")
+    if PREFIX:
+        say("warning: git is missing and apt is not used for a prefixed install. Blocking is unchanged.")
+        return
+    env = os.environ.copy()
+    env["DEBIAN_FRONTEND"] = "noninteractive"
+    subprocess.run(["apt-get", "update"], check=False, env=env)
+    installed = subprocess.run(["apt-get", "install", "-y", "git"], check=False, env=env)
+    if installed.returncode != 0 or shutil.which("git") is None:
+        say("warning: could not install git. The copied blocklist still works; pull and push will retry.")
+
+
+def _setup_git():
+    _ensure_git()
+    try:
+        access = discover_git_access(generate=True)
+    except Exception as exc:
+        say(f"warning: deploy key setup failed ({exc}). Blocking is unchanged.")
+        access = discover_git_access(generate=False)
+    save_access(access)
+    _say_access(access)
+    _chown_checkout(access.user)
+    if shutil.which("git") is None:
+        return access
+    warning = GitRepo(OPT_ROOT, access).ensure()
+    if warning:
+        say(f"warning: {warning}")
+    else:
+        say(f"git: checkout {OPT_ROOT} tracking {access.remote}")
+    _chown_checkout(access.user)
+    return access
+
+
+def _say_access(access) -> None:
+    say(f"git user: {access.user} (git pull and push run as this user; the DNS service stays root)")
+    if access.source == "ssh-config":
+        say(f"deploy key: reusing {access.key} (from ~/.ssh/config Host github.com)")
+    elif access.source == "existing-key":
+        say(f"deploy key: reusing {access.key}")
+    elif access.source == "environment":
+        say(f"deploy key: reusing {access.key}")
+    elif access.source == "generated":
+        say(f"deploy key: wrote {access.key}")
+        public = access.key + ".pub"
+        text = ""
+        if Path(public).is_file():
+            text = Path(public).read_text(encoding="utf-8").strip()
+        if text:
+            say("Add this public key on GitHub as a deploy key with write access:")
+            say(text)
+    else:
+        say("warning: no deploy key found. Pull and push stay off until one is added. Blocking is unchanged.")
+    say(f"git remote: {access.remote}")
+
+
+def _chown_checkout(user: str) -> None:
+    if os.geteuid() != 0 or not user or user == "root":
+        return
+    import pwd
+
+    try:
+        pwd.getpwnam(user)
+    except KeyError:
+        say(f"warning: unix user {user} does not exist; leaving {OPT_ROOT} owned by root")
+        return
+    for directory, dirnames, filenames in os.walk(OPT_ROOT):
+        shutil.chown(directory, user)
+        for name in dirnames:
+            shutil.chown(Path(directory) / name, user)
+        for name in filenames:
+            shutil.chown(Path(directory) / name, user)
 
 
 def _download(config) -> None:
@@ -343,7 +458,7 @@ def _write_resolv(upstreams: list[str]) -> None:
     os.chmod(resolv, 0o644)
 
 
-def _install_units() -> None:
+def _install_units(access) -> None:
     if shutil.which("systemctl") is None:
         raise InstallError(
             "systemctl was not found, so the service could not be installed.\n"
@@ -359,11 +474,45 @@ def _install_units() -> None:
         encoding="utf-8",
     )
     say("systemd: installed piadblock.service")
+    python_path = OPT_ROOT
+    jobs = (
+        ("Pull the piadblock repo and reload when blocklist.txt changes", PULL_SERVICE_NAME, PULL_TIMER_NAME, "minutely", "pull"),
+        ("Write and push the piadblock heartbeat", HEARTBEAT_SERVICE_NAME, HEARTBEAT_TIMER_NAME, "hourly", "heartbeat"),
+        ("Write and push the piadblock daily stats", STATS_SERVICE_NAME, STATS_TIMER_NAME, "daily", "daily"),
+    )
+    for description, service_name, timer_name, calendar, command in jobs:
+        (unit_dir / service_name).write_text(
+            git_oneshot_unit(
+                description,
+                python,
+                python_path,
+                command,
+                prefix=PREFIX,
+                git_user=access.user,
+                remote=access.remote,
+            ),
+            encoding="utf-8",
+        )
+        (unit_dir / timer_name).write_text(calendar_timer_unit(description, calendar), encoding="utf-8")
+        say(f"systemd: installed {timer_name}")
     reload = _systemctl("daemon-reload")
     if reload.returncode != 0:
         detail = (reload.stderr or reload.stdout or "daemon-reload failed").strip()
         raise InstallError(detail)
     _systemctl("enable", "piadblock.service")
+    for timer_name in (PULL_TIMER_NAME, HEARTBEAT_TIMER_NAME, STATS_TIMER_NAME):
+        _systemctl("enable", timer_name)
+
+
+def _start_git_timers() -> None:
+    """Run one pull, heartbeat, and stats pass. A git failure must not abort install."""
+    for service in (PULL_SERVICE_NAME, HEARTBEAT_SERVICE_NAME, STATS_SERVICE_NAME):
+        result = _systemctl("start", service)
+        if result.returncode != 0:
+            detail = (result.stderr or result.stdout or "systemctl start failed").strip()
+            say(f"warning: {service} did not finish ({detail}). Blocking is unchanged.")
+        else:
+            say(f"systemd: started {service}")
 
 
 def _start_service() -> None:
@@ -381,7 +530,7 @@ def _self_check(config) -> None:
     decision = matcher.decide("doubleclick.net")
     if not decision.blocked:
         say("warning: doubleclick.net is not blocked, so the block self-check was skipped")
-        say("warning: check /etc/piadblock/denylist.txt")
+        say(f"warning: check {config.denylist}")
         return
 
     host, port = _query_target(config)
