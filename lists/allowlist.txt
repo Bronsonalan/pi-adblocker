@@ -1,0 +1,5 @@
+# One domain per line. This domain and its subdomains are never blocked.
+# A more specific denylist entry still wins: allow good.com, deny ads.good.com.
+#
+# Example:
+# good.example.com
