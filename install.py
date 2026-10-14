@@ -1,0 +1,467 @@
+#!/usr/bin/env python3
+"""Install piadblock as a systemd service that starts on boot.
+
+    sudo python3 install.py
+
+The same file is what ``bootstrap.sh`` runs after it downloads the archive.
+Only the Python standard library is used. Nothing is installed with pip or apt.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import shutil
+import socket
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from piadblock import __version__  # noqa: E402
+from piadblock.blocklist import Matcher  # noqa: E402
+from piadblock.config import ConfigError, load_config  # noqa: E402
+from piadblock.dns import A, AAAA, DnsError, rdata_ip  # noqa: E402
+from piadblock.files import atomic_write  # noqa: E402
+from piadblock.forward import lookup  # noqa: E402
+from piadblock.paths import (  # noqa: E402
+    BLOCKLIST_DIR,
+    CONFIG_DIR,
+    CONFIG_PATH,
+    DHCPCD_CONF,
+    INSTALL_STATE_PATH,
+    LOG_DIR,
+    NM_CONF,
+    OPT_ROOT,
+    RESOLV_CONF,
+    RESOLVED_DROPIN,
+    STATE_DIR,
+)
+from piadblock.portcheck import classify, describe, listeners_on  # noqa: E402
+from piadblock.systemfix import (  # noqa: E402
+    render_dhcpcd_block,
+    render_nm_conf,
+    render_resolv_conf,
+    render_resolved_dropin,
+    resolver_should_be_replaced,
+    upsert_marked_block,
+)
+from piadblock.units import service_unit  # noqa: E402
+from piadblock.updater import update_blocklists  # noqa: E402
+
+
+class InstallError(Exception):
+    """The install stopped. The message is safe to show as-is."""
+
+
+def say(message: str = "") -> None:
+    print(message, flush=True)
+
+
+def main(argv: list[str] | None = None) -> int:
+    del argv  # reserved so a later flag does not change the call shape
+    try:
+        _require_python()
+        _require_root()
+        say(f"piadblock installer {__version__}")
+        say(f"python3: Python {sys.version.split()[0]}")
+        _install_files()
+        _ensure_dirs()
+        _ensure_config()
+        _ensure_lists()
+        config = load_config(CONFIG_PATH)
+        _download(config)
+        _free_port_53(config)
+        _fix_resolver(config)
+        _install_units()
+        _start_service()
+        _self_check(config)
+        _finish()
+    except InstallError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    except ConfigError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    return 0
+
+
+def _require_python() -> None:
+    if sys.version_info < (3, 9):
+        raise InstallError(
+            f"Python {sys.version.split()[0]} is too old. piadblock needs Python 3.9 or newer "
+            "(Raspberry Pi OS Bullseye and later already include it)."
+        )
+
+
+def _require_root() -> None:
+    if hasattr(os, "geteuid") and os.geteuid() != 0:
+        raise InstallError(
+            "This installer needs root so it can listen on port 53 and install a systemd service.\n"
+            "Run: sudo python3 install.py"
+        )
+
+
+def _install_files() -> None:
+    dest = Path(OPT_ROOT)
+    if ROOT.resolve() == dest.resolve():
+        say(f"installing files to {dest}")
+        return
+    if dest.exists():
+        shutil.rmtree(dest)
+    shutil.copytree(
+        ROOT,
+        dest,
+        ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", ".pytest_cache"),
+    )
+    say(f"installing files to {dest}")
+
+
+def _ensure_dirs() -> None:
+    for path in (CONFIG_DIR, STATE_DIR, LOG_DIR, BLOCKLIST_DIR):
+        Path(path).mkdir(parents=True, exist_ok=True)
+
+
+def _ensure_config() -> None:
+    path = Path(CONFIG_PATH)
+    if path.exists():
+        say(f"config: keeping {path}")
+        return
+    example = ROOT / "config.example.json"
+    if not example.exists():
+        raise InstallError(f"missing {example}")
+    shutil.copy(example, path)
+    os.chmod(path, 0o644)
+    say(f"config: wrote {path}")
+
+
+def _ensure_lists() -> None:
+    for name in ("allowlist.txt", "denylist.txt"):
+        dest = Path(CONFIG_DIR) / name
+        if dest.exists():
+            say(f"{name}: keeping {dest}")
+            continue
+        shutil.copy(ROOT / "lists" / name, dest)
+        os.chmod(dest, 0o644)
+        say(f"{name}: wrote {dest}")
+
+
+def _download(config) -> None:
+    if not config.blocklists:
+        say("blocklists: none configured, download skipped")
+        return
+    say("downloading blocklists")
+    result = update_blocklists(config, force=True)
+    for source in result.sources:
+        if source.get("ok"):
+            say(f"  ok  {source['url']}  ({source['domains']} domains)")
+        else:
+            say(f"  fail  {source['url']}  ({source.get('error') or 'failed'})")
+    if result.ok:
+        say(f"merged {result.domain_count} domains into {config.merged_path}")
+        return
+    if result.kept_existing:
+        say(
+            f"warning: download failed ({result.error}); "
+            f"keeping the existing blocklist ({result.domain_count} domains)"
+        )
+        return
+    raise InstallError(result.error or "blocklist download failed")
+
+
+def _free_port_53(config) -> None:
+    """Stop our previous process, then systemd-resolved's stub and dnsmasq.
+
+    Anything else bound to port 53 is reported and left running. piadblock
+    will not kill an unknown daemon.
+    """
+    state = _load_state()
+    for _ in range(4):
+        groups = classify(listeners_on(53))
+        if not any(groups.values()):
+            say("port 53: free")
+            return
+        if groups["ours"]:
+            say("port 53: stopping the piadblock service already running")
+            _systemctl("stop", "piadblock.service")
+            time.sleep(0.4)
+            continue
+        if groups["resolved"]:
+            say("port 53: systemd-resolved is using port 53; disabling DNSStubListener")
+            _disable_resolved_stub(config, state)
+            time.sleep(0.6)
+            continue
+        if groups["dnsmasq"]:
+            say("port 53: stopping and disabling dnsmasq")
+            _systemctl("stop", "dnsmasq.service")
+            _systemctl("disable", "dnsmasq.service")
+            state["disabled_dnsmasq"] = True
+            _save_state(state)
+            time.sleep(0.4)
+            continue
+        break
+
+    listeners = listeners_on(53)
+    groups = classify(listeners)
+    if any(groups.values()):
+        raise InstallError(_port_busy_message(listeners, groups))
+    say("port 53: free")
+
+
+def _port_busy_message(listeners, groups) -> str:
+    lines = ["port 53 is still in use:"]
+    for item in listeners:
+        lines.append(f"  {describe(item)}")
+    lines.append("Stop that program, then run the installer again.")
+    if groups["resolved"]:
+        lines.extend(
+            [
+                "systemd-resolved is still bound. Do this by hand, then re-run the installer:",
+                "  sudo mkdir -p /etc/systemd/resolved.conf.d",
+                "  printf '[Resolve]\\nDNSStubListener=no\\n' | sudo tee /etc/systemd/resolved.conf.d/piadblock.conf",
+                "  sudo systemctl restart systemd-resolved",
+            ]
+        )
+    if groups["dnsmasq"]:
+        lines.extend(
+            [
+                "dnsmasq is still bound. Do this by hand, then re-run the installer:",
+                "  sudo systemctl disable --now dnsmasq",
+            ]
+        )
+    if groups["other"]:
+        lines.append("piadblock does not stop an unknown program for you.")
+    return "\n".join(lines)
+
+
+def _disable_resolved_stub(config, state: dict) -> None:
+    dropin = Path(RESOLVED_DROPIN)
+    dropin.parent.mkdir(parents=True, exist_ok=True)
+    dropin.write_text(render_resolved_dropin(list(config.upstream)), encoding="utf-8")
+    state["disabled_resolved_stub"] = True
+    _save_state(state)
+    result = _systemctl("restart", "systemd-resolved.service")
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or "systemctl restart systemd-resolved failed").strip()
+        say(f"warning: {detail}")
+
+
+def _fix_resolver(config) -> None:
+    """Keep this Pi's own lookups on the public upstream.
+
+    Once the router sends every device to the Pi, a Pi that still asks the
+    router (or 127.0.0.53) for DNS will loop. Public resolvers are left as-is.
+    """
+    state = _load_state()
+    resolv = Path(RESOLV_CONF)
+    try:
+        current = resolv.read_text(encoding="utf-8", errors="replace") if resolv.exists() else ""
+    except OSError:
+        current = ""
+
+    needs_resolv = resolver_should_be_replaced(current)
+    if needs_resolv and not state.get("changed_resolv_conf"):
+        state["resolv_backup"] = _snapshot_resolv(resolv)
+        state["changed_resolv_conf"] = True
+        _save_state(state)
+        say(f"resolver: backed up {RESOLV_CONF}")
+    elif not needs_resolv:
+        say(f"resolver: {RESOLV_CONF} already uses a public DNS server; leaving it")
+
+    dhcpcd = Path(DHCPCD_CONF)
+    if dhcpcd.exists():
+        try:
+            original = dhcpcd.read_text(encoding="utf-8", errors="replace")
+        except OSError as exc:
+            say(f"warning: could not read {DHCPCD_CONF}: {exc}")
+        else:
+            updated = upsert_marked_block(original, render_dhcpcd_block(list(config.upstream)))
+            if updated != original:
+                dhcpcd.write_text(updated, encoding="utf-8")
+                state["modified_dhcpcd"] = True
+                _save_state(state)
+                say(f"resolver: pinned upstream DNS in {DHCPCD_CONF}")
+
+    if _is_active("NetworkManager"):
+        nm_path = Path(NM_CONF)
+        try:
+            nm_path.parent.mkdir(parents=True, exist_ok=True)
+            nm_path.write_text(render_nm_conf(), encoding="utf-8")
+        except OSError as exc:
+            say(f"warning: could not write {NM_CONF}: {exc}")
+        else:
+            state["modified_nm"] = True
+            _save_state(state)
+            say(f"resolver: told NetworkManager not to overwrite {RESOLV_CONF}")
+            _systemctl("reload", "NetworkManager")
+
+    if needs_resolv:
+        # Write this last so a NetworkManager reload cannot put the router back.
+        try:
+            _write_resolv(list(config.upstream))
+        except OSError as exc:
+            say(f"warning: could not write {RESOLV_CONF}: {exc}")
+        else:
+            say(f"resolver: pointed this Pi at {' '.join(config.upstream)}")
+
+
+def _snapshot_resolv(resolv: Path) -> dict:
+    if resolv.is_symlink():
+        return {"type": "symlink", "target": os.readlink(resolv)}
+    if resolv.exists():
+        return {"type": "file", "content": resolv.read_text(encoding="utf-8", errors="replace")}
+    return {"type": "missing"}
+
+
+def _write_resolv(upstreams: list[str]) -> None:
+    resolv = Path(RESOLV_CONF)
+    if resolv.is_symlink() or resolv.exists():
+        resolv.unlink()
+    resolv.write_text(render_resolv_conf(upstreams), encoding="utf-8")
+    os.chmod(resolv, 0o644)
+
+
+def _install_units() -> None:
+    if shutil.which("systemctl") is None:
+        raise InstallError(
+            "systemctl was not found, so the service could not be installed.\n"
+            "Raspberry Pi OS includes systemd. The program files are in /opt/piadblock.\n"
+            "You can still run: sudo python3 -m piadblock serve"
+        )
+    python = shutil.which("python3") or sys.executable
+    kill = shutil.which("kill") or "/bin/kill"
+    unit_dir = Path("/etc/systemd/system")
+    unit_dir.mkdir(parents=True, exist_ok=True)
+    (unit_dir / "piadblock.service").write_text(service_unit(python, OPT_ROOT, kill), encoding="utf-8")
+    say("systemd: installed piadblock.service")
+    reload = _systemctl("daemon-reload")
+    if reload.returncode != 0:
+        detail = (reload.stderr or reload.stdout or "daemon-reload failed").strip()
+        raise InstallError(detail)
+    _systemctl("enable", "piadblock.service")
+
+
+def _start_service() -> None:
+    started = _systemctl("restart", "piadblock.service")
+    if started.returncode != 0:
+        detail = (started.stderr or started.stdout or "restart failed").strip()
+        say(detail)
+        _dump_journal()
+        raise InstallError("piadblock.service failed to start. See the journal output above.")
+    say("systemd: started piadblock.service")
+
+
+def _self_check(config) -> None:
+    matcher = Matcher.load(config.merged_path, config.allowlist, config.denylist)
+    decision = matcher.decide("doubleclick.net")
+    if not decision.blocked:
+        say("warning: doubleclick.net is not blocked, so the block self-check was skipped")
+        say("warning: check /etc/piadblock/denylist.txt")
+        return
+
+    say("self-check: querying 127.0.0.1")
+    deadline = time.time() + 15
+    last_error = "no response"
+    blocked = None
+    while time.time() < deadline:
+        try:
+            blocked = lookup("127.0.0.1", 53, "doubleclick.net", A, timeout=1.0)
+        except (OSError, DnsError) as exc:
+            last_error = str(exc)
+            time.sleep(0.4)
+            continue
+        address = rdata_ip(blocked.answers[0]) if blocked.answers else None
+        if address == config.block_ipv4:
+            say(f"self-check: doubleclick.net A -> {address}")
+            break
+        last_error = f"unexpected answer {address!r}"
+        time.sleep(0.4)
+        blocked = None
+    if blocked is None:
+        _dump_journal()
+        raise InstallError(f"self-check failed for doubleclick.net ({last_error})")
+
+    try:
+        aaaa = lookup("127.0.0.1", 53, "doubleclick.net", AAAA, timeout=2.0)
+    except (OSError, DnsError) as exc:
+        raise InstallError(f"AAAA self-check failed: {exc}") from exc
+    address6 = rdata_ip(aaaa.answers[0]) if aaaa.answers else None
+    say(f"self-check: doubleclick.net AAAA -> {address6}")
+    if address6 != config.block_ipv6:
+        raise InstallError(f"AAAA self-check returned {address6!r}, expected {config.block_ipv6}")
+
+    try:
+        forwarded = lookup("127.0.0.1", 53, "example.com", A, timeout=config.upstream_timeout + 1)
+    except (OSError, DnsError) as exc:
+        say(f"warning: example.com forward failed ({exc}). Blocking works; check the upstream resolver.")
+        return
+    address = rdata_ip(forwarded.answers[0]) if forwarded.answers else None
+    if address and address != config.block_ipv4:
+        say(f"self-check: example.com A -> {address}")
+        return
+    say(
+        f"warning: example.com did not return a public address ({address!r}). "
+        "Blocking works; check the upstream resolver."
+    )
+
+
+def _finish() -> None:
+    ip = _lan_ip()
+    say("")
+    say("Pi Adblock is installed and will start on boot.")
+    say("DNS is listening on port 53.")
+    say(f"Point your router DHCP DNS at {ip}.")
+    say(f"Status page: http://{ip}:8080/")
+    say(f"Check a block: nslookup doubleclick.net {ip}")
+    say("done")
+
+
+def _lan_ip() -> str:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        sock.connect(("1.1.1.1", 80))
+        return sock.getsockname()[0]
+    except OSError:
+        return "127.0.0.1"
+    finally:
+        sock.close()
+
+
+def _dump_journal() -> None:
+    if shutil.which("journalctl") is None:
+        return
+    subprocess.run(
+        ["journalctl", "-u", "piadblock", "-n", "40", "--no-pager"],
+        check=False,
+    )
+
+
+def _is_active(unit: str) -> bool:
+    result = _systemctl("is-active", unit)
+    return result.returncode == 0
+
+
+def _systemctl(*args: str) -> subprocess.CompletedProcess:
+    if shutil.which("systemctl") is None:
+        return subprocess.CompletedProcess(["systemctl", *args], 127, "", "systemctl not found")
+    return subprocess.run(["systemctl", *args], check=False, text=True, capture_output=True)
+
+
+def _load_state() -> dict:
+    try:
+        data = json.loads(Path(INSTALL_STATE_PATH).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _save_state(state: dict) -> None:
+    atomic_write(INSTALL_STATE_PATH, json.dumps(state, indent=2) + "\n")
+
+
+if __name__ == "__main__":
+    sys.exit(main())
