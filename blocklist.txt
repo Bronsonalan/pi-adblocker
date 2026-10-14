@@ -13,3 +13,6 @@ outbrain.com
 scorecardresearch.com
 amazon-adsystem.com
 reddit.com
+redd.it
+redditstatic.com
+redditmedia.com
