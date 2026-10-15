@@ -1,12 +1,13 @@
 {
   "date": "2026-10-14",
-  "queries": 652,
-  "blocked": 12,
+  "queries": 1062,
+  "blocked": 17,
   "blocked_domains": {
     "alb.reddit.com": 2,
     "doubleclick.net": 5,
-    "reddit.com": 2,
-    "www.reddit.com": 3
+    "mask.icloud.com": 2,
+    "reddit.com": 3,
+    "www.reddit.com": 5
   },
   "top_blocked": [
     {
@@ -15,6 +16,10 @@
     },
     {
       "domain": "www.reddit.com",
+      "count": 5
+    },
+    {
+      "domain": "reddit.com",
       "count": 3
     },
     {
@@ -22,7 +27,7 @@
       "count": 2
     },
     {
-      "domain": "reddit.com",
+      "domain": "mask.icloud.com",
       "count": 2
     }
   ]
