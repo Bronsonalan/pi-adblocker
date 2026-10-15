@@ -67,6 +67,19 @@ class LookupFeed:
             return list(self._items)
 
 
+def format_local_time(ts: float) -> str:
+    """Local wall clock as ``h:MM:SS AM/PM``.
+
+    ``time.localtime`` uses the Pi's configured timezone. This does not
+    import ``zoneinfo``, so a missing tzdata package cannot change the result.
+    """
+    local = time.localtime(ts)
+    hour = local.tm_hour
+    suffix = "AM" if hour < 12 else "PM"
+    hour12 = hour % 12 or 12
+    return f"{hour12}:{local.tm_min:02d}:{local.tm_sec:02d} {suffix}"
+
+
 def visible_text(line: str) -> str:
     """Drop ANSI color sequences. The result is what the CRT actually shows."""
     return _ANSI.sub("", line)
@@ -152,6 +165,19 @@ def _fit_sides(left: str, right: str, width: int) -> str:
     return truncate(f"{left} {right}".strip(), width)
 
 
+def _title_line(clock: str, width: int, blocklist_domains: int | None) -> str:
+    left = "PI AD BLOCK"
+    if blocklist_domains is None:
+        return _fit_sides(left, clock, width)
+    count = f"{int(blocklist_domains):,}"
+    gap = width - len(left) - len(count) - len(clock)
+    if gap < 2:
+        return _fit_sides(left, clock, width)
+    left_gap = gap // 2
+    right_gap = gap - left_gap
+    return left + (" " * left_gap) + count + (" " * right_gap) + clock
+
+
 def paint(text: str, width: int, style: str) -> str:
     shown = truncate(text, width)
     padded = shown + (" " * (width - len(shown)))
@@ -169,6 +195,7 @@ def render_frame(
     height: int = CRT_HEIGHT,
     clock: str = "",
     waiting: bool = False,
+    blocklist_domains: int | None = None,
 ) -> str:
     """Return one full screen. Newest lookup is the first row under the header.
 
@@ -177,8 +204,8 @@ def render_frame(
     """
     width = max(1, width)
     height = max(1, height)
-    when = clock or time.strftime("%H:%M:%S")
-    title = _fit_sides("PI AD BLOCK", when, width)
+    when = clock or format_local_time(time.time())
+    title = _title_line(when, width, None if waiting else blocklist_domains)
     totals = truncate(f"TODAY {int(queries)} Q  {int(blocked)} BLOCKED", width)
     rows = [
         paint(title, width, HEADER_STYLE),
@@ -264,7 +291,19 @@ def serve_display(stream, fetch, stop: threading.Event, *, width: int, height: i
                     blocked = int(payload.get("blocked") or 0)
                 except (TypeError, ValueError):
                     queries, blocked = 0, 0
-                frame = render_frame(lookups, queries, blocked, width=width, height=height)
+                domains = payload.get("blocklist_domains")
+                try:
+                    blocklist_domains = int(domains) if domains is not None else None
+                except (TypeError, ValueError):
+                    blocklist_domains = None
+                frame = render_frame(
+                    lookups,
+                    queries,
+                    blocked,
+                    width=width,
+                    height=height,
+                    blocklist_domains=blocklist_domains,
+                )
             if frame != previous:
                 stream.write(frame)
                 stream.flush()
