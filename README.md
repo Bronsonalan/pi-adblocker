@@ -598,6 +598,28 @@ Expected output is JSON. `blocked` increases when a denylist name is queried. `b
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
+## CRT display
+
+A fullscreen feed for the monitor on the Pi's console (`tty1`). It is laid out for a 640×480 CRT: a 16×32 console font gives 40 columns and 15 rows of large text. The newest lookup is the top row. A blocked name is drawn in white on red and marked `BLOCKED`, with the client address and the domain. The header shows today's query count and blocked count.
+
+The DNS server only appends each lookup to a short in-memory list. Drawing happens in a separate process, so a slow console does not stall queries. When a Terminus 32×16 console font is installed, the display loads it on `tty1`, which is 40 by 15 characters on a 640×480 screen. The installer writes `piadblock-crt.service` and leaves it stopped, so the login prompt stays on `tty1` until you turn the display on. The display reads `http://127.0.0.1:8080/api/crt` from the status page, which is on by default.
+
+Turn it on:
+
+```bash
+sudo systemctl enable --now piadblock-crt.service
+```
+
+Expected output: no text. The console leaves the login prompt and shows the lookup feed. `systemctl is-active piadblock-crt` prints `active`.
+
+Turn it off:
+
+```bash
+sudo systemctl disable --now piadblock-crt.service
+```
+
+Expected output: no text. The console returns to the login prompt. `systemctl is-active piadblock-crt` prints `inactive`.
+
 ## Configuration
 
 The file is `/etc/piadblock/config.json`. Defaults:
@@ -919,13 +941,13 @@ From a checkout of this repository:
 python3 -m unittest discover -s tests
 ```
 
-This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, a bootstrap install into a temporary directory, and a tiny run of the capacity benchmark. It does not need root and it does not bind port 53.
+This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, the CRT frame (highlighting, truncation, and order), a bootstrap install into a temporary directory, and a tiny run of the capacity benchmark. It does not need root and it does not bind port 53.
 
 Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 105 tests in 58.056s
+Ran 117 tests in 58.237s
 
 OK
 ```

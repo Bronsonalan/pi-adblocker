@@ -132,6 +132,11 @@ class ServerTests(unittest.TestCase):
         self.assertIn("OK 127.0.0.1 example.com A", text)
         self.assertEqual(text.count("OK 127.0.0.1 example.com A"), 2)
         self.assertNotIn("BLOCKED 127.0.0.1 example.com A", text)
+        feed = self.server.lookups.snapshot()
+        self.assertEqual(feed[0]["status"], "OK")
+        self.assertEqual(feed[0]["name"], "example.com")
+        self.assertEqual(feed[-1]["status"], "BLOCKED")
+        self.assertEqual(feed[-1]["name"], "ads.example.com")
 
     def test_blocked_names_do_not_reach_upstream(self):
         message = ask(self.server.port, "ads.example.com", A, qid=11)

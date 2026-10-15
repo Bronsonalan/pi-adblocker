@@ -9,6 +9,7 @@ from html import escape
 from typing import Callable
 from urllib.parse import urlparse
 
+from piadblock.crt import LookupFeed
 from piadblock.stats import Stats
 
 
@@ -88,7 +89,27 @@ This is the UTC day written to <code>stats/{escape(str(today.get("date", "")))}.
     return page.encode("utf-8")
 
 
-def make_handler(stats: Stats, details_fn: Callable[[], dict]) -> type[BaseHTTPRequestHandler]:
+def crt_payload(snapshot: dict, lookups: LookupFeed | None) -> dict:
+    """Today's totals plus the newest lookups. The CRT polls this."""
+    today = snapshot.get("today") if isinstance(snapshot.get("today"), dict) else {}
+    try:
+        queries = int(today.get("queries", 0) or 0)
+        blocked = int(today.get("blocked", 0) or 0)
+    except (TypeError, ValueError):
+        queries, blocked = 0, 0
+    return {
+        "date": str(today.get("date", "")),
+        "queries": queries,
+        "blocked": blocked,
+        "lookups": lookups.snapshot() if lookups is not None else [],
+    }
+
+
+def make_handler(
+    stats: Stats,
+    details_fn: Callable[[], dict],
+    lookups: LookupFeed | None = None,
+) -> type[BaseHTTPRequestHandler]:
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
 
@@ -106,6 +127,9 @@ def make_handler(stats: Stats, details_fn: Callable[[], dict]) -> type[BaseHTTPR
                 payload = dict(snapshot)
                 payload.update(details)
                 body = (json.dumps(payload, indent=2) + "\n").encode("utf-8")
+                content_type = "application/json"
+            elif path == "/api/crt":
+                body = (json.dumps(crt_payload(snapshot, lookups)) + "\n").encode("utf-8")
                 content_type = "application/json"
             elif path == "/health":
                 body = b"ok\n"
@@ -130,12 +154,19 @@ def make_handler(stats: Stats, details_fn: Callable[[], dict]) -> type[BaseHTTPR
 class StatusPage:
     """Background HTTP server. Failure to bind is reported and ignored by the DNS server."""
 
-    def __init__(self, host: str, port: int, stats: Stats, details_fn: Callable[[], dict]):
+    def __init__(
+        self,
+        host: str,
+        port: int,
+        stats: Stats,
+        details_fn: Callable[[], dict],
+        lookups: LookupFeed | None = None,
+    ):
         self.host = host
         self.port = port
         self.httpd: ThreadingHTTPServer | None = None
         self._thread: threading.Thread | None = None
-        handler = make_handler(stats, details_fn)
+        handler = make_handler(stats, details_fn, lookups)
         self._handler = handler
 
     def start(self) -> None:

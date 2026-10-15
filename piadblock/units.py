@@ -29,6 +29,39 @@ WantedBy=multi-user.target
 """
 
 
+def crt_service_unit(python: str, root: str, prefix: str = "") -> str:
+    """Console feed. The installer writes this unit and does not start it.
+
+    Starting it takes tty1 away from getty. Stopping it hands tty1 back.
+    """
+    prefix_line = f"Environment=PIADBLOCK_PREFIX={prefix}\n" if prefix else ""
+    return f"""[Unit]
+Description=Pi Adblock CRT lookup display
+After=piadblock.service
+Wants=piadblock.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+WorkingDirectory={root}
+Environment=PYTHONPATH={root}
+Environment=PYTHONUNBUFFERED=1
+{prefix_line}ExecStart={python} -m piadblock crt --tty /dev/tty1
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+Restart=on-failure
+RestartSec=2
+ExecStopPost=-/bin/systemctl start getty@tty1.service
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+
 def update_service_unit(python: str, root: str) -> str:
     return f"""[Unit]
 Description=Update Pi Adblock blocklists

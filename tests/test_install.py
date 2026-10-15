@@ -255,6 +255,11 @@ class BootstrapTests(unittest.TestCase):
                     self.assertIn(f"systemd: started {name}", completed.stdout)
                 self.assertFalse((prefix / "etc/systemd/system/piadblock-update.timer").exists())
                 self.assertFalse((prefix / "etc/systemd/system/piadblock-update.service").exists())
+                crt_unit = (prefix / "etc/systemd/system/piadblock-crt.service").read_text(encoding="utf-8")
+                self.assertIn("TTYPath=/dev/tty1", crt_unit)
+                self.assertIn("--tty /dev/tty1", crt_unit)
+                self.assertIn(f"Environment=PIADBLOCK_PREFIX={prefix}", crt_unit)
+                self.assertIn("systemd: installed piadblock-crt.service (left stopped)", completed.stdout)
 
                 calls = systemctl_log.read_text(encoding="utf-8")
                 self.assertIn("daemon-reload", calls)
@@ -264,6 +269,7 @@ class BootstrapTests(unittest.TestCase):
                     self.assertIn(f"enable --now {name}", calls)
                 self.assertIn("blocklist unchanged", calls)
                 self.assertNotIn("piadblock-update", calls)
+                self.assertNotIn("piadblock-crt", calls)
 
                 logged = server_log.read_text(encoding="utf-8", errors="replace")
                 self.assertIn("BLOCKED 127.0.0.1 doubleclick.net A", logged)

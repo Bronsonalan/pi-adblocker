@@ -8,6 +8,7 @@ import unittest
 
 import helpers  # noqa: F401
 
+from piadblock.crt import LookupFeed
 from piadblock.stats import Stats
 from piadblock.status import StatusPage, render_status_page
 
@@ -69,6 +70,23 @@ class StatusTests(unittest.TestCase):
         self.assertIn(b"piadblock", page_bytes)
         missing = _status(page.port, "/nope")
         self.assertEqual(missing, 404)
+
+    def test_crt_feed_is_today_plus_newest_lookup(self):
+        stats = Stats()
+        stats.bump("queries", 4)
+        stats.bump("blocked", 1)
+        feed = LookupFeed()
+        feed.note("OK", "10.0.0.2", "example.com", "A")
+        feed.note("BLOCKED", "192.168.1.9", "doubleclick.net", "A")
+        page = StatusPage("127.0.0.1", 0, stats, lambda: {"version": "0.1.0"}, feed)
+        page.start()
+        self.addCleanup(page.stop)
+        body = json.loads(_get(page.port, "/api/crt").decode("utf-8"))
+        self.assertEqual(body["queries"], 4)
+        self.assertEqual(body["blocked"], 1)
+        self.assertEqual(body["lookups"][0]["name"], "doubleclick.net")
+        self.assertEqual(body["lookups"][0]["status"], "BLOCKED")
+        self.assertEqual(body["lookups"][0]["client"], "192.168.1.9")
 
 
 def _get(port: int, path: str) -> bytes:
