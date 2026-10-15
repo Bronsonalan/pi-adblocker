@@ -43,8 +43,10 @@ class ResolverTests(unittest.TestCase):
     def test_keeps_public_dns(self):
         self.assertFalse(resolver_should_be_replaced("nameserver 1.1.1.1\nnameserver 1.0.0.1\n"))
         self.assertFalse(resolver_should_be_replaced("nameserver 8.8.8.8\n"))
-        text = render_resolv_conf(["1.1.1.1"])
+        text = render_resolv_conf(["1.1.1.1", "1.0.0.1"])
         self.assertIn("nameserver 1.1.1.1", text)
+        self.assertIn("nameserver 1.0.0.1", text)
+        self.assertIn("options timeout:1 attempts:1 rotate edns0", text)
         self.assertFalse(resolver_should_be_replaced(text))
 
     def test_marked_dhcpcd_block_is_idempotent(self):
@@ -96,6 +98,9 @@ class UnitTests(unittest.TestCase):
                 self.assertEqual(timer_arming_error(text), "")
                 self.assertIn(f"OnCalendar={calendar}", text)
         self.assertEqual(timer_arming_error(update_timer_unit()), "")
+        stats = calendar_timer_unit("piadblock stats", "*:0/5")
+        self.assertEqual(timer_arming_error(stats), "")
+        self.assertIn("OnCalendar=*:0/5", stats)
 
     def test_on_unit_active_sec_alone_never_triggers(self):
         alone = "[Timer]\nOnUnitActiveSec=1h\n\n[Install]\nWantedBy=timers.target\n"

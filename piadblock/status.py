@@ -12,11 +12,18 @@ from urllib.parse import urlparse
 from piadblock.stats import Stats
 
 
+def _reason_line(snapshot: dict) -> str:
+    reasons = snapshot.get("upstream_errors") if isinstance(snapshot.get("upstream_errors"), dict) else {}
+    names = ("timeout", "servfail", "refused", "socket", "truncation")
+    return ", ".join(f"{name} {int(reasons.get(name, 0) or 0)}" for name in names)
+
+
 def render_status_page(snapshot: dict, details: dict) -> bytes:
     """HTML for ``/``. Numbers come from the live stats snapshot."""
     queries = snapshot.get("queries", 0)
     blocked = snapshot.get("blocked", 0)
     percent = snapshot.get("blocked_percent", 0)
+    today = snapshot.get("today") if isinstance(snapshot.get("today"), dict) else {}
     recent = snapshot.get("recent_blocked") or []
     rows = []
     for item in recent:
@@ -61,13 +68,17 @@ Blocklist: <code>{details.get("blocklist_domains", 0)}</code> domains
 (allow {details.get("allow_count", 0)}, deny {details.get("deny_count", 0)}).
 Cache entries: <code>{details.get("cache_entries", 0)}</code>.</p>
 <div class="grid">
-  <div class="card"><div class="num">{queries}</div><div class="label">Queries</div></div>
-  <div class="card"><div class="num">{blocked}</div><div class="label">Blocked ({percent}%)</div></div>
+  <div class="card"><div class="num">{queries}</div><div class="label">Queries since start</div></div>
+  <div class="card"><div class="num">{blocked}</div><div class="label">Blocked since start ({percent}%)</div></div>
   <div class="card"><div class="num">{snapshot.get("cached", 0)}</div><div class="label">Cache hits</div></div>
   <div class="card"><div class="num">{snapshot.get("forwarded", 0)}</div><div class="label">Forwarded</div></div>
   <div class="card"><div class="num">{snapshot.get("errors", 0)}</div><div class="label">Errors</div></div>
   <div class="card"><div class="num">{snapshot.get("uptime_seconds", 0)}s</div><div class="label">Uptime</div></div>
 </div>
+<p>Today ({escape(str(today.get("date", "")))} UTC): <strong>{int(today.get("queries", 0) or 0)}</strong> queries,
+<strong>{int(today.get("blocked", 0) or 0)}</strong> blocked.
+This is the UTC day written to <code>stats/{escape(str(today.get("date", "")))}.json</code>.</p>
+<p class="label">Upstream failures since start: {escape(_reason_line(snapshot))}.</p>
 <h2>Recently blocked</h2>
 {recent_html}
 <p class="label">JSON: <a href="/api/stats">/api/stats</a></p>

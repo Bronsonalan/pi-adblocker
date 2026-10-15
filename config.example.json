@@ -4,10 +4,12 @@
   "tcp": true,
   "ipv6": true,
   "upstream": [
-    "1.1.1.1"
+    "1.1.1.1",
+    "1.0.0.1",
+    "9.9.9.9"
   ],
   "upstream_port": 53,
-  "upstream_timeout": 2.0,
+  "upstream_timeout": 1.0,
   "cache_size": 2048,
   "cache_min_ttl": 0,
   "cache_max_ttl": 86400,

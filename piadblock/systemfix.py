@@ -52,16 +52,23 @@ def resolver_should_be_replaced(resolv_text: str) -> bool:
     return any(is_non_public(server) for server in servers)
 
 
+def piadblock_owns_resolv(resolv_text: str) -> bool:
+    """True when this installer wrote the file and may refresh it."""
+    return "# Written by piadblock." in resolv_text
+
+
 def render_resolv_conf(upstreams: list[str]) -> str:
     lines = [
         "# Written by piadblock.",
         "# This Pi resolves directly through the upstream so blocklist updates",
         "# still work when piadblock is the DNS server for the rest of the LAN.",
         "# The previous file is recorded in /var/lib/piadblock/install-state.json.",
+        "# timeout:1 attempts:1. glibc's default is 5 seconds times 2 attempts,",
+        "# which is about 10 seconds when a nameserver does not answer.",
     ]
     for upstream in upstreams:
         lines.append(f"nameserver {upstream}")
-    lines.append("options edns0")
+    lines.append("options timeout:1 attempts:1 rotate edns0")
     return "\n".join(lines) + "\n"
 
 

@@ -176,7 +176,7 @@ class DnsServer:
             return cached
 
         try:
-            response = exchange(
+            result = exchange(
                 data,
                 list(self.config.upstream),
                 self.config.upstream_port,
@@ -184,9 +184,29 @@ class DnsServer:
             )
         except (OSError, DnsError) as exc:
             self.stats.bump("errors")
-            logger.warning("upstream failed for %s %s: %s", name, qtype_label, exc)
+            self.stats.note_upstream("socket")
+            logger.warning("upstream socket %s for %s %s: %s", ",".join(self.config.upstream), name, qtype_label, exc)
             emit_lookup("FAIL", client_ip, name, qtype_label)
             return build_response(data, [], rcode=SERVFAIL)
+
+        for attempt in result.attempts:
+            self.stats.note_upstream(attempt.reason)
+            logger.warning(
+                "upstream %s %s for %s %s: %s",
+                attempt.reason,
+                attempt.host,
+                name,
+                qtype_label,
+                attempt.detail,
+            )
+        if not result.ok:
+            self.stats.bump("errors")
+            logger.warning("upstream failed for %s %s: %s", name, qtype_label, result.summary())
+            emit_lookup("FAIL", client_ip, name, qtype_label)
+            if result.packet:
+                return result.packet
+            return build_response(data, [], rcode=SERVFAIL)
+        response = result.packet
 
         self.stats.bump("forwarded")
         emit_lookup("OK", client_ip, name, qtype_label)
@@ -476,13 +496,20 @@ class DnsServer:
         if snap["queries"] == self._summary_queries:
             return
         self._summary_queries = snap["queries"]
+        reasons = snap.get("upstream_errors") or {}
         logger.info(
-            "stats queries=%s blocked=%s cached=%s forwarded=%s errors=%s",
+            "stats queries=%s blocked=%s cached=%s forwarded=%s errors=%s "
+            "timeout=%s servfail=%s refused=%s socket=%s truncation=%s",
             snap["queries"],
             snap["blocked"],
             snap["cached"],
             snap["forwarded"],
             snap["errors"],
+            reasons.get("timeout", 0),
+            reasons.get("servfail", 0),
+            reasons.get("refused", 0),
+            reasons.get("socket", 0),
+            reasons.get("truncation", 0),
         )
 
     def _maybe_save(self) -> None:

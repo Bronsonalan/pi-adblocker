@@ -8,7 +8,13 @@ from pathlib import Path
 
 import helpers  # noqa: F401
 
-from piadblock.config import Config, ConfigError, load_config
+from piadblock.config import (
+    DEFAULT_UPSTREAM,
+    Config,
+    ConfigError,
+    load_config,
+    migrate_legacy_upstream,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -69,6 +75,23 @@ class ConfigTests(unittest.TestCase):
                 path = self._write(case)
                 with self.assertRaises(ConfigError):
                     load_config(str(path))
+
+    def test_legacy_single_upstream_gains_fallbacks_and_a_shorter_timeout(self):
+        updated = migrate_legacy_upstream(
+            {"upstream": ["1.1.1.1"], "upstream_timeout": 2.0, "port": 53}
+        )
+        self.assertIsNotNone(updated)
+        self.assertEqual(updated["upstream"], DEFAULT_UPSTREAM)
+        self.assertEqual(updated["upstream_timeout"], 1.0)
+        self.assertEqual(updated["port"], 53)
+        integer = migrate_legacy_upstream({"upstream": ["8.8.8.8"], "upstream_timeout": 2})
+        self.assertEqual(integer["upstream"], ["8.8.8.8"])
+        self.assertEqual(integer["upstream_timeout"], 1.0)
+
+    def test_custom_upstream_is_not_rewritten(self):
+        original = {"upstream": ["8.8.8.8", "1.1.1.1"], "upstream_timeout": 1.5}
+        self.assertIsNone(migrate_legacy_upstream(original))
+        self.assertIsNone(migrate_legacy_upstream({"listen": "0.0.0.0"}))
 
     def test_empty_blocklists_are_allowed(self):
         path = self._write({"blocklists": []})

@@ -22,6 +22,13 @@ from piadblock.paths import (
 
 logger = logging.getLogger("piadblock")
 
+# The previous default was a single resolver and a 2 second timeout. A Pi
+# that still has that file is migrated by the installer. Any other list or
+# timeout is left alone.
+DEFAULT_UPSTREAM = ["1.1.1.1", "1.0.0.1", "9.9.9.9"]
+LEGACY_UPSTREAM = ["1.1.1.1"]
+LEGACY_UPSTREAM_TIMEOUT = 2.0
+
 
 class ConfigError(ValueError):
     """The configuration file is missing a required shape or has a bad value."""
@@ -120,9 +127,9 @@ class Config:
     port: int = 53
     tcp: bool = True
     ipv6: bool = True
-    upstream: list[str] = field(default_factory=lambda: ["1.1.1.1"])
+    upstream: list[str] = field(default_factory=lambda: list(DEFAULT_UPSTREAM))
     upstream_port: int = 53
-    upstream_timeout: float = 2.0
+    upstream_timeout: float = 1.0
     cache_size: int = 2048
     cache_min_ttl: int = 0
     cache_max_ttl: int = 86400
@@ -159,6 +166,28 @@ class Config:
         return str(Path(self.blocklist_dir) / "meta.json")
 
 
+def migrate_legacy_upstream(data: dict) -> dict | None:
+    """Return a rewritten document, or None when the upstream settings stay.
+
+    Only the old default (exactly ``1.1.1.1``, and a timeout of exactly 2
+    seconds) is replaced. A custom list such as ``8.8.8.8`` is a choice.
+    """
+    if not isinstance(data, dict):
+        return None
+    updated = dict(data)
+    changed = False
+    if updated.get("upstream") == LEGACY_UPSTREAM:
+        updated["upstream"] = list(DEFAULT_UPSTREAM)
+        changed = True
+    timeout = updated.get("upstream_timeout")
+    if timeout == LEGACY_UPSTREAM_TIMEOUT or timeout == 2:
+        updated["upstream_timeout"] = 1.0
+        changed = True
+    if not changed:
+        return None
+    return updated
+
+
 def _validate(data: dict) -> Config:
     listen = _as_ip("listen", data["listen"]) if "listen" in data else "0.0.0.0"
     port = _as_int("port", data["port"], low=0, high=65535) if "port" in data else 53
@@ -167,7 +196,7 @@ def _validate(data: dict) -> Config:
     if "upstream" in data:
         upstream = [_as_ip(f"upstream[{i}]", item) for i, item in enumerate(_as_string_list("upstream", data["upstream"]))]
     else:
-        upstream = ["1.1.1.1"]
+        upstream = list(DEFAULT_UPSTREAM)
     upstream_port = (
         _as_int("upstream_port", data["upstream_port"], low=1, high=65535)
         if "upstream_port" in data
@@ -176,7 +205,7 @@ def _validate(data: dict) -> Config:
     upstream_timeout = (
         _as_float("upstream_timeout", data["upstream_timeout"], low=0.1, high=30)
         if "upstream_timeout" in data
-        else 2.0
+        else 1.0
     )
     cache_size = (
         _as_int("cache_size", data["cache_size"], low=0, high=1_000_000)
