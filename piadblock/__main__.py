@@ -106,7 +106,12 @@ def _update(config, *, force: bool) -> int:
 
 
 def _check(config, domain: str) -> int:
-    matcher = Matcher.load(config.merged_path, config.allowlist, config.denylist)
+    report = Matcher.prepare(config.merged_path, config.allowlist, config.denylist)
+    if report.error:
+        print(f"error: {report.error}", file=sys.stderr)
+    elif report.skipped:
+        print(f"warning: skipped {report.skipped} malformed blocklist lines", file=sys.stderr)
+    matcher = report.matcher
     decision = matcher.decide(domain)
     print(domain)
     print("blocked" if decision.blocked else "allowed")
@@ -115,7 +120,7 @@ def _check(config, domain: str) -> int:
         f"lists: {matcher.blocked_count} blocked, "
         f"{matcher.allow_count} allowed, {matcher.deny_count} denied"
     )
-    return 0
+    return 1 if report.error else 0
 
 
 def _warn(message: str) -> None:

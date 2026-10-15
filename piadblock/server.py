@@ -47,9 +47,17 @@ logger = logging.getLogger("piadblock")
 class DnsServer:
     def __init__(self, config: Config, matcher: Matcher | None = None):
         self.config = config
-        self._matcher = matcher if matcher is not None else Matcher.load(
-            config.merged_path, config.allowlist, config.denylist
-        )
+        self._load_error = ""
+        if matcher is not None:
+            self._matcher = matcher
+        else:
+            report = Matcher.prepare(config.merged_path, config.allowlist, config.denylist)
+            self._matcher = report.matcher
+            self._load_error = report.error
+            if report.error:
+                logger.error("blocklist load failed (%s); retrying", report.error)
+            elif report.skipped:
+                logger.warning("skipped %s malformed blocklist lines", report.skipped)
         self.cache = DnsCache(
             config.cache_size,
             config.cache_min_ttl,
@@ -71,6 +79,11 @@ class DnsServer:
         self._status: StatusPage | None = None
         self._thread: threading.Thread | None = None
         self._update_thread: threading.Thread | None = None
+        self._reload_lock = threading.Lock()
+        self._reload_thread: threading.Thread | None = None
+        self._reload_again = False
+        self._last_reload_error = ""
+        self._last_reload_error_at = 0.0
         self._mtime_token: tuple = ()
         self._last_mtime_check = 0.0
         self._last_summary = time.monotonic()
@@ -104,6 +117,9 @@ class DnsServer:
             self._thread.join(timeout=3)
         self._stop_status()
         self._executor.shutdown(wait=False, cancel_futures=True)
+        reload_thread = self._reload_thread
+        if reload_thread is not None and reload_thread is not threading.current_thread():
+            reload_thread.join(timeout=3)
         self.stats.save()
 
     def details(self) -> dict:
@@ -139,7 +155,8 @@ class DnsServer:
             emit_lookup("FAIL", client_ip, name, qtype_label)
             return build_response(data, [], rcode=NOTIMP)
 
-        if question.qclass in (CLASS_IN, CLASS_ANY) and self._matcher.is_blocked(name):
+        matcher = self._matcher
+        if question.qclass in (CLASS_IN, CLASS_ANY) and matcher.is_blocked(name):
             self.stats.bump("blocked")
             self.stats.note_blocked(name, qtype, client_ip)
             emit_lookup("BLOCKED", client_ip, name, qtype_label)
@@ -210,7 +227,12 @@ class DnsServer:
         self._log_listen()
         self._start_status()
         self._start_updater()
-        self._mtime_token = self._mtimes()
+        if self._load_error:
+            # Leave the token empty so the poll keeps retrying the first load.
+            self._mtime_token = ()
+            self._reload_flag = True
+        else:
+            self._mtime_token = self._mtimes()
         self._ready.set()
         try:
             while not self._stop.is_set():
@@ -361,26 +383,78 @@ class DnsServer:
             self._last_mtime_check = now
             token = self._mtimes()
             if token != self._mtime_token:
-                self._mtime_token = token
                 due = True
         if due:
-            self._reload_lists()
+            self._start_reload()
 
-    def _reload_lists(self) -> None:
-        denylist = Path(self.config.denylist) if self.config.denylist else None
-        if denylist is not None and not denylist.is_file():
-            # git checkout replaces the file by rename. A missing file mid-pull
-            # must not replace the live list with an empty one.
-            logger.warning("denylist missing (%s); keeping the lists already loaded", denylist)
-            return
-        matcher = Matcher.load(self.config.merged_path, self.config.allowlist, self.config.denylist)
-        self._matcher = matcher
+    def _start_reload(self) -> None:
+        """Parse on a side thread. The select loop keeps answering meanwhile."""
+        with self._reload_lock:
+            if self._reload_thread is not None and self._reload_thread.is_alive():
+                self._reload_again = True
+                return
+            self._reload_again = False
+            self._reload_thread = threading.Thread(
+                target=self._reload_worker,
+                name="piadblock-reload",
+                daemon=True,
+            )
+            self._reload_thread.start()
+
+    def _reload_worker(self) -> None:
+        while not self._stop.is_set():
+            try:
+                self._reload_lists()
+            except Exception:
+                logger.exception("blocklist reload failed; keeping the lists already loaded")
+            with self._reload_lock:
+                if not self._reload_again:
+                    self._reload_thread = None
+                    return
+                self._reload_again = False
+
+    def _reload_lists(self) -> bool:
+        """Build a new matcher and swap it in only when it is usable.
+
+        Direct callers (tests) run this on their own thread. The server loop
+        calls it from :meth:`_reload_worker`, so a long parse does not stall
+        ``select``. The assignment of ``self._matcher`` is the publish point.
+        """
+        before = self._mtimes()
+        report = Matcher.prepare(self.config.merged_path, self.config.allowlist, self.config.denylist)
+        if report.error:
+            self._note_reload_error(
+                f"blocklist reload failed ({report.error}); keeping the lists already loaded"
+            )
+            return False
+        incoming = report.matcher.blocked_count + report.matcher.deny_count
+        current = self._matcher.blocked_count + self._matcher.deny_count
+        if incoming == 0 and current > 0:
+            self._note_reload_error(
+                "blocklist reload blocked nothing; keeping the lists already loaded"
+            )
+            return False
+        self._matcher = report.matcher
+        if self._mtimes() == before:
+            self._mtime_token = before
+        if report.skipped:
+            logger.warning("skipped %s malformed blocklist lines", report.skipped)
         logger.info(
             "lists reloaded: %s blocklist, %s allow, %s deny",
-            matcher.blocked_count,
-            matcher.allow_count,
-            matcher.deny_count,
+            report.matcher.blocked_count,
+            report.matcher.allow_count,
+            report.matcher.deny_count,
         )
+        self._load_error = ""
+        self._last_reload_error = ""
+        return True
+
+    def _note_reload_error(self, message: str) -> None:
+        now = time.monotonic()
+        if message != self._last_reload_error or now - self._last_reload_error_at >= 60:
+            logger.error(message)
+            self._last_reload_error = message
+            self._last_reload_error_at = now
 
     def _mtimes(self) -> tuple:
         marks = []

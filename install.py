@@ -539,7 +539,12 @@ def _start_service() -> None:
 
 
 def _self_check(config) -> None:
-    matcher = Matcher.load(config.merged_path, config.allowlist, config.denylist)
+    report = Matcher.prepare(config.merged_path, config.allowlist, config.denylist)
+    if report.error:
+        say(f"warning: blocklist load failed ({report.error})")
+    elif report.skipped:
+        say(f"warning: skipped {report.skipped} malformed blocklist lines")
+    matcher = report.matcher
     decision = matcher.decide("doubleclick.net")
     if not decision.blocked:
         say("warning: doubleclick.net is not blocked, so the block self-check was skipped")

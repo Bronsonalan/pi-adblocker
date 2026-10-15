@@ -32,20 +32,6 @@ from piadblock.forward import lookup
 
 ROOT = helpers.ROOT
 
-DENYLIST = [
-    "doubleclick.net",
-    "googlesyndication.com",
-    "googleadservices.com",
-    "adnxs.com",
-    "adsrvr.org",
-    "criteo.com",
-    "taboola.com",
-    "outbrain.com",
-    "scorecardresearch.com",
-    "amazon-adsystem.com",
-    "reddit.com",
-]
-
 ENTRYPOINTS = (
     ROOT / "install.py",
     ROOT / "uninstall.py",
@@ -232,10 +218,15 @@ class BootstrapTests(unittest.TestCase):
                 installed = json.loads((prefix / "etc/piadblock/config.json").read_text(encoding="utf-8"))
                 denylist = Path(installed["denylist"])
                 self.assertEqual(denylist, prefix / "opt/piadblock/blocklist.txt")
-                self.assertEqual(
-                    parse_domain_list(denylist.read_text(encoding="utf-8"), allow_single_label=True),
-                    set(DENYLIST),
+                installed_domains = parse_domain_list(
+                    denylist.read_text(encoding="utf-8"),
+                    allow_single_label=True,
                 )
+                self.assertGreater(len(installed_domains), 80000)
+                self.assertIn("doubleclick.net", installed_domains)
+                self.assertIn("mask.icloud.com", installed_domains)
+                self.assertIn("mask-h2.icloud.com", installed_domains)
+                self.assertNotIn("reddit.com", installed_domains)
                 self.assertEqual(installed["port"], port)
                 self.assertEqual(installed["blocklists"], [])
                 self.assertFalse(installed["auto_update"])
