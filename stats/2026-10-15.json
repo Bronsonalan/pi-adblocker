@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 4905,
-  "blocked": 396,
+  "queries": 5139,
+  "blocked": 406,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api.branch.io": 6,
     "api.iterable.com": 2,
-    "api.segment.io": 20,
+    "api.segment.io": 22,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -32,10 +32,10 @@
     "geolocation.onetrust.com": 2,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 19,
+    "http-intake.logs.datadoghq.com": 21,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 205,
-    "mcs16-normal-us-ttp.capcutapi.us": 8,
+    "mask.icloud.com": 209,
+    "mcs16-normal-us-ttp.capcutapi.us": 10,
     "metrics.icloud.com": 16,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
@@ -56,15 +56,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 205
+      "count": 209
     },
     {
       "domain": "api.segment.io",
-      "count": 20
+      "count": 22
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 19
+      "count": 21
     },
     {
       "domain": "metrics.icloud.com",
@@ -80,7 +80,7 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "api.branch.io",
@@ -252,7 +252,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 65,
+    "timeout": 86,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
