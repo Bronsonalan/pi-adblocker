@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 3847,
-  "blocked": 313,
+  "queries": 3859,
+  "blocked": 314,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -25,7 +25,7 @@
     "cdn.branch.io": 2,
     "cdn.cookielaw.org": 2,
     "cf.iadsdk.apple.com": 2,
-    "doubleclick.net": 7,
+    "doubleclick.net": 8,
     "firebase-settings.crashlytics.com": 2,
     "firebaselogging-pa.googleapis.com": 4,
     "firebaselogging.googleapis.com": 2,
@@ -70,7 +70,7 @@
     },
     {
       "domain": "doubleclick.net",
-      "count": 7
+      "count": 8
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
