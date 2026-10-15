@@ -1,6 +1,6 @@
 {
   "date": "2026-10-15",
-  "queries": 11453,
+  "queries": 11480,
   "blocked": 1870,
   "blocked_domains": {
     "a.teads.tv": 6,
@@ -1527,7 +1527,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 435,
+    "timeout": 436,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
