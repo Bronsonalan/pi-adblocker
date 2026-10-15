@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 7656,
-  "blocked": 1290,
+  "queries": 7776,
+  "blocked": 1315,
   "blocked_domains": {
     "a.teads.tv": 2,
     "a21018620252.cdn.optimizely.com": 2,
@@ -30,7 +30,7 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 6,
-    "api.segment.io": 33,
+    "api.segment.io": 34,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -57,13 +57,13 @@
     "browser-intake-datadoghq.com": 2,
     "browser-intake-datadoghq.eu": 2,
     "bs.serving-sys.com": 2,
-    "btloader.com": 4,
+    "btloader.com": 6,
     "buffet.identityservices.io": 2,
     "c.amazon-adsystem.com": 13,
     "c.bing.com": 2,
     "c2.taboola.com": 2,
     "c2shb.ssp.yahoo.com": 4,
-    "cadmus.script.ac": 2,
+    "cadmus.script.ac": 4,
     "capi.connatix.com": 2,
     "cd.connatix.com": 2,
     "cdn-magiclinks.trackonomics.net": 2,
@@ -86,6 +86,7 @@
     "check.analytics.rlcdn.com": 2,
     "choices.truste.com": 2,
     "client.aps.amazon-adsystem.com": 6,
+    "cmas.sdcdns.com": 2,
     "cmp.dmgmediaprivacy.co.uk": 2,
     "code.adsales.snidigital.com": 2,
     "config.aps.amazon-adsystem.com": 8,
@@ -100,7 +101,7 @@
     "d30qdagvt44524.cloudfront.net": 4,
     "direct.adsrvr.org": 4,
     "display.bidder.taboola.com": 4,
-    "doubleclick.net": 10,
+    "doubleclick.net": 12,
     "dt.adsafeprotected.com": 8,
     "eb2.3lift.com": 4,
     "enduser.adsrvr.org": 2,
@@ -121,6 +122,7 @@
     "geo.yahoo.com": 4,
     "geolocation.forbes.com": 2,
     "geolocation.onetrust.com": 2,
+    "get.s-onetag.com": 2,
     "googleads.g.doubleclick.net": 4,
     "grid-bidder.criteo.com": 6,
     "gum.criteo.com": 6,
@@ -131,7 +133,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 8,
-    "http-intake.logs.datadoghq.com": 32,
+    "http-intake.logs.datadoghq.com": 33,
     "i.clean.gg": 4,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 4,
@@ -152,10 +154,10 @@
     "lightning.cnn.com": 2,
     "log.go.com": 2,
     "log.pinterest.com": 2,
-    "mask.icloud.com": 263,
+    "mask.icloud.com": 267,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 23,
+    "mcs16-normal-us-ttp.capcutapi.us": 24,
     "merequartz.com": 8,
     "metrics.brightcove.com": 2,
     "metrics.foxnews.com": 1,
@@ -186,6 +188,7 @@
     "pl.connatix.com": 4,
     "placement-prd.jwpltx.com": 4,
     "player.aniview.com": 2,
+    "player.anyclip.com": 2,
     "polarcdn-terrax.com": 2,
     "prd.jwpltx.com": 4,
     "prebid-server.rubiconproject.com": 2,
@@ -217,6 +220,7 @@
     "secure-assets.rubiconproject.com": 2,
     "secure-ds.serving-sys.com": 4,
     "secure.adnxs.com": 2,
+    "secure.quantserve.com": 2,
     "securepubads.g.doubleclick.net": 19,
     "segment-data-us-east.zqtk.net": 2,
     "segment-data.zqtk.net": 2,
@@ -236,7 +240,7 @@
     "static.adsafeprotected.com": 6,
     "static.cdn.trustx.org": 2,
     "static.chartbeat.com": 1,
-    "static.cloudflareinsights.com": 4,
+    "static.cloudflareinsights.com": 6,
     "static.doubleclick.net": 2,
     "static.tblcontent.com": 4,
     "stats.g.doubleclick.net": 4,
@@ -278,7 +282,7 @@
     "www.dianomi.com": 2,
     "www.google-analytics.com": 6,
     "www.googleadservices.com": 2,
-    "www.googletagmanager.com": 4,
+    "www.googletagmanager.com": 6,
     "www.googletagservices.com": 7,
     "www.lightboxcdn.com": 2,
     "www.ugdturner.com": 2,
@@ -291,19 +295,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 263
+      "count": 267
     },
     {
       "domain": "api.segment.io",
-      "count": 33
+      "count": 34
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 32
+      "count": 33
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 23
+      "count": 24
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -319,6 +323,10 @@
     },
     {
       "domain": "cdn.p-n.io",
+      "count": 12
+    },
+    {
+      "domain": "doubleclick.net",
       "count": 12
     },
     {
@@ -343,10 +351,6 @@
     },
     {
       "domain": "cdn.taboola.com",
-      "count": 10
-    },
-    {
-      "domain": "doubleclick.net",
       "count": 10
     },
     {
@@ -426,6 +430,10 @@
       "count": 6
     },
     {
+      "domain": "btloader.com",
+      "count": 6
+    },
+    {
       "domain": "client.aps.amazon-adsystem.com",
       "count": 6
     },
@@ -470,7 +478,15 @@
       "count": 6
     },
     {
+      "domain": "static.cloudflareinsights.com",
+      "count": 6
+    },
+    {
       "domain": "www.google-analytics.com",
+      "count": 6
+    },
+    {
+      "domain": "www.googletagmanager.com",
       "count": 6
     },
     {
@@ -522,11 +538,11 @@
       "count": 4
     },
     {
-      "domain": "btloader.com",
+      "domain": "c2shb.ssp.yahoo.com",
       "count": 4
     },
     {
-      "domain": "c2shb.ssp.yahoo.com",
+      "domain": "cadmus.script.ac",
       "count": 4
     },
     {
@@ -682,10 +698,6 @@
       "count": 4
     },
     {
-      "domain": "static.cloudflareinsights.com",
-      "count": 4
-    },
-    {
       "domain": "static.tblcontent.com",
       "count": 4
     },
@@ -719,10 +731,6 @@
     },
     {
       "domain": "wnsrvbjmeprtfrnfx.ay.delivery",
-      "count": 4
-    },
-    {
-      "domain": "www.googletagmanager.com",
       "count": 4
     },
     {
@@ -870,10 +878,6 @@
       "count": 2
     },
     {
-      "domain": "cadmus.script.ac",
-      "count": 2
-    },
-    {
       "domain": "capi.connatix.com",
       "count": 2
     },
@@ -927,6 +931,10 @@
     },
     {
       "domain": "choices.truste.com",
+      "count": 2
+    },
+    {
+      "domain": "cmas.sdcdns.com",
       "count": 2
     },
     {
@@ -999,6 +1007,10 @@
     },
     {
       "domain": "geolocation.onetrust.com",
+      "count": 2
+    },
+    {
+      "domain": "get.s-onetag.com",
       "count": 2
     },
     {
@@ -1122,6 +1134,10 @@
       "count": 2
     },
     {
+      "domain": "player.anyclip.com",
+      "count": 2
+    },
+    {
       "domain": "polarcdn-terrax.com",
       "count": 2
     },
@@ -1191,6 +1207,10 @@
     },
     {
       "domain": "secure.adnxs.com",
+      "count": 2
+    },
+    {
+      "domain": "secure.quantserve.com",
       "count": 2
     },
     {
@@ -1427,7 +1447,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 213,
+    "timeout": 220,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
