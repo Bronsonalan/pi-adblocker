@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 4579,
-  "blocked": 363,
+  "queries": 4754,
+  "blocked": 381,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api.branch.io": 6,
     "api.iterable.com": 2,
-    "api.segment.io": 15,
+    "api.segment.io": 18,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -32,10 +32,10 @@
     "geolocation.onetrust.com": 2,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 14,
+    "http-intake.logs.datadoghq.com": 17,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 187,
-    "mcs16-normal-us-ttp.capcutapi.us": 3,
+    "mask.icloud.com": 197,
+    "mcs16-normal-us-ttp.capcutapi.us": 5,
     "metrics.icloud.com": 16,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
@@ -56,19 +56,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 187
+      "count": 197
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 18
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 17
     },
     {
       "domain": "metrics.icloud.com",
       "count": 16
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 15
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 14
     },
     {
       "domain": "aet.spotify.com",
@@ -95,6 +95,10 @@
       "count": 6
     },
     {
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 5
+    },
+    {
       "domain": "ad.doubleclick.net",
       "count": 4
     },
@@ -112,10 +116,6 @@
     },
     {
       "domain": "app-analytics-v2.snapchat.com",
-      "count": 3
-    },
-    {
-      "domain": "mcs16-normal-us-ttp.capcutapi.us",
       "count": 3
     },
     {
@@ -252,7 +252,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 42,
+    "timeout": 53,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
