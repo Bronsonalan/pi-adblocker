@@ -4,13 +4,16 @@ from __future__ import annotations
 
 import http.client
 import json
+import os
+import time
 import unittest
+from unittest import mock
 
 import helpers  # noqa: F401
 
 from piadblock.crt import LookupFeed
 from piadblock.stats import Stats
-from piadblock.status import StatusPage, render_status_page
+from piadblock.status import StatusPage, crt_payload, format_recent_time, render_status_page
 
 
 class StatusTests(unittest.TestCase):
@@ -40,6 +43,8 @@ class StatusTests(unittest.TestCase):
         self.assertIn("10", html)
         self.assertIn("ads.example.com", html)
         self.assertIn("1.1.1.1", html)
+        self.assertIn("Blocklist: <code>100</code> domains (allowlist 1)", html)
+        self.assertNotIn("(allow ", html)
 
     def test_http_routes(self):
         stats = Stats()
@@ -87,6 +92,95 @@ class StatusTests(unittest.TestCase):
         self.assertEqual(body["lookups"][0]["name"], "doubleclick.net")
         self.assertEqual(body["lookups"][0]["status"], "BLOCKED")
         self.assertEqual(body["lookups"][0]["client"], "192.168.1.9")
+        self.assertNotIn("blocklist_domains", body)
+        self.assertIsInstance(body["lookups"][0]["ts"], float)
+
+
+class LocalTimeTests(unittest.TestCase):
+    def setUp(self):
+        self._tz = os.environ.get("TZ")
+        os.environ["TZ"] = "UTC"
+        time.tzset()
+        self.addCleanup(self._restore_tz)
+
+    def _restore_tz(self):
+        if self._tz is None:
+            os.environ.pop("TZ", None)
+        else:
+            os.environ["TZ"] = self._tz
+        time.tzset()
+
+    def test_page_clock_is_local_12_hour_and_the_api_stays_raw(self):
+        epoch = 14 * 3600 + 31 * 60 + 5
+        self.assertEqual(format_recent_time(epoch), "2:31:05 PM")
+        self.assertEqual(format_recent_time(0), "12:00:00 AM")
+        self.assertEqual(format_recent_time(12 * 3600), "12:00:00 PM")
+        self.assertEqual(format_recent_time("not-a-time"), "")
+        os.environ["TZ"] = "America/Los_Angeles"
+        time.tzset()
+        snapshot = {
+            "queries": 1,
+            "blocked": 1,
+            "blocked_percent": 100.0,
+            "cached": 0,
+            "forwarded": 0,
+            "errors": 0,
+            "uptime_seconds": 1,
+            "recent_blocked": [
+                {"ts": 1792099091, "name": "ads.example.com", "qtype": "A", "client": "192.168.1.5"}
+            ],
+            "today": {"date": "2026-10-15", "queries": 1, "blocked": 1},
+        }
+        details = {
+            "version": "0.1.0",
+            "port": 53,
+            "upstream": ["1.1.1.1"],
+            "blocklist_domains": 91526,
+            "allow_count": 0,
+            "deny_count": 91526,
+            "cache_entries": 0,
+        }
+        html = render_status_page(snapshot, details).decode("utf-8")
+        self.assertIn("2:18:11 PM", html)
+        self.assertNotIn("1792099091", html)
+        self.assertIn("Blocklist: <code>91,526</code> domains (allowlist 0)", html)
+        self.assertNotIn("(allow 0, deny", html)
+
+        stats = Stats()
+        with mock.patch("piadblock.stats.time.time", return_value=1792099091.0):
+            stats.note_blocked("ads.example.com", 1, "192.168.1.5")
+        page = StatusPage("127.0.0.1", 0, stats, lambda: details)
+        page.start()
+        self.addCleanup(page.stop)
+        body = json.loads(_get(page.port, "/api/stats").decode("utf-8"))
+        self.assertEqual(body["recent_blocked"][0]["ts"], 1792099091)
+        self.assertIsInstance(body["recent_blocked"][0]["ts"], float)
+        self.assertEqual(body["blocklist_domains"], 91526)
+        page_bytes = _get(page.port, "/")
+        self.assertIn(b"2:18:11 PM", page_bytes)
+        self.assertNotIn(b"1792099091", page_bytes)
+        self.assertIn(b"Blocklist: <code>91,526</code> domains (allowlist 0)", page_bytes)
+
+    def test_los_angeles_clock_follows_the_system_zone(self):
+        os.environ["TZ"] = "America/Los_Angeles"
+        time.tzset()
+        stamp = time.mktime((2026, 10, 15, 14, 31, 5, 0, 0, -1))
+        self.assertEqual(format_recent_time(stamp), "2:31:05 PM")
+
+    def test_crt_payload_carries_the_list_size_and_a_numeric_timestamp(self):
+        feed = LookupFeed()
+        with mock.patch("piadblock.crt.time.time", return_value=1792099091.0):
+            feed.note("BLOCKED", "10.0.0.1", "ads.example", "A")
+        payload = crt_payload(
+            {"today": {"date": "2026-10-15", "queries": 4, "blocked": 1}},
+            feed,
+            {"blocklist_domains": 91526, "allow_count": 0},
+        )
+        self.assertEqual(payload["blocklist_domains"], 91526)
+        self.assertEqual(payload["allow_count"], 0)
+        self.assertEqual(payload["lookups"][0]["ts"], 1792099091)
+        bare = crt_payload({"today": {"queries": 1, "blocked": 0}}, None, {"version": "0.1.0"})
+        self.assertNotIn("blocklist_domains", bare)
 
 
 def _get(port: int, path: str) -> bytes:

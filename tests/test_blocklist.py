@@ -103,6 +103,25 @@ class DecideTests(unittest.TestCase):
         self.assertFalse(decision.blocked)
         self.assertEqual(decision.reason, "not a domain")
 
+    def test_blocklist_count_is_the_union_of_download_and_deny(self):
+        matcher = self.matcher(["a.com", "b.com"], denied=["b.com", "c.com"])
+        self.assertEqual(matcher.blocked_count, 2)
+        self.assertEqual(matcher.deny_count, 2)
+        self.assertEqual(matcher.blocklist_count, 3)
+
+    def test_blocklist_count_follows_the_deny_file_when_nothing_is_downloaded(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            (root / "merged.txt").write_text("", encoding="utf-8")
+            (root / "allow.txt").write_text("safe.example\n", encoding="utf-8")
+            (root / "deny.txt").write_text("ads.example\ntrack.example\n", encoding="utf-8")
+            report = Matcher.prepare(str(root / "merged.txt"), str(root / "allow.txt"), str(root / "deny.txt"))
+        self.assertEqual(report.error, "")
+        self.assertEqual(report.matcher.blocked_count, 0)
+        self.assertEqual(report.matcher.allow_count, 1)
+        self.assertEqual(report.matcher.deny_count, 2)
+        self.assertEqual(report.matcher.blocklist_count, 2)
+
 
 class DefaultDenylistTests(unittest.TestCase):
     def test_shipped_blocklist_domains(self):

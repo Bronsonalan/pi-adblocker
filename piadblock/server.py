@@ -131,7 +131,7 @@ class DnsServer:
             "listen": self.config.listen,
             "port": self.port,
             "upstream": list(self.config.upstream),
-            "blocklist_domains": matcher.blocked_count,
+            "blocklist_domains": matcher.blocklist_count,
             "allow_count": matcher.allow_count,
             "deny_count": matcher.deny_count,
             "cache_entries": self.cache.size,
@@ -363,10 +363,9 @@ class DnsServer:
             ", ".join(self.config.upstream),
         )
         logger.info(
-            "lists: %s blocklist, %s allow, %s deny",
-            matcher.blocked_count,
+            "lists: %s blocklist, %s allowlist",
+            matcher.blocklist_count,
             matcher.allow_count,
-            matcher.deny_count,
         )
 
     def _start_status(self) -> None:
@@ -471,10 +470,9 @@ class DnsServer:
         if report.skipped:
             logger.warning("skipped %s malformed blocklist lines", report.skipped)
         logger.info(
-            "lists reloaded: %s blocklist, %s allow, %s deny",
-            report.matcher.blocked_count,
+            "lists reloaded: %s blocklist, %s allowlist",
+            report.matcher.blocklist_count,
             report.matcher.allow_count,
-            report.matcher.deny_count,
         )
         self._load_error = ""
         self._last_reload_error = ""

@@ -9,8 +9,25 @@ from html import escape
 from typing import Callable
 from urllib.parse import urlparse
 
-from piadblock.crt import LookupFeed
+from piadblock.crt import LookupFeed, format_local_time
 from piadblock.stats import Stats
+
+
+def format_count(value: object) -> str:
+    """Thousands separators for a count shown on the page."""
+    try:
+        number = int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        number = 0
+    return f"{number:,}"
+
+
+def format_recent_time(ts: object) -> str:
+    """Page clock for one blocked query. A bad timestamp is blank, not the raw epoch."""
+    try:
+        return format_local_time(float(ts))  # type: ignore[arg-type]
+    except (TypeError, ValueError, OverflowError, OSError):
+        return ""
 
 
 def _reason_line(snapshot: dict) -> str:
@@ -30,7 +47,7 @@ def render_status_page(snapshot: dict, details: dict) -> bytes:
     for item in recent:
         rows.append(
             "<tr><td>{ts}</td><td>{name}</td><td>{qtype}</td><td>{client}</td></tr>".format(
-                ts=escape(str(int(item.get("ts", 0)))),
+                ts=escape(format_recent_time(item.get("ts"))),
                 name=escape(str(item.get("name", ""))),
                 qtype=escape(str(item.get("qtype", ""))),
                 client=escape(str(item.get("client", ""))),
@@ -65,8 +82,7 @@ def render_status_page(snapshot: dict, details: dict) -> bytes:
 <h1>piadblock <span class="label">{escape(str(details.get("version", "")))}</span></h1>
 <p>Listening on port <code>{escape(str(details.get("port", "")))}</code>.
 Upstream: <code>{upstream or "none"}</code>.
-Blocklist: <code>{details.get("blocklist_domains", 0)}</code> domains
-(allow {details.get("allow_count", 0)}, deny {details.get("deny_count", 0)}).
+Blocklist: <code>{format_count(details.get("blocklist_domains", 0))}</code> domains (allowlist {format_count(details.get("allow_count", 0))}).
 Cache entries: <code>{details.get("cache_entries", 0)}</code>.</p>
 <div class="grid">
   <div class="card"><div class="num">{queries}</div><div class="label">Queries since start</div></div>
@@ -89,20 +105,31 @@ This is the UTC day written to <code>stats/{escape(str(today.get("date", "")))}.
     return page.encode("utf-8")
 
 
-def crt_payload(snapshot: dict, lookups: LookupFeed | None) -> dict:
-    """Today's totals plus the newest lookups. The CRT polls this."""
+def crt_payload(snapshot: dict, lookups: LookupFeed | None, details: dict | None = None) -> dict:
+    """Today's totals plus the newest lookups. The CRT polls this.
+
+    ``blocklist_domains`` is the effective list size from the server details.
+    Lookup timestamps stay numeric here; the display formats them in local time.
+    """
     today = snapshot.get("today") if isinstance(snapshot.get("today"), dict) else {}
     try:
         queries = int(today.get("queries", 0) or 0)
         blocked = int(today.get("blocked", 0) or 0)
     except (TypeError, ValueError):
         queries, blocked = 0, 0
-    return {
+    payload = {
         "date": str(today.get("date", "")),
         "queries": queries,
         "blocked": blocked,
         "lookups": lookups.snapshot() if lookups is not None else [],
     }
+    if isinstance(details, dict) and "blocklist_domains" in details:
+        try:
+            payload["blocklist_domains"] = int(details.get("blocklist_domains") or 0)
+            payload["allow_count"] = int(details.get("allow_count") or 0)
+        except (TypeError, ValueError):
+            pass
+    return payload
 
 
 def make_handler(
@@ -129,7 +156,7 @@ def make_handler(
                 body = (json.dumps(payload, indent=2) + "\n").encode("utf-8")
                 content_type = "application/json"
             elif path == "/api/crt":
-                body = (json.dumps(crt_payload(snapshot, lookups)) + "\n").encode("utf-8")
+                body = (json.dumps(crt_payload(snapshot, lookups, details)) + "\n").encode("utf-8")
                 content_type = "application/json"
             elif path == "/health":
                 body = b"ok\n"

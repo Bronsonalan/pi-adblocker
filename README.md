@@ -466,13 +466,13 @@ journalctl -u piadblock -f
 
 Ctrl-C stops following. Expected output is a stream of `BLOCKED` and `OK` lines, one per lookup.
 
-Startup also logs the list sizes. With `blocklist.txt` and no downloaded list the deny count is the number of names actually loaded (public-suffix lines are left out):
+Startup also logs the list sizes. With `blocklist.txt` and no downloaded list the blocklist count is the number of names actually loaded (public-suffix lines are left out). A downloaded list, when one is configured, is included in that same count, and a name that appears in both is counted once:
 
 ```text
-lists: 0 blocklist, 0 allow, 91526 deny
+lists: 91526 blocklist, 0 allowlist
 ```
 
-That deny count follows the file. After a bad reload the journal says `keeping the lists already loaded` and the previous count stays in use.
+That blocklist count follows the file. After a bad reload the journal says `keeping the lists already loaded` and the previous count stays in use.
 
 ## Port 53 is already in use
 
@@ -594,13 +594,13 @@ Counters, including blocked queries:
 curl -s http://192.168.1.50:8080/api/stats
 ```
 
-Expected output is JSON. `blocked` increases when a denylist name is queried. `blocklist_domains` stays `0` because no remote list is downloaded. Open `http://192.168.1.50:8080/` in a browser for the same numbers as a page.
+Expected output is JSON. `blocked` increases when a denylist name is queried. `blocklist_domains` is the number of names on `blocklist.txt`, plus any downloaded list, with each name counted once. `deny_count` is the file alone and `allow_count` is the allowlist. Each `recent_blocked` entry keeps a raw unix `ts`. Open `http://192.168.1.50:8080/` in a browser for the same numbers as a page. The Time column is the Pi's local time, for example `2:31:05 PM`, and the header reads `Blocklist: 91,526 domains (allowlist 0)`.
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
 ## CRT display
 
-A fullscreen feed for the monitor on the Pi's console (`tty1`). It is laid out for a 640×480 CRT: a 16×32 console font gives 40 columns and 15 rows of large text. The newest lookup is the top row. A blocked name is drawn in white on red and marked `BLOCKED`, with the client address and the domain. The header shows today's query count and blocked count.
+A fullscreen feed for the monitor on the Pi's console (`tty1`). It is laid out for a 640×480 CRT: a 16×32 console font gives 40 columns and 15 rows of large text. The newest lookup is the top row. A blocked name is drawn in white on red and marked `BLOCKED`, with the client address and the domain. The header shows today's query count and blocked count, the local time (for example `2:31:05 PM`), and the blocklist size with thousands separators when the status page reports one.
 
 The DNS server only appends each lookup to a short in-memory list. Drawing happens in a separate process, so a slow console does not stall queries. When a Terminus 32×16 console font is installed, the display loads it on `tty1`, which is 40 by 15 characters on a 640×480 screen. The installer writes `piadblock-crt.service` and leaves it stopped, so the login prompt stays on `tty1` until you turn the display on. The display reads `http://127.0.0.1:8080/api/crt` from the status page, which is on by default.
 
@@ -802,8 +802,10 @@ Expected output:
 doubleclick.net
 blocked
 reason: denylist (doubleclick.net)
-lists: 0 blocked, 0 allowed, 11 denied
+lists: 91526 blocklist, 0 allowlist
 ```
+
+The count is however many names `blocklist.txt` loaded, so it moves when that file does.
 
 ```bash
 sudo PYTHONPATH=/opt/piadblock python3 -m piadblock check example.com
@@ -815,7 +817,7 @@ Expected output:
 example.com
 allowed
 reason: not listed
-lists: 0 blocked, 0 allowed, 11 denied
+lists: 91526 blocklist, 0 allowlist
 ```
 
 ## Uninstall
@@ -947,7 +949,7 @@ Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 117 tests in 58.237s
+Ran 128 tests in 59.210s
 
 OK
 ```

@@ -130,8 +130,8 @@ def _check(config, domain: str) -> int:
     print("blocked" if decision.blocked else "allowed")
     print(f"reason: {decision.reason}")
     print(
-        f"lists: {matcher.blocked_count} blocked, "
-        f"{matcher.allow_count} allowed, {matcher.deny_count} denied"
+        f"lists: {matcher.blocklist_count} blocklist, "
+        f"{matcher.allow_count} allowlist"
     )
     return 1 if report.error else 0
 

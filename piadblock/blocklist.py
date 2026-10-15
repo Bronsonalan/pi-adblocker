@@ -487,6 +487,7 @@ class Matcher:
 
     @property
     def blocked_count(self) -> int:
+        """Names from a downloaded merged list. Empty when nothing is downloaded."""
         return len(self.blocked)
 
     @property
@@ -495,7 +496,18 @@ class Matcher:
 
     @property
     def deny_count(self) -> int:
+        """Names from blocklist.txt, the list the Pi checks out of the repo."""
         return len(self.denied)
+
+    @property
+    def blocklist_count(self) -> int:
+        """Names that block. The repo list and a downloaded list count once each.
+
+        ``blocked_count`` stays 0 after the switch to blocklist.txt, because
+        that file is the denylist and no remote list is merged. Callers that
+        want the size of the list in use should use this.
+        """
+        return len(self.blocked | self.denied)
 
     def decide(self, name: str) -> Decision:
         domain = normalize_domain(name, allow_single_label=True)

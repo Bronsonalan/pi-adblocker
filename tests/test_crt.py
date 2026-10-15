@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import os
 import tempfile
 import threading
+import time
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import helpers  # noqa: F401
 
@@ -17,6 +20,7 @@ from piadblock.crt import (
     LookupFeed,
     choose_font,
     compose_lookup,
+    format_local_time,
     render_frame,
     serve_display,
     visible_text,
@@ -138,6 +142,80 @@ class FrameTests(unittest.TestCase):
         self.assertIn("TODAY 7 Q", visible[1])
         self.assertIn("2 BLOCKED", visible[1])
 
+    def test_rows_omit_the_raw_epoch_and_the_title_uses_local_time(self):
+        previous = os.environ.get("TZ")
+        os.environ["TZ"] = "UTC"
+        time.tzset()
+        self.addCleanup(_restore_tz, previous)
+        epoch = 14 * 3600 + 31 * 60 + 5
+        with mock.patch("piadblock.crt.time.time", return_value=epoch):
+            frame = render_frame(
+                [
+                    {
+                        "ts": 1792099091,
+                        "status": "BLOCKED",
+                        "client": "192.168.1.20",
+                        "name": "doubleclick.net",
+                        "qtype": "A",
+                    }
+                ],
+                4,
+                1,
+                width=CRT_WIDTH,
+                height=CRT_HEIGHT,
+            )
+        visible = _visible(frame)
+        self.assertIn("2:31:05 PM", visible[0])
+        self.assertEqual(format_local_time(epoch), "2:31:05 PM")
+        self.assertNotIn("1792099091", visible_text(frame))
+        self.assertNotIn(str(epoch), visible_text(frame))
+
+    def test_title_shows_the_effective_list_size(self):
+        frame = render_frame(
+            [],
+            1,
+            0,
+            width=CRT_WIDTH,
+            height=CRT_HEIGHT,
+            clock="2:31:05 PM",
+            blocklist_domains=91526,
+        )
+        title = _visible(frame)[0]
+        self.assertEqual(len(title), CRT_WIDTH)
+        self.assertIn("PI AD BLOCK", title)
+        self.assertIn("91,526", title)
+        self.assertIn("2:31:05 PM", title)
+
+    def test_waiting_frame_does_not_invent_a_zero_list_size(self):
+        frame = render_frame(
+            [],
+            0,
+            0,
+            width=CRT_WIDTH,
+            height=CRT_HEIGHT,
+            clock="2:31:05 PM",
+            waiting=True,
+            blocklist_domains=0,
+        )
+        title = _visible(frame)[0]
+        middle = title[len("PI AD BLOCK") : title.index("2:31:05 PM")]
+        self.assertEqual(middle.strip(), "")
+        self.assertNotIn("91,526", title)
+
+    def test_narrow_title_keeps_the_clock_when_the_count_does_not_fit(self):
+        frame = render_frame(
+            [],
+            0,
+            0,
+            width=24,
+            height=3,
+            clock="2:31:05 PM",
+            blocklist_domains=91526,
+        )
+        title = _visible(frame)[0]
+        self.assertIn("2:31:05 PM", title)
+        self.assertNotIn("91,526", title)
+
 
 class FeedTests(unittest.TestCase):
     def test_ring_keeps_the_newest_lookups_first(self):
@@ -192,6 +270,32 @@ class DisplayLoopTests(unittest.TestCase):
         self.assertIn("BLOCKED", visible_text(drawn))
         self.assertIn("\x1b[?25h", drawn)
 
+    def test_display_puts_the_list_size_on_the_title(self):
+        previous = os.environ.get("TZ")
+        os.environ["TZ"] = "UTC"
+        time.tzset()
+        self.addCleanup(_restore_tz, previous)
+        stop = threading.Event()
+        parts: list[str] = []
+
+        class _Sink:
+            def write(self, data: str) -> int:
+                parts.append(data)
+                return len(data)
+
+            def flush(self) -> None:
+                return None
+
+        def fetch():
+            stop.set()
+            return {"queries": 1, "blocked": 0, "lookups": [], "blocklist_domains": 91526}
+
+        with mock.patch("piadblock.crt.time.time", return_value=14 * 3600 + 31 * 60 + 5):
+            serve_display(_Sink(), fetch, stop, width=CRT_WIDTH, height=CRT_HEIGHT, period=0.01)
+        shown = visible_text("".join(parts))
+        self.assertIn("91,526", shown)
+        self.assertIn("2:31:05 PM", shown)
+
 
 class UnitTextTests(unittest.TestCase):
     def test_crt_unit_takes_tty1_and_returns_it(self):
@@ -203,6 +307,14 @@ class UnitTextTests(unittest.TestCase):
         self.assertNotIn("PIADBLOCK_PREFIX", text)
         prefixed = crt_service_unit("/usr/bin/python3", "/opt/piadblock", prefix="/tmp/pi-root")
         self.assertIn("Environment=PIADBLOCK_PREFIX=/tmp/pi-root", prefixed)
+
+
+def _restore_tz(previous: str | None) -> None:
+    if previous is None:
+        os.environ.pop("TZ", None)
+    else:
+        os.environ["TZ"] = previous
+    time.tzset()
 
 
 if __name__ == "__main__":

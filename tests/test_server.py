@@ -77,6 +77,29 @@ def ask(port: int, name: str, qtype: int = A, qid: int = 1):
     return parse_message(data)
 
 
+class DetailsTests(unittest.TestCase):
+    def test_details_uses_the_denylist_when_the_download_is_empty(self):
+        config = Config(
+            listen="127.0.0.1",
+            port=0,
+            ipv6=False,
+            status_enabled=False,
+            auto_update=False,
+            auto_reload=False,
+            log_file="",
+            stats_file="",
+            blocklists=[],
+        )
+        matcher = Matcher(set(), {"safe.example"}, {"ads.example", "track.example"})
+        server = DnsServer(config, matcher)
+        self.addCleanup(server.stop)
+        details = server.details()
+        self.assertEqual(matcher.blocked_count, 0)
+        self.assertEqual(details["blocklist_domains"], 2)
+        self.assertEqual(details["allow_count"], 1)
+        self.assertEqual(details["deny_count"], 2)
+
+
 class ServerTests(unittest.TestCase):
     def setUp(self):
         self._stdout = io.StringIO()
