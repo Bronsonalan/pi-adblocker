@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 8224,
-  "blocked": 1357,
+  "queries": 8408,
+  "blocked": 1371,
   "blocked_domains": {
     "a.teads.tv": 2,
     "a21018620252.cdn.optimizely.com": 2,
@@ -30,7 +30,7 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 6,
-    "api.segment.io": 40,
+    "api.segment.io": 42,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -133,7 +133,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 8,
-    "http-intake.logs.datadoghq.com": 39,
+    "http-intake.logs.datadoghq.com": 41,
     "i.clean.gg": 4,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 4,
@@ -154,17 +154,17 @@
     "lightning.cnn.com": 2,
     "log.go.com": 2,
     "log.pinterest.com": 2,
-    "mask.icloud.com": 289,
+    "mask.icloud.com": 295,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 30,
+    "mcs16-normal-us-ttp.capcutapi.us": 33,
     "merequartz.com": 8,
     "metrics.brightcove.com": 2,
     "metrics.foxnews.com": 1,
     "metrics.icloud.com": 16,
     "metrics.rapidedge.io": 2,
     "micro.rubiconproject.com": 6,
-    "mssdk16-normal-us-ttp.capcutapi.us": 2,
+    "mssdk16-normal-us-ttp.capcutapi.us": 3,
     "mssl.fwmrm.net": 2,
     "navvy.media.net": 6,
     "noa.yahoo.com": 4,
@@ -295,19 +295,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 289
+      "count": 295
     },
     {
       "domain": "api.segment.io",
-      "count": 40
+      "count": 42
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 39
+      "count": 41
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 30
+      "count": 33
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -738,6 +738,10 @@
       "count": 4
     },
     {
+      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 3
+    },
+    {
       "domain": "pubads.g.doubleclick.net",
       "count": 3
     },
@@ -1083,10 +1087,6 @@
     },
     {
       "domain": "metrics.rapidedge.io",
-      "count": 2
-    },
-    {
-      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
       "count": 2
     },
     {
@@ -1447,7 +1447,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 244,
+    "timeout": 255,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
