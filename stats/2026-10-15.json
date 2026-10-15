@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 4171,
-  "blocked": 330,
+  "queries": 4407,
+  "blocked": 343,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -10,11 +10,11 @@
     "analytics.twitter.com": 2,
     "api.branch.io": 6,
     "api.iterable.com": 2,
-    "api.segment.io": 10,
+    "api.segment.io": 13,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 2,
+    "app-analytics-v2.snapchat.com": 3,
     "app-measurement.com": 4,
     "assets-tracking.crazyegg.com": 2,
     "assetsconfigcdn.org": 6,
@@ -32,9 +32,9 @@
     "geolocation.onetrust.com": 2,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 9,
+    "http-intake.logs.datadoghq.com": 12,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 171,
+    "mask.icloud.com": 176,
     "metrics.icloud.com": 16,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
@@ -46,6 +46,7 @@
     "static.ads-twitter.com": 2,
     "stats.g.doubleclick.net": 2,
     "tr.iadsdk.apple.com": 2,
+    "tr.snapchat.com": 1,
     "track.capitaloneshopping.com": 2,
     "tracking.crazyegg.com": 2,
     "www.google-analytics.com": 2,
@@ -54,23 +55,23 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 171
+      "count": 176
     },
     {
       "domain": "metrics.icloud.com",
       "count": 16
     },
     {
-      "domain": "aet.spotify.com",
-      "count": 10
-    },
-    {
       "domain": "api.segment.io",
-      "count": 10
+      "count": 13
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 9
+      "count": 12
+    },
+    {
+      "domain": "aet.spotify.com",
+      "count": 10
     },
     {
       "domain": "doubleclick.net",
@@ -109,6 +110,10 @@
       "count": 4
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 3
+    },
+    {
       "domain": "ads-api.x.com",
       "count": 2
     },
@@ -130,10 +135,6 @@
     },
     {
       "domain": "api3.branch.io",
-      "count": 2
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
       "count": 2
     },
     {
@@ -239,10 +240,14 @@
     {
       "domain": "www.googletagmanager.com",
       "count": 2
+    },
+    {
+      "domain": "tr.snapchat.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 17,
+    "timeout": 29,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
