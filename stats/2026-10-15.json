@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 10382,
-  "blocked": 1798,
+  "queries": 10598,
+  "blocked": 1807,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -32,7 +32,7 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 8,
-    "api.segment.io": 52,
+    "api.segment.io": 53,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -142,7 +142,7 @@
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
     "html-load.cc": 6,
-    "http-intake.logs.datadoghq.com": 51,
+    "http-intake.logs.datadoghq.com": 52,
     "i.clean.gg": 6,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 6,
@@ -164,10 +164,10 @@
     "log.go.com": 4,
     "log.pinterest.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 345,
+    "mask.icloud.com": 350,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 43,
+    "mcs16-normal-us-ttp.capcutapi.us": 45,
     "merequartz.com": 12,
     "metricreceiver.cellrebel.com": 2,
     "metrics.brightcove.com": 2,
@@ -311,19 +311,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 345
+      "count": 350
     },
     {
       "domain": "api.segment.io",
-      "count": 52
+      "count": 53
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 51
+      "count": 52
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 43
+      "count": 45
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -1527,7 +1527,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 371,
+    "timeout": 385,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
