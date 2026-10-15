@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 11480,
-  "blocked": 1870,
+  "queries": 11499,
+  "blocked": 1873,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -36,7 +36,7 @@
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 6,
+    "app-analytics-v2.snapchat.com": 7,
     "app-measurement.com": 5,
     "as-sec.casalemedia.com": 2,
     "assets-jpcust.jwpsrv.com": 6,
@@ -164,7 +164,7 @@
     "log.go.com": 4,
     "log.pinterest.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 384,
+    "mask.icloud.com": 386,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
     "mcs16-normal-us-ttp.capcutapi.us": 51,
@@ -311,7 +311,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 384
+      "count": 386
     },
     {
       "domain": "api.segment.io",
@@ -482,6 +482,10 @@
       "count": 8
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 7
+    },
+    {
       "domain": "counter.tldw.me",
       "count": 7
     },
@@ -503,10 +507,6 @@
     },
     {
       "domain": "api2.amplitude.com",
-      "count": 6
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
       "count": 6
     },
     {
