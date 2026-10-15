@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 10760,
-  "blocked": 1826,
+  "queries": 11055,
+  "blocked": 1850,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -32,11 +32,11 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 8,
-    "api.segment.io": 56,
+    "api.segment.io": 59,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 4,
+    "app-analytics-v2.snapchat.com": 5,
     "app-measurement.com": 5,
     "as-sec.casalemedia.com": 2,
     "assets-jpcust.jwpsrv.com": 6,
@@ -142,7 +142,7 @@
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
     "html-load.cc": 6,
-    "http-intake.logs.datadoghq.com": 55,
+    "http-intake.logs.datadoghq.com": 58,
     "i.clean.gg": 6,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 6,
@@ -164,10 +164,10 @@
     "log.go.com": 4,
     "log.pinterest.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 360,
+    "mask.icloud.com": 374,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 48,
+    "mcs16-normal-us-ttp.capcutapi.us": 50,
     "merequartz.com": 12,
     "metricreceiver.cellrebel.com": 2,
     "metrics.brightcove.com": 2,
@@ -277,7 +277,7 @@
     "tr.blismedia.com": 2,
     "tr.iadsdk.apple.com": 2,
     "tr.outbrain.com": 1,
-    "tr.snapchat.com": 1,
+    "tr.snapchat.com": 2,
     "track.capitaloneshopping.com": 2,
     "track.customer.io": 2,
     "track1.aniview.com": 4,
@@ -311,19 +311,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 360
+      "count": 374
     },
     {
       "domain": "api.segment.io",
-      "count": 56
+      "count": 59
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 55
+      "count": 58
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 48
+      "count": 50
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -658,6 +658,10 @@
       "count": 6
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 5
+    },
+    {
       "domain": "app-measurement.com",
       "count": 5
     },
@@ -679,10 +683,6 @@
     },
     {
       "domain": "ads.yieldmo.com",
-      "count": 4
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
       "count": 4
     },
     {
@@ -1422,6 +1422,10 @@
       "count": 2
     },
     {
+      "domain": "tr.snapchat.com",
+      "count": 2
+    },
+    {
       "domain": "track.capitaloneshopping.com",
       "count": 2
     },
@@ -1514,10 +1518,6 @@
       "count": 1
     },
     {
-      "domain": "tr.snapchat.com",
-      "count": 1
-    },
-    {
       "domain": "widget-cdn.rpxnow.com",
       "count": 1
     },
@@ -1527,7 +1527,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 391,
+    "timeout": 408,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
