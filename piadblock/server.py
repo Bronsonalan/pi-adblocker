@@ -36,6 +36,7 @@ from piadblock.dns import (
 )
 from piadblock.forward import exchange, recvall
 from piadblock.portcheck import describe, listeners_on
+from piadblock.crt import LookupFeed
 from piadblock.querylog import emit_lookup
 from piadblock.stats import Stats
 from piadblock.status import StatusPage
@@ -64,6 +65,7 @@ class DnsServer:
             config.cache_max_ttl,
         )
         self.stats = Stats(config.stats_file)
+        self.lookups = LookupFeed()
         self.port = config.port
         self._stop = threading.Event()
         self._ready = threading.Event()
@@ -152,14 +154,14 @@ class DnsServer:
         qtype_label = type_name(qtype)
         self.stats.bump("queries")
         if query.opcode != 0:
-            emit_lookup("FAIL", client_ip, name, qtype_label)
+            self._record("FAIL", client_ip, name, qtype_label)
             return build_response(data, [], rcode=NOTIMP)
 
         matcher = self._matcher
         if question.qclass in (CLASS_IN, CLASS_ANY) and matcher.is_blocked(name):
             self.stats.bump("blocked")
             self.stats.note_blocked(name, qtype, client_ip)
-            emit_lookup("BLOCKED", client_ip, name, qtype_label)
+            self._record("BLOCKED", client_ip, name, qtype_label)
             return blocked_answer(
                 data,
                 qtype,
@@ -172,7 +174,7 @@ class DnsServer:
         cached = self.cache.get(key, query.id)
         if cached is not None:
             self.stats.bump("cached")
-            emit_lookup("OK", client_ip, name, qtype_label)
+            self._record("OK", client_ip, name, qtype_label)
             return cached
 
         try:
@@ -186,7 +188,7 @@ class DnsServer:
             self.stats.bump("errors")
             self.stats.note_upstream("socket")
             logger.warning("upstream socket %s for %s %s: %s", ",".join(self.config.upstream), name, qtype_label, exc)
-            emit_lookup("FAIL", client_ip, name, qtype_label)
+            self._record("FAIL", client_ip, name, qtype_label)
             return build_response(data, [], rcode=SERVFAIL)
 
         for attempt in result.attempts:
@@ -202,14 +204,14 @@ class DnsServer:
         if not result.ok:
             self.stats.bump("errors")
             logger.warning("upstream failed for %s %s: %s", name, qtype_label, result.summary())
-            emit_lookup("FAIL", client_ip, name, qtype_label)
+            self._record("FAIL", client_ip, name, qtype_label)
             if result.packet:
                 return result.packet
             return build_response(data, [], rcode=SERVFAIL)
         response = result.packet
 
         self.stats.bump("forwarded")
-        emit_lookup("OK", client_ip, name, qtype_label)
+        self._record("OK", client_ip, name, qtype_label)
         ttl = cacheable_ttl(
             response,
             min_ttl=self.config.cache_min_ttl,
@@ -222,6 +224,14 @@ class DnsServer:
             if adjusted is not None:
                 response = adjusted
         return response
+
+    def _record(self, status: str, client_ip: str, name: str, qtype_label: str) -> None:
+        """Log the lookup and keep a copy for the CRT. The copy does no I/O."""
+        emit_lookup(status, client_ip, name, qtype_label)
+        try:
+            self.lookups.note(status, client_ip, name, qtype_label)
+        except Exception:
+            return
 
     def _install_signals(self) -> None:
         if threading.current_thread() is not threading.main_thread():
@@ -368,6 +378,7 @@ class DnsServer:
                 self.config.status_port,
                 self.stats,
                 self.details,
+                self.lookups,
             )
             page.start()
         except OSError as exc:

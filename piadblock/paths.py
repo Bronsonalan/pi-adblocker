@@ -76,6 +76,7 @@ HEARTBEAT_SERVICE_NAME = "piadblock-heartbeat.service"
 HEARTBEAT_TIMER_NAME = "piadblock-heartbeat.timer"
 STATS_SERVICE_NAME = "piadblock-stats.service"
 STATS_TIMER_NAME = "piadblock-stats.timer"
+CRT_SERVICE_NAME = "piadblock-crt.service"
 
 # SSH remote. The Pi pushes and pulls with a deploy key, not HTTPS.
 DEFAULT_REMOTE = "git@github.com:Bronsonalan/pi-adblocker.git"

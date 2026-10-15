@@ -64,6 +64,7 @@ def main(argv: list[str] | None = None) -> int:
         "piadblock-heartbeat.service",
         "piadblock-stats.service",
         "piadblock-update.service",
+        "piadblock-crt.service",
         "piadblock.service",
     )
     for name in units:
@@ -79,6 +80,7 @@ def main(argv: list[str] | None = None) -> int:
             say(f"removed {path}")
     _systemctl("daemon-reload")
     _systemctl("reset-failed", "piadblock.service")
+    _systemctl("start", "getty@tty1.service")
 
     state = _load_state()
     _restore_resolver(state)

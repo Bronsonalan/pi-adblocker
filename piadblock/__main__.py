@@ -1,4 +1,4 @@
-"""Command line: ``python3 -m piadblock serve|update|check|stats``."""
+"""Command line: ``python3 -m piadblock serve|update|check|stats|crt``."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ from pathlib import Path
 from piadblock import __version__
 from piadblock.blocklist import Matcher
 from piadblock.config import ConfigError, load_config
+from piadblock.crt import run_display
 from piadblock.gitrepo import Repo, blocklist_changed_message, load_access
 from piadblock.log import setup_logging
 from piadblock.paths import OPT_ROOT, SERVICE_NAME
@@ -44,6 +45,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("pull", help="git pull --rebase and reload if blocklist.txt changed")
     sub.add_parser("heartbeat", help="write heartbeat.json and push it")
     sub.add_parser("daily", help="write stats/YYYY-MM-DD.json and push it")
+    crt = sub.add_parser("crt", help="fullscreen lookup feed on the console")
+    crt.add_argument("--tty", default="/dev/tty1", help="console device (default: /dev/tty1)")
+    crt.add_argument("--url", default="", help="lookup JSON URL (default: this machine's status page)")
 
     args = parser.parse_args(argv)
     try:
@@ -67,8 +71,17 @@ def main(argv: list[str] | None = None) -> int:
         return _heartbeat(config)
     if args.command == "daily":
         return _daily(config)
+    if args.command == "crt":
+        return run_display(args.tty, args.url or _crt_url(config))
     parser.error(f"unknown command {args.command}")
     return 2
+
+
+def _crt_url(config) -> str:
+    host = config.status_listen
+    if host in ("0.0.0.0", "::", ""):
+        host = "127.0.0.1"
+    return f"http://{host}:{config.status_port}/api/crt"
 
 
 def _serve(config) -> int:

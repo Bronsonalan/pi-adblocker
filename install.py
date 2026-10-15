@@ -66,7 +66,7 @@ from piadblock.systemfix import (  # noqa: E402
     resolver_should_be_replaced,
     upsert_marked_block,
 )
-from piadblock.units import calendar_timer_unit, git_oneshot_unit, service_unit  # noqa: E402
+from piadblock.units import calendar_timer_unit, crt_service_unit, git_oneshot_unit, service_unit  # noqa: E402
 from piadblock.updater import update_blocklists  # noqa: E402
 
 
@@ -505,6 +505,12 @@ def _install_units(access) -> None:
         encoding="utf-8",
     )
     say("systemd: installed piadblock.service")
+    (unit_dir / "piadblock-crt.service").write_text(
+        crt_service_unit(python, OPT_ROOT, prefix=PREFIX),
+        encoding="utf-8",
+    )
+    # Left stopped on purpose. Enabling it takes /dev/tty1 from the login prompt.
+    say("systemd: installed piadblock-crt.service (left stopped)")
     python_path = OPT_ROOT
     jobs = (
         ("Pull the piadblock repo and reload when blocklist.txt changes", PULL_SERVICE_NAME, PULL_TIMER_NAME, "minutely", "pull"),
