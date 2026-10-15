@@ -771,6 +771,75 @@ sudo rm -rf /etc/piadblock /var/lib/piadblock /var/log/piadblock
 
 Expected output: no text.
 
+## Capacity benchmark
+
+The benchmark builds synthetic lists of 100000, 250000, and 500000 names, starts the real server on `127.0.0.1` port `15353`, and measures cold load time, reload time, memory, and DNS latency while one client streams queries during the reload. It does not bind port 53, does not read the installed block list, and deletes its temporary files when it finishes. sudo is not required.
+
+On the Pi, after this version is installed:
+
+```bash
+python3 /opt/piadblock/tools/benchmark.py
+```
+
+Expected output has this shape. The three `measuring` lines are progress. The table follows. `cold_s` is how long it takes to build the matcher before the server listens. `peak_mb` is `VmHWM` and `rss_mb` is `VmRSS` after the reload. The recommendation is the largest size whose reload p95 stayed under 50 ms, with no timeouts, and whose peak RSS stayed under 25% of RAM (MemTotal on a Pi, or 512 MB of an assumed 2 GB Pi 4 on any other machine).
+
+```text
+measuring 100000 domains...
+measuring 250000 domains...
+measuring 500000 domains...
+piadblock capacity benchmark
+host: <this machine>
+MemTotal: <MB> MB
+rss budget: <MB> MB (...)
+p95 limit during reload: 50 ms
+query timeout: 1000 ms, one client streaming queries during the reload
+upstream: local stub on 127.0.0.1 (latency is the blocker, not 1.1.1.1)
+port 53 is not used; the live service is not modified
+cold_s is the time to build the matcher before the server listens
+peak_mb is VmHWM; rss_mb is VmRSS after reload
+
+    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms  timeouts   queries
+  100000   <cold>   <reload>   <rss>    <peak>    <p50>    <p95>    <max>         0    <count>
+  250000   ...
+  500000   ...
+
+recommended max list size: <domains> domains
+reason: largest measured size with reload p95 <p95> ms under 50 ms, zero timeouts, and peak RSS <peak> MB under <budget> MB
+```
+
+From a checkout, the same script is `python3 tools/benchmark.py` in the repo root. Same output.
+
+### Reference measured on a cloud VM (not a Raspberry Pi)
+
+Python 3.11, x86_64, MemTotal 16003 MB. These numbers are not from a Pi. Latency on a Pi 4 will be different. The script still judged RSS against a 512 MB budget, which is 25% of an assumed 2 GB Pi 4.
+
+```text
+measuring 100000 domains...
+measuring 250000 domains...
+measuring 500000 domains...
+piadblock capacity benchmark
+host: not a Raspberry Pi (x86_64, Linux)
+MemTotal: 16003 MB
+rss budget: 512 MB (25% of 2048 MB, assumed for a Pi 4 because this host is not a Pi)
+p95 limit during reload: 50 ms
+query timeout: 1000 ms, one client streaming queries during the reload
+upstream: local stub on 127.0.0.1 (latency is the blocker, not 1.1.1.1)
+port 53 is not used; the live service is not modified
+cold_s is the time to build the matcher before the server listens
+peak_mb is VmHWM; rss_mb is VmRSS after reload
+
+    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms  timeouts   queries
+  100000     0.363     0.379      47.3      69.4     16.18     30.22     32.02         0        27
+  250000     0.914     0.962      67.9     126.4     15.89     36.94     41.75         0        63
+  500000     1.915     2.078     107.6     228.2      0.10     32.36     65.98         0       186
+
+recommended max list size: 500000 domains
+reason: largest measured size with reload p95 32.36 ms under 50 ms, zero timeouts, and peak RSS 228.2 MB under 512 MB
+note: these numbers are from this machine, not from a Raspberry Pi. Latency will be different on a Pi. Run the same command there.
+```
+
+On that VM, 500000 names was the largest size that met both limits. Peak RSS was 228 MB. Run the command above on the Pi before treating 500000 as the list size to ship.
+
 ## Tests
 
 From a checkout of this repository:
@@ -779,13 +848,13 @@ From a checkout of this repository:
 python3 -m unittest discover -s tests
 ```
 
-This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, and a bootstrap install into a temporary directory. It does not need root and it does not bind port 53.
+This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, a bootstrap install into a temporary directory, and a tiny run of the capacity benchmark. It does not need root and it does not bind port 53.
 
 Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 83 tests in 44.229s
+Ran 86 tests in 45.693s
 
 OK
 ```
