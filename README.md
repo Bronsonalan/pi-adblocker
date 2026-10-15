@@ -1,22 +1,10 @@
 # Pi Adblock
 
-Pi Adblock is a small DNS server for a Raspberry Pi. It answers `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
+Pi Adblock is a small DNS server for a Raspberry Pi. It answers names in `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
 
-v1 blocks these names, and every subdomain under them:
+`blocklist.txt` is the block list. A listed name also blocks every subdomain under it, so `doubleclick.net` and `ads.doubleclick.net` are both blocked. A built-in safety list keeps Google, Apple, GitHub, Cloudflare, Microsoft, and the services those names depend on reachable even when a broad parent is listed. `mask.icloud.com` and `mask-h2.icloud.com` (iCloud Private Relay) stay blocked. A bare TLD or other public suffix in the file is ignored. Names under `.local`, `.lan`, and `.home.arpa`, plus reverse lookups for private addresses, are forwarded.
 
-- `doubleclick.net`
-- `googlesyndication.com`
-- `googleadservices.com`
-- `adnxs.com`
-- `adsrvr.org`
-- `criteo.com`
-- `taboola.com`
-- `outbrain.com`
-- `scorecardresearch.com`
-- `amazon-adsystem.com`
-- `reddit.com`
-
-So `doubleclick.net` and `ads.doubleclick.net` are both blocked. `example.com` and `google.com` are not. Nothing is downloaded. The block list is `blocklist.txt` in this repo. The Pi checks that file out and pulls it once a minute. To stop blocking a name, delete its line. The allowlist stays a separate file on the Pi.
+Nothing is downloaded. The Pi checks `blocklist.txt` out and pulls it once a minute. To stop blocking a name, delete its line. The allowlist stays a separate file on the Pi.
 
 The program is plain Python 3 from the standard library. Raspberry Pi OS already has `python3` and `git`. The installer uses apt only when `git` is missing, and it says so. Do not install anything with pip.
 
@@ -448,11 +436,13 @@ journalctl -u piadblock -f
 
 Ctrl-C stops following. Expected output is a stream of `BLOCKED` and `OK` lines, one per lookup.
 
-Startup also logs the list sizes. With the default denylist and no downloaded list:
+Startup also logs the list sizes. With `blocklist.txt` and no downloaded list the deny count is the number of names actually loaded (public-suffix lines are left out):
 
 ```text
-lists: 0 blocklist, 0 allow, 11 deny
+lists: 0 blocklist, 0 allow, 91526 deny
 ```
+
+That deny count follows the file. After a bad reload the journal says `keeping the lists already loaded` and the previous count stays in use.
 
 ## Port 53 is already in use
 
@@ -605,9 +595,17 @@ A second upstream is used only when the first one fails. Example:
 
 ### Block list and allowlist
 
-`blocklist.txt` at the root of this repo is the block list. On the Pi that file is `/opt/piadblock/blocklist.txt`. One domain per line. `#` starts a comment. That name and every subdomain are blocked. Do not add a bare suffix such as `com`.
+`blocklist.txt` at the root of this repo is the block list. On the Pi that file is `/opt/piadblock/blocklist.txt`. One domain per line. `#` starts a comment. That name and every subdomain are blocked. A bare suffix such as `com`, or any other public suffix, is skipped and counted in the log (`skipped N malformed blocklist lines`). The rest of the file still loads.
 
-Edit it on GitHub (or in a clone you push to `main`). Within a minute, `piadblock-pull` runs `git pull --rebase` and, only when `blocklist.txt` changed, reloads the running server. The reload does not restart the process and does not drop the listening sockets.
+The server also keeps a built-in safety allowlist. These names, and everything under them, are answered from upstream even if `blocklist.txt` lists them or a more specific child:
+
+`google.com`, `dns.google`, `gstatic.com`, `googleapis.com`, `googleusercontent.com`, `ggpht.com`, `gvt1.com`, `gvt2.com`, `youtube.com`, `ytimg.com`, `gmail.com`, `1e100.net`, `apple.com`, `icloud.com`, `cdn-apple.com`, `mzstatic.com`, `apple-cloudkit.com`, `github.com`, `githubusercontent.com`, `cloudflare.com`, `cloudflare-dns.com`, `microsoft.com`, `windows.com`, `windowsupdate.com`, `microsoftonline.com`, `office.com`, `office365.com`, `live.com`.
+
+`mask.icloud.com` and `mask-h2.icloud.com` are the exception: they stay blocked, and so do names under them. A line in `/etc/piadblock/allowlist.txt` can still override that. Ad domains that are not under the safety list, such as `doubleclick.net` and `googlesyndication.com`, stay blocked.
+
+`.local`, `.lan`, `.home.arpa`, `localhost`, and reverse lookups for private addresses (including `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, link-local, and loopback) are forwarded. A public reverse name can still be blocked when it is listed.
+
+Edit the list on GitHub (or in a clone you push to `main`). Within a minute, `piadblock-pull` runs `git pull --rebase` and, only when `blocklist.txt` changed, reloads the running server. The new set is built on a side thread and swapped in when it is ready, so queries keep being answered during the load. The reload does not restart the process and does not drop the listening sockets. If the new file is missing, empty, unreadable, still being written, or parses to nothing, the server logs `keeping the lists already loaded` and continues with the previous list.
 
 To stop blocking a name, delete its line and let that pull land. The next query for that name is forwarded. Putting the line back blocks it again, even if a previous answer was cached.
 
@@ -787,7 +785,7 @@ Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 74 tests in 39.442s
+Ran 83 tests in 44.229s
 
 OK
 ```
@@ -797,7 +795,8 @@ The elapsed time varies. `OK` is the result that matters.
 ## What the server does
 
 1. A client sends a DNS query to the Pi on UDP port 53 (TCP is accepted too, for large answers).
-2. If the name, or a parent of the name, is on `blocklist.txt` and not covered by a more specific allow entry, the Pi answers immediately: A is `0.0.0.0`, AAAA is `::`, other types are an empty NOERROR. The line in the journal starts with `BLOCKED`.
-3. Otherwise the Pi returns a cached answer or forwards the query to `1.1.1.1`, and the journal line starts with `OK`.
+2. Local names and private-address reverse lookups are forwarded. A built-in safety name (Google, Apple, GitHub, Cloudflare, Microsoft, and the related parents above) is forwarded too, except `mask.icloud.com` and `mask-h2.icloud.com`.
+3. If the name, or a parent of the name, is on `blocklist.txt` and not covered by a more specific allow entry, the Pi answers immediately: A is `0.0.0.0`, AAAA is `::`, other types are an empty NOERROR. The line in the journal starts with `BLOCKED`.
+4. Otherwise the Pi returns a cached answer or forwards the query to `1.1.1.1`, and the journal line starts with `OK`. A reload builds the next list off to the side, so this step keeps running while a large file is loading. A failed reload keeps the list that was already answering.
 
 Other query types for a blocked name are not forwarded, so a client cannot skip the block by asking for a TXT or HTTPS record.
