@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 7874,
-  "blocked": 1326,
+  "queries": 8017,
+  "blocked": 1339,
   "blocked_domains": {
     "a.teads.tv": 2,
     "a21018620252.cdn.optimizely.com": 2,
@@ -30,7 +30,7 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 6,
-    "api.segment.io": 36,
+    "api.segment.io": 37,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -72,7 +72,7 @@
     "cdn.brandmetrics.com": 2,
     "cdn.confiant-integrations.net": 8,
     "cdn.connatix.com": 2,
-    "cdn.cookielaw.org": 10,
+    "cdn.cookielaw.org": 12,
     "cdn.doubleverify.com": 2,
     "cdn.id5-sync.com": 4,
     "cdn.optimizely.com": 4,
@@ -133,7 +133,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 8,
-    "http-intake.logs.datadoghq.com": 35,
+    "http-intake.logs.datadoghq.com": 36,
     "i.clean.gg": 4,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 4,
@@ -154,10 +154,10 @@
     "lightning.cnn.com": 2,
     "log.go.com": 2,
     "log.pinterest.com": 2,
-    "mask.icloud.com": 273,
+    "mask.icloud.com": 279,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 25,
+    "mcs16-normal-us-ttp.capcutapi.us": 28,
     "merequartz.com": 8,
     "metrics.brightcove.com": 2,
     "metrics.foxnews.com": 1,
@@ -295,19 +295,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 273
+      "count": 279
     },
     {
       "domain": "api.segment.io",
-      "count": 36
+      "count": 37
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 35
+      "count": 36
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 25
+      "count": 28
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -320,6 +320,10 @@
     {
       "domain": "c.amazon-adsystem.com",
       "count": 13
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 12
     },
     {
       "domain": "cdn.p-n.io",
@@ -343,10 +347,6 @@
     },
     {
       "domain": "aet.spotify.com",
-      "count": 10
-    },
-    {
-      "domain": "cdn.cookielaw.org",
       "count": 10
     },
     {
@@ -1447,7 +1447,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 225,
+    "timeout": 233,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
