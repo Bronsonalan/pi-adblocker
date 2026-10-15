@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 5139,
-  "blocked": 406,
+  "queries": 5444,
+  "blocked": 462,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api.branch.io": 6,
     "api.iterable.com": 2,
-    "api.segment.io": 22,
+    "api.segment.io": 25,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -22,53 +22,75 @@
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.com": 2,
     "browser-intake-datadoghq.eu": 2,
+    "bs.serving-sys.com": 2,
     "cdn.branch.io": 2,
+    "cdn.connatix.com": 2,
     "cdn.cookielaw.org": 2,
+    "cdn.doubleverify.com": 2,
+    "cdn.teads.tv": 2,
     "cf.iadsdk.apple.com": 2,
+    "cmp.dmgmediaprivacy.co.uk": 2,
     "doubleclick.net": 10,
+    "fastlane.rubiconproject.com": 2,
     "firebase-settings.crashlytics.com": 2,
     "firebaselogging-pa.googleapis.com": 4,
     "firebaselogging.googleapis.com": 2,
     "geolocation.onetrust.com": 2,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 21,
+    "http-intake.logs.datadoghq.com": 24,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 209,
-    "mcs16-normal-us-ttp.capcutapi.us": 10,
+    "mask.icloud.com": 221,
+    "mcs16-normal-us-ttp.capcutapi.us": 13,
     "metrics.icloud.com": 16,
+    "mssdk16-normal-us-ttp.capcutapi.us": 1,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
     "pixel.spotify.com": 2,
+    "s0.2mdn.net": 2,
     "script.crazyegg.com": 2,
+    "scripts.webcontentassessor.com": 2,
     "sdk.iad-03.braze.com": 2,
+    "secure-ds.serving-sys.com": 2,
+    "securepubads.g.doubleclick.net": 2,
+    "servedby.flashtalking.com": 2,
     "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 6,
     "static.ads-twitter.com": 2,
     "stats.g.doubleclick.net": 2,
+    "storage.cloud.kargo.com": 2,
+    "t.dailymail.co.uk": 2,
+    "ted.dailymail.co.uk": 2,
+    "tpc.googlesyndication.com": 2,
     "tr.iadsdk.apple.com": 2,
     "tr.snapchat.com": 1,
     "track.capitaloneshopping.com": 2,
     "tracking.crazyegg.com": 2,
+    "uk-script.dotmetrics.net": 2,
     "www.google-analytics.com": 2,
+    "www.googleadservices.com": 2,
     "www.googletagmanager.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 209
+      "count": 221
     },
     {
       "domain": "api.segment.io",
-      "count": 22
+      "count": 25
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 21
+      "count": 24
     },
     {
       "domain": "metrics.icloud.com",
       "count": 16
+    },
+    {
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 13
     },
     {
       "domain": "aet.spotify.com",
@@ -76,10 +98,6 @@
     },
     {
       "domain": "doubleclick.net",
-      "count": 10
-    },
-    {
-      "domain": "mcs16-normal-us-ttp.capcutapi.us",
       "count": 10
     },
     {
@@ -159,7 +177,15 @@
       "count": 2
     },
     {
+      "domain": "bs.serving-sys.com",
+      "count": 2
+    },
+    {
       "domain": "cdn.branch.io",
+      "count": 2
+    },
+    {
+      "domain": "cdn.connatix.com",
       "count": 2
     },
     {
@@ -167,7 +193,23 @@
       "count": 2
     },
     {
+      "domain": "cdn.doubleverify.com",
+      "count": 2
+    },
+    {
+      "domain": "cdn.teads.tv",
+      "count": 2
+    },
+    {
       "domain": "cf.iadsdk.apple.com",
+      "count": 2
+    },
+    {
+      "domain": "cmp.dmgmediaprivacy.co.uk",
+      "count": 2
+    },
+    {
+      "domain": "fastlane.rubiconproject.com",
       "count": 2
     },
     {
@@ -207,11 +249,31 @@
       "count": 2
     },
     {
+      "domain": "s0.2mdn.net",
+      "count": 2
+    },
+    {
       "domain": "script.crazyegg.com",
       "count": 2
     },
     {
+      "domain": "scripts.webcontentassessor.com",
+      "count": 2
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
+      "count": 2
+    },
+    {
+      "domain": "secure-ds.serving-sys.com",
+      "count": 2
+    },
+    {
+      "domain": "securepubads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "servedby.flashtalking.com",
       "count": 2
     },
     {
@@ -227,6 +289,22 @@
       "count": 2
     },
     {
+      "domain": "storage.cloud.kargo.com",
+      "count": 2
+    },
+    {
+      "domain": "t.dailymail.co.uk",
+      "count": 2
+    },
+    {
+      "domain": "ted.dailymail.co.uk",
+      "count": 2
+    },
+    {
+      "domain": "tpc.googlesyndication.com",
+      "count": 2
+    },
+    {
       "domain": "tr.iadsdk.apple.com",
       "count": 2
     },
@@ -239,7 +317,15 @@
       "count": 2
     },
     {
+      "domain": "uk-script.dotmetrics.net",
+      "count": 2
+    },
+    {
       "domain": "www.google-analytics.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googleadservices.com",
       "count": 2
     },
     {
@@ -247,12 +333,16 @@
       "count": 2
     },
     {
+      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 1
+    },
+    {
       "domain": "tr.snapchat.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 86,
+    "timeout": 109,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
