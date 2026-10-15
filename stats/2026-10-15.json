@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 11499,
-  "blocked": 1873,
+  "queries": 11522,
+  "blocked": 1875,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -164,7 +164,7 @@
     "log.go.com": 4,
     "log.pinterest.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 386,
+    "mask.icloud.com": 388,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
     "mcs16-normal-us-ttp.capcutapi.us": 51,
@@ -311,7 +311,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 386
+      "count": 388
     },
     {
       "domain": "api.segment.io",
