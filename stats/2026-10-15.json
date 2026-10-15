@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 11542,
-  "blocked": 1875,
+  "queries": 11546,
+  "blocked": 1876,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -36,7 +36,7 @@
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 7,
+    "app-analytics-v2.snapchat.com": 8,
     "app-measurement.com": 5,
     "as-sec.casalemedia.com": 2,
     "assets-jpcust.jwpsrv.com": 6,
@@ -442,6 +442,10 @@
       "count": 8
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 8
+    },
+    {
       "domain": "cd.connatix.com",
       "count": 8
     },
@@ -480,10 +484,6 @@
     {
       "domain": "www.googletagmanager.com",
       "count": 8
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
-      "count": 7
     },
     {
       "domain": "counter.tldw.me",
