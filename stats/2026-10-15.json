@@ -1,7 +1,244 @@
 {
   "date": "2026-10-15",
-  "queries": 597,
-  "blocked": 0,
-  "blocked_domains": {},
-  "top_blocked": []
+  "queries": 3838,
+  "blocked": 308,
+  "blocked_domains": {
+    "ad.doubleclick.net": 4,
+    "ads-api.x.com": 2,
+    "aet.spotify.com": 10,
+    "analytics.google.com": 2,
+    "analytics.twitter.com": 2,
+    "api.branch.io": 6,
+    "api.iterable.com": 2,
+    "api.segment.io": 7,
+    "api2.amplitude.com": 6,
+    "api2.branch.io": 2,
+    "api3.branch.io": 2,
+    "app-analytics-v2.snapchat.com": 2,
+    "app-measurement.com": 4,
+    "assets-tracking.crazyegg.com": 2,
+    "assetsconfigcdn.org": 6,
+    "bam.nr-data.net": 4,
+    "beyondwickedmapping.org": 2,
+    "browser-intake-datadoghq.com": 2,
+    "browser-intake-datadoghq.eu": 2,
+    "cdn.branch.io": 2,
+    "cdn.cookielaw.org": 2,
+    "cf.iadsdk.apple.com": 2,
+    "doubleclick.net": 3,
+    "firebase-settings.crashlytics.com": 2,
+    "firebaselogging-pa.googleapis.com": 4,
+    "firebaselogging.googleapis.com": 2,
+    "geolocation.onetrust.com": 2,
+    "hi3l2a.cdn-settings.appsflyersdk.com": 2,
+    "hi3l2a.launches.appsflyersdk.com": 2,
+    "http-intake.logs.datadoghq.com": 7,
+    "iadsdk.apple.com": 2,
+    "mask.icloud.com": 159,
+    "metrics.icloud.com": 16,
+    "pagestates-tracking.crazyegg.com": 2,
+    "pixel-static.spotify.com": 2,
+    "pixel.spotify.com": 2,
+    "script.crazyegg.com": 2,
+    "sdk.iad-03.braze.com": 2,
+    "sr-client-cfg.amplitude.com": 2,
+    "sstats.adobe.com": 6,
+    "static.ads-twitter.com": 2,
+    "stats.g.doubleclick.net": 2,
+    "tr.iadsdk.apple.com": 2,
+    "track.capitaloneshopping.com": 2,
+    "tracking.crazyegg.com": 2,
+    "www.google-analytics.com": 2,
+    "www.googletagmanager.com": 2
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 159
+    },
+    {
+      "domain": "metrics.icloud.com",
+      "count": 16
+    },
+    {
+      "domain": "aet.spotify.com",
+      "count": 10
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 7
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 7
+    },
+    {
+      "domain": "api.branch.io",
+      "count": 6
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 6
+    },
+    {
+      "domain": "assetsconfigcdn.org",
+      "count": 6
+    },
+    {
+      "domain": "sstats.adobe.com",
+      "count": 6
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "count": 4
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 4
+    },
+    {
+      "domain": "bam.nr-data.net",
+      "count": 4
+    },
+    {
+      "domain": "firebaselogging-pa.googleapis.com",
+      "count": 4
+    },
+    {
+      "domain": "doubleclick.net",
+      "count": 3
+    },
+    {
+      "domain": "ads-api.x.com",
+      "count": 2
+    },
+    {
+      "domain": "analytics.google.com",
+      "count": 2
+    },
+    {
+      "domain": "analytics.twitter.com",
+      "count": 2
+    },
+    {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api2.branch.io",
+      "count": 2
+    },
+    {
+      "domain": "api3.branch.io",
+      "count": 2
+    },
+    {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 2
+    },
+    {
+      "domain": "assets-tracking.crazyegg.com",
+      "count": 2
+    },
+    {
+      "domain": "beyondwickedmapping.org",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.eu",
+      "count": 2
+    },
+    {
+      "domain": "cdn.branch.io",
+      "count": 2
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 2
+    },
+    {
+      "domain": "cf.iadsdk.apple.com",
+      "count": 2
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 2
+    },
+    {
+      "domain": "firebaselogging.googleapis.com",
+      "count": 2
+    },
+    {
+      "domain": "geolocation.onetrust.com",
+      "count": 2
+    },
+    {
+      "domain": "hi3l2a.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "hi3l2a.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "iadsdk.apple.com",
+      "count": 2
+    },
+    {
+      "domain": "pagestates-tracking.crazyegg.com",
+      "count": 2
+    },
+    {
+      "domain": "pixel-static.spotify.com",
+      "count": 2
+    },
+    {
+      "domain": "pixel.spotify.com",
+      "count": 2
+    },
+    {
+      "domain": "script.crazyegg.com",
+      "count": 2
+    },
+    {
+      "domain": "sdk.iad-03.braze.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
+      "count": 2
+    },
+    {
+      "domain": "static.ads-twitter.com",
+      "count": 2
+    },
+    {
+      "domain": "stats.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "tr.iadsdk.apple.com",
+      "count": 2
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
+      "count": 2
+    },
+    {
+      "domain": "tracking.crazyegg.com",
+      "count": 2
+    },
+    {
+      "domain": "www.google-analytics.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 2
+    }
+  ]
 }
