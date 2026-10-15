@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 4437,
-  "blocked": 349,
+  "queries": 4579,
+  "blocked": 363,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api.branch.io": 6,
     "api.iterable.com": 2,
-    "api.segment.io": 13,
+    "api.segment.io": 15,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -32,10 +32,10 @@
     "geolocation.onetrust.com": 2,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 12,
+    "http-intake.logs.datadoghq.com": 14,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 179,
-    "mcs16-normal-us-ttp.capcutapi.us": 1,
+    "mask.icloud.com": 187,
+    "mcs16-normal-us-ttp.capcutapi.us": 3,
     "metrics.icloud.com": 16,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
@@ -56,7 +56,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 179
+      "count": 187
     },
     {
       "domain": "metrics.icloud.com",
@@ -64,11 +64,11 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 13
+      "count": 15
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 12
+      "count": 14
     },
     {
       "domain": "aet.spotify.com",
@@ -112,6 +112,10 @@
     },
     {
       "domain": "app-analytics-v2.snapchat.com",
+      "count": 3
+    },
+    {
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
       "count": 3
     },
     {
@@ -243,16 +247,12 @@
       "count": 2
     },
     {
-      "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 1
-    },
-    {
       "domain": "tr.snapchat.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 30,
+    "timeout": 42,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
