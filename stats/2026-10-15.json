@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 7776,
-  "blocked": 1315,
+  "queries": 7874,
+  "blocked": 1326,
   "blocked_domains": {
     "a.teads.tv": 2,
     "a21018620252.cdn.optimizely.com": 2,
@@ -30,7 +30,7 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 6,
-    "api.segment.io": 34,
+    "api.segment.io": 36,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
@@ -133,7 +133,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 8,
-    "http-intake.logs.datadoghq.com": 33,
+    "http-intake.logs.datadoghq.com": 35,
     "i.clean.gg": 4,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 4,
@@ -154,10 +154,10 @@
     "lightning.cnn.com": 2,
     "log.go.com": 2,
     "log.pinterest.com": 2,
-    "mask.icloud.com": 267,
+    "mask.icloud.com": 273,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
-    "mcs16-normal-us-ttp.capcutapi.us": 24,
+    "mcs16-normal-us-ttp.capcutapi.us": 25,
     "merequartz.com": 8,
     "metrics.brightcove.com": 2,
     "metrics.foxnews.com": 1,
@@ -295,19 +295,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 267
+      "count": 273
     },
     {
       "domain": "api.segment.io",
-      "count": 34
+      "count": 36
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 33
+      "count": 35
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 24
+      "count": 25
     },
     {
       "domain": "securepubads.g.doubleclick.net",
@@ -1447,7 +1447,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 220,
+    "timeout": 225,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
