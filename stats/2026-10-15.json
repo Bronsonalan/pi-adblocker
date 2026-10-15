@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 11294,
-  "blocked": 1861,
+  "queries": 11453,
+  "blocked": 1870,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -32,11 +32,11 @@
     "api.lab.amplitude.com": 6,
     "api.parsely.com": 2,
     "api.rlcdn.com": 8,
-    "api.segment.io": 61,
+    "api.segment.io": 63,
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 5,
+    "app-analytics-v2.snapchat.com": 6,
     "app-measurement.com": 5,
     "as-sec.casalemedia.com": 2,
     "assets-jpcust.jwpsrv.com": 6,
@@ -142,7 +142,7 @@
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
     "html-load.cc": 6,
-    "http-intake.logs.datadoghq.com": 60,
+    "http-intake.logs.datadoghq.com": 62,
     "i.clean.gg": 6,
     "i.l.inmobicdn.net": 2,
     "i.viafoura.co": 6,
@@ -164,7 +164,7 @@
     "log.go.com": 4,
     "log.pinterest.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 380,
+    "mask.icloud.com": 384,
     "match.adsrvr.org": 2,
     "match.sharethrough.com": 4,
     "mcs16-normal-us-ttp.capcutapi.us": 51,
@@ -311,15 +311,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 380
+      "count": 384
     },
     {
       "domain": "api.segment.io",
-      "count": 61
+      "count": 63
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 60
+      "count": 62
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -506,6 +506,10 @@
       "count": 6
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 6
+    },
+    {
       "domain": "assets-jpcust.jwpsrv.com",
       "count": 6
     },
@@ -656,10 +660,6 @@
     {
       "domain": "yahoo-homepage.html-load.com",
       "count": 6
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
-      "count": 5
     },
     {
       "domain": "app-measurement.com",
@@ -1527,7 +1527,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 427,
+    "timeout": 435,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
