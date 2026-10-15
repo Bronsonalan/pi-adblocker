@@ -24,7 +24,7 @@ if str(ROOT) not in sys.path:
 
 from piadblock import __version__  # noqa: E402
 from piadblock.blocklist import Matcher  # noqa: E402
-from piadblock.config import ConfigError, load_config  # noqa: E402
+from piadblock.config import ConfigError, load_config, migrate_legacy_upstream  # noqa: E402
 from piadblock.dns import A, AAAA, DnsError, rdata_ip  # noqa: E402
 from piadblock.files import atomic_write  # noqa: E402
 from piadblock.forward import lookup  # noqa: E402
@@ -60,6 +60,7 @@ from piadblock.systemfix import (  # noqa: E402
     classify,
     render_dhcpcd_block,
     render_nm_conf,
+    piadblock_owns_resolv,
     render_resolv_conf,
     render_resolved_dropin,
     resolver_should_be_replaced,
@@ -88,6 +89,7 @@ def main(argv: list[str] | None = None) -> int:
         _ensure_dirs()
         _ensure_config()
         _migrate_denylist()
+        _migrate_upstream()
         _ensure_lists()
         config = load_config(CONFIG_PATH)
         _download(config)
@@ -185,6 +187,27 @@ def _ensure_lists() -> None:
         say(f"blocklist: {blocklist}")
     else:
         say(f"warning: {blocklist} is missing. Blocking still starts once that file is present.")
+
+
+def _migrate_upstream() -> None:
+    """Replace the old single-resolver default so a reinstall picks up fallbacks.
+
+    ``_ensure_config`` keeps an existing file. Without this step a Pi that
+    still has ``["1.1.1.1"]`` and a 2 second timeout never tries the next
+    server, and one dead resolver is a client-visible failure.
+    """
+    path = Path(CONFIG_PATH)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+    updated = migrate_legacy_upstream(data)
+    if updated is None:
+        return
+    atomic_write(path, json.dumps(updated, indent=2) + "\n")
+    os.chmod(path, 0o644)
+    servers = " ".join(str(item) for item in updated.get("upstream", []))
+    say(f"config: upstream is {servers}, timeout {updated.get('upstream_timeout')}s per try")
 
 
 def _migrate_denylist() -> None:
@@ -387,7 +410,9 @@ def _fix_resolver(config) -> None:
     """Keep this Pi's own lookups on the public upstream.
 
     Once the router sends every device to the Pi, a Pi that still asks the
-    router (or 127.0.0.53) for DNS will loop. Public resolvers are left as-is.
+    router (or 127.0.0.53) for DNS will loop. A public resolver the user
+    wrote is left as-is. A file this installer wrote is refreshed so it
+    keeps the current upstream list and a 1 second resolver timeout.
     """
     state = _load_state()
     resolv = Path(RESOLV_CONF)
@@ -396,14 +421,20 @@ def _fix_resolver(config) -> None:
     except OSError:
         current = ""
 
+    desired = render_resolv_conf(list(config.upstream))
+    owned = piadblock_owns_resolv(current)
     needs_resolv = resolver_should_be_replaced(current)
+    should_write = needs_resolv or (owned and current != desired)
     if needs_resolv and not state.get("changed_resolv_conf"):
         state["resolv_backup"] = _snapshot_resolv(resolv)
         state["changed_resolv_conf"] = True
         _save_state(state)
         say(f"resolver: backed up {RESOLV_CONF}")
-    elif not needs_resolv:
-        say(f"resolver: {RESOLV_CONF} already uses a public DNS server; leaving it")
+    elif not should_write:
+        if owned:
+            say(f"resolver: {RESOLV_CONF} already points at the upstream list")
+        else:
+            say(f"resolver: {RESOLV_CONF} already uses a public DNS server; leaving it")
 
     dhcpcd = Path(DHCPCD_CONF)
     if dhcpcd.exists():
@@ -432,14 +463,14 @@ def _fix_resolver(config) -> None:
             say(f"resolver: told NetworkManager not to overwrite {RESOLV_CONF}")
             _systemctl("reload", "NetworkManager")
 
-    if needs_resolv:
+    if should_write:
         # Write this last so a NetworkManager reload cannot put the router back.
         try:
             _write_resolv(list(config.upstream))
         except OSError as exc:
             say(f"warning: could not write {RESOLV_CONF}: {exc}")
         else:
-            say(f"resolver: pointed this Pi at {' '.join(config.upstream)}")
+            say(f"resolver: pointed this Pi at {' '.join(config.upstream)} (timeout 1s, 1 attempt)")
 
 
 def _snapshot_resolv(resolv: Path) -> dict:
@@ -478,7 +509,7 @@ def _install_units(access) -> None:
     jobs = (
         ("Pull the piadblock repo and reload when blocklist.txt changes", PULL_SERVICE_NAME, PULL_TIMER_NAME, "minutely", "pull"),
         ("Write and push the piadblock heartbeat", HEARTBEAT_SERVICE_NAME, HEARTBEAT_TIMER_NAME, "hourly", "heartbeat"),
-        ("Write and push the piadblock daily stats", STATS_SERVICE_NAME, STATS_TIMER_NAME, "daily", "daily"),
+        ("Write and push the piadblock daily stats", STATS_SERVICE_NAME, STATS_TIMER_NAME, "*:0/5", "daily"),
     )
     for description, service_name, timer_name, calendar, command in jobs:
         (unit_dir / service_name).write_text(

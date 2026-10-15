@@ -69,6 +69,7 @@ class BenchmarkSmokeTests(unittest.TestCase):
         self.assertIn("port 53 is not used", text)
         self.assertIn("400", text)
         self.assertIn("p50_ms", text)
+        self.assertIn("fwd_p50", text)
         self.assertIn("peak_mb", text)
         row = bench.measure(300, 0)
         self.assertEqual(row["domains"], 300)
@@ -77,6 +78,7 @@ class BenchmarkSmokeTests(unittest.TestCase):
         self.assertNotEqual(row["port"], 53)
         self.assertGreater(row["port"], 1023)
         self.assertLess(row["p95_ms"], 1000)
+        self.assertLess(row["forward_p50_ms"], 10.0)
         self.assertEqual(set(Path(tempfile.gettempdir()).glob("piadblock-bench-*")), before)
 
 

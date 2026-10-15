@@ -20,11 +20,18 @@ import os
 import pwd
 import shutil
 import subprocess
+import time
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
 from piadblock.paths import CONFIG_DIR, DEFAULT_REMOTE, PREFIX, STATE_DIR
+
+# OpenSSH's ConnectTimeout defaults to unlimited and does not cover DNS.
+# glibc's resolver defaults to 5 seconds and 2 attempts, about 10 seconds
+# when github.com gets no answer. Both limits are applied to the git process.
+RESOLVER_OPTIONS = "timeout:1 attempts:1"
+SSH_CONNECT_OPTIONS = "-o ConnectTimeout=5 -o ConnectionAttempts=1"
 
 PREFERRED_USER = "techexplain"
 KEY_NAME = "pi_adblocker_deploy"
@@ -211,9 +218,42 @@ def save_access(access: GitAccess) -> None:
     atomic_write(ACCESS_PATH, access.to_json())
 
 
-def _last_line(text: str) -> str:
-    lines = [line.strip() for line in (text or "").splitlines() if line.strip()]
-    return lines[-1] if lines else "git failed"
+def _failure_text(result: subprocess.CompletedProcess) -> str:
+    """Exit code plus the full stderr and stdout. The last line alone hides the cause."""
+    err = (result.stderr or "").strip()
+    out = (result.stdout or "").strip()
+    if err and out:
+        detail = err + "\n" + out
+    else:
+        detail = err or out or "git failed"
+    return f"exit {result.returncode}: {detail}"
+
+
+def _combined(result: subprocess.CompletedProcess) -> str:
+    return ((result.stderr or "") + "\n" + (result.stdout or "")).lower()
+
+
+def _retryable(result: subprocess.CompletedProcess) -> bool:
+    text = _combined(result)
+    needles = (
+        "index.lock",
+        "file exists",
+        "could not read from remote repository",
+        "the repository exists",
+        "connection reset",
+        "connection timed out",
+        "timed out",
+        "network is unreachable",
+        "could not resolve host",
+        "temporary failure",
+        "kex_exchange_identification",
+        "connection refused",
+        "broken pipe",
+        "early eof",
+        "the remote end hung up",
+        "service not known",
+    )
+    return any(needle in text for needle in needles)
 
 
 class Repo:
@@ -222,18 +262,50 @@ class Repo:
     def __init__(self, root: str, access: GitAccess):
         self.root = str(Path(root))
         self.access = access
+        # Sleeps between retries of a remote or index.lock failure. Tests set this to zeros.
+        self.retry_delays = (0.25, 0.5, 1.0)
 
-    def git(self, *args: str, check: bool = True) -> subprocess.CompletedProcess:
+    def git(self, *args: str, check: bool = True, retry: bool = False) -> subprocess.CompletedProcess:
+        result = self._git_once(*args)
+        if retry and result.returncode != 0:
+            for delay in self.retry_delays:
+                if result.returncode == 0 or not _retryable(result):
+                    break
+                if "index.lock" in _combined(result):
+                    self._clear_stale_index_lock()
+                if delay:
+                    time.sleep(delay)
+                result = self._git_once(*args)
+        if check and result.returncode != 0:
+            raise OSError(_failure_text(result))
+        return result
+
+    def _git_once(self, *args: str) -> subprocess.CompletedProcess:
         command = ["git", "-C", self.root, "-c", f"safe.directory={self.root}", *args]
         env = os.environ.copy()
+        env["RES_OPTIONS"] = RESOLVER_OPTIONS
         env.update(self._ssh_env())
         if self._impersonate():
             command = ["runuser", "-u", self.access.user, "--", *command]
-        result = subprocess.run(command, check=False, capture_output=True, text=True, env=env)
-        if check and result.returncode != 0:
-            detail = _last_line(result.stderr or result.stdout)
-            raise OSError(detail)
-        return result
+        return subprocess.run(command, check=False, capture_output=True, text=True, env=env)
+
+    def _clear_stale_index_lock(self) -> None:
+        """Remove a leftover index.lock. Caller already holds piadblock.lock.
+
+        A lock newer than five seconds may belong to a git process this
+        program does not own, so it is left in place and the retry waits.
+        """
+        lock = Path(self.root) / ".git" / "index.lock"
+        try:
+            age = time.time() - lock.stat().st_mtime
+        except OSError:
+            return
+        if age < 5:
+            return
+        try:
+            lock.unlink()
+        except OSError:
+            return
 
     def _impersonate(self) -> bool:
         user = self.access.user
@@ -242,20 +314,21 @@ class Repo:
         return _user_exists(user) and shutil.which("runuser") is not None
 
     def _ssh_env(self) -> dict[str, str]:
-        # The user's Host github.com block selects the key. Setting
-        # GIT_SSH_COMMAND would skip that config, so only do it when we had
-        # to point at a key file ourselves.
-        if self.access.source == "ssh-config" or not self.access.key:
+        # HTTPS and local remotes do not use ssh. A git@ remote always gets
+        # a connect limit. When ~/.ssh/config already selects the key, the
+        # command must not pass -i or IdentitiesOnly, or that Host block is
+        # ignored. OpenSSH still reads ~/.ssh/config unless -F is set.
+        if not self.access.remote.startswith("git@"):
             return {}
-        if self.access.remote.startswith("git@"):
-            known = Path(CONFIG_DIR) / "github_known_hosts"
-            extra = f" -o UserKnownHostsFile={known}" if known.is_file() else ""
-            command = (
-                f"ssh -i {self.access.key} -o IdentitiesOnly=yes "
-                f"-o StrictHostKeyChecking=yes{extra}"
-            )
-            return {"GIT_SSH_COMMAND": command}
-        return {}
+        if self.access.source == "ssh-config" or not self.access.key:
+            return {"GIT_SSH_COMMAND": f"ssh {SSH_CONNECT_OPTIONS}"}
+        known = Path(CONFIG_DIR) / "github_known_hosts"
+        extra = f" -o UserKnownHostsFile={known}" if known.is_file() else ""
+        command = (
+            f"ssh -i {self.access.key} -o IdentitiesOnly=yes "
+            f"-o StrictHostKeyChecking=yes {SSH_CONNECT_OPTIONS}{extra}"
+        )
+        return {"GIT_SSH_COMMAND": command}
 
     @contextmanager
     def lock(self):
@@ -321,16 +394,20 @@ class Repo:
         """Commit ``paths`` and push. A rejected push is a warning, not an exception."""
         try:
             with self.lock():
-                self._commit_paths(paths, message)
-                warning = self._pull_rebase()
-                if not self._ahead():
-                    return warning
-                pushed = self._push()
-                if pushed:
-                    return pushed
-                return warning
+                return self.publish_holding_lock(paths, message)
         except Exception as exc:
             return f"git publish failed ({exc}). Blocking is unchanged."
+
+    def publish_holding_lock(self, paths: list[str], message: str) -> str:
+        """Commit and push. The caller already holds :meth:`lock`."""
+        self._commit_paths(paths, message)
+        warning = self._pull_rebase()
+        if not self._ahead():
+            return warning
+        pushed = self._push()
+        if pushed:
+            return pushed
+        return warning
 
     def _commit_owned(self, message: str) -> None:
         paths = []
@@ -345,10 +422,10 @@ class Repo:
         existing = [path for path in paths if (Path(self.root) / path).exists()]
         if not existing:
             return False
-        self.git("add", "--", *existing)
+        self.git("add", "--", *existing, retry=True)
         if self.git("diff", "--cached", "--quiet", check=False).returncode == 0:
             return False
-        self.git("commit", "-m", message)
+        self.git("commit", "-m", message, retry=True)
         return True
 
     def _ahead(self) -> bool:
@@ -364,33 +441,32 @@ class Repo:
             return False
 
     def _push(self) -> str:
-        result = self.git("push", "origin", "HEAD:main", check=False)
+        result = self.git("push", "origin", "HEAD:main", check=False, retry=True)
         if result.returncode == 0:
             return ""
         self._pull_rebase()
-        result = self.git("push", "origin", "HEAD:main", check=False)
+        result = self.git("push", "origin", "HEAD:main", check=False, retry=True)
         if result.returncode == 0:
             return ""
-        detail = _last_line(result.stderr or result.stdout)
-        return f"git push failed ({detail}). Blocking is unchanged."
+        return f"git push failed ({_failure_text(result)}). Blocking is unchanged."
 
     def _pull_rebase(self) -> str:
-        fetched = self.git("fetch", "origin", "main", check=False)
+        fetched = self.git("fetch", "origin", "main", check=False, retry=True)
         if fetched.returncode != 0:
-            return f"git pull failed ({_last_line(fetched.stderr or fetched.stdout)}). Blocking is unchanged."
+            return f"git pull failed ({_failure_text(fetched)}). Blocking is unchanged."
         if not self.has_head():
-            reset = self.git("reset", "--mixed", "origin/main", check=False)
+            reset = self.git("reset", "--mixed", "origin/main", check=False, retry=True)
             if reset.returncode != 0:
-                return f"git pull failed ({_last_line(reset.stderr or reset.stdout)}). Blocking is unchanged."
+                return f"git pull failed ({_failure_text(reset)}). Blocking is unchanged."
             self.git("checkout", "--", ".", check=False)
             return ""
-        result = self.git("pull", "--rebase", "origin", "main", check=False)
+        result = self.git("pull", "--rebase", "origin", "main", check=False, retry=True)
         if result.returncode == 0:
             return ""
         if self._resolve_rebase():
             return ""
         self.git("rebase", "--abort", check=False)
-        return f"git pull failed ({_last_line(result.stderr or result.stdout)}). Blocking is unchanged."
+        return f"git pull failed ({_failure_text(result)}). Blocking is unchanged."
 
     def _resolve_rebase(self) -> bool:
         for _ in range(30):

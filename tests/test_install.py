@@ -243,7 +243,7 @@ class BootstrapTests(unittest.TestCase):
                 timer_calendars = {
                     "piadblock-pull.timer": "minutely",
                     "piadblock-heartbeat.timer": "hourly",
-                    "piadblock-stats.timer": "daily",
+                    "piadblock-stats.timer": "*:0/5",
                 }
                 for name, calendar in timer_calendars.items():
                     text = (prefix / "etc/systemd/system" / name).read_text(encoding="utf-8")
@@ -283,7 +283,7 @@ class BootstrapTests(unittest.TestCase):
                 document = json.loads((verified / "stats" / f"{day}.json").read_text(encoding="utf-8"))
                 self.assertEqual(
                     set(document),
-                    {"date", "queries", "blocked", "blocked_domains", "top_blocked"},
+                    {"date", "queries", "blocked", "blocked_domains", "top_blocked", "upstream_errors"},
                 )
                 self.assertEqual(document["date"], day)
                 self.assertNotIn("recent_blocked", document)

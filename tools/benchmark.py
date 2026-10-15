@@ -21,6 +21,7 @@ import logging
 import math
 import os
 import platform
+import select
 import socket
 import subprocess
 import sys
@@ -165,7 +166,10 @@ class _StubResolver(threading.Thread):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind(("127.0.0.1", 0))
         self.port = self.sock.getsockname()[1]
-        self.sock.settimeout(0.2)
+        # Non-blocking. select's timeout only runs while the socket is idle
+        # so the thread can stop. A waiting packet wakes select immediately,
+        # so the timeout is not added to a query.
+        self.sock.setblocking(False)
         self._halt = threading.Event()
 
     def run(self) -> None:
@@ -173,8 +177,14 @@ class _StubResolver(threading.Thread):
 
         while not self._halt.is_set():
             try:
+                readable, _, _ = select.select([self.sock], [], [], 0.05)
+            except (OSError, ValueError):
+                return
+            if not readable:
+                continue
+            try:
                 data, addr = self.sock.recvfrom(4096)
-            except socket.timeout:
+            except BlockingIOError:
                 continue
             except OSError:
                 return
@@ -323,6 +333,22 @@ def measure(count: int, port: int) -> dict:
         if not reply.answers or rdata_ip(reply.answers[0]) != "0.0.0.0":
             raise RuntimeError(f"warmup query for {names[0]} was not blocked")
 
+        # Idle forwards, before any reload. These names are not on the list,
+        # so each one goes to the stub. The reload samples below are a
+        # different number: they are blocked names while the parser runs.
+        forward_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sockets.append(forward_sock)
+        forward_sock.connect(("127.0.0.1", bound))
+        forward_sock.settimeout(1.0)
+        forward_samples: list[float] = []
+        for index in range(32):
+            packet = build_query(f"idle-{index}.example", A, qid=5000 + index)
+            elapsed = _timed_query(forward_sock, packet)
+            if elapsed is None:
+                raise RuntimeError("idle forward timed out")
+            forward_samples.append(elapsed)
+        forward_p50 = percentile(forward_samples, 50)
+
         # Rewrite the same names so reload parses a full file of this size.
         write_domains(denylist, count)
 
@@ -391,6 +417,7 @@ def measure(count: int, port: int) -> dict:
             "p50_ms": percentile(samples, 50),
             "p95_ms": percentile(samples, 95),
             "max_ms": max(samples),
+            "forward_p50_ms": forward_p50,
             "timeouts": timeouts,
             "queries": len(sink),
             "port": bound,
@@ -448,11 +475,13 @@ def format_report(rows: list[dict], info: dict, p95_limit_ms: float) -> str:
         "port 53 is not used; the live service is not modified",
         "cold_s is the time to build the matcher before the server listens",
         "peak_mb is VmHWM; rss_mb is VmRSS after reload",
+        "p50_ms is blocked-name latency while that reload is parsing",
+        "fwd_p50 is idle forwarded latency against the stub, before the reload",
         "",
         (
             f"{'size':>8}  {'cold_s':>8}  {'reload_s':>8}  {'rss_mb':>8}  "
             f"{'peak_mb':>8}  {'p50_ms':>8}  {'p95_ms':>8}  {'max_ms':>8}  "
-            f"{'timeouts':>8}  {'queries':>8}"
+            f"{'fwd_p50':>8}  {'timeouts':>8}  {'queries':>8}"
         ),
     ]
     for row in rows:
@@ -462,8 +491,8 @@ def format_report(rows: list[dict], info: dict, p95_limit_ms: float) -> str:
         lines.append(
             f"{row['domains']:>8}  {row['cold_s']:8.3f}  {row['reload_s']:8.3f}  "
             f"{row['rss_mb']:8.1f}  {row['peak_mb']:8.1f}  {row['p50_ms']:8.2f}  "
-            f"{row['p95_ms']:8.2f}  {row['max_ms']:8.2f}  {row['timeouts']:8d}  "
-            f"{row['queries']:8d}"
+            f"{row['p95_ms']:8.2f}  {row['max_ms']:8.2f}  {row['forward_p50_ms']:8.2f}  "
+            f"{row['timeouts']:8d}  {row['queries']:8d}"
         )
     lines.append("")
     best = choose_max(

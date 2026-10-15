@@ -14,7 +14,8 @@ Schema::
       "queries": 0,
       "blocked": 0,
       "blocked_domains": {"doubleclick.net": 2},
-      "top_blocked": [{"domain": "doubleclick.net", "count": 2}]
+      "top_blocked": [{"domain": "doubleclick.net", "count": 2}],
+      "upstream_errors": {"timeout": 0, "servfail": 0, "refused": 0, "socket": 0, "truncation": 0}
     }
 
 ``heartbeat.json`` at the repo root is overwritten each hour::
@@ -26,9 +27,32 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
+from pathlib import Path
+
+from piadblock.forward import UPSTREAM_REASONS
 
 
-def daily_stats_document(day: str, queries: int, blocked: int, domains: dict[str, int]) -> dict:
+def reason_counts(raw) -> dict[str, int]:
+    """Five upstream reasons, in a stable order, missing keys as zero."""
+    found: dict[str, int] = {}
+    if isinstance(raw, dict):
+        for name, count in raw.items():
+            if name not in UPSTREAM_REASONS:
+                continue
+            try:
+                found[str(name)] = max(0, int(count))
+            except (TypeError, ValueError):
+                continue
+    return {reason: found.get(reason, 0) for reason in UPSTREAM_REASONS}
+
+
+def daily_stats_document(
+    day: str,
+    queries: int,
+    blocked: int,
+    domains: dict[str, int],
+    upstream_errors: dict | None = None,
+) -> dict:
     """Build one day's stats file. Every domain with a positive count is included."""
     cleaned: dict[str, int] = {}
     for name, count in domains.items():
@@ -43,13 +67,48 @@ def daily_stats_document(day: str, queries: int, blocked: int, domains: dict[str
         {"domain": name, "count": count}
         for name, count in sorted(ordered.items(), key=lambda item: (-item[1], item[0]))
     ]
-    return {
+    document = {
         "date": day,
         "queries": int(queries),
         "blocked": int(blocked),
         "blocked_domains": ordered,
         "top_blocked": top,
     }
+    if upstream_errors is not None:
+        document["upstream_errors"] = reason_counts(upstream_errors)
+    return document
+
+
+def document_for_day(snapshot: dict, day: str) -> dict:
+    """The git document for ``day``, taken from the live stats snapshot."""
+    days = snapshot.get("days") if isinstance(snapshot.get("days"), dict) else {}
+    bucket = days.get(day) if isinstance(days.get(day), dict) else {}
+    domains = bucket.get("domains") if isinstance(bucket.get("domains"), dict) else {}
+    return daily_stats_document(
+        day,
+        int(bucket.get("queries", 0) or 0),
+        int(bucket.get("blocked", 0) or 0),
+        {str(name): int(count) for name, count in domains.items()},
+        reason_counts(bucket.get("upstream_errors")),
+    )
+
+
+def write_daily_files(snapshot: dict, root: Path) -> list[str]:
+    """Write each UTC day from ``snapshot`` into ``root/stats``. Return paths that changed."""
+    days = snapshot.get("days") if isinstance(snapshot.get("days"), dict) else {}
+    written: list[str] = []
+    for day in sorted(days):
+        if not isinstance(days[day], dict):
+            continue
+        relative = f"stats/{day}.json"
+        target = Path(root) / relative
+        text = dump_document(document_for_day(snapshot, day))
+        if target.is_file() and target.read_text(encoding="utf-8") == text:
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+        written.append(relative)
+    return written
 
 
 def heartbeat_document(when: datetime, uptime_seconds: int, version: str) -> dict:

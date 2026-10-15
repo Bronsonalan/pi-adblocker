@@ -14,7 +14,7 @@ from piadblock.config import ConfigError, load_config
 from piadblock.gitrepo import Repo, blocklist_changed_message, load_access
 from piadblock.log import setup_logging
 from piadblock.paths import OPT_ROOT, SERVICE_NAME
-from piadblock.report import daily_stats_document, dump_document, heartbeat_document
+from piadblock.report import dump_document, heartbeat_document, write_daily_files
 from piadblock.server import DnsServer
 from piadblock.updater import update_blocklists
 
@@ -141,22 +141,32 @@ def _pull() -> int:
     return 0
 
 
+def _read_stats_snapshot(config) -> dict:
+    path = Path(config.stats_file) if config.stats_file else None
+    if path is None or not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
 def _heartbeat(config) -> int:
     try:
         from datetime import datetime, timezone
 
-        uptime = 0
-        path = Path(config.stats_file) if config.stats_file else None
-        if path is not None and path.is_file():
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-                uptime = int(data.get("uptime_seconds", 0))
-            except (OSError, json.JSONDecodeError, TypeError, ValueError):
-                uptime = 0
+        data = _read_stats_snapshot(config)
+        try:
+            uptime = int(data.get("uptime_seconds", 0))
+        except (TypeError, ValueError):
+            uptime = 0
         document = heartbeat_document(datetime.now(timezone.utc), uptime, __version__)
-        target = Path(OPT_ROOT) / "heartbeat.json"
-        target.write_text(dump_document(document), encoding="utf-8")
-        warning = Repo(OPT_ROOT, load_access()).publish(["heartbeat.json"], f"heartbeat: {document['timestamp']}")
+        repo = Repo(OPT_ROOT, load_access())
+        with repo.lock():
+            target = Path(repo.root) / "heartbeat.json"
+            target.write_text(dump_document(document), encoding="utf-8")
+            warning = repo.publish_holding_lock(["heartbeat.json"], f"heartbeat: {document['timestamp']}")
         _warn(warning)
         if warning:
             print("heartbeat: not pushed", flush=True)
@@ -167,46 +177,37 @@ def _heartbeat(config) -> int:
     return 0
 
 
+def sync_daily_stats(snapshot: dict, repo: Repo) -> tuple[list[str], str]:
+    """Write the live UTC-day counters into the checkout and push them.
+
+    The file write and the push share ``repo``'s lock with ``pull``, so a
+    minutely ``git checkout -- .`` cannot revert the day's file between the
+    write and the commit.
+    """
+    days = snapshot.get("days") if isinstance(snapshot.get("days"), dict) else {}
+    if not days:
+        return [], ""
+    with repo.lock():
+        written = write_daily_files(snapshot, Path(repo.root))
+        if not written:
+            return [], ""
+        labels = [path.removeprefix("stats/").removesuffix(".json") for path in written]
+        warning = repo.publish_holding_lock(written, "stats: " + ", ".join(labels))
+    return written, warning
+
+
 def _daily(config) -> int:
     try:
-        path = Path(config.stats_file) if config.stats_file else None
-        days: dict = {}
-        if path is not None and path.is_file():
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-                if isinstance(data.get("days"), dict):
-                    days = data["days"]
-            except (OSError, json.JSONDecodeError):
-                days = {}
+        snapshot = _read_stats_snapshot(config)
+        days = snapshot.get("days") if isinstance(snapshot.get("days"), dict) else {}
         if not days:
             print("daily: no per-domain counts saved yet", flush=True)
             return 0
-        written: list[str] = []
-        labels: list[str] = []
-        for day in sorted(days):
-            bucket = days[day]
-            if not isinstance(bucket, dict):
-                continue
-            domains = bucket.get("domains") if isinstance(bucket.get("domains"), dict) else {}
-            document = daily_stats_document(
-                day,
-                int(bucket.get("queries", 0)),
-                int(bucket.get("blocked", 0)),
-                {str(name): int(count) for name, count in domains.items()},
-            )
-            relative = f"stats/{day}.json"
-            target = Path(OPT_ROOT) / relative
-            text = dump_document(document)
-            if target.is_file() and target.read_text(encoding="utf-8") == text:
-                continue
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(text, encoding="utf-8")
-            written.append(relative)
-            labels.append(day)
-        if not written:
+        repo = Repo(OPT_ROOT, load_access())
+        written, warning = sync_daily_stats(snapshot, repo)
+        if not written and not warning:
             print("daily: stats unchanged", flush=True)
             return 0
-        warning = Repo(OPT_ROOT, load_access()).publish(written, "stats: " + ", ".join(labels))
         _warn(warning)
         if warning:
             print("daily: not pushed", flush=True)
@@ -259,6 +260,15 @@ def _stats(config) -> int:
     print(f"cached:    {data.get('cached', 0)}")
     print(f"forwarded: {data.get('forwarded', 0)}")
     print(f"errors:    {data.get('errors', 0)}")
+    reasons = data.get("upstream_errors") if isinstance(data.get("upstream_errors"), dict) else {}
+    if reasons:
+        print(
+            "upstream:  "
+            + " ".join(f"{name}={int(reasons.get(name, 0) or 0)}" for name in ("timeout", "servfail", "refused", "socket", "truncation"))
+        )
+    today = data.get("today") if isinstance(data.get("today"), dict) else {}
+    if today:
+        print(f"today:     {today.get('date', '')} queries={today.get('queries', 0)} blocked={today.get('blocked', 0)}")
     print(f"uptime:    {data.get('uptime_seconds', 0)}s")
     print(f"file:      {path}")
     return 0

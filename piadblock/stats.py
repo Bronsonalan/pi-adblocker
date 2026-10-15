@@ -16,6 +16,7 @@ from pathlib import Path
 
 from piadblock.dns import type_name
 from piadblock.files import atomic_write
+from piadblock.forward import UPSTREAM_REASONS
 
 
 def utc_day(now: float | None = None) -> str:
@@ -37,6 +38,7 @@ class Stats:
             "errors": 0,
         }
         self._recent: deque[dict] = deque(maxlen=recent_limit)
+        self._reasons = {reason: 0 for reason in UPSTREAM_REASONS}
         self._days: dict[str, dict] = {}
         self._load_days()
 
@@ -48,6 +50,15 @@ class Stats:
                 bucket["queries"] += amount
             elif name == "blocked":
                 bucket["blocked"] += amount
+
+    def note_upstream(self, reason: str) -> None:
+        """Count one upstream attempt. A later server can still answer the query."""
+        if reason not in UPSTREAM_REASONS:
+            return
+        with self._lock:
+            self._reasons[reason] = self._reasons.get(reason, 0) + 1
+            reasons = self._bucket_locked()["upstream_errors"]
+            reasons[reason] = int(reasons.get(reason, 0)) + 1
 
     def note_blocked(self, name: str, qtype: int, client: str) -> None:
         domain = (name or "").lower().rstrip(".")
@@ -73,13 +84,17 @@ class Stats:
                     "queries": int(bucket["queries"]),
                     "blocked": int(bucket["blocked"]),
                     "domains": dict(bucket["domains"]),
+                    "upstream_errors": _reason_map(bucket.get("upstream_errors")),
                 }
                 for day, bucket in self._days.items()
             }
+            reasons = _reason_map(self._reasons)
         data["started_at"] = self.started_at
         data["uptime_seconds"] = max(0, int(time.time() - self.started_at))
         data["recent_blocked"] = recent
+        data["upstream_errors"] = reasons
         data["days"] = days
+        data["today"] = _today_document(days)
         queries = data["queries"]
         data["blocked_percent"] = round(100.0 * data["blocked"] / queries, 1) if queries else 0.0
         return data
@@ -97,8 +112,14 @@ class Stats:
         day = utc_day()
         bucket = self._days.get(day)
         if bucket is None:
-            bucket = {"queries": 0, "blocked": 0, "domains": {}}
+            bucket = {
+                "queries": 0,
+                "blocked": 0,
+                "domains": {},
+                "upstream_errors": _reason_map({}),
+            }
             self._days[day] = bucket
+        bucket.setdefault("upstream_errors", _reason_map({}))
         return bucket
 
     def _load_days(self) -> None:
@@ -129,5 +150,43 @@ class Stats:
                 blocked = int(bucket.get("blocked", 0))
             except (TypeError, ValueError):
                 continue
-            loaded[day] = {"queries": queries, "blocked": blocked, "domains": domains}
+            loaded[day] = {
+                "queries": queries,
+                "blocked": blocked,
+                "domains": domains,
+                "upstream_errors": _reason_map(bucket.get("upstream_errors")),
+            }
         self._days = loaded
+
+
+def _reason_map(raw) -> dict[str, int]:
+    found: dict[str, int] = {}
+    if isinstance(raw, dict):
+        for name, count in raw.items():
+            if name not in UPSTREAM_REASONS:
+                continue
+            try:
+                found[str(name)] = max(0, int(count))
+            except (TypeError, ValueError):
+                continue
+    return {reason: found.get(reason, 0) for reason in UPSTREAM_REASONS}
+
+
+def _today_document(days: dict) -> dict:
+    from piadblock.report import daily_stats_document
+
+    day = utc_day()
+    bucket = days.get(day) or {
+        "queries": 0,
+        "blocked": 0,
+        "domains": {},
+        "upstream_errors": _reason_map({}),
+    }
+    domains = bucket.get("domains") if isinstance(bucket.get("domains"), dict) else {}
+    return daily_stats_document(
+        day,
+        int(bucket.get("queries", 0)),
+        int(bucket.get("blocked", 0)),
+        {str(name): int(count) for name, count in domains.items()},
+        _reason_map(bucket.get("upstream_errors")),
+    )

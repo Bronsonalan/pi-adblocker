@@ -14,9 +14,12 @@ private-address reverse lookups are never blocked.
 
 from __future__ import annotations
 
+import gc
 import ipaddress
 import re
 import socket
+import sys
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -212,7 +215,11 @@ def parse_domain_list_report(
     """
     domains: set[str] = set()
     skipped = 0
-    for raw_line in text.splitlines():
+    # Scanning the whole buffer in one splitlines() call holds the GIL for
+    # the entire file. Walking newlines and sleeping yields so a DNS worker
+    # can answer during the parse. That stall is a flat tens of milliseconds
+    # per query and does not grow with the list size.
+    for raw_line in _iter_lines(text):
         line = raw_line.strip()
         if not line or line.startswith(("#", "!", "[")):
             continue
@@ -237,6 +244,25 @@ def parse_domain_list_report(
         if recognized == 0:
             skipped += 1
     return domains, skipped
+
+
+def _iter_lines(text: str):
+    """Yield lines and release the GIL every few hundred of them."""
+    start = 0
+    count = 0
+    length = len(text)
+    while start < length:
+        end = text.find("\n", start)
+        if end == -1:
+            end = length
+        line = text[start:end]
+        if line.endswith("\r"):
+            line = line[:-1]
+        yield line
+        start = end + 1
+        count += 1
+        if count % 256 == 0:
+            time.sleep(0)
 
 
 def _names_on_line(line: str) -> list[str]:
@@ -266,7 +292,15 @@ def _read_stable(path: Path) -> tuple[str, str]:
     except OSError as exc:
         return "", f"could not read {path} ({exc})"
     try:
-        text = path.read_text(encoding="utf-8", errors="replace")
+        chunks: list[str] = []
+        with path.open("r", encoding="utf-8", errors="replace") as handle:
+            while True:
+                piece = handle.read(65536)
+                if not piece:
+                    break
+                chunks.append(piece)
+                time.sleep(0)
+        text = "".join(chunks)
     except OSError as exc:
         return "", f"could not read {path} ({exc})"
     try:
@@ -407,29 +441,45 @@ class Matcher:
 
         The caller keeps the previous matcher when ``error`` is set, or when
         the new matcher would block nothing and a previous list was in use.
+
+        Garbage collection and the default 5 ms thread switch are relaxed
+        for the duration of the read. A collection or a long stretch without
+        a switch stalls every in-flight DNS query by the same amount, which
+        shows up as a flat latency that does not depend on how many names
+        are in the file.
         """
-        blocked, skip_blocked, block_error = _load_optional(
-            merged_path,
-            skip_never_block=True,
-            reject_public_suffix=True,
-        )
-        allowed, skip_allowed, allow_error = _load_optional(
-            allow_path,
-            allow_single_label=True,
-        )
-        if not deny_path:
-            denied, skip_denied, deny_error = set(), 0, "denylist path is empty"
-        else:
-            denied, skip_denied, deny_error = load_domain_file(
-                deny_path,
-                allow_single_label=True,
+        previous_interval = sys.getswitchinterval()
+        sys.setswitchinterval(0.001)
+        collect = gc.isenabled()
+        if collect:
+            gc.disable()
+        try:
+            blocked, skip_blocked, block_error = _load_optional(
+                merged_path,
+                skip_never_block=True,
                 reject_public_suffix=True,
             )
-        skipped = skip_blocked + skip_allowed + skip_denied
-        error = deny_error or block_error or allow_error
-        if error:
-            return LoadReport(cls(set(), set(), set()), skipped, error)
-        return LoadReport(cls(blocked, allowed, denied), skipped, "")
+            allowed, skip_allowed, allow_error = _load_optional(
+                allow_path,
+                allow_single_label=True,
+            )
+            if not deny_path:
+                denied, skip_denied, deny_error = set(), 0, "denylist path is empty"
+            else:
+                denied, skip_denied, deny_error = load_domain_file(
+                    deny_path,
+                    allow_single_label=True,
+                    reject_public_suffix=True,
+                )
+            skipped = skip_blocked + skip_allowed + skip_denied
+            error = deny_error or block_error or allow_error
+            if error:
+                return LoadReport(cls(set(), set(), set()), skipped, error)
+            return LoadReport(cls(blocked, allowed, denied), skipped, "")
+        finally:
+            if collect:
+                gc.enable()
+            sys.setswitchinterval(previous_interval)
 
     @classmethod
     def load(cls, merged_path: str, allow_path: str, deny_path: str) -> Matcher:

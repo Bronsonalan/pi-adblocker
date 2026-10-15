@@ -1,6 +1,6 @@
 # Pi Adblock
 
-Pi Adblock is a small DNS server for a Raspberry Pi. It answers names in `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
+Pi Adblock is a small DNS server for a Raspberry Pi. It answers names in `blocklist.txt` with `0.0.0.0` (and `::` for IPv6) and forwards every other name to `1.1.1.1`, then `1.0.0.1`, then `9.9.9.9`. Clients that use the Pi for DNS stop reaching those ad domains, without any software on the phone or laptop.
 
 `blocklist.txt` is the block list. A listed name also blocks every subdomain under it, so `doubleclick.net` and `ads.doubleclick.net` are both blocked. A built-in safety list keeps Google, Apple, GitHub, Cloudflare, Microsoft, and the services those names depend on reachable even when a broad parent is listed. `mask.icloud.com` and `mask-h2.icloud.com` (iCloud Private Relay) stay blocked. A bare TLD or other public suffix in the file is ignored. Names under `.local`, `.lan`, and `.home.arpa`, plus reverse lookups for private addresses, are forwarded.
 
@@ -24,7 +24,15 @@ The same transcript is what you get from the step-by-step install below. Use tha
 
 ## Update an existing Pi
 
-Updating is the same installer again. It keeps `/etc/piadblock/config.json`, makes `/opt/piadblock` a git checkout if it is not one yet, and starts three timers: pull every minute, heartbeat every hour, and daily stats once a day. The DNS service still starts on boot.
+Updating is the same installer again. It keeps a custom `upstream` list in `/etc/piadblock/config.json`, makes `/opt/piadblock` a git checkout if it is not one yet, and starts three timers: pull every minute, heartbeat every hour, and a stats push every five minutes. The DNS service still starts on boot.
+
+The old default of only `1.1.1.1` with a 2 second timeout is rewritten on that run to `1.1.1.1`, `1.0.0.1`, and `9.9.9.9`, with a 1 second timeout per try. The transcript then contains:
+
+```text
+config: upstream is 1.1.1.1 1.0.0.1 9.9.9.9, timeout 1.0s per try
+```
+
+A list you chose yourself, such as `8.8.8.8`, stays as written. `systemctl is-active piadblock` prints `active` after the installer finishes.
 
 ### 1. Allow the existing deploy key to push
 
@@ -189,13 +197,13 @@ sudo python3 /tmp/pi-adblocker-main/install.py
 This needs root so it can bind port 53 and install a systemd unit. It:
 
 - copies the code to `/opt/piadblock`
-- writes `/etc/piadblock/config.json` (upstream `1.1.1.1`)
+- writes `/etc/piadblock/config.json` (upstreams `1.1.1.1`, `1.0.0.1`, `9.9.9.9`) when that file is not already there
 - writes the allowlist, and uses `/opt/piadblock/blocklist.txt` from the git checkout as the block list
 - does **not** download a blocklist
 - reuses the existing deploy key (or writes one if none exists) and tracks `git@github.com:Bronsonalan/pi-adblocker.git`
 - frees port 53 if `systemd-resolved` or `dnsmasq` has it (see below)
-- points the Pi's own resolver at `1.1.1.1` when `/etc/resolv.conf` currently points at localhost or the router, so the Pi does not loop once the LAN uses the Pi for DNS
-- enables and starts `piadblock.service`, plus a minutely pull timer, an hourly heartbeat timer, and a daily stats timer (no blocklist-download timer)
+- points the Pi's own resolver at those upstreams when `/etc/resolv.conf` currently points at localhost or the router, and refreshes a file this installer already wrote. The file uses `options timeout:1 attempts:1 rotate edns0`, so a nameserver that does not answer costs about a second. glibc's default is 5 seconds, tried twice, which is about 10 seconds. A public resolver you wrote yourself is left as-is, so the Pi does not loop once the LAN uses the Pi for DNS
+- enables and starts `piadblock.service`, plus a minutely pull timer, an hourly heartbeat timer, and a stats timer every five minutes (no blocklist-download timer)
 
 On a typical Raspberry Pi OS image, where `systemd-resolved` is holding port 53 and `/etc/resolv.conf` points at `127.0.0.53` or the router, expected output looks like this (`192.168.1.50` will be your Pi's address, and the `example.com` address will be whatever `1.1.1.1` returns that day):
 
@@ -210,7 +218,7 @@ blocklists: none configured, download skipped
 port 53: systemd-resolved is using port 53; disabling DNSStubListener
 port 53: free
 resolver: backed up /etc/resolv.conf
-resolver: pointed this Pi at 1.1.1.1
+resolver: pointed this Pi at 1.1.1.1 1.0.0.1 9.9.9.9 (timeout 1s, 1 attempt)
 git: already installed (/usr/bin/git)
 git user: techexplain (git pull and push run as this user; the DNS service stays root)
 deploy key: reusing /home/techexplain/.ssh/pi_adblocker_deploy (from ~/.ssh/config Host github.com)
@@ -244,7 +252,8 @@ Lines you might see instead, depending on what was already installed:
 
 - `port 53: free` as the only port line, when nothing was listening.
 - `port 53: stopping and disabling dnsmasq` when `dnsmasq` had port 53. Uninstall does not start `dnsmasq` again.
-- `resolver: /etc/resolv.conf already uses a public DNS server; leaving it` when the Pi already uses something like `1.1.1.1` or `8.8.8.8`.
+- `resolver: /etc/resolv.conf already uses a public DNS server; leaving it` when the Pi already uses something like `1.1.1.1` or `8.8.8.8` that this installer did not write.
+- `resolver: /etc/resolv.conf already points at the upstream list` when a previous install wrote that file and it already matches.
 - `resolver: pinned upstream DNS in /etc/dhcpcd.conf` when `dhcpcd` is installed.
 - `resolver: told NetworkManager not to overwrite /etc/resolv.conf` when NetworkManager is running.
 - `warning: example.com forward failed ...` when the Pi cannot reach `1.1.1.1`. Blocking still works; fix the upstream later in the config.
@@ -426,7 +435,28 @@ BLOCKED 192.168.1.20 doubleclick.net AAAA
 OK 192.168.1.20 example.com A
 ```
 
-`BLOCKED` is a denylist hit. `OK` was forwarded to `1.1.1.1` or served from the cache. `FAIL` means the upstream did not answer. The first field is the client's address, then the domain, then the query type.
+`BLOCKED` is a denylist hit. `OK` was forwarded to an upstream or served from the cache. `FAIL` means every upstream failed. The first field is the client's address, then the domain, then the query type.
+
+Each failed attempt is also a Python log line, one reason per try: `timeout`, `servfail`, `refused`, `socket`, or `truncation` (a UDP response with the TC bit, retried over TCP). A later upstream can still answer, so a timeout on `1.1.1.1` is logged and counted even when `1.0.0.1` returns the address.
+
+```bash
+journalctl -u piadblock -n 200 --no-pager | grep 'upstream '
+```
+
+Expected lines look like:
+
+```text
+upstream timeout 1.1.1.1 for example.com A: timed out
+upstream servfail 1.0.0.1 for ads.example A: SERVFAIL
+upstream truncation 1.1.1.1 for example.com A: TC bit set; retrying over TCP
+upstream failed for example.com A: 1.1.1.1 timeout: timed out; 1.0.0.1 socket: ...
+```
+
+`upstream failed` is the line where the client was given SERVFAIL or REFUSED. The per-reason counters are also on `/api/stats` under `upstream_errors` (since the process started) and under `today.upstream_errors` (the UTC day). The same totals are in the minute summary:
+
+```text
+stats queries=12 blocked=4 cached=2 forwarded=6 errors=1 timeout=2 servfail=1 refused=0 socket=0 truncation=0
+```
 
 Follow new lines as you browse:
 
@@ -573,13 +603,22 @@ The page has no password. It is meant for the LAN. To listen only on the Pi, set
 The file is `/etc/piadblock/config.json`. Defaults:
 
 - listen on `0.0.0.0` port `53` (UDP and TCP)
-- forward to `1.1.1.1` port `53`
+- forward to `1.1.1.1`, then `1.0.0.1`, then `9.9.9.9`, each with a 1 second timeout
 - answer blocked A queries with `0.0.0.0` and AAAA queries with `::`
 - cache up to 2048 replies
 - `"blocklists": []` and `"auto_update": false` so nothing is downloaded and no timer runs
 - status page on port `8080`
 
-Change the upstream, then restart:
+The server tries the upstream list in order. A timeout, socket error, SERVFAIL, or REFUSED moves to the next address. A truncated UDP answer is retried over TCP on that same address before the next one is tried. One slow server costs a single `upstream_timeout` (default 1 second) and the client still gets the next server's answer. The block list is loaded before the port opens, so the first query after listen already has it. A blocked name is answered on the Pi. A forwarded name, such as `google.com`, tries the next upstream when the first one does not answer.
+
+```bash
+dig @127.0.0.1 doubleclick.net
+dig @127.0.0.1 google.com
+```
+
+`doubleclick.net` is `0.0.0.0`. `google.com` is an address from upstream. Both return within a couple of seconds of the service becoming active.
+
+Change the list, then restart:
 
 ```bash
 sudo systemctl restart piadblock
@@ -587,10 +626,9 @@ sudo systemctl restart piadblock
 
 Expected output: no text. `systemctl is-active piadblock` prints `active`.
 
-A second upstream is used only when the first one fails. Example:
-
 ```json
-"upstream": ["1.1.1.1", "1.0.0.1"]
+"upstream": ["1.1.1.1", "1.0.0.1", "9.9.9.9"],
+"upstream_timeout": 1.0
 ```
 
 ### Block list and allowlist
@@ -677,7 +715,7 @@ uptime:    120s
 file:      /var/lib/piadblock/stats.json
 ```
 
-That file is the server's state. Once a day, `piadblock-stats` copies the whole UTC day into the repo and pushes it. The path is `stats/YYYY-MM-DD.json` (on the Pi, `/opt/piadblock/stats/YYYY-MM-DD.json`). `blocked_domains` is every blocked name that day and its count, reloaded from the state file when the process starts, so a restart does not zero the day. `top_blocked` is that same map sorted by count, then by name. The 40-line recent sample on the status page is not written here.
+That file is the server's state. The top-level `queries` and `blocked` fields are the counts since this process started. `today` is the current UTC day, and it is the document `piadblock-stats` writes. The timer runs every five minutes (`OnCalendar=*:0/5`), reads this file, and pushes `stats/YYYY-MM-DD.json` (on the Pi, `/opt/piadblock/stats/YYYY-MM-DD.json`). The write and the push take the same lock as `git pull`, so a pull cannot revert the file before it is committed. `blocked_domains` is every blocked name that day and its count, reloaded from the state file when the process starts, so a restart does not zero the day. `top_blocked` is that same map sorted by count, then by name. `upstream_errors` counts timeout, servfail, refused, socket, and truncation for that UTC day. The 40-line recent sample on the status page is not written here.
 
 ```json
 {
@@ -685,9 +723,21 @@ That file is the server's state. Once a day, `piadblock-stats` copies the whole 
   "queries": 0,
   "blocked": 0,
   "blocked_domains": {"doubleclick.net": 2},
-  "top_blocked": [{"domain": "doubleclick.net", "count": 2}]
+  "top_blocked": [{"domain": "doubleclick.net", "count": 2}],
+  "upstream_errors": {"timeout": 0, "servfail": 0, "refused": 0, "socket": 0, "truncation": 0}
 }
 ```
+
+Compare the live UTC day with the file that was just pushed:
+
+```bash
+curl -s http://127.0.0.1:8080/api/stats
+sudo systemctl start piadblock-stats.service
+python3 -c 'import json; print(json.load(open("/var/lib/piadblock/stats.json"))["today"])'
+cat /opt/piadblock/stats/$(date -u +%F).json
+```
+
+`today` in the API, the `today` object in `/var/lib/piadblock/stats.json`, and `stats/YYYY-MM-DD.json` are the same counts. The cards labeled "since start" keep growing across UTC midnight and are a different total.
 
 `heartbeat.json` at the repo root is overwritten every hour and pushed:
 
@@ -695,10 +745,27 @@ That file is the server's state. Once a day, `piadblock-stats` copies the whole 
 {"timestamp": "YYYY-MM-DDTHH:MM:SSZ", "uptime_seconds": 0, "version": "0.1.0"}
 ```
 
-The Pi commits only `heartbeat.json` and `stats/`. `blocklist.txt` is edited upstream. A rejected push is logged and ignored:
+The Pi commits only `heartbeat.json` and `stats/`. `blocklist.txt` is edited on GitHub. Pull and push share one lock and retry a failed fetch or push (a dropped SSH connection, a leftover `.git/index.lock`, or a lookup of `github.com` that got no answer) with a short backoff. The journal line includes git's exit code and the full stderr.
+
+A pull that starts on the minute and fails about 10 seconds later, while a successful pull finishes in 2–3 seconds, is the C library resolver waiting out its default. That default is a 5 second timeout and 2 attempts. SSH's `ConnectTimeout` does not cover the name lookup, and OpenSSH leaves it unlimited until a command sets it. `github.com` is resolved with `/etc/resolv.conf`. When that file points at this Pi, or at one upstream that is not answering, the lookup sits for those 10 seconds and git reports that it could not read the remote. The git process sets `RES_OPTIONS=timeout:1 attempts:1`. SSH is started with `ConnectTimeout=5` and `ConnectionAttempts=1`. When `~/.ssh/config` already has a `Host github.com` key, that file still chooses the key.
+
+```bash
+cat /etc/resolv.conf
+```
+
+A file written by the installer lists the upstream nameservers and `options timeout:1 attempts:1 rotate edns0`.
 
 ```text
-warning: git push failed (...). Blocking is unchanged.
+warning: git pull failed (exit 128):
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Blocking is unchanged.
+```
+
+```bash
+journalctl -u piadblock-pull -n 50 --no-pager
 ```
 
 Check one name against the files on disk, without sending a query:
@@ -781,7 +848,7 @@ On the Pi, after this version is installed:
 python3 /opt/piadblock/tools/benchmark.py
 ```
 
-Expected output has this shape. The three `measuring` lines are progress. The table follows. `cold_s` is how long it takes to build the matcher before the server listens. `peak_mb` is `VmHWM` and `rss_mb` is `VmRSS` after the reload. The recommendation is the largest size whose reload p95 stayed under 50 ms, with no timeouts, and whose peak RSS stayed under 25% of RAM (MemTotal on a Pi, or 512 MB of an assumed 2 GB Pi 4 on any other machine).
+Expected output has this shape. The three `measuring` lines are progress. The table follows. `cold_s` is how long it takes to build the matcher before the server listens. `peak_mb` is `VmHWM` and `rss_mb` is `VmRSS` after the reload. `p50_ms` is a blocked name queried while that reload is parsing. `fwd_p50` is forwarded queries against the local stub while the server is idle, taken before the reload, and should sit near that stub's round trip (well under 10 ms). The recommendation is the largest size whose reload p95 stayed under 50 ms, with no timeouts, and whose peak RSS stayed under 25% of RAM (MemTotal on a Pi, or 512 MB of an assumed 2 GB Pi 4 on any other machine).
 
 ```text
 measuring 100000 domains...
@@ -797,9 +864,11 @@ upstream: local stub on 127.0.0.1 (latency is the blocker, not 1.1.1.1)
 port 53 is not used; the live service is not modified
 cold_s is the time to build the matcher before the server listens
 peak_mb is VmHWM; rss_mb is VmRSS after reload
+p50_ms is blocked-name latency while that reload is parsing
+fwd_p50 is idle forwarded latency against the stub, before the reload
 
-    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms  timeouts   queries
-  100000   <cold>   <reload>   <rss>    <peak>    <p50>    <p95>    <max>         0    <count>
+    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms   fwd_p50  timeouts   queries
+  100000   <cold>   <reload>   <rss>    <peak>    <p50>    <p95>    <max>    <fwd>         0    <count>
   250000   ...
   500000   ...
 
@@ -827,18 +896,20 @@ upstream: local stub on 127.0.0.1 (latency is the blocker, not 1.1.1.1)
 port 53 is not used; the live service is not modified
 cold_s is the time to build the matcher before the server listens
 peak_mb is VmHWM; rss_mb is VmRSS after reload
+p50_ms is blocked-name latency while that reload is parsing
+fwd_p50 is idle forwarded latency against the stub, before the reload
 
-    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms  timeouts   queries
-  100000     0.363     0.379      47.3      69.4     16.18     30.22     32.02         0        27
-  250000     0.914     0.962      67.9     126.4     15.89     36.94     41.75         0        63
-  500000     1.915     2.078     107.6     228.2      0.10     32.36     65.98         0       186
+    size    cold_s  reload_s    rss_mb   peak_mb    p50_ms    p95_ms    max_ms   fwd_p50  timeouts   queries
+  100000     0.404     0.438      42.4      58.8      3.19      4.51      5.80      0.20         0       154
+  250000     1.056     1.112      58.9      99.3      3.28      4.41     12.22      0.14         0       412
+  500000     2.069     2.245      85.3     170.0      3.26      4.46     23.62      0.18         0       836
 
 recommended max list size: 500000 domains
-reason: largest measured size with reload p95 32.36 ms under 50 ms, zero timeouts, and peak RSS 228.2 MB under 512 MB
+reason: largest measured size with reload p95 4.46 ms under 50 ms, zero timeouts, and peak RSS 170.0 MB under 512 MB
 note: these numbers are from this machine, not from a Raspberry Pi. Latency will be different on a Pi. Run the same command there.
 ```
 
-On that VM, 500000 names was the largest size that met both limits. Peak RSS was 228 MB. Run the command above on the Pi before treating 500000 as the list size to ship.
+On that VM, idle forwarded p50 against the stub was 0.14–0.20 ms. Reload p50 stayed near 3.3 ms at each size. Peak RSS at 500000 names was 170 MB. Run the command above on the Pi before treating 500000 as the list size to ship.
 
 ## Tests
 
@@ -854,7 +925,7 @@ Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 86 tests in 45.693s
+Ran 105 tests in 58.056s
 
 OK
 ```
@@ -866,6 +937,6 @@ The elapsed time varies. `OK` is the result that matters.
 1. A client sends a DNS query to the Pi on UDP port 53 (TCP is accepted too, for large answers).
 2. Local names and private-address reverse lookups are forwarded. A built-in safety name (Google, Apple, GitHub, Cloudflare, Microsoft, and the related parents above) is forwarded too, except `mask.icloud.com` and `mask-h2.icloud.com`.
 3. If the name, or a parent of the name, is on `blocklist.txt` and not covered by a more specific allow entry, the Pi answers immediately: A is `0.0.0.0`, AAAA is `::`, other types are an empty NOERROR. The line in the journal starts with `BLOCKED`.
-4. Otherwise the Pi returns a cached answer or forwards the query to `1.1.1.1`, and the journal line starts with `OK`. A reload builds the next list off to the side, so this step keeps running while a large file is loading. A failed reload keeps the list that was already answering.
+4. Otherwise the Pi returns a cached answer or forwards the query to `1.1.1.1`, then `1.0.0.1`, then `9.9.9.9`. The journal line starts with `OK` when one of them answers. A reload builds the next list off to the side and yields while it parses, so this step keeps running while a large file is loading. A failed reload keeps the list that was already answering.
 
 Other query types for a blocked name are not forwarded, so a client cannot skip the block by asking for a TXT or HTTPS record.
