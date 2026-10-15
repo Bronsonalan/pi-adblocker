@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 4407,
-  "blocked": 343,
+  "queries": 4437,
+  "blocked": 349,
   "blocked_domains": {
     "ad.doubleclick.net": 4,
     "ads-api.x.com": 2,
@@ -25,7 +25,7 @@
     "cdn.branch.io": 2,
     "cdn.cookielaw.org": 2,
     "cf.iadsdk.apple.com": 2,
-    "doubleclick.net": 8,
+    "doubleclick.net": 10,
     "firebase-settings.crashlytics.com": 2,
     "firebaselogging-pa.googleapis.com": 4,
     "firebaselogging.googleapis.com": 2,
@@ -34,7 +34,8 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "http-intake.logs.datadoghq.com": 12,
     "iadsdk.apple.com": 2,
-    "mask.icloud.com": 176,
+    "mask.icloud.com": 179,
+    "mcs16-normal-us-ttp.capcutapi.us": 1,
     "metrics.icloud.com": 16,
     "pagestates-tracking.crazyegg.com": 2,
     "pixel-static.spotify.com": 2,
@@ -55,7 +56,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 176
+      "count": 179
     },
     {
       "domain": "metrics.icloud.com",
@@ -75,7 +76,7 @@
     },
     {
       "domain": "doubleclick.net",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "api.branch.io",
@@ -242,12 +243,16 @@
       "count": 2
     },
     {
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 1
+    },
+    {
       "domain": "tr.snapchat.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 29,
+    "timeout": 30,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
