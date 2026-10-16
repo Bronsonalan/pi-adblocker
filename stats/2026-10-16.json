@@ -1,19 +1,29 @@
 {
   "date": "2026-10-16",
-  "queries": 1344,
-  "blocked": 132,
+  "queries": 1473,
+  "blocked": 137,
   "blocked_domains": {
     "app-analytics-v2.snapchat.com": 14,
-    "mask.icloud.com": 118
+    "app-measurement.com": 1,
+    "browser-intake-datadoghq.com": 2,
+    "mask.icloud.com": 120
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 118
+      "count": 120
     },
     {
       "domain": "app-analytics-v2.snapchat.com",
       "count": 14
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
