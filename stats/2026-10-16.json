@@ -1,7 +1,7 @@
 {
   "date": "2026-10-16",
-  "queries": 2511,
-  "blocked": 233,
+  "queries": 2551,
+  "blocked": 235,
   "blocked_domains": {
     "ads-api.x.com": 2,
     "app-analytics-v2.snapchat.com": 14,
@@ -9,14 +9,14 @@
     "browser-intake-datadoghq.com": 12,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 2,
-    "mask.icloud.com": 188,
+    "mask.icloud.com": 190,
     "roovza.launches.appsflyersdk.com": 4,
     "roovza.skadsdk.appsflyersdk.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 188
+      "count": 190
     },
     {
       "domain": "app-analytics-v2.snapchat.com",
