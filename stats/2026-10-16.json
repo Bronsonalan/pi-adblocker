@@ -1,15 +1,15 @@
 {
   "date": "2026-10-16",
-  "queries": 28,
-  "blocked": 5,
+  "queries": 29,
+  "blocked": 6,
   "blocked_domains": {
-    "app-analytics-v2.snapchat.com": 3,
+    "app-analytics-v2.snapchat.com": 4,
     "mask.icloud.com": 2
   },
   "top_blocked": [
     {
       "domain": "app-analytics-v2.snapchat.com",
-      "count": 3
+      "count": 4
     },
     {
       "domain": "mask.icloud.com",
