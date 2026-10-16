@@ -1,10 +1,10 @@
 {
   "date": "2026-10-16",
-  "queries": 2555,
-  "blocked": 235,
+  "queries": 2569,
+  "blocked": 236,
   "blocked_domains": {
     "ads-api.x.com": 2,
-    "app-analytics-v2.snapchat.com": 14,
+    "app-analytics-v2.snapchat.com": 15,
     "app-measurement.com": 7,
     "browser-intake-datadoghq.com": 12,
     "firebase-settings.crashlytics.com": 2,
@@ -20,7 +20,7 @@
     },
     {
       "domain": "app-analytics-v2.snapchat.com",
-      "count": 14
+      "count": 15
     },
     {
       "domain": "browser-intake-datadoghq.com",
