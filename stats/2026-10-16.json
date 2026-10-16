@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "queries": 2551,
+  "queries": 2555,
   "blocked": 235,
   "blocked_domains": {
     "ads-api.x.com": 2,
@@ -52,7 +52,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 2,
+    "timeout": 3,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
