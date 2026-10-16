@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "queries": 11546,
-  "blocked": 1876,
+  "queries": 11549,
+  "blocked": 1877,
   "blocked_domains": {
     "a.teads.tv": 6,
     "a21018620252.cdn.optimizely.com": 2,
@@ -36,7 +36,7 @@
     "api2.amplitude.com": 6,
     "api2.branch.io": 2,
     "api3.branch.io": 2,
-    "app-analytics-v2.snapchat.com": 8,
+    "app-analytics-v2.snapchat.com": 9,
     "app-measurement.com": 5,
     "as-sec.casalemedia.com": 2,
     "assets-jpcust.jwpsrv.com": 6,
@@ -434,15 +434,15 @@
       "count": 10
     },
     {
+      "domain": "app-analytics-v2.snapchat.com",
+      "count": 9
+    },
+    {
       "domain": "s0.2mdn.net",
       "count": 9
     },
     {
       "domain": "api.rlcdn.com",
-      "count": 8
-    },
-    {
-      "domain": "app-analytics-v2.snapchat.com",
       "count": 8
     },
     {
