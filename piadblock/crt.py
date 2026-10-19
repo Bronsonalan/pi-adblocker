@@ -196,6 +196,7 @@ def render_frame(
     clock: str = "",
     waiting: bool = False,
     blocklist_domains: int | None = None,
+    waiting_label: str = "WAITING FOR PIADBLOCK",
 ) -> str:
     """Return one full screen. Newest lookup is the first row under the header.
 
@@ -213,7 +214,7 @@ def render_frame(
         paint("=" * width, width, OK_STYLE),
     ]
     if waiting and len(rows) < height:
-        rows.append(paint("WAITING FOR PIADBLOCK", width, FAIL_STYLE))
+        rows.append(paint(waiting_label or "WAITING FOR PIADBLOCK", width, FAIL_STYLE))
     for item in lookups:
         if len(rows) >= height:
             break
@@ -274,16 +275,44 @@ def _configure_output(stream) -> None:
         return
 
 
-def serve_display(stream, fetch, stop: threading.Event, *, width: int, height: int, period: float = 0.2) -> None:
-    """Redraw ``stream`` until ``stop`` is set. Fetch failures show a waiting row."""
+def serve_display(
+    stream,
+    fetch,
+    stop: threading.Event,
+    *,
+    width: int,
+    height: int,
+    period: float = 0.2,
+    wait_period: float | None = None,
+    waiting_label: str = "WAITING FOR PIADBLOCK",
+) -> None:
+    """Redraw ``stream`` until ``stop`` is set. Fetch failures show a waiting row.
+
+    A failed fetch sleeps ``wait_period`` (or ``period``) and tries again.
+    The loop stays up, so a down server does not exit the process.
+    """
     stream.write("\x1b[?25l\x1b[2J")
     stream.flush()
     previous = None
+    retry = period if wait_period is None else wait_period
     try:
         while not stop.is_set():
-            payload = fetch()
+            payload = None
+            try:
+                payload = fetch()
+            except Exception:
+                payload = None
             if not isinstance(payload, dict):
-                frame = render_frame([], 0, 0, width=width, height=height, waiting=True)
+                frame = render_frame(
+                    [],
+                    0,
+                    0,
+                    width=width,
+                    height=height,
+                    waiting=True,
+                    waiting_label=waiting_label,
+                )
+                delay = retry
             else:
                 lookups = payload.get("lookups") if isinstance(payload.get("lookups"), list) else []
                 try:
@@ -303,19 +332,29 @@ def serve_display(stream, fetch, stop: threading.Event, *, width: int, height: i
                     width=width,
                     height=height,
                     blocklist_domains=blocklist_domains,
+                    waiting_label=waiting_label,
                 )
+                delay = period
             if frame != previous:
                 stream.write(frame)
                 stream.flush()
                 previous = frame
-            if stop.wait(period):
+            if stop.wait(delay):
                 break
     finally:
         stream.write("\x1b[?25h\x1b[2J\x1b[H")
         stream.flush()
 
 
-def run_display(tty_path: str, url: str) -> int:
+def run_display(
+    tty_path: str,
+    url: str,
+    *,
+    waiting_label: str = "WAITING FOR PIADBLOCK",
+    period: float = 0.2,
+    wait_period: float | None = None,
+    timeout: float = 0.4,
+) -> int:
     """Open ``tty_path``, load a large font when one exists, and draw until signal."""
     stop = threading.Event()
 
@@ -333,7 +372,16 @@ def run_display(tty_path: str, url: str) -> int:
         prepare_console(tty_path)
         _configure_output(stream)
         width, height = tty_size(stream)
-        serve_display(stream, lambda: fetch_crt(url), stop, width=width, height=height)
+        serve_display(
+            stream,
+            lambda: fetch_crt(url, timeout=timeout),
+            stop,
+            width=width,
+            height=height,
+            period=period,
+            wait_period=wait_period,
+            waiting_label=waiting_label,
+        )
     finally:
         stream.close()
     return 0
