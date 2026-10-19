@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import subprocess
 import tempfile
 import threading
 import time
@@ -25,7 +26,7 @@ from piadblock.crt import (
     serve_display,
     visible_text,
 )
-from piadblock.units import crt_service_unit
+from piadblock.units import console_restore_command, crt_service_unit
 
 
 def _lines(frame: str) -> list[str]:
@@ -297,16 +298,59 @@ class DisplayLoopTests(unittest.TestCase):
         self.assertIn("2:31:05 PM", shown)
 
 
+def _exec_stop_post(unit: str) -> str:
+    for line in unit.splitlines():
+        prefix = "ExecStopPost=-/bin/sh -c '"
+        if line.startswith(prefix) and line.endswith("'"):
+            return line[len(prefix) : -1]
+    raise AssertionError("unit has no ExecStopPost shell")
+
+
+def _run_restore(script: str, list_jobs: str) -> str:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        log = root / "calls"
+        systemctl = root / "systemctl"
+        systemctl.write_text(
+            "#!/bin/sh\n"
+            f"printf '%s\\n' \"$*\" >> {log}\n"
+            'if [ "$1" = "list-jobs" ]; then\n'
+            f"  printf '%s\\n' {list_jobs!r}\n"
+            "fi\n"
+            "exit 0\n",
+            encoding="utf-8",
+        )
+        systemctl.chmod(0o755)
+        env = os.environ.copy()
+        env["PATH"] = str(root) + os.pathsep + env.get("PATH", "")
+        subprocess.run(["/bin/sh", "-c", script], check=False, env=env, cwd=root)
+        return log.read_text(encoding="utf-8") if log.is_file() else ""
+
+
 class UnitTextTests(unittest.TestCase):
     def test_crt_unit_takes_tty1_and_returns_it(self):
         text = crt_service_unit("/usr/bin/python3", "/opt/piadblock")
         self.assertIn("ExecStart=/usr/bin/python3 -m piadblock crt --tty /dev/tty1", text)
         self.assertIn("TTYPath=/dev/tty1", text)
         self.assertIn("Conflicts=getty@tty1.service", text)
-        self.assertIn("ExecStopPost=-/bin/systemctl start getty@tty1.service", text)
+        self.assertIn("ExecStopPost=-/bin/sh -c '", text)
+        self.assertNotIn("ExecStopPost=-/bin/systemctl start getty@tty1.service", text)
         self.assertNotIn("PIADBLOCK_PREFIX", text)
         prefixed = crt_service_unit("/usr/bin/python3", "/opt/piadblock", prefix="/tmp/pi-root")
         self.assertIn("Environment=PIADBLOCK_PREFIX=/tmp/pi-root", prefixed)
+
+    def test_restart_leaves_getty_stopped_and_a_real_stop_starts_it(self):
+        script = _exec_stop_post(crt_service_unit("/usr/bin/python3", "/opt/piadblock"))
+        self.assertEqual(script, console_restore_command("piadblock-crt.service"))
+        restart = _run_restore(script, "15 piadblock-crt.service restart running")
+        self.assertIn("list-jobs", restart)
+        self.assertNotIn("start getty@tty1.service", restart)
+        spaced = _run_restore(script, "15   piadblock-crt.service   restart   running")
+        self.assertNotIn("start getty@tty1.service", spaced)
+        stopped = _run_restore(script, "15 piadblock-crt.service stop running")
+        self.assertIn("start getty@tty1.service", stopped)
+        idle = _run_restore(script, "")
+        self.assertIn("start getty@tty1.service", idle)
 
 
 def _restore_tz(previous: str | None) -> None:

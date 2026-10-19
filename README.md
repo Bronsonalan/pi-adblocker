@@ -612,6 +612,14 @@ sudo systemctl enable --now piadblock-crt.service
 
 Expected output: no text. The console leaves the login prompt and shows the lookup feed. `systemctl is-active piadblock-crt` prints `active`.
 
+Restart it:
+
+```bash
+sudo systemctl restart piadblock-crt
+```
+
+Expected output: no text. The console stays on the feed. `systemctl is-active piadblock-crt` prints `active`.
+
 Turn it off:
 
 ```bash
