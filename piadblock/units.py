@@ -29,12 +29,33 @@ WantedBy=multi-user.target
 """
 
 
+def console_restore_command(unit: str) -> str:
+    """Shell for ExecStopPost. Hand tty1 back to getty when the unit is stopping.
+
+    ``systemctl restart`` still has a restart job queued while this runs.
+    Starting ``getty@tty1`` in that window conflicts with this unit, and
+    systemd cancels the restart ("Job for <unit> canceled"). A queued
+    restart leaves the console with the new process.
+    """
+    escaped = unit.replace(".", r"\.")
+    pattern = (
+        f"^[[:space:]]*[0-9]+[[:space:]]+{escaped}[[:space:]]+restart([[:space:]]|$)"
+    )
+    return (
+        "jobs=$(systemctl list-jobs --no-legend --full 2>/dev/null || true); "
+        'printf "%s\\n" "$jobs" | '
+        f'grep -E -q "{pattern}" '
+        "|| systemctl start getty@tty1.service"
+    )
+
+
 def crt_service_unit(python: str, root: str, prefix: str = "") -> str:
     """Console feed. The installer writes this unit and does not start it.
 
     Starting it takes tty1 away from getty. Stopping it hands tty1 back.
     """
     prefix_line = f"Environment=PIADBLOCK_PREFIX={prefix}\n" if prefix else ""
+    restore = console_restore_command("piadblock-crt.service")
     return f"""[Unit]
 Description=Pi Adblock CRT lookup display
 After=piadblock.service
@@ -55,7 +76,7 @@ TTYReset=yes
 TTYVHangup=yes
 Restart=on-failure
 RestartSec=2
-ExecStopPost=-/bin/systemctl start getty@tty1.service
+ExecStopPost=-/bin/sh -c '{restore}'
 
 [Install]
 WantedBy=multi-user.target
