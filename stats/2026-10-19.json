@@ -1,19 +1,19 @@
 {
   "date": "2026-10-19",
-  "queries": 3985,
-  "blocked": 207,
+  "queries": 4097,
+  "blocked": 212,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
     "api.segment.io": 19,
     "api2.amplitude.com": 2,
-    "app-measurement.com": 5,
+    "app-measurement.com": 6,
     "bam.nr-data.net": 4,
     "c.amazon-adsystem.com": 2,
     "fls-na.amazon.com": 4,
     "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 19,
-    "mask.icloud.com": 110,
+    "mask.icloud.com": 114,
     "pagead2.googlesyndication.com": 6,
     "s.amazon-adsystem.com": 4,
     "static.doubleclick.net": 2,
@@ -25,7 +25,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 110
+      "count": 114
     },
     {
       "domain": "api.segment.io",
@@ -40,12 +40,12 @@
       "count": 10
     },
     {
-      "domain": "pagead2.googlesyndication.com",
+      "domain": "app-measurement.com",
       "count": 6
     },
     {
-      "domain": "app-measurement.com",
-      "count": 5
+      "domain": "pagead2.googlesyndication.com",
+      "count": 6
     },
     {
       "domain": "aax-us-east-retail-direct.amazon.com",
