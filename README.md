@@ -602,8 +602,6 @@ The page has no password. It is meant for the LAN. To listen only on the Pi, set
 
 The main Pi 4 is on Ethernet at `172.20.1.217`. It is the DNS server. The router has a DHCP reservation so that address stays on this Pi. Kevin's DNS is set to Manual `172.20.1.217`.
 
-The upstairs CRT is a Raspberry Pi Zero (Zero W or Zero 2 W, whichever board is in the case) running Raspberry Pi OS Lite. It joins Wi-Fi SSID `Kevin_A40050` and only displays the lookup feed from `http://172.20.1.217:8080`. It is not a DNS server. It has no SSH key and no git checkout.
-
 TODO: second Wi-Fi SSID name.
 
 TODO: DHCP reservation router.
@@ -639,43 +637,6 @@ sudo systemctl disable --now piadblock-crt.service
 ```
 
 Expected output: no text. The console returns to the login prompt. `systemctl is-active piadblock-crt` prints `inactive`.
-
-## Upstairs CRT (Pi Zero)
-
-A second Pi sits on the CRT upstairs. It runs the same fullscreen feed as `piadblock-crt` and reads it over HTTP from the main Pi. While `http://172.20.1.217:8080/api/crt` is unreachable the screen says `waiting for 172.20.1.217` and the process keeps trying. When the page answers, the screen is the lookup feed. The poll stays slow so a Zero W stays quiet.
-
-Write Raspberry Pi OS Lite to the Zero's SD card with Raspberry Pi Imager. In Imager, set a user and set the Wi-Fi network to `Kevin_A40050`. Plug the yellow composite lead into the CRT. Boot the Zero and give it a minute to join the Wi-Fi. Then, in a shell on the Zero:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/main/crt-remote-bootstrap.sh | sudo bash
-```
-
-The transcript names the board it read from `/proc/device-tree/model` (`Zero W` or `Zero 2 W`), prints each file it changed, and ends with `done`. Run the same command again later; files that are already in place are left as they are, and the transcript says so.
-
-Composite NTSC is the same on both boards. The file location follows the OS:
-
-- Bookworm and later, with `dtoverlay=vc4-kms-v3d` in `/boot/firmware/config.txt`: that line gains `,composite` (existing parameters stay), and `/boot/firmware/cmdline.txt` gains `video=Composite-1:720x480@60ie`. A marked block in `config.txt` records the edit.
-- Older Raspberry Pi OS, `/boot/config.txt`, with no KMS overlay: a marked block sets `enable_tvout=1` and `sdtv_mode=0`. `cmdline.txt` is left as it is.
-
-The first run copies `config.txt` and, on the KMS layout, `cmdline.txt` to a `.piadblock-bak` file beside the original. A later run keeps that backup. The installer tells you a reboot is required and does not reboot.
-
-```bash
-sudo reboot
-```
-
-After the reboot, tty1 is the feed. `systemctl is-active piadblock-crt-remote` prints `active`. The login prompt is back with:
-
-```bash
-sudo systemctl disable --now piadblock-crt-remote.service
-```
-
-The default server is `http://172.20.1.217:8080`, stored in `/etc/piadblock-crt-remote/config.json` under `url`. A flag and an environment variable override that file. To point at another status page, edit the file and restart:
-
-```bash
-sudo systemctl restart piadblock-crt-remote
-```
-
-A systemd drop-in with `Environment=PIADBLOCK_CRT_URL=http://172.20.1.217:8080` overrides the file. `--url` on `crt-remote.py` overrides both.
 
 ## Configuration
 
@@ -1000,13 +961,13 @@ From a checkout of this repository:
 python3 -m unittest discover -s tests
 ```
 
-This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, the CRT frame (highlighting, truncation, and order), the remote CRT composite edits and bootstrap, a bootstrap install into a temporary directory, and a tiny run of the capacity benchmark. It does not need root and it does not bind port 53.
+This runs the standard-library test suite: DNS packet parsing, block decisions, the cache, a local server that blocks, forwards, and prints lookup lines, the CRT frame (highlighting, truncation, and order), a bootstrap install into a temporary directory, and a tiny run of the capacity benchmark. It does not need root and it does not bind port 53.
 
 Expected output ends with:
 
 ```text
 ----------------------------------------------------------------------
-Ran 141 tests in 59.242s
+Ran 129 tests in 59.354s
 
 OK (skipped=1)
 ```
