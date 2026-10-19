@@ -1,24 +1,59 @@
 {
   "date": "2026-10-19",
-  "queries": 1645,
-  "blocked": 60,
+  "queries": 1856,
+  "blocked": 82,
   "blocked_domains": {
-    "api.segment.io": 11,
-    "http-intake.logs.datadoghq.com": 11,
-    "mask.icloud.com": 38
+    "aax-us-east-retail-direct.amazon.com": 2,
+    "aes.us-east.ono.axp.amazon-adsystem.com": 2,
+    "api.segment.io": 12,
+    "c.amazon-adsystem.com": 2,
+    "fls-na.amazon.com": 2,
+    "http-intake.logs.datadoghq.com": 12,
+    "mask.icloud.com": 44,
+    "pagead2.googlesyndication.com": 2,
+    "s.amazon-adsystem.com": 2,
+    "www.googletagservices.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 38
+      "count": 44
     },
     {
       "domain": "api.segment.io",
-      "count": 11
+      "count": 12
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 11
+      "count": 12
+    },
+    {
+      "domain": "aax-us-east-retail-direct.amazon.com",
+      "count": 2
+    },
+    {
+      "domain": "aes.us-east.ono.axp.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "c.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "fls-na.amazon.com",
+      "count": 2
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
+      "domain": "s.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googletagservices.com",
+      "count": 2
     }
   ],
   "upstream_errors": {
