@@ -1,28 +1,28 @@
 {
   "date": "2026-10-19",
-  "queries": 1051,
-  "blocked": 38,
+  "queries": 1247,
+  "blocked": 44,
   "blocked_domains": {
-    "api.segment.io": 7,
-    "http-intake.logs.datadoghq.com": 7,
-    "mask.icloud.com": 24
+    "api.segment.io": 8,
+    "http-intake.logs.datadoghq.com": 8,
+    "mask.icloud.com": 28
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 24
+      "count": 28
     },
     {
       "domain": "api.segment.io",
-      "count": 7
+      "count": 8
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 7
+      "count": 8
     }
   ],
   "upstream_errors": {
-    "timeout": 4,
+    "timeout": 5,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
