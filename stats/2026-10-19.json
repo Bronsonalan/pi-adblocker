@@ -1,26 +1,28 @@
 {
   "date": "2026-10-19",
-  "queries": 2735,
-  "blocked": 141,
+  "queries": 2818,
+  "blocked": 152,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
     "api.segment.io": 18,
     "api2.amplitude.com": 2,
-    "app-measurement.com": 3,
+    "app-measurement.com": 4,
+    "bam.nr-data.net": 2,
     "c.amazon-adsystem.com": 2,
     "fls-na.amazon.com": 4,
     "http-intake.logs.datadoghq.com": 18,
-    "mask.icloud.com": 68,
+    "mask.icloud.com": 72,
     "pagead2.googlesyndication.com": 4,
     "s.amazon-adsystem.com": 4,
-    "tracking.purchasely.io": 6,
+    "track.capitaloneshopping.com": 2,
+    "tracking.purchasely.io": 8,
     "www.googletagservices.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 68
+      "count": 72
     },
     {
       "domain": "api.segment.io",
@@ -32,7 +34,7 @@
     },
     {
       "domain": "tracking.purchasely.io",
-      "count": 6
+      "count": 8
     },
     {
       "domain": "aax-us-east-retail-direct.amazon.com",
@@ -40,6 +42,10 @@
     },
     {
       "domain": "aes.us-east.ono.axp.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "app-measurement.com",
       "count": 4
     },
     {
@@ -59,15 +65,19 @@
       "count": 4
     },
     {
-      "domain": "app-measurement.com",
-      "count": 3
-    },
-    {
       "domain": "api2.amplitude.com",
       "count": 2
     },
     {
+      "domain": "bam.nr-data.net",
+      "count": 2
+    },
+    {
       "domain": "c.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
       "count": 2
     }
   ],
