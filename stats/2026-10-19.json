@@ -1,15 +1,15 @@
 {
   "date": "2026-10-19",
-  "queries": 2141,
-  "blocked": 105,
+  "queries": 2456,
+  "blocked": 120,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
-    "api.segment.io": 14,
+    "api.segment.io": 18,
     "c.amazon-adsystem.com": 2,
     "fls-na.amazon.com": 4,
-    "http-intake.logs.datadoghq.com": 14,
-    "mask.icloud.com": 51,
+    "http-intake.logs.datadoghq.com": 18,
+    "mask.icloud.com": 58,
     "pagead2.googlesyndication.com": 4,
     "s.amazon-adsystem.com": 4,
     "www.googletagservices.com": 4
@@ -17,15 +17,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 51
+      "count": 58
     },
     {
       "domain": "api.segment.io",
-      "count": 14
+      "count": 18
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 14
+      "count": 18
     },
     {
       "domain": "aax-us-east-retail-direct.amazon.com",
@@ -57,7 +57,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 5,
+    "timeout": 6,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
