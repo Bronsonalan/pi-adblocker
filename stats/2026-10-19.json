@@ -1,7 +1,7 @@
 {
   "date": "2026-10-19",
-  "queries": 2037,
-  "blocked": 101,
+  "queries": 2141,
+  "blocked": 105,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
@@ -9,7 +9,7 @@
     "c.amazon-adsystem.com": 2,
     "fls-na.amazon.com": 4,
     "http-intake.logs.datadoghq.com": 14,
-    "mask.icloud.com": 47,
+    "mask.icloud.com": 51,
     "pagead2.googlesyndication.com": 4,
     "s.amazon-adsystem.com": 4,
     "www.googletagservices.com": 4
@@ -17,7 +17,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 47
+      "count": 51
     },
     {
       "domain": "api.segment.io",
