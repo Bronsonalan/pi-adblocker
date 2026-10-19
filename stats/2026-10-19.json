@@ -1,28 +1,31 @@
 {
   "date": "2026-10-19",
-  "queries": 2818,
-  "blocked": 152,
+  "queries": 3069,
+  "blocked": 171,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
     "api.segment.io": 18,
     "api2.amplitude.com": 2,
-    "app-measurement.com": 4,
-    "bam.nr-data.net": 2,
+    "app-measurement.com": 5,
+    "bam.nr-data.net": 4,
     "c.amazon-adsystem.com": 2,
     "fls-na.amazon.com": 4,
+    "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 18,
-    "mask.icloud.com": 72,
-    "pagead2.googlesyndication.com": 4,
+    "mask.icloud.com": 76,
+    "pagead2.googlesyndication.com": 6,
     "s.amazon-adsystem.com": 4,
-    "track.capitaloneshopping.com": 2,
-    "tracking.purchasely.io": 8,
+    "static.doubleclick.net": 2,
+    "track.capitaloneshopping.com": 4,
+    "tracking.purchasely.io": 10,
+    "www.googleadservices.com": 2,
     "www.googletagservices.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 72
+      "count": 76
     },
     {
       "domain": "api.segment.io",
@@ -34,7 +37,15 @@
     },
     {
       "domain": "tracking.purchasely.io",
-      "count": 8
+      "count": 10
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 6
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 5
     },
     {
       "domain": "aax-us-east-retail-direct.amazon.com",
@@ -45,7 +56,7 @@
       "count": 4
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "bam.nr-data.net",
       "count": 4
     },
     {
@@ -53,11 +64,11 @@
       "count": 4
     },
     {
-      "domain": "pagead2.googlesyndication.com",
+      "domain": "s.amazon-adsystem.com",
       "count": 4
     },
     {
-      "domain": "s.amazon-adsystem.com",
+      "domain": "track.capitaloneshopping.com",
       "count": 4
     },
     {
@@ -69,20 +80,24 @@
       "count": 2
     },
     {
-      "domain": "bam.nr-data.net",
-      "count": 2
-    },
-    {
       "domain": "c.amazon-adsystem.com",
       "count": 2
     },
     {
-      "domain": "track.capitaloneshopping.com",
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "static.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "www.googleadservices.com",
       "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 7,
+    "timeout": 8,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
