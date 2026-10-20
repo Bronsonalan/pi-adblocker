@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 13730,
-  "blocked": 1239,
+  "queries": 13900,
+  "blocked": 1250,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -15,7 +15,7 @@
     "api.segment.io": 61,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
-    "app-measurement.com": 26,
+    "app-measurement.com": 28,
     "att.launches.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
@@ -37,7 +37,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 643,
+    "mask.icloud.com": 649,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -58,7 +58,7 @@
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
     "tpc.googlesyndication.com": 2,
-    "tracking.purchasely.io": 8,
+    "tracking.purchasely.io": 11,
     "www.google-analytics.com": 12,
     "www.googleadservices.com": 6,
     "www.googletagmanager.com": 14
@@ -66,7 +66,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 643
+      "count": 649
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -86,7 +86,7 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 26
+      "count": 28
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -107,6 +107,10 @@
     {
       "domain": "www.google-analytics.com",
       "count": 12
+    },
+    {
+      "domain": "tracking.purchasely.io",
+      "count": 11
     },
     {
       "domain": "ad.doubleclick.net",
@@ -138,10 +142,6 @@
     },
     {
       "domain": "pagead2.googlesyndication.com",
-      "count": 8
-    },
-    {
-      "domain": "tracking.purchasely.io",
       "count": 8
     },
     {
