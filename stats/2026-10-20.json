@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 11943,
-  "blocked": 1079,
+  "queries": 12202,
+  "blocked": 1096,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -14,7 +14,7 @@
     "api.segment.io": 57,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
-    "app-measurement.com": 15,
+    "app-measurement.com": 16,
     "att.launches.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
@@ -30,17 +30,17 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 55,
+    "frontier.capcutw.us": 58,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
     "http-intake.logs.datadoghq.com": 54,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 546,
+    "mask.icloud.com": 556,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 77,
+    "mcs16-normal-us-ttp.capcutapi.us": 80,
     "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 7,
     "odf.app-ads-services.com": 4,
@@ -63,19 +63,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 546
+      "count": 556
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 77
+      "count": 80
+    },
+    {
+      "domain": "frontier.capcutw.us",
+      "count": 58
     },
     {
       "domain": "api.segment.io",
       "count": 57
-    },
-    {
-      "domain": "frontier.capcutw.us",
-      "count": 55
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -83,7 +83,7 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 15
+      "count": 16
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -287,7 +287,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 355,
+    "timeout": 361,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
