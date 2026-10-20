@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 14281,
-  "blocked": 1272,
+  "queries": 14377,
+  "blocked": 1278,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -17,7 +17,7 @@
     "api3.branch.io": 5,
     "app-measurement.com": 28,
     "att.launches.appsflyersdk.com": 6,
-    "bam.nr-data.net": 2,
+    "bam.nr-data.net": 4,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
@@ -38,7 +38,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 667,
+    "mask.icloud.com": 669,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -59,7 +59,7 @@
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
     "tpc.googlesyndication.com": 2,
-    "track.capitaloneshopping.com": 2,
+    "track.capitaloneshopping.com": 4,
     "tracking.purchasely.io": 11,
     "www.google-analytics.com": 12,
     "www.googleadservices.com": 6,
@@ -68,7 +68,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 667
+      "count": 669
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -223,6 +223,10 @@
       "count": 4
     },
     {
+      "domain": "bam.nr-data.net",
+      "count": 4
+    },
+    {
       "domain": "dev.visualwebsiteoptimizer.com",
       "count": 4
     },
@@ -236,6 +240,10 @@
     },
     {
       "domain": "stats.g.doubleclick.net",
+      "count": 4
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
       "count": 4
     },
     {
@@ -256,10 +264,6 @@
     },
     {
       "domain": "api2.amplitude.com",
-      "count": 2
-    },
-    {
-      "domain": "bam.nr-data.net",
       "count": 2
     },
     {
@@ -300,10 +304,6 @@
     },
     {
       "domain": "tpc.googlesyndication.com",
-      "count": 2
-    },
-    {
-      "domain": "track.capitaloneshopping.com",
       "count": 2
     },
     {
