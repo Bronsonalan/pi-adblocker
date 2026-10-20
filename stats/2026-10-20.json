@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 13482,
-  "blocked": 1207,
+  "queries": 13525,
+  "blocked": 1215,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -12,7 +12,7 @@
     "analytics.tiktok.com": 6,
     "api.iterable.com": 4,
     "api.mixpanel.com": 2,
-    "api.segment.io": 59,
+    "api.segment.io": 61,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
     "app-measurement.com": 26,
@@ -20,7 +20,7 @@
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
-    "cdn-settings.segment.com": 6,
+    "cdn-settings.segment.com": 8,
     "cdn.branch.io": 8,
     "cdn.clinch.co": 6,
     "cdn.cookielaw.org": 14,
@@ -37,7 +37,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 615,
+    "mask.icloud.com": 619,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -66,7 +66,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 615
+      "count": 619
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -78,7 +78,7 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 59
+      "count": 61
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -115,6 +115,10 @@
     {
       "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
       "count": 10
+    },
+    {
+      "domain": "cdn-settings.segment.com",
+      "count": 8
     },
     {
       "domain": "cdn.branch.io",
@@ -154,10 +158,6 @@
     },
     {
       "domain": "c.amazon-adsystem.com",
-      "count": 6
-    },
-    {
-      "domain": "cdn-settings.segment.com",
       "count": 6
     },
     {
