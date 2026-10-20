@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 8969,
-  "blocked": 809,
+  "queries": 9281,
+  "blocked": 829,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -12,7 +12,7 @@
     "api.mixpanel.com": 2,
     "api.segment.io": 51,
     "api3.branch.io": 5,
-    "app-measurement.com": 10,
+    "app-measurement.com": 14,
     "att.launches.appsflyersdk.com": 4,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
@@ -26,22 +26,22 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 26,
+    "frontier.capcutw.us": 28,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 52,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 435,
+    "mask.icloud.com": 443,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 31,
+    "mcs16-normal-us-ttp.capcutapi.us": 35,
     "mssdk16-normal-us-ttp.capcutapi.us": 4,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pixel.byspotify.com": 6,
     "pubads.g.doubleclick.net": 2,
     "roovza.cdn-settings.appsflyersdk.com": 4,
-    "roovza.inapps.appsflyersdk.com": 4,
+    "roovza.inapps.appsflyersdk.com": 6,
     "roovza.skadsdk.appsflyersdk.com": 2,
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
@@ -55,7 +55,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 435
+      "count": 443
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -67,11 +67,15 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 31
+      "count": 35
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 26
+      "count": 28
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 14
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -92,10 +96,6 @@
     {
       "domain": "www.googletagmanager.com",
       "count": 12
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 10
     },
     {
       "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
@@ -142,6 +142,10 @@
       "count": 6
     },
     {
+      "domain": "roovza.inapps.appsflyersdk.com",
+      "count": 6
+    },
+    {
       "domain": "sc-static.net",
       "count": 6
     },
@@ -167,10 +171,6 @@
     },
     {
       "domain": "roovza.cdn-settings.appsflyersdk.com",
-      "count": 4
-    },
-    {
-      "domain": "roovza.inapps.appsflyersdk.com",
       "count": 4
     },
     {
@@ -247,7 +247,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 229,
+    "timeout": 334,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
