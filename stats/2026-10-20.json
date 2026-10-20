@@ -1,6 +1,6 @@
 {
   "date": "2026-10-20",
-  "queries": 4780,
+  "queries": 4816,
   "blocked": 396,
   "blocked_domains": {
     "api.segment.io": 40,
@@ -32,7 +32,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 13,
+    "timeout": 61,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
