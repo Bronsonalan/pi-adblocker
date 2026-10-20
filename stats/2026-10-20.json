@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 5964,
-  "blocked": 455,
+  "queries": 6127,
+  "blocked": 459,
   "blocked_domains": {
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "api.segment.io": 49,
@@ -10,13 +10,13 @@
     "doubleclick.net": 1,
     "fls-na.amazon.com": 2,
     "http-intake.logs.datadoghq.com": 50,
-    "mask.icloud.com": 341,
+    "mask.icloud.com": 345,
     "s.amazon-adsystem.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 341
+      "count": 345
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
