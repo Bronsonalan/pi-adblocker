@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 10555,
-  "blocked": 956,
+  "queries": 10707,
+  "blocked": 971,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -9,6 +9,7 @@
     "ad.doubleclick.net": 6,
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "analytics.tiktok.com": 6,
+    "api.iterable.com": 2,
     "api.mixpanel.com": 2,
     "api.segment.io": 52,
     "api3.branch.io": 5,
@@ -26,17 +27,17 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 38,
+    "frontier.capcutw.us": 39,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 53,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 493,
+    "mask.icloud.com": 501,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 57,
+    "mcs16-normal-us-ttp.capcutapi.us": 59,
     "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 6,
     "odf.app-ads-services.com": 2,
@@ -48,6 +49,7 @@
     "roovza.skadsdk.appsflyersdk.com": 4,
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
+    "sr-client-cfg.amplitude.com": 2,
     "static.doubleclick.net": 2,
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
@@ -58,11 +60,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 493
+      "count": 501
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 57
+      "count": 59
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -74,7 +76,7 @@
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 38
+      "count": 39
     },
     {
       "domain": "app-measurement.com",
@@ -217,6 +219,10 @@
       "count": 2
     },
     {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
       "domain": "api.mixpanel.com",
       "count": 2
     },
@@ -246,6 +252,10 @@
     },
     {
       "domain": "s.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     },
     {
