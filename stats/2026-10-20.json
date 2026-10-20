@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 11228,
-  "blocked": 1011,
+  "queries": 11462,
+  "blocked": 1035,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -11,12 +11,14 @@
     "analytics.tiktok.com": 6,
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
-    "api.segment.io": 53,
+    "api.segment.io": 57,
     "api3.branch.io": 5,
     "app-measurement.com": 15,
     "att.launches.appsflyersdk.com": 6,
+    "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
+    "cdn-settings.segment.com": 6,
     "cdn.branch.io": 8,
     "cdn.clinch.co": 6,
     "cdn.cookielaw.org": 14,
@@ -27,17 +29,17 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 47,
+    "frontier.capcutw.us": 48,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
     "http-intake.logs.datadoghq.com": 54,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 517,
+    "mask.icloud.com": 525,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 67,
+    "mcs16-normal-us-ttp.capcutapi.us": 70,
     "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 6,
     "odf.app-ads-services.com": 4,
@@ -60,23 +62,23 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 517
+      "count": 525
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 67
+      "count": 70
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 57
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 54
     },
     {
-      "domain": "api.segment.io",
-      "count": 53
-    },
-    {
       "domain": "frontier.capcutw.us",
-      "count": 47
+      "count": 48
     },
     {
       "domain": "app-measurement.com",
@@ -140,6 +142,10 @@
     },
     {
       "domain": "c.amazon-adsystem.com",
+      "count": 6
+    },
+    {
+      "domain": "cdn-settings.segment.com",
       "count": 6
     },
     {
@@ -228,6 +234,10 @@
     },
     {
       "domain": "api.mixpanel.com",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
       "count": 2
     },
     {
