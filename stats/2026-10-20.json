@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 14067,
-  "blocked": 1264,
+  "queries": 14281,
+  "blocked": 1272,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -17,6 +17,7 @@
     "api3.branch.io": 5,
     "app-measurement.com": 28,
     "att.launches.appsflyersdk.com": 6,
+    "bam.nr-data.net": 2,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
@@ -37,7 +38,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 663,
+    "mask.icloud.com": 667,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -58,6 +59,7 @@
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
     "tpc.googlesyndication.com": 2,
+    "track.capitaloneshopping.com": 2,
     "tracking.purchasely.io": 11,
     "www.google-analytics.com": 12,
     "www.googleadservices.com": 6,
@@ -66,7 +68,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 663
+      "count": 667
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -257,6 +259,10 @@
       "count": 2
     },
     {
+      "domain": "bam.nr-data.net",
+      "count": 2
+    },
+    {
       "domain": "browser-intake-datadoghq.com",
       "count": 2
     },
@@ -297,12 +303,16 @@
       "count": 2
     },
     {
+      "domain": "track.capitaloneshopping.com",
+      "count": 2
+    },
+    {
       "domain": "doubleclick.net",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 386,
+    "timeout": 388,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
