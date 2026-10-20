@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 13525,
-  "blocked": 1215,
+  "queries": 13566,
+  "blocked": 1227,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -37,7 +37,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 619,
+    "mask.icloud.com": 631,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -66,7 +66,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 619
+      "count": 631
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
