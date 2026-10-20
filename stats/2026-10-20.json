@@ -1,12 +1,13 @@
 {
   "date": "2026-10-20",
-  "queries": 12969,
-  "blocked": 1141,
+  "queries": 13088,
+  "blocked": 1162,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
     "9808801.fls.doubleclick.net": 2,
-    "ad.doubleclick.net": 6,
+    "accounts.doubleclick.net": 4,
+    "ad.doubleclick.net": 10,
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "analytics.tiktok.com": 6,
     "api.iterable.com": 4,
@@ -14,7 +15,7 @@
     "api.segment.io": 59,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
-    "app-measurement.com": 18,
+    "app-measurement.com": 21,
     "att.launches.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
@@ -32,11 +33,11 @@
     "fls-na.amazon.com": 2,
     "frontier.capcutw.us": 62,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 14,
+    "googleads.g.doubleclick.net": 16,
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 581,
+    "mask.icloud.com": 587,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -56,6 +57,7 @@
     "static.doubleclick.net": 2,
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
+    "tpc.googlesyndication.com": 2,
     "www.google-analytics.com": 12,
     "www.googleadservices.com": 6,
     "www.googletagmanager.com": 14
@@ -63,7 +65,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 581
+      "count": 587
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -83,14 +85,14 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 18
-    },
-    {
-      "domain": "cdn.cookielaw.org",
-      "count": 14
+      "count": 21
     },
     {
       "domain": "googleads.g.doubleclick.net",
+      "count": 16
+    },
+    {
+      "domain": "cdn.cookielaw.org",
       "count": 14
     },
     {
@@ -104,6 +106,10 @@
     {
       "domain": "www.google-analytics.com",
       "count": 12
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "count": 10
     },
     {
       "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
@@ -132,10 +138,6 @@
     {
       "domain": "mssdk16-normal-us-ttp.capcutapi.us",
       "count": 7
-    },
-    {
-      "domain": "ad.doubleclick.net",
-      "count": 6
     },
     {
       "domain": "analytics.tiktok.com",
@@ -199,6 +201,10 @@
     },
     {
       "domain": "7227272.collect.igodigital.com",
+      "count": 4
+    },
+    {
+      "domain": "accounts.doubleclick.net",
       "count": 4
     },
     {
@@ -282,12 +288,16 @@
       "count": 2
     },
     {
+      "domain": "tpc.googlesyndication.com",
+      "count": 2
+    },
+    {
       "domain": "doubleclick.net",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 366,
+    "timeout": 379,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
