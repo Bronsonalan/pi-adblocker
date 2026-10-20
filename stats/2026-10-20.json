@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 8452,
-  "blocked": 764,
+  "queries": 8620,
+  "blocked": 778,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -11,7 +11,7 @@
     "analytics.tiktok.com": 6,
     "api.segment.io": 51,
     "api3.branch.io": 5,
-    "app-measurement.com": 6,
+    "app-measurement.com": 8,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
@@ -24,16 +24,16 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 22,
+    "frontier.capcutw.us": 23,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 52,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 423,
+    "mask.icloud.com": 428,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 24,
-    "mssdk16-normal-us-ttp.capcutapi.us": 2,
+    "mcs16-normal-us-ttp.capcutapi.us": 28,
+    "mssdk16-normal-us-ttp.capcutapi.us": 4,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pixel.byspotify.com": 6,
@@ -50,7 +50,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 423
+      "count": 428
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -62,11 +62,11 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 24
+      "count": 28
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 22
+      "count": 23
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -93,6 +93,10 @@
       "count": 10
     },
     {
+      "domain": "app-measurement.com",
+      "count": 8
+    },
+    {
       "domain": "cdn.branch.io",
       "count": 8
     },
@@ -106,10 +110,6 @@
     },
     {
       "domain": "analytics.tiktok.com",
-      "count": 6
-    },
-    {
-      "domain": "app-measurement.com",
       "count": 6
     },
     {
@@ -153,6 +153,10 @@
       "count": 4
     },
     {
+      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 4
+    },
+    {
       "domain": "9174427.fls.doubleclick.net",
       "count": 2
     },
@@ -178,10 +182,6 @@
     },
     {
       "domain": "live.rezync.com",
-      "count": 2
-    },
-    {
-      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
       "count": 2
     },
     {
@@ -222,7 +222,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 212,
+    "timeout": 218,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
