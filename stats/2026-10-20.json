@@ -1,27 +1,53 @@
 {
   "date": "2026-10-20",
-  "queries": 7307,
-  "blocked": 531,
+  "queries": 7836,
+  "blocked": 691,
   "blocked_domains": {
+    "7227272.collect.igodigital.com": 4,
+    "9174427.fls.doubleclick.net": 2,
+    "9808801.fls.doubleclick.net": 2,
+    "ad.doubleclick.net": 6,
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
+    "analytics.tiktok.com": 6,
     "api.segment.io": 50,
+    "api3.branch.io": 5,
     "app-measurement.com": 4,
-    "cdn.branch.io": 4,
+    "bzrcdn.openai.com": 2,
+    "c.amazon-adsystem.com": 6,
+    "cdn.branch.io": 8,
+    "cdn.clinch.co": 6,
+    "cdn.cookielaw.org": 8,
+    "ct.pinterest.com": 6,
+    "d22xmn10vbouk4.cloudfront.net": 8,
+    "dev.visualwebsiteoptimizer.com": 4,
     "doubleclick.net": 1,
+    "dynamic.criteo.com": 6,
+    "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 11,
-    "googleads.g.doubleclick.net": 4,
+    "frontier.capcutw.us": 14,
+    "geolocation.onetrust.com": 2,
+    "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 51,
-    "mask.icloud.com": 385,
-    "mcs16-normal-us-ttp.capcutapi.us": 11,
+    "js.adsrvr.org": 6,
+    "live.rezync.com": 2,
+    "mask.icloud.com": 403,
+    "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 6,
+    "mcs16-normal-us-ttp.capcutapi.us": 15,
     "mssdk16-normal-us-ttp.capcutapi.us": 2,
+    "pixel.byspotify.com": 6,
     "s.amazon-adsystem.com": 2,
-    "static.doubleclick.net": 2
+    "sc-static.net": 6,
+    "static.doubleclick.net": 2,
+    "stats.g.doubleclick.net": 2,
+    "storage.cloud.kargo.com": 2,
+    "www.google-analytics.com": 6,
+    "www.googleadservices.com": 2,
+    "www.googletagmanager.com": 8
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 385
+      "count": 403
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -32,31 +58,123 @@
       "count": 50
     },
     {
-      "domain": "frontier.capcutw.us",
-      "count": 11
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 15
     },
     {
-      "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 11
+      "domain": "frontier.capcutw.us",
+      "count": 14
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 10
+    },
+    {
+      "domain": "cdn.branch.io",
+      "count": 8
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 8
+    },
+    {
+      "domain": "d22xmn10vbouk4.cloudfront.net",
+      "count": 8
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 8
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "count": 6
+    },
+    {
+      "domain": "analytics.tiktok.com",
+      "count": 6
+    },
+    {
+      "domain": "c.amazon-adsystem.com",
+      "count": 6
+    },
+    {
+      "domain": "cdn.clinch.co",
+      "count": 6
+    },
+    {
+      "domain": "ct.pinterest.com",
+      "count": 6
+    },
+    {
+      "domain": "dynamic.criteo.com",
+      "count": 6
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 6
+    },
+    {
+      "domain": "js.adsrvr.org",
+      "count": 6
+    },
+    {
+      "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
+      "count": 6
+    },
+    {
+      "domain": "pixel.byspotify.com",
+      "count": 6
+    },
+    {
+      "domain": "sc-static.net",
+      "count": 6
+    },
+    {
+      "domain": "www.google-analytics.com",
+      "count": 6
+    },
+    {
+      "domain": "api3.branch.io",
+      "count": 5
+    },
+    {
+      "domain": "7227272.collect.igodigital.com",
+      "count": 4
     },
     {
       "domain": "app-measurement.com",
       "count": 4
     },
     {
-      "domain": "cdn.branch.io",
+      "domain": "dev.visualwebsiteoptimizer.com",
       "count": 4
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 4
+      "domain": "9174427.fls.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "9808801.fls.doubleclick.net",
+      "count": 2
     },
     {
       "domain": "aes.us-east.ono.axp.amazon-adsystem.com",
       "count": 2
     },
     {
+      "domain": "bzrcdn.openai.com",
+      "count": 2
+    },
+    {
       "domain": "fls-na.amazon.com",
+      "count": 2
+    },
+    {
+      "domain": "geolocation.onetrust.com",
+      "count": 2
+    },
+    {
+      "domain": "live.rezync.com",
       "count": 2
     },
     {
@@ -72,12 +190,24 @@
       "count": 2
     },
     {
+      "domain": "stats.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "storage.cloud.kargo.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googleadservices.com",
+      "count": 2
+    },
+    {
       "domain": "doubleclick.net",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 200,
+    "timeout": 203,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
