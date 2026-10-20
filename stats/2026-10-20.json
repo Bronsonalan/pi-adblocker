@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 7836,
-  "blocked": 691,
+  "queries": 8045,
+  "blocked": 734,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -16,38 +16,41 @@
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
     "cdn.clinch.co": 6,
-    "cdn.cookielaw.org": 8,
-    "ct.pinterest.com": 6,
-    "d22xmn10vbouk4.cloudfront.net": 8,
+    "cdn.cookielaw.org": 12,
+    "ct.pinterest.com": 8,
+    "d22xmn10vbouk4.cloudfront.net": 12,
     "dev.visualwebsiteoptimizer.com": 4,
     "doubleclick.net": 1,
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 14,
+    "frontier.capcutw.us": 17,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 10,
+    "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 51,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 403,
-    "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 15,
+    "mask.icloud.com": 409,
+    "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
+    "mcs16-normal-us-ttp.capcutapi.us": 17,
     "mssdk16-normal-us-ttp.capcutapi.us": 2,
+    "odf.app-ads-services.com": 2,
+    "pagead2.googlesyndication.com": 2,
     "pixel.byspotify.com": 6,
+    "pubads.g.doubleclick.net": 2,
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
     "static.doubleclick.net": 2,
     "stats.g.doubleclick.net": 2,
     "storage.cloud.kargo.com": 2,
-    "www.google-analytics.com": 6,
+    "www.google-analytics.com": 12,
     "www.googleadservices.com": 2,
-    "www.googletagmanager.com": 8
+    "www.googletagmanager.com": 12
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 403
+      "count": 409
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -58,15 +61,35 @@
       "count": 50
     },
     {
-      "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 15
+      "domain": "frontier.capcutw.us",
+      "count": 17
     },
     {
-      "domain": "frontier.capcutw.us",
-      "count": 14
+      "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 17
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 12
+    },
+    {
+      "domain": "d22xmn10vbouk4.cloudfront.net",
+      "count": 12
     },
     {
       "domain": "googleads.g.doubleclick.net",
+      "count": 12
+    },
+    {
+      "domain": "www.google-analytics.com",
+      "count": 12
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 12
+    },
+    {
+      "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
       "count": 10
     },
     {
@@ -74,15 +97,7 @@
       "count": 8
     },
     {
-      "domain": "cdn.cookielaw.org",
-      "count": 8
-    },
-    {
-      "domain": "d22xmn10vbouk4.cloudfront.net",
-      "count": 8
-    },
-    {
-      "domain": "www.googletagmanager.com",
+      "domain": "ct.pinterest.com",
       "count": 8
     },
     {
@@ -102,10 +117,6 @@
       "count": 6
     },
     {
-      "domain": "ct.pinterest.com",
-      "count": 6
-    },
-    {
       "domain": "dynamic.criteo.com",
       "count": 6
     },
@@ -118,19 +129,11 @@
       "count": 6
     },
     {
-      "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
-      "count": 6
-    },
-    {
       "domain": "pixel.byspotify.com",
       "count": 6
     },
     {
       "domain": "sc-static.net",
-      "count": 6
-    },
-    {
-      "domain": "www.google-analytics.com",
       "count": 6
     },
     {
@@ -182,6 +185,18 @@
       "count": 2
     },
     {
+      "domain": "odf.app-ads-services.com",
+      "count": 2
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
+      "domain": "pubads.g.doubleclick.net",
+      "count": 2
+    },
+    {
       "domain": "s.amazon-adsystem.com",
       "count": 2
     },
@@ -207,7 +222,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 203,
+    "timeout": 204,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
