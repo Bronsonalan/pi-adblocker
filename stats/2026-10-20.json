@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 9867,
-  "blocked": 891,
+  "queries": 10236,
+  "blocked": 938,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -12,8 +12,8 @@
     "api.mixpanel.com": 2,
     "api.segment.io": 52,
     "api3.branch.io": 5,
-    "app-measurement.com": 14,
-    "att.launches.appsflyersdk.com": 4,
+    "app-measurement.com": 15,
+    "att.launches.appsflyersdk.com": 6,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
@@ -26,39 +26,39 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 33,
+    "frontier.capcutw.us": 35,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 53,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 477,
+    "mask.icloud.com": 485,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs.tiktokv.us": 2,
-    "mcs.tiktokw.us": 2,
-    "mcs16-normal-us-ttp.capcutapi.us": 45,
-    "mssdk.tiktokw.us": 2,
+    "mcs.tiktokv.us": 8,
+    "mcs.tiktokw.us": 6,
+    "mcs16-normal-us-ttp.capcutapi.us": 51,
+    "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 5,
     "odf.app-ads-services.com": 2,
-    "pagead2.googlesyndication.com": 2,
+    "pagead2.googlesyndication.com": 6,
     "pixel.byspotify.com": 6,
     "pubads.g.doubleclick.net": 2,
     "roovza.cdn-settings.appsflyersdk.com": 4,
     "roovza.inapps.appsflyersdk.com": 6,
-    "roovza.skadsdk.appsflyersdk.com": 2,
+    "roovza.skadsdk.appsflyersdk.com": 4,
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
     "static.doubleclick.net": 2,
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
     "www.google-analytics.com": 12,
-    "www.googleadservices.com": 2,
-    "www.googletagmanager.com": 12
+    "www.googleadservices.com": 6,
+    "www.googletagmanager.com": 14
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 477
+      "count": 485
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -70,18 +70,22 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 45
+      "count": 51
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 33
+      "count": 35
     },
     {
       "domain": "app-measurement.com",
-      "count": 14
+      "count": 15
     },
     {
       "domain": "cdn.cookielaw.org",
+      "count": 14
+    },
+    {
+      "domain": "www.googletagmanager.com",
       "count": 14
     },
     {
@@ -97,10 +101,6 @@
       "count": 12
     },
     {
-      "domain": "www.googletagmanager.com",
-      "count": 12
-    },
-    {
       "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
       "count": 10
     },
@@ -113,11 +113,23 @@
       "count": 8
     },
     {
+      "domain": "mcs.tiktokv.us",
+      "count": 8
+    },
+    {
+      "domain": "mssdk.tiktokw.us",
+      "count": 8
+    },
+    {
       "domain": "ad.doubleclick.net",
       "count": 6
     },
     {
       "domain": "analytics.tiktok.com",
+      "count": 6
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
       "count": 6
     },
     {
@@ -141,6 +153,14 @@
       "count": 6
     },
     {
+      "domain": "mcs.tiktokw.us",
+      "count": 6
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 6
+    },
+    {
       "domain": "pixel.byspotify.com",
       "count": 6
     },
@@ -150,6 +170,10 @@
     },
     {
       "domain": "sc-static.net",
+      "count": 6
+    },
+    {
+      "domain": "www.googleadservices.com",
       "count": 6
     },
     {
@@ -165,15 +189,15 @@
       "count": 4
     },
     {
-      "domain": "att.launches.appsflyersdk.com",
-      "count": 4
-    },
-    {
       "domain": "dev.visualwebsiteoptimizer.com",
       "count": 4
     },
     {
       "domain": "roovza.cdn-settings.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "roovza.skadsdk.appsflyersdk.com",
       "count": 4
     },
     {
@@ -213,31 +237,11 @@
       "count": 2
     },
     {
-      "domain": "mcs.tiktokv.us",
-      "count": 2
-    },
-    {
-      "domain": "mcs.tiktokw.us",
-      "count": 2
-    },
-    {
-      "domain": "mssdk.tiktokw.us",
-      "count": 2
-    },
-    {
       "domain": "odf.app-ads-services.com",
       "count": 2
     },
     {
-      "domain": "pagead2.googlesyndication.com",
-      "count": 2
-    },
-    {
       "domain": "pubads.g.doubleclick.net",
-      "count": 2
-    },
-    {
-      "domain": "roovza.skadsdk.appsflyersdk.com",
       "count": 2
     },
     {
@@ -253,16 +257,12 @@
       "count": 2
     },
     {
-      "domain": "www.googleadservices.com",
-      "count": 2
-    },
-    {
       "domain": "doubleclick.net",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 343,
+    "timeout": 349,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
