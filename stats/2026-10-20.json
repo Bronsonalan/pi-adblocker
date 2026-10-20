@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 8045,
-  "blocked": 734,
+  "queries": 8282,
+  "blocked": 751,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -9,9 +9,9 @@
     "ad.doubleclick.net": 6,
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "analytics.tiktok.com": 6,
-    "api.segment.io": 50,
+    "api.segment.io": 51,
     "api3.branch.io": 5,
-    "app-measurement.com": 4,
+    "app-measurement.com": 5,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
@@ -24,15 +24,15 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 17,
+    "frontier.capcutw.us": 20,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
-    "http-intake.logs.datadoghq.com": 51,
+    "http-intake.logs.datadoghq.com": 52,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 409,
+    "mask.icloud.com": 415,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 17,
+    "mcs16-normal-us-ttp.capcutapi.us": 22,
     "mssdk16-normal-us-ttp.capcutapi.us": 2,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
@@ -50,23 +50,23 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 409
+      "count": 415
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 51
+      "count": 52
     },
     {
       "domain": "api.segment.io",
-      "count": 50
-    },
-    {
-      "domain": "frontier.capcutw.us",
-      "count": 17
+      "count": 51
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 17
+      "count": 22
+    },
+    {
+      "domain": "frontier.capcutw.us",
+      "count": 20
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -141,11 +141,11 @@
       "count": 5
     },
     {
-      "domain": "7227272.collect.igodigital.com",
-      "count": 4
+      "domain": "app-measurement.com",
+      "count": 5
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "7227272.collect.igodigital.com",
       "count": 4
     },
     {
@@ -222,7 +222,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 204,
+    "timeout": 212,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
