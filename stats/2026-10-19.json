@@ -1,19 +1,20 @@
 {
   "date": "2026-10-19",
-  "queries": 4097,
-  "blocked": 212,
+  "queries": 5402,
+  "blocked": 279,
   "blocked_domains": {
     "aax-us-east-retail-direct.amazon.com": 4,
     "aes.us-east.ono.axp.amazon-adsystem.com": 4,
-    "api.segment.io": 19,
+    "api.segment.io": 31,
     "api2.amplitude.com": 2,
-    "app-measurement.com": 6,
+    "app-measurement.com": 15,
     "bam.nr-data.net": 4,
     "c.amazon-adsystem.com": 2,
+    "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 4,
     "googleads.g.doubleclick.net": 2,
-    "http-intake.logs.datadoghq.com": 19,
-    "mask.icloud.com": 114,
+    "http-intake.logs.datadoghq.com": 31,
+    "mask.icloud.com": 142,
     "pagead2.googlesyndication.com": 6,
     "s.amazon-adsystem.com": 4,
     "static.doubleclick.net": 2,
@@ -25,22 +26,26 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 114
+      "count": 142
     },
     {
       "domain": "api.segment.io",
-      "count": 19
+      "count": 31
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 19
+      "count": 31
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 15
     },
     {
       "domain": "tracking.purchasely.io",
       "count": 10
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "firebase-settings.crashlytics.com",
       "count": 6
     },
     {
