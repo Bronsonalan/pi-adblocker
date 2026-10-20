@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 13369,
-  "blocked": 1189,
+  "queries": 13428,
+  "blocked": 1198,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -15,7 +15,7 @@
     "api.segment.io": 59,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
-    "app-measurement.com": 22,
+    "app-measurement.com": 25,
     "att.launches.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "bzrcdn.openai.com": 2,
@@ -58,6 +58,7 @@
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
     "tpc.googlesyndication.com": 2,
+    "tracking.purchasely.io": 6,
     "www.google-analytics.com": 12,
     "www.googleadservices.com": 6,
     "www.googletagmanager.com": 14
@@ -85,7 +86,7 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 22
+      "count": 25
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -193,6 +194,10 @@
     },
     {
       "domain": "sr-client-cfg.amplitude.com",
+      "count": 6
+    },
+    {
+      "domain": "tracking.purchasely.io",
       "count": 6
     },
     {
