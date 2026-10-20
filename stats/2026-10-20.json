@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 8282,
-  "blocked": 751,
+  "queries": 8452,
+  "blocked": 764,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -11,7 +11,7 @@
     "analytics.tiktok.com": 6,
     "api.segment.io": 51,
     "api3.branch.io": 5,
-    "app-measurement.com": 5,
+    "app-measurement.com": 6,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
@@ -24,15 +24,15 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 20,
+    "frontier.capcutw.us": 22,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 52,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 415,
+    "mask.icloud.com": 423,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 22,
+    "mcs16-normal-us-ttp.capcutapi.us": 24,
     "mssdk16-normal-us-ttp.capcutapi.us": 2,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
@@ -50,7 +50,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 415
+      "count": 423
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -62,11 +62,11 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 22
+      "count": 24
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 20
+      "count": 22
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -109,6 +109,10 @@
       "count": 6
     },
     {
+      "domain": "app-measurement.com",
+      "count": 6
+    },
+    {
       "domain": "c.amazon-adsystem.com",
       "count": 6
     },
@@ -138,10 +142,6 @@
     },
     {
       "domain": "api3.branch.io",
-      "count": 5
-    },
-    {
-      "domain": "app-measurement.com",
       "count": 5
     },
     {
