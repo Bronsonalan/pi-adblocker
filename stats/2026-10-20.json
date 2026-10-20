@@ -1,26 +1,30 @@
 {
   "date": "2026-10-20",
-  "queries": 4816,
-  "blocked": 396,
+  "queries": 5122,
+  "blocked": 415,
   "blocked_domains": {
-    "api.segment.io": 40,
+    "aes.us-east.ono.axp.amazon-adsystem.com": 2,
+    "api.segment.io": 42,
     "app-measurement.com": 3,
     "cdn.branch.io": 4,
-    "http-intake.logs.datadoghq.com": 40,
-    "mask.icloud.com": 309
+    "doubleclick.net": 1,
+    "fls-na.amazon.com": 2,
+    "http-intake.logs.datadoghq.com": 42,
+    "mask.icloud.com": 317,
+    "s.amazon-adsystem.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 309
+      "count": 317
     },
     {
       "domain": "api.segment.io",
-      "count": 40
+      "count": 42
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 40
+      "count": 42
     },
     {
       "domain": "cdn.branch.io",
@@ -29,10 +33,26 @@
     {
       "domain": "app-measurement.com",
       "count": 3
+    },
+    {
+      "domain": "aes.us-east.ono.axp.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "fls-na.amazon.com",
+      "count": 2
+    },
+    {
+      "domain": "s.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "doubleclick.net",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 61,
+    "timeout": 66,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
