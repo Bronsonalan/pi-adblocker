@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 8620,
-  "blocked": 778,
+  "queries": 8969,
+  "blocked": 809,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -9,9 +9,11 @@
     "ad.doubleclick.net": 6,
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "analytics.tiktok.com": 6,
+    "api.mixpanel.com": 2,
     "api.segment.io": 51,
     "api3.branch.io": 5,
-    "app-measurement.com": 8,
+    "app-measurement.com": 10,
+    "att.launches.appsflyersdk.com": 4,
     "bzrcdn.openai.com": 2,
     "c.amazon-adsystem.com": 6,
     "cdn.branch.io": 8,
@@ -24,20 +26,23 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 23,
+    "frontier.capcutw.us": 26,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 52,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 428,
+    "mask.icloud.com": 435,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 28,
+    "mcs16-normal-us-ttp.capcutapi.us": 31,
     "mssdk16-normal-us-ttp.capcutapi.us": 4,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pixel.byspotify.com": 6,
     "pubads.g.doubleclick.net": 2,
+    "roovza.cdn-settings.appsflyersdk.com": 4,
+    "roovza.inapps.appsflyersdk.com": 4,
+    "roovza.skadsdk.appsflyersdk.com": 2,
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
     "static.doubleclick.net": 2,
@@ -50,7 +55,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 428
+      "count": 435
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -62,11 +67,11 @@
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 28
+      "count": 31
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 23
+      "count": 26
     },
     {
       "domain": "cdn.cookielaw.org",
@@ -89,12 +94,12 @@
       "count": 12
     },
     {
-      "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
+      "domain": "app-measurement.com",
       "count": 10
     },
     {
-      "domain": "app-measurement.com",
-      "count": 8
+      "domain": "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com",
+      "count": 10
     },
     {
       "domain": "cdn.branch.io",
@@ -149,11 +154,23 @@
       "count": 4
     },
     {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 4
+    },
+    {
       "domain": "dev.visualwebsiteoptimizer.com",
       "count": 4
     },
     {
       "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 4
+    },
+    {
+      "domain": "roovza.cdn-settings.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "roovza.inapps.appsflyersdk.com",
       "count": 4
     },
     {
@@ -166,6 +183,10 @@
     },
     {
       "domain": "aes.us-east.ono.axp.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "api.mixpanel.com",
       "count": 2
     },
     {
@@ -197,6 +218,10 @@
       "count": 2
     },
     {
+      "domain": "roovza.skadsdk.appsflyersdk.com",
+      "count": 2
+    },
+    {
       "domain": "s.amazon-adsystem.com",
       "count": 2
     },
@@ -222,7 +247,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 218,
+    "timeout": 229,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
