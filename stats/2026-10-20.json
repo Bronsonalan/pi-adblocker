@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 10445,
-  "blocked": 945,
+  "queries": 10555,
+  "blocked": 956,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -26,19 +26,19 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 36,
+    "frontier.capcutw.us": 38,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
     "http-intake.logs.datadoghq.com": 53,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 489,
+    "mask.icloud.com": 493,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 53,
+    "mcs16-normal-us-ttp.capcutapi.us": 57,
     "mssdk.tiktokw.us": 8,
-    "mssdk16-normal-us-ttp.capcutapi.us": 5,
+    "mssdk16-normal-us-ttp.capcutapi.us": 6,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 6,
     "pixel.byspotify.com": 6,
@@ -58,14 +58,14 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 489
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 53
+      "count": 493
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
+      "count": 57
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
       "count": 53
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 36
+      "count": 38
     },
     {
       "domain": "app-measurement.com",
@@ -157,6 +157,10 @@
       "count": 6
     },
     {
+      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 6
+    },
+    {
       "domain": "pagead2.googlesyndication.com",
       "count": 6
     },
@@ -178,10 +182,6 @@
     },
     {
       "domain": "api3.branch.io",
-      "count": 5
-    },
-    {
-      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
       "count": 5
     },
     {
