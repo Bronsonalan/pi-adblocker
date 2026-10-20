@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 12482,
-  "blocked": 1105,
+  "queries": 12637,
+  "blocked": 1115,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -30,17 +30,17 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 59,
+    "frontier.capcutw.us": 61,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
     "http-intake.logs.datadoghq.com": 54,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 562,
+    "mask.icloud.com": 567,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 82,
+    "mcs16-normal-us-ttp.capcutapi.us": 85,
     "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 7,
     "odf.app-ads-services.com": 4,
@@ -63,15 +63,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 562
+      "count": 567
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 82
+      "count": 85
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 59
+      "count": 61
     },
     {
       "domain": "api.segment.io",
@@ -287,7 +287,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 364,
+    "timeout": 365,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
