@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 9438,
-  "blocked": 849,
+  "queries": 9599,
+  "blocked": 870,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -10,7 +10,7 @@
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "analytics.tiktok.com": 6,
     "api.mixpanel.com": 2,
-    "api.segment.io": 51,
+    "api.segment.io": 52,
     "api3.branch.io": 5,
     "app-measurement.com": 14,
     "att.launches.appsflyersdk.com": 4,
@@ -26,16 +26,16 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 30,
+    "frontier.capcutw.us": 32,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
-    "http-intake.logs.datadoghq.com": 52,
+    "http-intake.logs.datadoghq.com": 53,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 455,
+    "mask.icloud.com": 465,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
-    "mcs16-normal-us-ttp.capcutapi.us": 37,
-    "mssdk16-normal-us-ttp.capcutapi.us": 4,
+    "mcs16-normal-us-ttp.capcutapi.us": 43,
+    "mssdk16-normal-us-ttp.capcutapi.us": 5,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pixel.byspotify.com": 6,
@@ -55,23 +55,23 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 455
+      "count": 465
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 52
+      "count": 53
     },
     {
       "domain": "api.segment.io",
-      "count": 51
+      "count": 52
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 37
+      "count": 43
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 30
+      "count": 32
     },
     {
       "domain": "app-measurement.com",
@@ -154,6 +154,10 @@
       "count": 5
     },
     {
+      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
+      "count": 5
+    },
+    {
       "domain": "7227272.collect.igodigital.com",
       "count": 4
     },
@@ -163,10 +167,6 @@
     },
     {
       "domain": "dev.visualwebsiteoptimizer.com",
-      "count": 4
-    },
-    {
-      "domain": "mssdk16-normal-us-ttp.capcutapi.us",
       "count": 4
     },
     {
@@ -247,7 +247,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 336,
+    "timeout": 338,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
