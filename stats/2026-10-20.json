@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 13714,
-  "blocked": 1235,
+  "queries": 13727,
+  "blocked": 1239,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -37,7 +37,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 639,
+    "mask.icloud.com": 643,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -66,7 +66,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 639
+      "count": 643
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -302,7 +302,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 383,
+    "timeout": 385,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
