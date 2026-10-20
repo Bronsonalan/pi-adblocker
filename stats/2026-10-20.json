@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 12637,
-  "blocked": 1115,
+  "queries": 12752,
+  "blocked": 1127,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -11,7 +11,7 @@
     "analytics.tiktok.com": 6,
     "api.iterable.com": 4,
     "api.mixpanel.com": 2,
-    "api.segment.io": 57,
+    "api.segment.io": 59,
     "api2.amplitude.com": 2,
     "api3.branch.io": 5,
     "app-measurement.com": 16,
@@ -30,17 +30,17 @@
     "dynamic.criteo.com": 6,
     "firebase-settings.crashlytics.com": 6,
     "fls-na.amazon.com": 2,
-    "frontier.capcutw.us": 61,
+    "frontier.capcutw.us": 62,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
-    "http-intake.logs.datadoghq.com": 54,
+    "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 567,
+    "mask.icloud.com": 569,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
-    "mcs16-normal-us-ttp.capcutapi.us": 85,
+    "mcs16-normal-us-ttp.capcutapi.us": 90,
     "mssdk.tiktokw.us": 8,
     "mssdk16-normal-us-ttp.capcutapi.us": 7,
     "odf.app-ads-services.com": 4,
@@ -63,23 +63,23 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 567
+      "count": 569
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
-      "count": 85
+      "count": 90
     },
     {
       "domain": "frontier.capcutw.us",
-      "count": 61
+      "count": 62
     },
     {
       "domain": "api.segment.io",
-      "count": 57
+      "count": 59
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 54
+      "count": 56
     },
     {
       "domain": "app-measurement.com",
