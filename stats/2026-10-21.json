@@ -1,16 +1,16 @@
 {
   "date": "2026-10-21",
-  "queries": 6811,
-  "blocked": 594,
+  "queries": 7022,
+  "blocked": 610,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
     "analytics-ipv6.tiktokw.us": 8,
-    "analytics.tiktok.com": 8,
+    "analytics.tiktok.com": 10,
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 49,
+    "api.segment.io": 50,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -23,19 +23,19 @@
     "bkldaf.skadsdk.appsflyersdk.com": 2,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
-    "bzrcdn.openai.com": 8,
+    "bzrcdn.openai.com": 10,
     "cdn-settings.segment.com": 2,
     "cdn.cookielaw.org": 6,
     "cm.g.doubleclick.net": 2,
     "distillery.wistia.com": 2,
     "fg8vvsvnieiv3ej16jby.litix.io": 2,
     "firebase-settings.crashlytics.com": 2,
-    "googleads.g.doubleclick.net": 8,
+    "googleads.g.doubleclick.net": 10,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 47,
+    "http-intake.logs.datadoghq.com": 48,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 316,
+    "mask.icloud.com": 322,
     "odm.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pipedream.wistia.com": 2,
@@ -45,22 +45,22 @@
     "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 28,
     "static.cloudflareinsights.com": 4,
-    "static.doubleclick.net": 2,
+    "static.doubleclick.net": 4,
     "track.capitaloneshopping.com": 4,
     "www.googletagmanager.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 316
+      "count": 322
     },
     {
       "domain": "api.segment.io",
-      "count": 49
+      "count": 50
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 47
+      "count": 48
     },
     {
       "domain": "sstats.adobe.com",
@@ -71,23 +71,23 @@
       "count": 12
     },
     {
+      "domain": "analytics.tiktok.com",
+      "count": 10
+    },
+    {
+      "domain": "bzrcdn.openai.com",
+      "count": 10
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 10
+    },
+    {
       "domain": "analytics-ipv6.tiktokw.us",
       "count": 8
     },
     {
-      "domain": "analytics.tiktok.com",
-      "count": 8
-    },
-    {
       "domain": "app-measurement.com",
-      "count": 8
-    },
-    {
-      "domain": "bzrcdn.openai.com",
-      "count": 8
-    },
-    {
-      "domain": "googleads.g.doubleclick.net",
       "count": 8
     },
     {
@@ -136,6 +136,10 @@
     },
     {
       "domain": "static.cloudflareinsights.com",
+      "count": 4
+    },
+    {
+      "domain": "static.doubleclick.net",
       "count": 4
     },
     {
@@ -225,14 +229,10 @@
     {
       "domain": "sr-client-cfg.amplitude.com",
       "count": 2
-    },
-    {
-      "domain": "static.doubleclick.net",
-      "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 50,
+    "timeout": 52,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
