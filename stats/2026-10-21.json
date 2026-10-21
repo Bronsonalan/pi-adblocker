@@ -1,11 +1,13 @@
 {
   "date": "2026-10-21",
-  "queries": 848,
-  "blocked": 111,
+  "queries": 1107,
+  "blocked": 138,
   "blocked_domains": {
+    "ads-api.x.com": 2,
     "analytics-ipv6.tiktokw.us": 6,
     "analytics.tiktok.com": 6,
-    "app-measurement.com": 1,
+    "api-analytics.prod.birdapp.com": 10,
+    "app-measurement.com": 2,
     "bam.nr-data.net": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.conversions.appsflyersdk.com": 4,
@@ -16,17 +18,23 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 2,
     "bzrcdn.openai.com": 6,
-    "googleads.g.doubleclick.net": 2,
+    "googleads.g.doubleclick.net": 4,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 56,
+    "mask.icloud.com": 62,
     "odm.app-ads-services.com": 2,
+    "roovza.launches.appsflyersdk.com": 2,
+    "sdk.iad-03.braze.com": 4,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 56
+      "count": 62
+    },
+    {
+      "domain": "api-analytics.prod.birdapp.com",
+      "count": 10
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
@@ -53,8 +61,24 @@
       "count": 4
     },
     {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 4
+    },
+    {
       "domain": "logs.browser-intake-datadoghq.com",
       "count": 4
+    },
+    {
+      "domain": "sdk.iad-03.braze.com",
+      "count": 4
+    },
+    {
+      "domain": "ads-api.x.com",
+      "count": 2
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 2
     },
     {
       "domain": "bam.nr-data.net",
@@ -81,11 +105,11 @@
       "count": 2
     },
     {
-      "domain": "googleads.g.doubleclick.net",
+      "domain": "odm.app-ads-services.com",
       "count": 2
     },
     {
-      "domain": "odm.app-ads-services.com",
+      "domain": "roovza.launches.appsflyersdk.com",
       "count": 2
     },
     {
@@ -95,10 +119,6 @@
     {
       "domain": "track.capitaloneshopping.com",
       "count": 2
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 1
     }
   ],
   "upstream_errors": {
