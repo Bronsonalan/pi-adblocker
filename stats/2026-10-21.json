@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 6126,
-  "blocked": 540,
+  "queries": 6398,
+  "blocked": 564,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,8 +10,8 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 42,
-    "api2.amplitude.com": 2,
+    "api.segment.io": 43,
+    "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
     "bam.nr-data.net": 4,
@@ -24,7 +24,7 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
     "bzrcdn.openai.com": 8,
-    "cdn.cookielaw.org": 4,
+    "cdn.cookielaw.org": 6,
     "cm.g.doubleclick.net": 2,
     "distillery.wistia.com": 2,
     "fg8vvsvnieiv3ej16jby.litix.io": 2,
@@ -32,31 +32,33 @@
     "googleads.g.doubleclick.net": 6,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 42,
+    "http-intake.logs.datadoghq.com": 43,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 292,
+    "mask.icloud.com": 302,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
+    "rum-static.pingdom.net": 2,
     "sdk.iad-03.braze.com": 6,
     "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 28,
+    "static.cloudflareinsights.com": 4,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 4,
-    "www.googletagmanager.com": 2
+    "www.googletagmanager.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 292
+      "count": 302
     },
     {
       "domain": "api.segment.io",
-      "count": 42
+      "count": 43
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 42
+      "count": 43
     },
     {
       "domain": "sstats.adobe.com",
@@ -83,6 +85,10 @@
       "count": 8
     },
     {
+      "domain": "cdn.cookielaw.org",
+      "count": 6
+    },
+    {
       "domain": "googleads.g.doubleclick.net",
       "count": 6
     },
@@ -92,6 +98,10 @@
     },
     {
       "domain": "ads-api.x.com",
+      "count": 4
+    },
+    {
+      "domain": "api2.amplitude.com",
       "count": 4
     },
     {
@@ -119,15 +129,19 @@
       "count": 4
     },
     {
-      "domain": "cdn.cookielaw.org",
-      "count": 4
-    },
-    {
       "domain": "logs.browser-intake-datadoghq.com",
       "count": 4
     },
     {
+      "domain": "static.cloudflareinsights.com",
+      "count": 4
+    },
+    {
       "domain": "track.capitaloneshopping.com",
+      "count": 4
+    },
+    {
+      "domain": "www.googletagmanager.com",
       "count": 4
     },
     {
@@ -140,10 +154,6 @@
     },
     {
       "domain": "api.iterable.com",
-      "count": 2
-    },
-    {
-      "domain": "api2.amplitude.com",
       "count": 2
     },
     {
@@ -199,20 +209,20 @@
       "count": 2
     },
     {
+      "domain": "rum-static.pingdom.net",
+      "count": 2
+    },
+    {
       "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     },
     {
       "domain": "static.doubleclick.net",
       "count": 2
-    },
-    {
-      "domain": "www.googletagmanager.com",
-      "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 47,
+    "timeout": 49,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
