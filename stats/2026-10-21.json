@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 6398,
-  "blocked": 564,
+  "queries": 6646,
+  "blocked": 584,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 43,
+    "api.segment.io": 47,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -24,18 +24,20 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
     "bzrcdn.openai.com": 8,
+    "cdn-settings.segment.com": 2,
     "cdn.cookielaw.org": 6,
     "cm.g.doubleclick.net": 2,
     "distillery.wistia.com": 2,
     "fg8vvsvnieiv3ej16jby.litix.io": 2,
     "firebase-settings.crashlytics.com": 2,
-    "googleads.g.doubleclick.net": 6,
+    "googleads.g.doubleclick.net": 8,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 43,
+    "http-intake.logs.datadoghq.com": 45,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 302,
+    "mask.icloud.com": 310,
     "odm.app-ads-services.com": 2,
+    "pagead2.googlesyndication.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
     "rum-static.pingdom.net": 2,
@@ -50,15 +52,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 302
+      "count": 310
     },
     {
       "domain": "api.segment.io",
-      "count": 43
+      "count": 47
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 43
+      "count": 45
     },
     {
       "domain": "sstats.adobe.com",
@@ -85,11 +87,11 @@
       "count": 8
     },
     {
-      "domain": "cdn.cookielaw.org",
-      "count": 6
+      "domain": "googleads.g.doubleclick.net",
+      "count": 8
     },
     {
-      "domain": "googleads.g.doubleclick.net",
+      "domain": "cdn.cookielaw.org",
       "count": 6
     },
     {
@@ -173,6 +175,10 @@
       "count": 2
     },
     {
+      "domain": "cdn-settings.segment.com",
+      "count": 2
+    },
+    {
       "domain": "cm.g.doubleclick.net",
       "count": 2
     },
@@ -201,6 +207,10 @@
       "count": 2
     },
     {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
       "domain": "pipedream.wistia.com",
       "count": 2
     },
@@ -222,7 +232,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 49,
+    "timeout": 50,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
