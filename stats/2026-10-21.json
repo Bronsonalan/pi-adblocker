@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1637,
-  "blocked": 217,
+  "queries": 1642,
+  "blocked": 219,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -31,7 +31,7 @@
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 92,
+    "mask.icloud.com": 94,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -43,7 +43,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 92
+      "count": 94
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
