@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1546,
-  "blocked": 201,
+  "queries": 1558,
+  "blocked": 205,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -11,7 +11,7 @@
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
-    "api3.siftscience.com": 2,
+    "api3.siftscience.com": 4,
     "app-measurement.com": 3,
     "bam.nr-data.net": 4,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
@@ -29,7 +29,7 @@
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 6,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 82,
+    "mask.icloud.com": 84,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -41,7 +41,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 82
+      "count": 84
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -69,6 +69,10 @@
     },
     {
       "domain": "ads-api.x.com",
+      "count": 4
+    },
+    {
+      "domain": "api3.siftscience.com",
       "count": 4
     },
     {
@@ -117,10 +121,6 @@
     },
     {
       "domain": "api2.amplitude.com",
-      "count": 2
-    },
-    {
-      "domain": "api3.siftscience.com",
       "count": 2
     },
     {
@@ -177,7 +177,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 11,
+    "timeout": 12,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
