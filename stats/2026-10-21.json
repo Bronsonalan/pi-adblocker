@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 3829,
-  "blocked": 366,
+  "queries": 4143,
+  "blocked": 378,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 23,
+    "api.segment.io": 25,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
     "app-measurement.com": 7,
@@ -24,6 +24,7 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
     "bzrcdn.openai.com": 8,
+    "cdn.cookielaw.org": 2,
     "cm.g.doubleclick.net": 2,
     "distillery.wistia.com": 2,
     "fg8vvsvnieiv3ej16jby.litix.io": 2,
@@ -31,9 +32,9 @@
     "googleads.g.doubleclick.net": 6,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 23,
+    "http-intake.logs.datadoghq.com": 25,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 183,
+    "mask.icloud.com": 189,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -46,15 +47,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 183
+      "count": 189
     },
     {
       "domain": "api.segment.io",
-      "count": 23
+      "count": 25
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 23
+      "count": 25
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -157,6 +158,10 @@
       "count": 2
     },
     {
+      "domain": "cdn.cookielaw.org",
+      "count": 2
+    },
+    {
       "domain": "cm.g.doubleclick.net",
       "count": 2
     },
@@ -202,7 +207,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 33,
+    "timeout": 34,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
