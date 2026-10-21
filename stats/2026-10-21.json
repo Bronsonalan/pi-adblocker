@@ -1,11 +1,13 @@
 {
   "date": "2026-10-21",
-  "queries": 1227,
-  "blocked": 164,
+  "queries": 1318,
+  "blocked": 178,
   "blocked_domains": {
-    "ads-api.x.com": 2,
+    "ads-api.twitter.com": 2,
+    "ads-api.x.com": 4,
     "analytics-ipv6.tiktokw.us": 6,
     "analytics.tiktok.com": 6,
+    "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
@@ -20,9 +22,11 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 2,
     "bzrcdn.openai.com": 6,
-    "googleads.g.doubleclick.net": 4,
+    "cm.g.doubleclick.net": 2,
+    "firebase-settings.crashlytics.com": 2,
+    "googleads.g.doubleclick.net": 6,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 78,
+    "mask.icloud.com": 80,
     "odm.app-ads-services.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
     "sdk.iad-03.braze.com": 6,
@@ -33,7 +37,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 78
+      "count": 80
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -52,8 +56,16 @@
       "count": 6
     },
     {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 6
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 6
+    },
+    {
+      "domain": "ads-api.x.com",
+      "count": 4
     },
     {
       "domain": "bkldaf.conversions.appsflyersdk.com",
@@ -68,15 +80,15 @@
       "count": 4
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 4
-    },
-    {
       "domain": "logs.browser-intake-datadoghq.com",
       "count": 4
     },
     {
-      "domain": "ads-api.x.com",
+      "domain": "ads-api.twitter.com",
+      "count": 2
+    },
+    {
+      "domain": "analytics.twitter.com",
       "count": 2
     },
     {
@@ -116,6 +128,14 @@
       "count": 2
     },
     {
+      "domain": "cm.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 2
+    },
+    {
       "domain": "odm.app-ads-services.com",
       "count": 2
     },
@@ -137,7 +157,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 9,
+    "timeout": 10,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
