@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 9168,
-  "blocked": 753,
+  "queries": 9351,
+  "blocked": 763,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 70,
+    "api.segment.io": 72,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -33,9 +33,9 @@
     "googleads.g.doubleclick.net": 12,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 66,
+    "http-intake.logs.datadoghq.com": 68,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 391,
+    "mask.icloud.com": 397,
     "odm.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 4,
     "pipedream.wistia.com": 4,
@@ -53,15 +53,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 391
+      "count": 397
     },
     {
       "domain": "api.segment.io",
-      "count": 70
+      "count": 72
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 66
+      "count": 68
     },
     {
       "domain": "sstats.adobe.com",
@@ -237,7 +237,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 84,
+    "timeout": 87,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
