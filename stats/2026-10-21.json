@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1902,
-  "blocked": 246,
+  "queries": 2245,
+  "blocked": 256,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,6 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
+    "api.segment.io": 3,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
     "app-measurement.com": 6,
@@ -30,8 +31,9 @@
     "googleads.g.doubleclick.net": 6,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
+    "http-intake.logs.datadoghq.com": 3,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 118,
+    "mask.icloud.com": 122,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -43,7 +45,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 118
+      "count": 122
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -108,6 +110,14 @@
     {
       "domain": "track.capitaloneshopping.com",
       "count": 4
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 3
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 3
     },
     {
       "domain": "ads-api.twitter.com",
@@ -187,7 +197,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 16,
+    "timeout": 20,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
