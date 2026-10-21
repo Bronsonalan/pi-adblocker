@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 759,
-  "blocked": 99,
+  "queries": 796,
+  "blocked": 101,
   "blocked_domains": {
     "analytics-ipv6.tiktokw.us": 6,
     "analytics.tiktok.com": 6,
@@ -18,7 +18,7 @@
     "bzrcdn.openai.com": 6,
     "googleads.g.doubleclick.net": 2,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 44,
+    "mask.icloud.com": 46,
     "odm.app-ads-services.com": 2,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 2
@@ -26,7 +26,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 44
+      "count": 46
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
