@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1613,
-  "blocked": 209,
+  "queries": 1628,
+  "blocked": 217,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -28,8 +28,10 @@
     "fg8vvsvnieiv3ej16jby.litix.io": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 6,
+    "hi3l2a.cdn-settings.appsflyersdk.com": 2,
+    "hi3l2a.launches.appsflyersdk.com": 2,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 88,
+    "mask.icloud.com": 92,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -41,7 +43,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 88
+      "count": 92
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -153,6 +155,14 @@
     },
     {
       "domain": "firebase-settings.crashlytics.com",
+      "count": 2
+    },
+    {
+      "domain": "hi3l2a.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "hi3l2a.launches.appsflyersdk.com",
       "count": 2
     },
     {
