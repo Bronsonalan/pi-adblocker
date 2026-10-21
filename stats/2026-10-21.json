@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 8161,
-  "blocked": 697,
+  "queries": 8348,
+  "blocked": 709,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 59,
+    "api.segment.io": 61,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -24,7 +24,7 @@
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
     "bzrcdn.openai.com": 16,
-    "cdn-settings.segment.com": 2,
+    "cdn-settings.segment.com": 4,
     "cdn.cookielaw.org": 6,
     "cm.g.doubleclick.net": 2,
     "distillery.wistia.com": 4,
@@ -35,7 +35,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "http-intake.logs.datadoghq.com": 57,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 363,
+    "mask.icloud.com": 365,
     "odm.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 4,
     "pipedream.wistia.com": 4,
@@ -43,7 +43,7 @@
     "rum-static.pingdom.net": 2,
     "sdk.iad-03.braze.com": 6,
     "sr-client-cfg.amplitude.com": 2,
-    "sstats.adobe.com": 30,
+    "sstats.adobe.com": 36,
     "static.cloudflareinsights.com": 4,
     "static.doubleclick.net": 4,
     "track.capitaloneshopping.com": 4,
@@ -53,11 +53,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 363
+      "count": 365
     },
     {
       "domain": "api.segment.io",
-      "count": 59
+      "count": 61
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
@@ -65,7 +65,7 @@
     },
     {
       "domain": "sstats.adobe.com",
-      "count": 30
+      "count": 36
     },
     {
       "domain": "analytics.tiktok.com",
@@ -136,6 +136,10 @@
       "count": 4
     },
     {
+      "domain": "cdn-settings.segment.com",
+      "count": 4
+    },
+    {
       "domain": "distillery.wistia.com",
       "count": 4
     },
@@ -193,10 +197,6 @@
     },
     {
       "domain": "bkldaf.skadsdk.appsflyersdk.com",
-      "count": 2
-    },
-    {
-      "domain": "cdn-settings.segment.com",
       "count": 2
     },
     {
