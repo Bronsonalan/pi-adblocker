@@ -1,6 +1,6 @@
 {
   "date": "2026-10-21",
-  "queries": 1605,
+  "queries": 1613,
   "blocked": 209,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
@@ -177,7 +177,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 15,
+    "timeout": 16,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
