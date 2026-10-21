@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 2712,
-  "blocked": 282,
+  "queries": 2847,
+  "blocked": 288,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 7,
+    "api.segment.io": 8,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
     "app-measurement.com": 6,
@@ -31,9 +31,9 @@
     "googleads.g.doubleclick.net": 6,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 7,
+    "http-intake.logs.datadoghq.com": 8,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 140,
+    "mask.icloud.com": 144,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -45,7 +45,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 140
+      "count": 144
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -60,16 +60,16 @@
       "count": 8
     },
     {
+      "domain": "api.segment.io",
+      "count": 8
+    },
+    {
       "domain": "bzrcdn.openai.com",
       "count": 8
     },
     {
-      "domain": "api.segment.io",
-      "count": 7
-    },
-    {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 7
+      "count": 8
     },
     {
       "domain": "app-measurement.com",
