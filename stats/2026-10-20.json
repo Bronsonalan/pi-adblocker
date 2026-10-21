@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "queries": 14501,
-  "blocked": 1285,
+  "queries": 14591,
+  "blocked": 1289,
   "blocked_domains": {
     "7227272.collect.igodigital.com": 4,
     "9174427.fls.doubleclick.net": 2,
@@ -38,7 +38,7 @@
     "http-intake.logs.datadoghq.com": 56,
     "js.adsrvr.org": 6,
     "live.rezync.com": 2,
-    "mask.icloud.com": 676,
+    "mask.icloud.com": 678,
     "mc-kzgvx04-jk8n38gyn7s08m1d8.device.marketingcloudapis.com": 10,
     "mcs.tiktokv.us": 8,
     "mcs.tiktokw.us": 6,
@@ -55,6 +55,7 @@
     "s.amazon-adsystem.com": 2,
     "sc-static.net": 6,
     "sr-client-cfg.amplitude.com": 6,
+    "static.cloudflareinsights.com": 2,
     "static.doubleclick.net": 2,
     "stats.g.doubleclick.net": 4,
     "storage.cloud.kargo.com": 2,
@@ -68,7 +69,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 676
+      "count": 678
     },
     {
       "domain": "mcs16-normal-us-ttp.capcutapi.us",
@@ -292,6 +293,10 @@
     },
     {
       "domain": "s.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "static.cloudflareinsights.com",
       "count": 2
     },
     {
