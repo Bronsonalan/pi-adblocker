@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-21",
+  "queries": 190,
+  "blocked": 24,
+  "blocked_domains": {
+    "analytics-ipv6.tiktokw.us": 2,
+    "analytics.tiktok.com": 2,
+    "bam.nr-data.net": 2,
+    "bzr.openai.com": 2,
+    "bzrcdn.openai.com": 2,
+    "googleads.g.doubleclick.net": 2,
+    "mask.icloud.com": 8,
+    "static.doubleclick.net": 2,
+    "track.capitaloneshopping.com": 2
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 8
+    },
+    {
+      "domain": "analytics-ipv6.tiktokw.us",
+      "count": 2
+    },
+    {
+      "domain": "analytics.tiktok.com",
+      "count": 2
+    },
+    {
+      "domain": "bam.nr-data.net",
+      "count": 2
+    },
+    {
+      "domain": "bzr.openai.com",
+      "count": 2
+    },
+    {
+      "domain": "bzrcdn.openai.com",
+      "count": 2
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "static.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
+      "count": 2
+    }
+  ],
+  "upstream_errors": {
+    "timeout": 0,
+    "servfail": 0,
+    "refused": 0,
+    "socket": 0,
+    "truncation": 0
+  }
+}
