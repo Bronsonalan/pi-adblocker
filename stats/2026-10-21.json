@@ -1,18 +1,18 @@
 {
   "date": "2026-10-21",
-  "queries": 1318,
-  "blocked": 178,
+  "queries": 1456,
+  "blocked": 198,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
-    "analytics-ipv6.tiktokw.us": 6,
-    "analytics.tiktok.com": 6,
+    "analytics-ipv6.tiktokw.us": 8,
+    "analytics.tiktok.com": 8,
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
     "app-measurement.com": 2,
-    "bam.nr-data.net": 2,
+    "bam.nr-data.net": 4,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.conversions.appsflyersdk.com": 4,
     "bkldaf.dlsdk.appsflyersdk.com": 2,
@@ -20,24 +20,27 @@
     "bkldaf.gcdsdk.appsflyersdk.com": 4,
     "bkldaf.skadsdk.appsflyersdk.com": 2,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "bzr.openai.com": 2,
-    "bzrcdn.openai.com": 6,
+    "bzr.openai.com": 4,
+    "bzrcdn.openai.com": 8,
     "cm.g.doubleclick.net": 2,
+    "distillery.wistia.com": 2,
+    "fg8vvsvnieiv3ej16jby.litix.io": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 6,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 80,
+    "mask.icloud.com": 82,
     "odm.app-ads-services.com": 2,
+    "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
     "sdk.iad-03.braze.com": 6,
     "sr-client-cfg.amplitude.com": 2,
     "static.doubleclick.net": 2,
-    "track.capitaloneshopping.com": 2
+    "track.capitaloneshopping.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 80
+      "count": 82
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -45,15 +48,15 @@
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
-      "count": 6
+      "count": 8
     },
     {
       "domain": "analytics.tiktok.com",
-      "count": 6
+      "count": 8
     },
     {
       "domain": "bzrcdn.openai.com",
-      "count": 6
+      "count": 8
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -65,6 +68,10 @@
     },
     {
       "domain": "ads-api.x.com",
+      "count": 4
+    },
+    {
+      "domain": "bam.nr-data.net",
       "count": 4
     },
     {
@@ -80,7 +87,15 @@
       "count": 4
     },
     {
+      "domain": "bzr.openai.com",
+      "count": 4
+    },
+    {
       "domain": "logs.browser-intake-datadoghq.com",
+      "count": 4
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
       "count": 4
     },
     {
@@ -104,10 +119,6 @@
       "count": 2
     },
     {
-      "domain": "bam.nr-data.net",
-      "count": 2
-    },
-    {
       "domain": "bkldaf.cdn-settings.appsflyersdk.com",
       "count": 2
     },
@@ -124,11 +135,15 @@
       "count": 2
     },
     {
-      "domain": "bzr.openai.com",
+      "domain": "cm.g.doubleclick.net",
       "count": 2
     },
     {
-      "domain": "cm.g.doubleclick.net",
+      "domain": "distillery.wistia.com",
+      "count": 2
+    },
+    {
+      "domain": "fg8vvsvnieiv3ej16jby.litix.io",
       "count": 2
     },
     {
@@ -137,6 +152,10 @@
     },
     {
       "domain": "odm.app-ads-services.com",
+      "count": 2
+    },
+    {
+      "domain": "pipedream.wistia.com",
       "count": 2
     },
     {
@@ -150,14 +169,10 @@
     {
       "domain": "static.doubleclick.net",
       "count": 2
-    },
-    {
-      "domain": "track.capitaloneshopping.com",
-      "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 10,
+    "timeout": 11,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
