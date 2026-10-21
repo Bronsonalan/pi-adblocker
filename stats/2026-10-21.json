@@ -1,12 +1,14 @@
 {
   "date": "2026-10-21",
-  "queries": 1137,
-  "blocked": 142,
+  "queries": 1219,
+  "blocked": 160,
   "blocked_domains": {
     "ads-api.x.com": 2,
     "analytics-ipv6.tiktokw.us": 6,
     "analytics.tiktok.com": 6,
-    "api-analytics.prod.birdapp.com": 10,
+    "api-analytics.prod.birdapp.com": 12,
+    "api.iterable.com": 2,
+    "api2.amplitude.com": 2,
     "app-measurement.com": 2,
     "bam.nr-data.net": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
@@ -20,21 +22,22 @@
     "bzrcdn.openai.com": 6,
     "googleads.g.doubleclick.net": 4,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 66,
+    "mask.icloud.com": 74,
     "odm.app-ads-services.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
-    "sdk.iad-03.braze.com": 4,
+    "sdk.iad-03.braze.com": 6,
+    "sr-client-cfg.amplitude.com": 2,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 66
+      "count": 74
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
-      "count": 10
+      "count": 12
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
@@ -46,6 +49,10 @@
     },
     {
       "domain": "bzrcdn.openai.com",
+      "count": 6
+    },
+    {
+      "domain": "sdk.iad-03.braze.com",
       "count": 6
     },
     {
@@ -69,11 +76,15 @@
       "count": 4
     },
     {
-      "domain": "sdk.iad-03.braze.com",
-      "count": 4
+      "domain": "ads-api.x.com",
+      "count": 2
     },
     {
-      "domain": "ads-api.x.com",
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api2.amplitude.com",
       "count": 2
     },
     {
@@ -110,6 +121,10 @@
     },
     {
       "domain": "roovza.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     },
     {
