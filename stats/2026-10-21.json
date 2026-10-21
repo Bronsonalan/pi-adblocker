@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1456,
-  "blocked": 198,
+  "queries": 1546,
+  "blocked": 201,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -11,7 +11,8 @@
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
-    "app-measurement.com": 2,
+    "api3.siftscience.com": 2,
+    "app-measurement.com": 3,
     "bam.nr-data.net": 4,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.conversions.appsflyersdk.com": 4,
@@ -99,6 +100,10 @@
       "count": 4
     },
     {
+      "domain": "app-measurement.com",
+      "count": 3
+    },
+    {
       "domain": "ads-api.twitter.com",
       "count": 2
     },
@@ -115,7 +120,7 @@
       "count": 2
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "api3.siftscience.com",
       "count": 2
     },
     {
