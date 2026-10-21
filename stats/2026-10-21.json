@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 2245,
-  "blocked": 256,
+  "queries": 2399,
+  "blocked": 264,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -33,7 +33,7 @@
     "hi3l2a.launches.appsflyersdk.com": 2,
     "http-intake.logs.datadoghq.com": 3,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 122,
+    "mask.icloud.com": 130,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -45,7 +45,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 122
+      "count": 130
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -197,7 +197,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 20,
+    "timeout": 21,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
