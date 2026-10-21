@@ -1,23 +1,32 @@
 {
   "date": "2026-10-21",
-  "queries": 446,
-  "blocked": 50,
+  "queries": 662,
+  "blocked": 87,
   "blocked_domains": {
     "analytics-ipv6.tiktokw.us": 6,
     "analytics.tiktok.com": 6,
+    "app-measurement.com": 1,
     "bam.nr-data.net": 2,
+    "bkldaf.cdn-settings.appsflyersdk.com": 2,
+    "bkldaf.conversions.appsflyersdk.com": 4,
+    "bkldaf.dlsdk.appsflyersdk.com": 2,
+    "bkldaf.dynamic-report-api.appsflyersdk.com": 2,
+    "bkldaf.gcdsdk.appsflyersdk.com": 4,
+    "bkldaf.skadsdk.appsflyersdk.com": 2,
+    "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 2,
     "bzrcdn.openai.com": 6,
     "googleads.g.doubleclick.net": 2,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 18,
+    "mask.icloud.com": 32,
+    "odm.app-ads-services.com": 2,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 18
+      "count": 32
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
@@ -32,11 +41,39 @@
       "count": 6
     },
     {
+      "domain": "bkldaf.conversions.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "bkldaf.gcdsdk.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
+      "count": 4
+    },
+    {
       "domain": "logs.browser-intake-datadoghq.com",
       "count": 4
     },
     {
       "domain": "bam.nr-data.net",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.dlsdk.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.dynamic-report-api.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.skadsdk.appsflyersdk.com",
       "count": 2
     },
     {
@@ -48,16 +85,24 @@
       "count": 2
     },
     {
+      "domain": "odm.app-ads-services.com",
+      "count": 2
+    },
+    {
       "domain": "static.doubleclick.net",
       "count": 2
     },
     {
       "domain": "track.capitaloneshopping.com",
       "count": 2
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 0,
+    "timeout": 7,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
