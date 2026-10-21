@@ -1,14 +1,15 @@
 {
   "date": "2026-10-21",
-  "queries": 268,
-  "blocked": 36,
+  "queries": 387,
+  "blocked": 46,
   "blocked_domains": {
-    "analytics-ipv6.tiktokw.us": 4,
-    "analytics.tiktok.com": 4,
+    "analytics-ipv6.tiktokw.us": 6,
+    "analytics.tiktok.com": 6,
     "bam.nr-data.net": 2,
     "bzr.openai.com": 2,
-    "bzrcdn.openai.com": 4,
+    "bzrcdn.openai.com": 6,
     "googleads.g.doubleclick.net": 2,
+    "logs.browser-intake-datadoghq.com": 4,
     "mask.icloud.com": 14,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 2
@@ -20,14 +21,18 @@
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
-      "count": 4
+      "count": 6
     },
     {
       "domain": "analytics.tiktok.com",
-      "count": 4
+      "count": 6
     },
     {
       "domain": "bzrcdn.openai.com",
+      "count": 6
+    },
+    {
+      "domain": "logs.browser-intake-datadoghq.com",
       "count": 4
     },
     {
