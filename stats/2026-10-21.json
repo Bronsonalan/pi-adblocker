@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1839,
-  "blocked": 240,
+  "queries": 1893,
+  "blocked": 244,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -12,7 +12,7 @@
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
-    "app-measurement.com": 4,
+    "app-measurement.com": 6,
     "bam.nr-data.net": 4,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.conversions.appsflyersdk.com": 4,
@@ -31,7 +31,7 @@
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 114,
+    "mask.icloud.com": 116,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
@@ -43,7 +43,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 114
+      "count": 116
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -62,6 +62,10 @@
       "count": 8
     },
     {
+      "domain": "app-measurement.com",
+      "count": 6
+    },
+    {
       "domain": "googleads.g.doubleclick.net",
       "count": 6
     },
@@ -75,10 +79,6 @@
     },
     {
       "domain": "api3.siftscience.com",
-      "count": 4
-    },
-    {
-      "domain": "app-measurement.com",
       "count": 4
     },
     {
