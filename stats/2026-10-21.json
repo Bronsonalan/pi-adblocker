@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 5457,
-  "blocked": 488,
+  "queries": 5665,
+  "blocked": 508,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -10,7 +10,7 @@
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 35,
+    "api.segment.io": 37,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -32,15 +32,15 @@
     "googleads.g.doubleclick.net": 6,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 35,
+    "http-intake.logs.datadoghq.com": 37,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 262,
+    "mask.icloud.com": 270,
     "odm.app-ads-services.com": 2,
     "pipedream.wistia.com": 2,
     "roovza.launches.appsflyersdk.com": 2,
     "sdk.iad-03.braze.com": 6,
     "sr-client-cfg.amplitude.com": 2,
-    "sstats.adobe.com": 20,
+    "sstats.adobe.com": 28,
     "static.doubleclick.net": 2,
     "track.capitaloneshopping.com": 4,
     "www.googletagmanager.com": 2
@@ -48,19 +48,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 262
+      "count": 270
     },
     {
       "domain": "api.segment.io",
-      "count": 35
+      "count": 37
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 35
+      "count": 37
     },
     {
       "domain": "sstats.adobe.com",
-      "count": 20
+      "count": 28
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
