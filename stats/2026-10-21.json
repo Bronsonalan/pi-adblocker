@@ -1,16 +1,16 @@
 {
   "date": "2026-10-21",
-  "queries": 7813,
-  "blocked": 672,
+  "queries": 8161,
+  "blocked": 697,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
     "analytics-ipv6.tiktokw.us": 8,
-    "analytics.tiktok.com": 14,
+    "analytics.tiktok.com": 16,
     "analytics.twitter.com": 2,
     "api-analytics.prod.birdapp.com": 12,
     "api.iterable.com": 2,
-    "api.segment.io": 56,
+    "api.segment.io": 59,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 4,
     "app-measurement.com": 8,
@@ -23,7 +23,7 @@
     "bkldaf.skadsdk.appsflyersdk.com": 2,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "bzr.openai.com": 4,
-    "bzrcdn.openai.com": 14,
+    "bzrcdn.openai.com": 16,
     "cdn-settings.segment.com": 2,
     "cdn.cookielaw.org": 6,
     "cm.g.doubleclick.net": 2,
@@ -33,9 +33,9 @@
     "googleads.g.doubleclick.net": 12,
     "hi3l2a.cdn-settings.appsflyersdk.com": 2,
     "hi3l2a.launches.appsflyersdk.com": 2,
-    "http-intake.logs.datadoghq.com": 54,
+    "http-intake.logs.datadoghq.com": 57,
     "logs.browser-intake-datadoghq.com": 4,
-    "mask.icloud.com": 350,
+    "mask.icloud.com": 363,
     "odm.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 4,
     "pipedream.wistia.com": 4,
@@ -43,7 +43,7 @@
     "rum-static.pingdom.net": 2,
     "sdk.iad-03.braze.com": 6,
     "sr-client-cfg.amplitude.com": 2,
-    "sstats.adobe.com": 28,
+    "sstats.adobe.com": 30,
     "static.cloudflareinsights.com": 4,
     "static.doubleclick.net": 4,
     "track.capitaloneshopping.com": 4,
@@ -53,27 +53,27 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 350
+      "count": 363
     },
     {
       "domain": "api.segment.io",
-      "count": 56
+      "count": 59
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 54
+      "count": 57
     },
     {
       "domain": "sstats.adobe.com",
-      "count": 28
+      "count": 30
     },
     {
       "domain": "analytics.tiktok.com",
-      "count": 14
+      "count": 16
     },
     {
       "domain": "bzrcdn.openai.com",
-      "count": 14
+      "count": 16
     },
     {
       "domain": "api-analytics.prod.birdapp.com",
@@ -237,7 +237,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 76,
+    "timeout": 82,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
