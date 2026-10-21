@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
-  "queries": 1787,
-  "blocked": 239,
+  "queries": 1839,
+  "blocked": 240,
   "blocked_domains": {
     "ads-api.twitter.com": 2,
     "ads-api.x.com": 4,
@@ -12,7 +12,7 @@
     "api.iterable.com": 2,
     "api2.amplitude.com": 2,
     "api3.siftscience.com": 4,
-    "app-measurement.com": 3,
+    "app-measurement.com": 4,
     "bam.nr-data.net": 4,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.conversions.appsflyersdk.com": 4,
@@ -78,6 +78,10 @@
       "count": 4
     },
     {
+      "domain": "app-measurement.com",
+      "count": 4
+    },
+    {
       "domain": "bam.nr-data.net",
       "count": 4
     },
@@ -104,10 +108,6 @@
     {
       "domain": "track.capitaloneshopping.com",
       "count": 4
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 3
     },
     {
       "domain": "ads-api.twitter.com",
