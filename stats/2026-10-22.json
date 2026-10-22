@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "queries": 2103,
+  "queries": 2124,
   "blocked": 237,
   "blocked_domains": {
     "ad.doubleclick.net": 2,
@@ -57,7 +57,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 208,
+    "timeout": 209,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
