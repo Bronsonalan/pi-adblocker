@@ -1,35 +1,39 @@
 {
   "date": "2026-10-22",
-  "queries": 1256,
-  "blocked": 70,
+  "queries": 1531,
+  "blocked": 91,
   "blocked_domains": {
     "ad.doubleclick.net": 2,
     "api.iterable.com": 2,
-    "api.segment.io": 10,
+    "api.segment.io": 13,
     "api3.branch.io": 2,
-    "app-measurement.com": 4,
+    "app-measurement.com": 7,
     "cdn.branch.io": 2,
-    "http-intake.logs.datadoghq.com": 10,
-    "mask.icloud.com": 34,
+    "http-intake.logs.datadoghq.com": 13,
+    "mask.icloud.com": 42,
     "sr-client-cfg.amplitude.com": 2,
-    "sstats.adobe.com": 2
+    "sstats.adobe.com": 6
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 34
+      "count": 42
     },
     {
       "domain": "api.segment.io",
-      "count": 10
+      "count": 13
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 10
+      "count": 13
     },
     {
       "domain": "app-measurement.com",
-      "count": 4
+      "count": 7
+    },
+    {
+      "domain": "sstats.adobe.com",
+      "count": 6
     },
     {
       "domain": "ad.doubleclick.net",
@@ -50,14 +54,10 @@
     {
       "domain": "sr-client-cfg.amplitude.com",
       "count": 2
-    },
-    {
-      "domain": "sstats.adobe.com",
-      "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 207,
+    "timeout": 208,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
