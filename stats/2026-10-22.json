@@ -1,7 +1,7 @@
 {
   "date": "2026-10-22",
-  "queries": 1927,
-  "blocked": 219,
+  "queries": 1929,
+  "blocked": 221,
   "blocked_domains": {
     "ad.doubleclick.net": 2,
     "api.iterable.com": 2,
@@ -10,14 +10,14 @@
     "app-measurement.com": 7,
     "cdn.branch.io": 2,
     "http-intake.logs.datadoghq.com": 13,
-    "mask.icloud.com": 170,
+    "mask.icloud.com": 172,
     "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 6
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 170
+      "count": 172
     },
     {
       "domain": "api.segment.io",
