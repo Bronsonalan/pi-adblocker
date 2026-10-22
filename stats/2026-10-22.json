@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "queries": 626,
+  "queries": 649,
   "blocked": 26,
   "blocked_domains": {
     "api.segment.io": 6,
