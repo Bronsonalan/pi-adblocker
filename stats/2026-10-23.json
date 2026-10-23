@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-23",
+  "queries": 58,
+  "blocked": 3,
+  "blocked_domains": {
+    "mask.icloud.com": 3
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 3
+    }
+  ],
+  "upstream_errors": {
+    "timeout": 3,
+    "servfail": 0,
+    "refused": 0,
+    "socket": 0,
+    "truncation": 0
+  }
+}
