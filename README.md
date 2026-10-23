@@ -594,7 +594,9 @@ Counters, including blocked queries:
 curl -s http://192.168.1.50:8080/api/stats
 ```
 
-Expected output is JSON. `blocked` increases when a denylist name is queried. `blocklist_domains` is the number of names on `blocklist.txt`, plus any downloaded list, with each name counted once. `deny_count` is the file alone and `allow_count` is the allowlist. Each `recent_blocked` entry keeps a raw unix `ts`. Open `http://192.168.1.50:8080/` in a browser for the same numbers as a page. The Time column is the Pi's local time, for example `2:31:05 PM`, and the header reads `Blocklist: 91,526 domains (allowlist 0)`.
+Expected output is JSON. `blocked` increases when a denylist name is queried. `blocklist_domains` is the number of names on `blocklist.txt`, plus any downloaded list, with each name counted once. `deny_count` is the file alone and `allow_count` is the allowlist. Each `recent_blocked` entry keeps a raw unix `ts`.
+
+Open `http://192.168.1.50:8080/` for theme D, the aura overview. Open `http://192.168.1.50:8080/c` for theme C, the denser HUD. Each page links to the other (`THEME_C` on `/`, `THEME_D` on `/c`). Both poll `/api/stats` and `/api/crt` every 3 seconds. The three totals are today's UTC queries, blocked count, and block percent. A delta pill uses the previous UTC day already stored in `days`; when that day is absent the pill is `—`. The table is the `/api/crt` lookup feed, newest first, with `BLOCKED` rows highlighted. Theme C also lists `today.top_blocked` when that list is not empty. The footer shows the blocklist size, the allowlist count, and `PROC`, which is `queries`, `blocked`, and `blocked_percent` since this process started. Lookup times are the browser's local 24-hour clock. `/api/crt` is unchanged, so the CRT console keeps reading it.
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
