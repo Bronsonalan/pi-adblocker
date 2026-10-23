@@ -1,6 +1,6 @@
 {
   "date": "2026-10-23",
-  "queries": 6306,
+  "queries": 6414,
   "blocked": 437,
   "blocked_domains": {
     "a21018620252.cdn.optimizely.com": 2,
@@ -207,7 +207,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 651,
+    "timeout": 653,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
