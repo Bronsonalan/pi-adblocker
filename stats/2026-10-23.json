@@ -1,36 +1,36 @@
 {
   "date": "2026-10-23",
-  "queries": 996,
-  "blocked": 63,
+  "queries": 1175,
+  "blocked": 85,
   "blocked_domains": {
-    "api.segment.io": 4,
+    "api.segment.io": 7,
     "bzr.openai.com": 2,
     "bzrcdn.openai.com": 2,
     "c.go-mpulse.net": 2,
     "doubleclick.net": 1,
-    "http-intake.logs.datadoghq.com": 4,
-    "mask.icloud.com": 30,
+    "http-intake.logs.datadoghq.com": 7,
+    "mask.icloud.com": 40,
     "px.ads.linkedin.com": 2,
     "rs.fullstory.com": 2,
-    "tr6.snapchat.com": 12,
+    "tr6.snapchat.com": 18,
     "track.customer.io": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 30
+      "count": 40
     },
     {
       "domain": "tr6.snapchat.com",
-      "count": 12
+      "count": 18
     },
     {
       "domain": "api.segment.io",
-      "count": 4
+      "count": 7
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 4
+      "count": 7
     },
     {
       "domain": "bzr.openai.com",
@@ -62,7 +62,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 71,
+    "timeout": 74,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
