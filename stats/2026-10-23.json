@@ -1,36 +1,132 @@
 {
   "date": "2026-10-23",
-  "queries": 4557,
-  "blocked": 256,
+  "queries": 5090,
+  "blocked": 397,
   "blocked_domains": {
-    "api.segment.io": 25,
+    "a21018620252.cdn.optimizely.com": 2,
+    "ad.doubleclick.net": 2,
+    "ak.sail-horizon.com": 8,
+    "api.lab.amplitude.com": 2,
+    "api.parsely.com": 2,
+    "api.rlcdn.com": 8,
+    "api.segment.io": 26,
     "bzr.openai.com": 2,
     "bzrcdn.openai.com": 2,
     "c.go-mpulse.net": 2,
+    "cdn.adsafeprotected.com": 8,
+    "cdn.brandmetrics.com": 8,
+    "cdn.cookielaw.org": 2,
+    "cdn.id5-sync.com": 8,
+    "cdn.permutive.app": 2,
+    "cdn.speedcurve.com": 2,
+    "client.aps.amazon-adsystem.com": 8,
+    "cm.g.doubleclick.net": 2,
+    "config.aps.amazon-adsystem.com": 8,
     "doubleclick.net": 1,
-    "http-intake.logs.datadoghq.com": 24,
-    "mask.icloud.com": 147,
+    "gum.criteo.com": 8,
+    "heimdall.hearstapps.com": 2,
+    "http-intake.logs.datadoghq.com": 25,
+    "id5-sync.com": 8,
+    "image8.pubmatic.com": 2,
+    "mask.icloud.com": 157,
+    "media.bidr.io": 9,
+    "oply.hearstapps.com": 2,
+    "pagead2.googlesyndication.com": 2,
+    "pubads.g.doubleclick.net": 2,
     "px.ads.linkedin.com": 2,
     "rs.fullstory.com": 2,
-    "tr6.snapchat.com": 47,
-    "track.customer.io": 2
+    "s.skimresources.com": 10,
+    "s0.2mdn.net": 2,
+    "securepubads.g.doubleclick.net": 3,
+    "tr6.snapchat.com": 49,
+    "track.customer.io": 2,
+    "tru.am": 3,
+    "www.googleadservices.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 147
+      "count": 157
     },
     {
       "domain": "tr6.snapchat.com",
-      "count": 47
+      "count": 49
     },
     {
       "domain": "api.segment.io",
-      "count": 25
+      "count": 26
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 24
+      "count": 25
+    },
+    {
+      "domain": "s.skimresources.com",
+      "count": 10
+    },
+    {
+      "domain": "media.bidr.io",
+      "count": 9
+    },
+    {
+      "domain": "ak.sail-horizon.com",
+      "count": 8
+    },
+    {
+      "domain": "api.rlcdn.com",
+      "count": 8
+    },
+    {
+      "domain": "cdn.adsafeprotected.com",
+      "count": 8
+    },
+    {
+      "domain": "cdn.brandmetrics.com",
+      "count": 8
+    },
+    {
+      "domain": "cdn.id5-sync.com",
+      "count": 8
+    },
+    {
+      "domain": "client.aps.amazon-adsystem.com",
+      "count": 8
+    },
+    {
+      "domain": "config.aps.amazon-adsystem.com",
+      "count": 8
+    },
+    {
+      "domain": "gum.criteo.com",
+      "count": 8
+    },
+    {
+      "domain": "id5-sync.com",
+      "count": 8
+    },
+    {
+      "domain": "securepubads.g.doubleclick.net",
+      "count": 3
+    },
+    {
+      "domain": "tru.am",
+      "count": 3
+    },
+    {
+      "domain": "a21018620252.cdn.optimizely.com",
+      "count": 2
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "api.lab.amplitude.com",
+      "count": 2
+    },
+    {
+      "domain": "api.parsely.com",
+      "count": 2
     },
     {
       "domain": "bzr.openai.com",
@@ -45,6 +141,42 @@
       "count": 2
     },
     {
+      "domain": "cdn.cookielaw.org",
+      "count": 2
+    },
+    {
+      "domain": "cdn.permutive.app",
+      "count": 2
+    },
+    {
+      "domain": "cdn.speedcurve.com",
+      "count": 2
+    },
+    {
+      "domain": "cm.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "heimdall.hearstapps.com",
+      "count": 2
+    },
+    {
+      "domain": "image8.pubmatic.com",
+      "count": 2
+    },
+    {
+      "domain": "oply.hearstapps.com",
+      "count": 2
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
+      "domain": "pubads.g.doubleclick.net",
+      "count": 2
+    },
+    {
       "domain": "px.ads.linkedin.com",
       "count": 2
     },
@@ -53,7 +185,15 @@
       "count": 2
     },
     {
+      "domain": "s0.2mdn.net",
+      "count": 2
+    },
+    {
       "domain": "track.customer.io",
+      "count": 2
+    },
+    {
+      "domain": "www.googleadservices.com",
       "count": 2
     },
     {
@@ -62,7 +202,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 614,
+    "timeout": 622,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
