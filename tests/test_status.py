@@ -13,7 +13,13 @@ import helpers  # noqa: F401
 
 from piadblock.crt import LookupFeed
 from piadblock.stats import Stats
-from piadblock.status import StatusPage, crt_payload, format_recent_time, render_status_page
+from piadblock.status import (
+    StatusPage,
+    crt_payload,
+    format_recent_time,
+    render_status_page,
+    render_status_page_c,
+)
 
 
 class StatusTests(unittest.TestCase):
@@ -40,11 +46,15 @@ class StatusTests(unittest.TestCase):
             "cache_entries": 3,
         }
         html = render_status_page(snapshot, details).decode("utf-8")
-        self.assertIn("10", html)
-        self.assertIn("ads.example.com", html)
-        self.assertIn("1.1.1.1", html)
-        self.assertIn("Blocklist: <code>100</code> domains (allowlist 1)", html)
-        self.assertNotIn("(allow ", html)
+        self.assertIn("SYSTEM_OVERVIEW", html)
+        self.assertIn("TX_LOGS", html)
+        self.assertIn('href="/c"', html)
+        self.assertIn('fetch("/api/stats"', html)
+        self.assertIn('fetch("/api/crt"', html)
+        self.assertNotIn("ads.example.com", html)
+        self.assertNotIn("1.1.1.1", html)
+        self.assertNotIn("MOCK DATA", html)
+        self.assertNotIn("12,847", html)
 
     def test_http_routes(self):
         stats = Stats()
@@ -71,8 +81,16 @@ class StatusTests(unittest.TestCase):
         self.assertEqual(body["queries"], 4)
         self.assertEqual(body["blocked"], 1)
         self.assertEqual(body["blocklist_domains"], 3)
+        self.assertEqual(body["upstream"], ["1.1.1.1"])
         page_bytes = _get(page.port, "/")
         self.assertIn(b"piadblock", page_bytes)
+        self.assertIn(b"THEME_C", page_bytes)
+        self.assertIn(b'href="/c"', page_bytes)
+        theme_c = _get(page.port, "/c")
+        self.assertIn(b"TOP_BLOCKED", theme_c)
+        self.assertIn(b"THEME_D", theme_c)
+        self.assertIn(b'href="/"', theme_c)
+        self.assertIn(b'fetch("/api/crt"', theme_c)
         missing = _status(page.port, "/nope")
         self.assertEqual(missing, 404)
 
@@ -141,10 +159,16 @@ class LocalTimeTests(unittest.TestCase):
             "cache_entries": 0,
         }
         html = render_status_page(snapshot, details).decode("utf-8")
-        self.assertIn("2:18:11 PM", html)
+        theme_c = render_status_page_c(snapshot, details).decode("utf-8")
         self.assertNotIn("1792099091", html)
-        self.assertIn("Blocklist: <code>91,526</code> domains (allowlist 0)", html)
-        self.assertNotIn("(allow 0, deny", html)
+        self.assertNotIn("1792099091", theme_c)
+        self.assertIn("blocklist_domains", html)
+        self.assertIn("top_blocked", theme_c)
+        self.assertNotIn("MOCK DATA", html)
+        self.assertNotIn("172.20.1.217", html)
+        self.assertNotIn("+8.4%", html)
+        self.assertIn("setInterval(load, 3000)", html)
+        self.assertNotIn("/*__SCRIPT__*/", html)
 
         stats = Stats()
         with mock.patch("piadblock.stats.time.time", return_value=1792099091.0):
@@ -157,9 +181,9 @@ class LocalTimeTests(unittest.TestCase):
         self.assertIsInstance(body["recent_blocked"][0]["ts"], float)
         self.assertEqual(body["blocklist_domains"], 91526)
         page_bytes = _get(page.port, "/")
-        self.assertIn(b"2:18:11 PM", page_bytes)
         self.assertNotIn(b"1792099091", page_bytes)
-        self.assertIn(b"Blocklist: <code>91,526</code> domains (allowlist 0)", page_bytes)
+        self.assertIn(b"blocklist_domains", page_bytes)
+        self.assertIn(b"THEME_C", page_bytes)
 
     def test_los_angeles_clock_follows_the_system_zone(self):
         os.environ["TZ"] = "America/Los_Angeles"
