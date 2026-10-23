@@ -1,18 +1,33 @@
 {
   "date": "2026-10-23",
-  "queries": 163,
-  "blocked": 13,
+  "queries": 500,
+  "blocked": 25,
   "blocked_domains": {
-    "mask.icloud.com": 13
+    "api.segment.io": 2,
+    "http-intake.logs.datadoghq.com": 2,
+    "mask.icloud.com": 19,
+    "tr6.snapchat.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 13
+      "count": 19
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 2
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "tr6.snapchat.com",
+      "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 3,
+    "timeout": 6,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
