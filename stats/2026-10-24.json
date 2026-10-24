@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
-  "queries": 1960,
-  "blocked": 119,
+  "queries": 1978,
+  "blocked": 121,
   "blocked_domains": {
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "api.segment.io": 15,
@@ -9,7 +9,7 @@
     "firebase-settings.crashlytics.com": 2,
     "fls-na.amazon.com": 6,
     "http-intake.logs.datadoghq.com": 15,
-    "mask.icloud.com": 64,
+    "mask.icloud.com": 66,
     "pagead2.googlesyndication.com": 2,
     "s.amazon-adsystem.com": 4,
     "www.googleadservices.com": 4,
@@ -18,7 +18,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 64
+      "count": 66
     },
     {
       "domain": "api.segment.io",
@@ -62,7 +62,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 840,
+    "timeout": 841,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
