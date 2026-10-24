@@ -1,13 +1,15 @@
 {
   "date": "2026-10-24",
-  "queries": 918,
-  "blocked": 60,
+  "queries": 1171,
+  "blocked": 77,
   "blocked_domains": {
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
-    "api.segment.io": 5,
+    "api.segment.io": 8,
+    "app-measurement.com": 1,
+    "firebase-settings.crashlytics.com": 2,
     "fls-na.amazon.com": 6,
-    "http-intake.logs.datadoghq.com": 5,
-    "mask.icloud.com": 28,
+    "http-intake.logs.datadoghq.com": 8,
+    "mask.icloud.com": 36,
     "pagead2.googlesyndication.com": 2,
     "s.amazon-adsystem.com": 4,
     "www.googleadservices.com": 4,
@@ -16,19 +18,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 28
+      "count": 36
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 8
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 8
     },
     {
       "domain": "fls-na.amazon.com",
       "count": 6
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 5
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 5
     },
     {
       "domain": "s.amazon-adsystem.com",
@@ -47,12 +49,20 @@
       "count": 2
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 2
+    },
+    {
       "domain": "pagead2.googlesyndication.com",
       "count": 2
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 345,
+    "timeout": 398,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
