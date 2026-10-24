@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
-  "queries": 2006,
-  "blocked": 137,
+  "queries": 2014,
+  "blocked": 141,
   "blocked_domains": {
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
     "api.segment.io": 15,
@@ -9,7 +9,7 @@
     "firebase-settings.crashlytics.com": 2,
     "fls-na.amazon.com": 6,
     "http-intake.logs.datadoghq.com": 15,
-    "mask.icloud.com": 82,
+    "mask.icloud.com": 86,
     "pagead2.googlesyndication.com": 2,
     "s.amazon-adsystem.com": 4,
     "www.googleadservices.com": 4,
@@ -18,7 +18,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 82
+      "count": 86
     },
     {
       "domain": "api.segment.io",
