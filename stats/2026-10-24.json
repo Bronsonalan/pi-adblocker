@@ -1,15 +1,15 @@
 {
   "date": "2026-10-24",
-  "queries": 1171,
-  "blocked": 77,
+  "queries": 1503,
+  "blocked": 97,
   "blocked_domains": {
     "aes.us-east.ono.axp.amazon-adsystem.com": 2,
-    "api.segment.io": 8,
+    "api.segment.io": 12,
     "app-measurement.com": 1,
     "firebase-settings.crashlytics.com": 2,
     "fls-na.amazon.com": 6,
-    "http-intake.logs.datadoghq.com": 8,
-    "mask.icloud.com": 36,
+    "http-intake.logs.datadoghq.com": 12,
+    "mask.icloud.com": 48,
     "pagead2.googlesyndication.com": 2,
     "s.amazon-adsystem.com": 4,
     "www.googleadservices.com": 4,
@@ -18,15 +18,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 36
+      "count": 48
     },
     {
       "domain": "api.segment.io",
-      "count": 8
+      "count": 12
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 8
+      "count": 12
     },
     {
       "domain": "fls-na.amazon.com",
@@ -62,7 +62,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 398,
+    "timeout": 527,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
