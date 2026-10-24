@@ -596,7 +596,9 @@ curl -s http://192.168.1.50:8080/api/stats
 
 Expected output is JSON. `blocked` increases when a denylist name is queried. `blocklist_domains` is the number of names on `blocklist.txt`, plus any downloaded list, with each name counted once. `deny_count` is the file alone and `allow_count` is the allowlist. Each `recent_blocked` entry keeps a raw unix `ts`.
 
-Open `http://192.168.1.50:8080/` for theme D, the aura overview. Open `http://192.168.1.50:8080/c` for theme C, the denser HUD. Each page links to the other (`THEME_C` on `/`, `THEME_D` on `/c`). Both poll `/api/stats` and `/api/crt` every 3 seconds. The three totals are today's UTC queries, blocked count, and block percent. A delta pill uses the previous UTC day already stored in `days`; when that day is absent the pill is `—`. The table is the `/api/crt` lookup feed, newest first, with `BLOCKED` rows highlighted. Theme C also lists `today.top_blocked` when that list is not empty. The footer shows the blocklist size, the allowlist count, and `PROC`, which is `queries`, `blocked`, and `blocked_percent` since this process started. Lookup times are the browser's local 24-hour clock. `/api/crt` is unchanged, so the CRT console keeps reading it.
+Open `http://192.168.1.50:8080/` for theme D, the aura overview. Open `http://192.168.1.50:8080/c` for theme C, the denser HUD. Each page links to the other (`THEME_C` on `/`, `THEME_D` on `/c`). Both poll `/api/stats` and `/api/crt` every 3 seconds. The three totals are today's UTC queries, blocked count, and block percent. A delta pill uses the previous UTC day already stored in `days`; when that day is absent the pill is `—`. The table is the `/api/crt` lookup feed, newest first, with `BLOCKED` rows highlighted. Theme C also lists `today.top_blocked` when that list is not empty. The footer shows the blocklist size, the allowlist count, and `PROC`, which is `queries`, `blocked`, and `blocked_percent` since this process started. Lookup times are the browser's local 24-hour clock. `/api/stats` and `/api/crt` are unchanged, so the CRT console keeps reading `/api/crt`.
+
+The television layout is `http://192.168.1.50:8080/crt`. `http://192.168.1.50:8080/?crt=1` and `http://192.168.1.50:8080/c?crt=1` are the same page. It is a 4:3 frame with large type, the three totals, six lookups, and a FULLSCREEN button. The first click or keypress also enters fullscreen.
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
@@ -611,6 +613,24 @@ TODO: DHCP reservation router.
 TODO: DHCP reservation MAC address.
 
 ## CRT display
+
+### Browser on the television
+
+The Mac mirrors onto the 4:3 CRT. Open this on the Mac:
+
+http://172.20.1.217:8080/crt
+
+`http://172.20.1.217:8080/?crt=1` and `http://172.20.1.217:8080/c?crt=1` are the same layout. Press the FULLSCREEN button, or click or press a key anywhere on the page, to enter fullscreen.
+
+Chrome kiosk on macOS:
+
+```bash
+open -a "Google Chrome" --args --kiosk http://172.20.1.217:8080/crt
+```
+
+In Safari, choose View > Enter Full Screen. Hide the toolbar in full screen by unchecking View > Always Show Toolbar in Full Screen.
+
+### Console on the Pi
 
 A fullscreen feed for the monitor on the Pi's console (`tty1`). It is laid out for a 640×480 CRT: a 16×32 console font gives 40 columns and 15 rows of large text. The newest lookup is the top row. A blocked name is drawn in white on red and marked `BLOCKED`, with the client address and the domain. The header shows today's query count and blocked count, the local time (for example `2:31:05 PM`), and the blocklist size with thousands separators when the status page reports one.
 

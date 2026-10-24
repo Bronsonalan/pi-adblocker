@@ -1,8 +1,9 @@
 """Status page served with ``http.server``.
 
-``/`` is theme D, the aura overview, and the page meant for a 640×480 CRT.
-``/c`` is theme C, the denser HUD with the top-blocked strip. Both documents
-are static. The browser fills them from ``/api/stats`` and ``/api/crt``.
+``/`` is theme D, the aura overview. ``/c`` is theme C, the denser HUD.
+``/crt``, and ``?crt=1`` on either page, is the 4:3 television layout.
+The documents are static. The browser fills them from ``/api/stats`` and
+``/api/crt``.
 """
 
 from __future__ import annotations
@@ -11,7 +12,7 @@ import json
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Callable
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from piadblock.crt import LookupFeed, format_local_time
 from piadblock.stats import Stats
@@ -39,6 +40,9 @@ def format_recent_time(ts: object) -> str:
 CLIENT_JS = r"""
 (function () {
   var theme = document.documentElement.getAttribute("data-theme") || "d";
+  var crtMode = document.documentElement.getAttribute("data-crt") === "1";
+  var CRT_ROWS = 6;
+  var crtArmFullscreen = true;
   var lastStats = null;
   var lastCrt = null;
   var uptimeAnchor = null;
@@ -217,10 +221,17 @@ CLIENT_JS = r"""
     for (i = 0; i < rows.length; i++) {
       row = rows[i] || {};
       if (!visible(row, filter)) continue;
+      if (crtMode && shown >= CRT_ROWS) break;
       shown++;
       status = row.status == null ? "" : String(row.status);
       kind = stateKind(status);
-      if (theme === "c") {
+      if (crtMode) {
+        html += '<div class="row ' + kind + '">' +
+          '<span class="status">' + field(status) + "</span>" +
+          '<span class="domain" dir="rtl"><span class="domain-text" dir="ltr">' +
+          field(row.name) + "</span></span>" +
+          "</div>";
+      } else if (theme === "c") {
         html += '<div class="row ' + kind + '">' +
           '<span class="ts">' + esc(clock(row.ts)) + "</span>" +
           '<span class="status">' + field(status) + "</span>" +
@@ -241,10 +252,10 @@ CLIENT_JS = r"""
     }
     var empty = rows.length ? "no matching lookups" : "no lookups yet";
     if (!shown) {
-      if (theme === "c") html = '<div class="row empty">' + empty + "</div>";
+      if (crtMode || theme === "c") html = '<div class="row empty">' + empty + "</div>";
       else html = '<tr class="empty"><td></td><td colspan="4">' + empty + "</td></tr>";
     }
-    if (theme === "c") {
+    if (crtMode || theme === "c") {
       var feed = document.getElementById("feed");
       if (feed) feed.innerHTML = html;
     } else {
@@ -382,6 +393,27 @@ CLIENT_JS = r"""
     });
   }
 
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function requestPageFullscreen() {
+    if (!crtMode || isFullscreen()) return;
+    var root = document.documentElement;
+    var req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) return;
+    try {
+      var pending = req.call(root);
+      if (pending && pending.catch) pending.catch(function () {});
+    } catch (err) {}
+  }
+
+  if (crtMode) {
+    document.addEventListener("click", function () {
+      if (crtArmFullscreen && !isFullscreen()) requestPageFullscreen();
+    });
+  }
+
   var filter = document.getElementById("qfilter");
   if (filter) {
     filter.addEventListener("input", render);
@@ -389,6 +421,9 @@ CLIENT_JS = r"""
   var refresh = document.getElementById("refresh-btn");
   if (refresh) refresh.addEventListener("click", load);
   document.addEventListener("keydown", function (ev) {
+    if (crtMode && crtArmFullscreen && !ev.repeat && !ev.ctrlKey && !ev.metaKey && !ev.altKey && !isFullscreen()) {
+      requestPageFullscreen();
+    }
     var box = document.getElementById("qfilter");
     if (!box) return;
     if ((ev.ctrlKey || ev.metaKey) && (ev.key === "f" || ev.key === "F")) {
@@ -1648,6 +1683,208 @@ def render_status_page_c(snapshot: dict, details: dict) -> bytes:
     return _page(THEME_C_PAGE)
 
 
+CRT_PAGE = r"""<!DOCTYPE html>
+<html lang="en" data-theme="d" data-crt="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>piadblock</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000000;
+  }
+  body {
+    position: fixed;
+    inset: 0;
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-weight: 800;
+    font-synthesis: weight;
+    color: #e8ffe4;
+    background: #000000;
+  }
+  .stage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(100vw, calc(100vh * 4 / 3));
+    height: min(100vh, calc(100vw * 3 / 4));
+    transform: translate(-50%, -50%);
+    padding: 7%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.8vmin, 12px);
+    background: #000000;
+  }
+  .top {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .live {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: clamp(24px, 5vmin, 56px);
+    font-weight: 800;
+    line-height: 1;
+    color: #3dff6a;
+    white-space: nowrap;
+  }
+  .led {
+    width: 0.72em;
+    height: 0.72em;
+    background: #3dff6a;
+    flex: 0 0 auto;
+  }
+  #status-word { font-weight: 800; }
+  #status-word.offline { color: #ff4d5e; }
+  .live:has(#status-word.offline) .led { background: #ff4d5e; }
+  #fs-btn {
+    margin-left: auto;
+    flex: 0 0 auto;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: clamp(28px, 6.5vh, 72px);
+    line-height: 1;
+    color: #041208;
+    background: #3dff6a;
+    border: 0;
+    padding: 0.22em 0.42em;
+    cursor: pointer;
+  }
+  .kpis {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(6px, 1vmin, 14px);
+  }
+  .kpi {
+    min-width: 0;
+    overflow: hidden;
+    border: 3px solid #3dff6a;
+    background: #000000;
+    padding: 0.1em 0.25em 0.14em;
+  }
+  .kpi.b { border-color: #4ad4f0; }
+  .kpi.p { border-color: #ffb020; }
+  .kpi-label {
+    font-size: clamp(24px, 4.2vmin, 40px);
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #3dff6a;
+  }
+  .kpi.b .kpi-label, .kpi.b .kpi-value { color: #4ad4f0; }
+  .kpi.p .kpi-label, .kpi.p .kpi-value { color: #ffb020; }
+  .kpi-value {
+    margin-top: 0.05em;
+    font-size: clamp(40px, 9vmin, 120px);
+    font-weight: 800;
+    line-height: 0.95;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #3dff6a;
+  }
+  .fall { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  .feed {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35vh;
+  }
+  .row {
+    height: 5.5vh;
+    flex: 0 0 5.5vh;
+    display: grid;
+    grid-template-columns: 8.2ch minmax(0, 1fr);
+    column-gap: 0.5em;
+    align-items: center;
+    padding: 0 0.3em;
+    overflow: hidden;
+    font-size: clamp(24px, 4.6vh, 72px);
+    font-weight: 800;
+    line-height: 1;
+    background: #06210f;
+    color: #e8ffe4;
+  }
+  .row.blocked { background: #ffb020; color: #140c00; }
+  .row.fail { background: #2a0008; color: #ff4d5e; }
+  .status, .domain { font-weight: 800; white-space: nowrap; overflow: hidden; }
+  .row.ok .status { color: #3dff6a; }
+  .row.blocked .status, .row.blocked .domain { color: #140c00; }
+  .row.fail .status, .row.fail .domain { color: #ff4d5e; }
+  .domain {
+    min-width: 0;
+    text-overflow: ellipsis;
+    direction: rtl;
+    text-align: left;
+  }
+  .domain-text { direction: ltr; unicode-bidi: isolate; }
+  .row.empty { display: flex; align-items: center; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="top">
+    <div class="live">
+      <span class="led" aria-hidden="true"></span>
+      <span id="status-word">LINKING</span>
+    </div>
+    <button id="fs-btn" type="button">FULLSCREEN</button>
+  </div>
+  <section class="kpis" aria-label="today totals">
+    <article class="kpi q">
+      <div class="kpi-label">QUERIES</div>
+      <div class="kpi-value" id="kpi-q">—</div>
+    </article>
+    <article class="kpi b">
+      <div class="kpi-label">BLOCKED</div>
+      <div class="kpi-value" id="kpi-b">—</div>
+    </article>
+    <article class="kpi p">
+      <div class="kpi-label">BLOCK %</div>
+      <div class="kpi-value" id="kpi-p">—</div>
+    </article>
+  </section>
+  <section class="fall" aria-label="lookups">
+    <div class="feed" id="feed"><div class="row empty">no lookups yet</div></div>
+  </section>
+</div>
+<noscript>JavaScript reads /api/stats and /api/crt.</noscript>
+<script>
+/*__SCRIPT__*/
+</script>
+</body>
+</html>
+"""
+
+
+def render_crt_page() -> bytes:
+    """4:3 television page for ``/crt`` and ``?crt=1``. Counters stay in the JSON APIs."""
+    return _page(CRT_PAGE)
+
+
+def _query_crt(raw_path: str) -> bool:
+    """True when the query string asks for the television layout."""
+    for value in parse_qs(urlparse(raw_path).query).get("crt", ()):
+        if value == "1":
+            return True
+    return False
+
+
 def crt_payload(snapshot: dict, lookups: LookupFeed | None, details: dict | None = None) -> dict:
     """Today's totals plus the newest lookups. The CRT polls this.
 
@@ -1688,9 +1925,13 @@ def make_handler(
 
         def do_GET(self) -> None:  # noqa: N802 - stdlib handler name
             path = urlparse(self.path).path
+            crt = _query_crt(self.path)
             details = details_fn()
             snapshot = stats.snapshot()
-            if path in ("/", "/index.html"):
+            if path == "/crt" or (crt and path in ("/", "/index.html", "/c")):
+                body = render_crt_page()
+                content_type = "text/html; charset=utf-8"
+            elif path in ("/", "/index.html"):
                 body = render_status_page(snapshot, details)
                 content_type = "text/html; charset=utf-8"
             elif path == "/c":
