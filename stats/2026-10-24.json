@@ -1,16 +1,26 @@
 {
   "date": "2026-10-24",
-  "queries": 415,
-  "blocked": 18,
+  "queries": 661,
+  "blocked": 38,
   "blocked_domains": {
     "api.segment.io": 3,
     "http-intake.logs.datadoghq.com": 3,
-    "mask.icloud.com": 12
+    "mask.icloud.com": 24,
+    "www.googleadservices.com": 4,
+    "www.googletagmanager.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 12
+      "count": 24
+    },
+    {
+      "domain": "www.googleadservices.com",
+      "count": 4
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 4
     },
     {
       "domain": "api.segment.io",
@@ -22,7 +32,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 124,
+    "timeout": 335,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
