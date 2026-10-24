@@ -598,7 +598,7 @@ Expected output is JSON. `blocked` increases when a denylist name is queried. `b
 
 Open `http://192.168.1.50:8080/` for theme D, the aura overview. Open `http://192.168.1.50:8080/c` for theme C, the denser HUD. Each page links to the other (`THEME_C` on `/`, `THEME_D` on `/c`). Both poll `/api/stats` and `/api/crt` every 3 seconds. The three totals are today's UTC queries, blocked count, and block percent. A delta pill uses the previous UTC day already stored in `days`; when that day is absent the pill is `—`. The table is the `/api/crt` lookup feed, newest first, with `BLOCKED` rows highlighted. Theme C also lists `today.top_blocked` when that list is not empty. The footer shows the blocklist size, the allowlist count, and `PROC`, which is `queries`, `blocked`, and `blocked_percent` since this process started. Lookup times are the browser's local 24-hour clock. `/api/stats` and `/api/crt` are unchanged, so the CRT console keeps reading `/api/crt`.
 
-The television layout is `http://192.168.1.50:8080/crt`. `http://192.168.1.50:8080/?crt=1` and `http://192.168.1.50:8080/c?crt=1` are the same page. It is a 4:3 frame with large type, the three totals, six lookups, and a FULLSCREEN button. The first click or keypress also enters fullscreen.
+The television layout is `http://192.168.1.50:8080/crt` (theme D). `http://192.168.1.50:8080/crt/c` is theme C, with the top-blocked strip. The THEME D and THEME C links switch between them. `http://192.168.1.50:8080/?crt=1` and `http://192.168.1.50:8080/c?crt=1` are the theme D television page. Each television page is a 4:3 frame with large type, the three totals, six lookups, and a FULLSCREEN button. The first click or keypress also enters fullscreen. `/` and `/c` stay the dashboard pages.
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
@@ -620,7 +620,7 @@ The Mac mirrors onto the 4:3 CRT. Open this on the Mac:
 
 http://172.20.1.217:8080/crt
 
-`http://172.20.1.217:8080/?crt=1` and `http://172.20.1.217:8080/c?crt=1` are the same layout. Press the FULLSCREEN button, or click or press a key anywhere on the page, to enter fullscreen.
+Theme C on the television is `http://172.20.1.217:8080/crt/c`. The THEME D and THEME C links switch between them. `http://172.20.1.217:8080/?crt=1` and `http://172.20.1.217:8080/c?crt=1` are the theme D layout. Press the FULLSCREEN button, or click or press a key anywhere on the page, to enter fullscreen.
 
 Chrome kiosk on macOS:
 

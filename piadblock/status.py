@@ -1,7 +1,9 @@
 """Status page served with ``http.server``.
 
 ``/`` is theme D, the aura overview. ``/c`` is theme C, the denser HUD.
-``/crt``, and ``?crt=1`` on either page, is the 4:3 television layout.
+``/crt`` is the television layout for theme D. ``/crt/c`` is the same layout
+for theme C, including the top-blocked strip. ``?crt=1`` on ``/`` or ``/c``
+is the theme D television page.
 The documents are static. The browser fills them from ``/api/stats`` and
 ``/api/crt``.
 """
@@ -273,13 +275,18 @@ CLIENT_JS = r"""
       return;
     }
     var html = "";
-    var n = Math.min(rows.length, 8);
+    var n = Math.min(rows.length, crtMode ? 4 : 8);
     var i;
     var item;
     for (i = 0; i < n; i++) {
       item = rows[i] || {};
-      html += '<span title="' + esc(item.domain) + '">' + field(item.domain) +
-        "<b>" + esc(fmtInt(item.count)) + "</b></span>";
+      if (crtMode) {
+        html += '<span title="' + esc(item.domain) + '"><b>' + esc(fmtInt(item.count)) + "</b>" +
+          field(item.domain) + "</span>";
+      } else {
+        html += '<span title="' + esc(item.domain) + '">' + field(item.domain) +
+          "<b>" + esc(fmtInt(item.count)) + "</b></span>";
+      }
     }
     el.innerHTML = html;
   }
@@ -1684,13 +1691,43 @@ def render_status_page_c(snapshot: dict, details: dict) -> bytes:
 
 
 CRT_PAGE = r"""<!DOCTYPE html>
-<html lang="en" data-theme="d" data-crt="1">
+<html lang="en" data-theme="__THEME__" data-crt="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>piadblock</title>
 <style>
+  html[data-theme="d"] {
+    --text: #e8ffe4;
+    --ok: #3dff6a;
+    --q: #3dff6a;
+    --b: #4ad4f0;
+    --p: #ffb020;
+    --blocked-bg: #ffb020;
+    --blocked-fg: #140c00;
+    --ok-bg: #06210f;
+    --fail: #ff4d5e;
+    --fail-bg: #2a0008;
+    --ink: #041208;
+    --stage: #000000;
+    --strip: #ffb020;
+  }
+  html[data-theme="c"] {
+    --text: #e7fff3;
+    --ok: #39ff88;
+    --q: #39ff88;
+    --b: #ff8a1a;
+    --p: #2ee6ff;
+    --blocked-bg: #ff8a1a;
+    --blocked-fg: #140800;
+    --ok-bg: #00241c;
+    --fail: #ff3d5c;
+    --fail-bg: #2a0008;
+    --ink: #041208;
+    --stage: #00110e;
+    --strip: #ff2bd6;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     width: 100%;
@@ -1704,7 +1741,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
     font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     font-weight: 800;
     font-synthesis: weight;
-    color: #e8ffe4;
+    color: var(--text);
     background: #000000;
   }
   .stage {
@@ -1719,7 +1756,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
     display: flex;
     flex-direction: column;
     gap: clamp(4px, 0.8vmin, 12px);
-    background: #000000;
+    background: var(--stage);
   }
   .top {
     flex: 0 0 auto;
@@ -1736,18 +1773,36 @@ CRT_PAGE = r"""<!DOCTYPE html>
     font-size: clamp(24px, 5vmin, 56px);
     font-weight: 800;
     line-height: 1;
-    color: #3dff6a;
+    color: var(--ok);
     white-space: nowrap;
   }
   .led {
     width: 0.72em;
     height: 0.72em;
-    background: #3dff6a;
+    background: var(--ok);
     flex: 0 0 auto;
   }
   #status-word { font-weight: 800; }
-  #status-word.offline { color: #ff4d5e; }
-  .live:has(#status-word.offline) .led { background: #ff4d5e; }
+  #status-word.offline { color: var(--fail); }
+  .live:has(#status-word.offline) .led { background: var(--fail); }
+  .themes {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0.35em;
+  }
+  .themes a {
+    flex: 1;
+    text-align: center;
+    font-weight: 800;
+    font-size: clamp(24px, 4.8vh, 52px);
+    line-height: 1;
+    text-decoration: none;
+    color: var(--text);
+    background: #000000;
+    border: 3px solid var(--ok);
+    padding: 0.22em 0.2em;
+  }
+  .themes a.on { background: var(--ok); color: var(--ink); }
   #fs-btn {
     margin-left: auto;
     flex: 0 0 auto;
@@ -1755,12 +1810,58 @@ CRT_PAGE = r"""<!DOCTYPE html>
     font-weight: 800;
     font-size: clamp(28px, 6.5vh, 72px);
     line-height: 1;
-    color: #041208;
-    background: #3dff6a;
+    color: var(--ink);
+    background: var(--ok);
     border: 0;
     padding: 0.22em 0.42em;
     cursor: pointer;
   }
+  .topstrip {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    overflow: hidden;
+    min-height: 5.5vh;
+    border: 3px solid var(--strip);
+    background: #140010;
+    padding: 0.12em 0.3em;
+  }
+  .topstrip .tl {
+    flex: 0 0 auto;
+    font-size: clamp(22px, 4vh, 40px);
+    font-weight: 800;
+    color: var(--strip);
+  }
+  .tops {
+    display: flex;
+    gap: 0.35em;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+  .tops span {
+    font-size: clamp(22px, 4vh, 40px);
+    font-weight: 800;
+    color: #ffd6f4;
+    background: #000000;
+    border: 3px solid var(--strip);
+    padding: 0.06em 0.28em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 18ch;
+  }
+  .tops span:nth-child(n+6) { display: none; }
+  .tops b { color: #ff8a1a; font-weight: 800; margin-right: 0.3em; }
+  html[data-theme="c"] .stage { gap: 2px; }
+  html[data-theme="c"] .themes a { font-size: clamp(22px, 3.8vh, 40px); padding: 0.08em 0.1em; }
+  html[data-theme="c"] #fs-btn { font-size: clamp(22px, 4.2vh, 44px); padding: 0.1em 0.24em; }
+  html[data-theme="c"] .kpi { padding: 0.02em 0.16em 0.04em; }
+  html[data-theme="c"] .kpi-label { font-size: clamp(18px, 3.2vmin, 28px); }
+  html[data-theme="c"] .kpi-value { font-size: clamp(28px, 5.4vmin, 72px); margin-top: 0; }
+  html[data-theme="c"] .topstrip { min-height: 0; padding: 0.06em 0.2em; }
+  html[data-theme="c"] .tops span { font-size: clamp(20px, 3.6vh, 34px); max-width: 22ch; }
   .kpis {
     flex: 0 0 auto;
     display: grid;
@@ -1770,12 +1871,12 @@ CRT_PAGE = r"""<!DOCTYPE html>
   .kpi {
     min-width: 0;
     overflow: hidden;
-    border: 3px solid #3dff6a;
+    border: 3px solid var(--q);
     background: #000000;
     padding: 0.1em 0.25em 0.14em;
   }
-  .kpi.b { border-color: #4ad4f0; }
-  .kpi.p { border-color: #ffb020; }
+  .kpi.b { border-color: var(--b); }
+  .kpi.p { border-color: var(--p); }
   .kpi-label {
     font-size: clamp(24px, 4.2vmin, 40px);
     font-weight: 800;
@@ -1783,10 +1884,10 @@ CRT_PAGE = r"""<!DOCTYPE html>
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #3dff6a;
+    color: var(--q);
   }
-  .kpi.b .kpi-label, .kpi.b .kpi-value { color: #4ad4f0; }
-  .kpi.p .kpi-label, .kpi.p .kpi-value { color: #ffb020; }
+  .kpi.b .kpi-label, .kpi.b .kpi-value { color: var(--b); }
+  .kpi.p .kpi-label, .kpi.p .kpi-value { color: var(--p); }
   .kpi-value {
     margin-top: 0.05em;
     font-size: clamp(40px, 9vmin, 120px);
@@ -1796,7 +1897,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #3dff6a;
+    color: var(--q);
   }
   .fall { flex: 1 1 auto; min-height: 0; overflow: hidden; }
   .feed {
@@ -1817,15 +1918,15 @@ CRT_PAGE = r"""<!DOCTYPE html>
     font-size: clamp(24px, 4.6vh, 72px);
     font-weight: 800;
     line-height: 1;
-    background: #06210f;
-    color: #e8ffe4;
+    background: var(--ok-bg);
+    color: var(--text);
   }
-  .row.blocked { background: #ffb020; color: #140c00; }
-  .row.fail { background: #2a0008; color: #ff4d5e; }
+  .row.blocked { background: var(--blocked-bg); color: var(--blocked-fg); }
+  .row.fail { background: var(--fail-bg); color: var(--fail); }
   .status, .domain { font-weight: 800; white-space: nowrap; overflow: hidden; }
-  .row.ok .status { color: #3dff6a; }
-  .row.blocked .status, .row.blocked .domain { color: #140c00; }
-  .row.fail .status, .row.fail .domain { color: #ff4d5e; }
+  .row.ok .status { color: var(--ok); }
+  .row.blocked .status, .row.blocked .domain { color: var(--blocked-fg); }
+  .row.fail .status, .row.fail .domain { color: var(--fail); }
   .domain {
     min-width: 0;
     text-overflow: ellipsis;
@@ -1845,6 +1946,11 @@ CRT_PAGE = r"""<!DOCTYPE html>
     </div>
     <button id="fs-btn" type="button">FULLSCREEN</button>
   </div>
+  <div class="themes">
+    <a class="__D_ON__" href="/crt">THEME D</a>
+    <a class="__C_ON__" href="/crt/c">THEME C</a>
+  </div>
+  __TOPS__
   <section class="kpis" aria-label="today totals">
     <article class="kpi q">
       <div class="kpi-label">QUERIES</div>
@@ -1872,9 +1978,26 @@ CRT_PAGE = r"""<!DOCTYPE html>
 """
 
 
-def render_crt_page() -> bytes:
-    """4:3 television page for ``/crt`` and ``?crt=1``. Counters stay in the JSON APIs."""
-    return _page(CRT_PAGE)
+_CRT_TOPS = (
+    '<div class="topstrip" aria-label="top blocked">'
+    '<span class="tl">TOP</span>'
+    '<div class="tops" id="tops"><span class="none">—</span></div>'
+    "</div>"
+)
+
+
+def render_crt_page(theme: str = "d") -> bytes:
+    """4:3 television page. ``c`` is the HUD palette with the top-blocked strip.
+
+    Counters stay in the JSON APIs. The default is theme D, used by ``/crt``
+    and ``?crt=1``.
+    """
+    chosen = "c" if theme == "c" else "d"
+    html = CRT_PAGE.replace("__THEME__", chosen)
+    html = html.replace("__D_ON__", "on" if chosen == "d" else "")
+    html = html.replace("__C_ON__", "on" if chosen == "c" else "")
+    html = html.replace("__TOPS__", _CRT_TOPS if chosen == "c" else "")
+    return _page(html)
 
 
 def _query_crt(raw_path: str) -> bool:
@@ -1928,7 +2051,10 @@ def make_handler(
             crt = _query_crt(self.path)
             details = details_fn()
             snapshot = stats.snapshot()
-            if path == "/crt" or (crt and path in ("/", "/index.html", "/c")):
+            if path == "/crt/c":
+                body = render_crt_page("c")
+                content_type = "text/html; charset=utf-8"
+            elif path == "/crt" or (crt and path in ("/", "/index.html", "/c")):
                 body = render_crt_page()
                 content_type = "text/html; charset=utf-8"
             elif path in ("/", "/index.html"):
