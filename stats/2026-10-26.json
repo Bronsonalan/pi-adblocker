@@ -1,28 +1,58 @@
 {
   "date": "2026-10-26",
-  "queries": 359,
-  "blocked": 70,
+  "queries": 479,
+  "blocked": 88,
   "blocked_domains": {
+    "api.mixpanel.com": 4,
     "api3.siftscience.com": 2,
+    "att.launches.appsflyersdk.com": 2,
+    "bkldaf.cdn-settings.appsflyersdk.com": 2,
+    "bkldaf.launches.appsflyersdk.com": 2,
+    "bkldaf.skadsdkless.appsflyersdk.com": 2,
     "firebase-settings.crashlytics.com": 6,
-    "mask.icloud.com": 62
+    "jkllz9.cdn-settings.appsflyersdk.com": 4,
+    "mask.icloud.com": 64
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 62
+      "count": 64
     },
     {
       "domain": "firebase-settings.crashlytics.com",
       "count": 6
     },
     {
+      "domain": "api.mixpanel.com",
+      "count": 4
+    },
+    {
+      "domain": "jkllz9.cdn-settings.appsflyersdk.com",
+      "count": 4
+    },
+    {
       "domain": "api3.siftscience.com",
+      "count": 2
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 2,
+    "timeout": 3,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
