@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 5437,
-  "blocked": 672,
+  "queries": 5549,
+  "blocked": 683,
   "blocked_domains": {
     "a.teads.tv": 4,
     "aax.amazon-adsystem.com": 8,
@@ -50,7 +50,7 @@
     "fastlane.rubiconproject.com": 2,
     "firebase-settings.crashlytics.com": 13,
     "fmrcorp.tt.omtrdc.net": 2,
-    "googleads.g.doubleclick.net": 4,
+    "googleads.g.doubleclick.net": 6,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "html-load.cc": 6,
     "http-intake.logs.datadoghq.com": 7,
@@ -58,12 +58,13 @@
     "ingestusipv4.quantummetric.com": 8,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
     "js-agent.newrelic.com": 2,
+    "logs.netflix.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 262,
+    "mask.icloud.com": 268,
     "merequartz.com": 2,
     "micro.rubiconproject.com": 6,
     "mparticle.map.fastly.net": 1,
-    "notify.bugsnag.com": 4,
+    "notify.bugsnag.com": 5,
     "pagead2.googlesyndication.com": 6,
     "pixiedust.buzzfeed.com": 7,
     "prod.us-east-1.cxm-bcn.publisher-services.amazon.dev": 2,
@@ -109,7 +110,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 262
+      "count": 268
     },
     {
       "domain": "www.googletagmanager.com",
@@ -196,6 +197,10 @@
       "count": 6
     },
     {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 6
+    },
+    {
       "domain": "html-load.cc",
       "count": 6
     },
@@ -228,6 +233,10 @@
       "count": 5
     },
     {
+      "domain": "notify.bugsnag.com",
+      "count": 5
+    },
+    {
       "domain": "a.teads.tv",
       "count": 4
     },
@@ -248,15 +257,7 @@
       "count": 4
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 4
-    },
-    {
       "domain": "jkllz9.cdn-settings.appsflyersdk.com",
-      "count": 4
-    },
-    {
-      "domain": "notify.bugsnag.com",
       "count": 4
     },
     {
@@ -401,6 +402,10 @@
     },
     {
       "domain": "js-agent.newrelic.com",
+      "count": 2
+    },
+    {
+      "domain": "logs.netflix.com",
       "count": 2
     },
     {
