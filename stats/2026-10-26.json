@@ -1,10 +1,10 @@
 {
   "date": "2026-10-26",
-  "queries": 3577,
-  "blocked": 366,
+  "queries": 3671,
+  "blocked": 392,
   "blocked_domains": {
     "a.teads.tv": 2,
-    "aax.amazon-adsystem.com": 2,
+    "aax.amazon-adsystem.com": 4,
     "analytics.ahrefs.com": 2,
     "api-js.mixpanel.com": 2,
     "api.iterable.com": 4,
@@ -18,23 +18,25 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "c.amazon-adsystem.com": 2,
-    "c.aps.amazon-adsystem.com": 2,
-    "cd.connatix.com": 2,
-    "cdn.cookielaw.org": 2,
+    "c.amazon-adsystem.com": 4,
+    "c.aps.amazon-adsystem.com": 4,
+    "cd.connatix.com": 4,
+    "cdn.cookielaw.org": 4,
     "cdn.permutive.app": 2,
-    "client.aps.amazon-adsystem.com": 2,
-    "config.aps.amazon-adsystem.com": 2,
+    "client.aps.amazon-adsystem.com": 4,
+    "config.aps.amazon-adsystem.com": 4,
+    "doubleclick.net": 3,
     "firebase-settings.crashlytics.com": 11,
-    "html-load.cc": 2,
+    "html-load.cc": 4,
     "http-intake.logs.datadoghq.com": 6,
     "ingestusipv4.quantummetric.com": 8,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 206,
+    "mask.icloud.com": 208,
     "micro.rubiconproject.com": 2,
     "notify.bugsnag.com": 2,
-    "pagead2.googlesyndication.com": 2,
-    "pixiedust.buzzfeed.com": 4,
+    "pagead2.googlesyndication.com": 4,
+    "pixiedust.buzzfeed.com": 5,
+    "prod.us-east-1.cxm-bcn.publisher-services.amazon.dev": 2,
     "pub.doubleverify.com": 2,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
     "sb.scorecardresearch.com": 2,
@@ -52,7 +54,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 206
+      "count": 208
     },
     {
       "domain": "api2.amplitude.com",
@@ -95,6 +97,14 @@
       "count": 5
     },
     {
+      "domain": "pixiedust.buzzfeed.com",
+      "count": 5
+    },
+    {
+      "domain": "aax.amazon-adsystem.com",
+      "count": 4
+    },
+    {
       "domain": "api.iterable.com",
       "count": 4
     },
@@ -103,11 +113,39 @@
       "count": 4
     },
     {
+      "domain": "c.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "c.aps.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "cd.connatix.com",
+      "count": 4
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 4
+    },
+    {
+      "domain": "client.aps.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "config.aps.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "html-load.cc",
+      "count": 4
+    },
+    {
       "domain": "jkllz9.cdn-settings.appsflyersdk.com",
       "count": 4
     },
     {
-      "domain": "pixiedust.buzzfeed.com",
+      "domain": "pagead2.googlesyndication.com",
       "count": 4
     },
     {
@@ -127,11 +165,11 @@
       "count": 4
     },
     {
-      "domain": "a.teads.tv",
-      "count": 2
+      "domain": "doubleclick.net",
+      "count": 3
     },
     {
-      "domain": "aax.amazon-adsystem.com",
+      "domain": "a.teads.tv",
       "count": 2
     },
     {
@@ -155,35 +193,7 @@
       "count": 2
     },
     {
-      "domain": "c.amazon-adsystem.com",
-      "count": 2
-    },
-    {
-      "domain": "c.aps.amazon-adsystem.com",
-      "count": 2
-    },
-    {
-      "domain": "cd.connatix.com",
-      "count": 2
-    },
-    {
-      "domain": "cdn.cookielaw.org",
-      "count": 2
-    },
-    {
       "domain": "cdn.permutive.app",
-      "count": 2
-    },
-    {
-      "domain": "client.aps.amazon-adsystem.com",
-      "count": 2
-    },
-    {
-      "domain": "config.aps.amazon-adsystem.com",
-      "count": 2
-    },
-    {
-      "domain": "html-load.cc",
       "count": 2
     },
     {
@@ -195,7 +205,7 @@
       "count": 2
     },
     {
-      "domain": "pagead2.googlesyndication.com",
+      "domain": "prod.us-east-1.cxm-bcn.publisher-services.amazon.dev",
       "count": 2
     },
     {
