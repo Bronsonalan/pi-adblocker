@@ -1,16 +1,16 @@
 {
   "date": "2026-10-26",
-  "queries": 174,
-  "blocked": 24,
+  "queries": 219,
+  "blocked": 34,
   "blocked_domains": {
     "api3.siftscience.com": 2,
     "firebase-settings.crashlytics.com": 6,
-    "mask.icloud.com": 16
+    "mask.icloud.com": 26
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 16
+      "count": 26
     },
     {
       "domain": "firebase-settings.crashlytics.com",
