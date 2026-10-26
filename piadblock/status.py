@@ -330,16 +330,17 @@ CLIENT_JS = r"""
     if (counts) {
       text("kpi-q", fmtInt(counts.queries));
       text("kpi-b", fmtInt(counts.blocked));
-      text("kpi-p", formatPercent(counts.blocked, counts.queries));
+      var bld = (stats && stats.blocklist_domains != null) ? stats.blocklist_domains : (crt ? crt.blocklist_domains : null);
+      text("kpi-p", bld != null ? fmtInt(bld) : "—");
       text("since-label", counts.date ? ("--since=" + counts.date) : "--since=today");
       var prior = priorBucket(stats, counts.date);
       var note = prior ? ("vs " + prior.date) : "no prior day";
       text("note-q", note);
       text("note-b", note);
-      text("note-p", note);
+      text("note-p", "domains on list");
       setPill("delta-q", prior ? relDelta(counts.queries, prior.queries) : null, "up");
       setPill("delta-b", prior ? relDelta(counts.blocked, prior.blocked) : null, "cyan-up");
-      setPill("delta-p", prior ? rateDelta(counts.queries, counts.blocked, prior.queries, prior.blocked) : null, "up");
+      setPill("delta-p", null, "up");
     }
     if (stats) {
       if (stats.uptime_seconds != null) {
@@ -1040,6 +1041,8 @@ THEME_D_PAGE = r"""<!DOCTYPE html>
       <span class="kbd">CTRL+F</span>
     </div>
     <a class="theme-link" href="/c">THEME_C</a>
+    <a class="theme-link" href="/crt">CRT_D</a>
+    <a class="theme-link" href="/crt/c">CRT_C</a>
     <div class="bell" id="bell" aria-label="upstream errors">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
         <path d="M4 7a4 4 0 018 0v3l1.5 2H2.5L4 10V7z"/>
@@ -1089,7 +1092,7 @@ THEME_D_PAGE = r"""<!DOCTYPE html>
       </article>
       <article class="kpi orange">
         <div class="kpi-top">
-          <div class="kpi-label">BLOCK_RATE</div>
+          <div class="kpi-label">BLOCKLIST</div>
           <svg class="kpi-ico" viewBox="0 0 16 16" fill="none" stroke="var(--orange)" stroke-width="1.3"><rect x="2" y="2" width="4" height="12"/><rect x="7" y="5" width="3" height="9"/><rect x="11" y="8" width="3" height="6"/></svg>
         </div>
         <div class="kpi-value" id="kpi-p">—</div>
@@ -1583,6 +1586,8 @@ THEME_C_PAGE = r"""<!DOCTYPE html>
       <span class="kbd">CTRL+F</span>
     </div>
     <a class="theme-link" href="/">THEME_D</a>
+    <a class="theme-link" href="/crt">CRT_D</a>
+    <a class="theme-link" href="/crt/c">CRT_C</a>
     <div class="node">NODE <strong data-host>—</strong></div>
   </header>
 
@@ -1630,9 +1635,9 @@ THEME_C_PAGE = r"""<!DOCTYPE html>
         <div class="sub" id="note-b">no prior day</div>
       </div>
       <div class="kpi c">
-        <div class="label">BLOCK_RATE</div>
+        <div class="label">BLOCKLIST</div>
         <div class="num" id="kpi-p">—</div>
-        <div class="sub">today blocked / queries</div>
+        <div class="sub">domains on blocklist</div>
         <div class="delta flat" id="delta-p">—</div>
         <div class="sub" id="note-p">no prior day</div>
       </div>
@@ -1790,7 +1795,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
     display: flex;
     gap: 0.35em;
   }
-  .themes a {
+  .themes a, .themes .title {
     flex: 1;
     text-align: center;
     font-weight: 800;
@@ -1802,6 +1807,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
     border: 3px solid var(--ok);
     padding: 0.22em 0.2em;
   }
+  .themes .title { background: var(--ok); color: var(--ink); }
   .themes a.on { background: var(--ok); color: var(--ink); }
   #fs-btn {
     margin-left: auto;
@@ -1855,7 +1861,9 @@ CRT_PAGE = r"""<!DOCTYPE html>
   .tops span:nth-child(n+6) { display: none; }
   .tops b { color: #ff8a1a; font-weight: 800; margin-right: 0.3em; }
   html[data-theme="c"] .stage { gap: 2px; }
-  html[data-theme="c"] .themes a { font-size: clamp(22px, 3.8vh, 40px); padding: 0.08em 0.1em; }
+  html[data-theme="c"] .themes a, html[data-theme="c"] .themes .title { font-size: clamp(22px, 3.8vh, 40px); padding: 0.08em 0.1em; }
+  .top .live, .top .themes .title, html[data-theme="c"] .top .themes .title { font-size: min(7.2vh, calc(min(100vw, 133.33vh) * 0.045)); white-space: nowrap; }
+  .top .live { flex: 0 0 auto; }
   html[data-theme="c"] #fs-btn { font-size: clamp(22px, 4.2vh, 44px); padding: 0.1em 0.24em; }
   html[data-theme="c"] .kpi { padding: 0.02em 0.16em 0.04em; }
   html[data-theme="c"] .kpi-label { font-size: clamp(18px, 3.2vmin, 28px); }
@@ -1940,15 +1948,13 @@ CRT_PAGE = r"""<!DOCTYPE html>
 <body>
 <div class="stage">
   <div class="top">
-    <div class="live">
+    <div class="themes">
+      <div class="title">Grok Bot Pi-Hole</div>
+    </div>
+    <div class="live" style="margin-left:auto">
       <span class="led" aria-hidden="true"></span>
       <span id="status-word">LINKING</span>
     </div>
-    <button id="fs-btn" type="button">FULLSCREEN</button>
-  </div>
-  <div class="themes">
-    <a class="__D_ON__" href="/crt">THEME D</a>
-    <a class="__C_ON__" href="/crt/c">THEME C</a>
   </div>
   __TOPS__
   <section class="kpis" aria-label="today totals">
@@ -1961,7 +1967,7 @@ CRT_PAGE = r"""<!DOCTYPE html>
       <div class="kpi-value" id="kpi-b">—</div>
     </article>
     <article class="kpi p">
-      <div class="kpi-label">BLOCK %</div>
+      <div class="kpi-label">BLOCKLIST</div>
       <div class="kpi-value" id="kpi-p">—</div>
     </article>
   </section>
