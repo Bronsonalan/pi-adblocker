@@ -602,6 +602,22 @@ The television layout is `http://192.168.1.50:8080/crt` (theme D). `http://192.1
 
 The page has no password. It is meant for the LAN. To listen only on the Pi, set `"status_listen": "127.0.0.1"` in the config and restart.
 
+### Local demo (Mac, no Pi)
+
+For UI work on a Mac, run the same pages with fake live data. No DNS, no sudo, no `/var/lib/piadblock`. One paste in Terminal downloads the latest code into `~/pi-adblocker-demo` and serves `http://localhost:8080/`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/main/demo.sh | bash
+```
+
+Ctrl-C, up-arrow, Enter refreshes the checkout after a push. To try a branch before it merges:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Bronsonalan/pi-adblocker/BRANCH/demo.sh | bash -s -- BRANCH
+```
+
+Or from a checkout: `python3 -m piadblock demo` (optional `--port 8081` if 8080 is busy).
+
 ## Current network setup
 
 The main Pi 4 is on Ethernet at `172.20.1.217`. It is the DNS server. The router has a DHCP reservation so that address stays on this Pi. Kevin's DNS is set to Manual `172.20.1.217`.
