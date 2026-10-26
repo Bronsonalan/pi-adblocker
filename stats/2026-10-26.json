@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 2774,
-  "blocked": 261,
+  "queries": 2855,
+  "blocked": 268,
   "blocked_domains": {
     "api-js.mixpanel.com": 2,
     "api.iterable.com": 2,
@@ -9,7 +9,7 @@
     "api.segment.io": 4,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 2,
-    "app-measurement.com": 1,
+    "app-measurement.com": 2,
     "att.launches.appsflyersdk.com": 2,
     "bam.nr-data.net": 6,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
@@ -19,8 +19,9 @@
     "http-intake.logs.datadoghq.com": 5,
     "ingestusipv4.quantummetric.com": 8,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 178,
+    "mask.icloud.com": 182,
     "notify.bugsnag.com": 2,
+    "qapyb2.cdn-settings.appsflyersdk.com": 2,
     "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 8,
     "tr6.snapchat.com": 4
@@ -28,7 +29,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 178
+      "count": 182
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -91,6 +92,10 @@
       "count": 2
     },
     {
+      "domain": "app-measurement.com",
+      "count": 2
+    },
+    {
       "domain": "att.launches.appsflyersdk.com",
       "count": 2
     },
@@ -103,12 +108,12 @@
       "count": 2
     },
     {
-      "domain": "sr-client-cfg.amplitude.com",
+      "domain": "qapyb2.cdn-settings.appsflyersdk.com",
       "count": 2
     },
     {
-      "domain": "app-measurement.com",
-      "count": 1
+      "domain": "sr-client-cfg.amplitude.com",
+      "count": 2
     }
   ],
   "upstream_errors": {
