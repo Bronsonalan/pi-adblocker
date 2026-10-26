@@ -1,4 +1,4 @@
-"""Command line: ``python3 -m piadblock serve|update|check|stats|crt``."""
+"""Command line: ``python3 -m piadblock serve|update|check|stats|crt|demo``."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from piadblock import __version__
 from piadblock.blocklist import Matcher
 from piadblock.config import ConfigError, load_config
 from piadblock.crt import run_display
+from piadblock.demo import DEFAULT_PORT, HOST as DEMO_HOST, run_demo
 from piadblock.gitrepo import Repo, blocklist_changed_message, load_access
 from piadblock.log import setup_logging
 from piadblock.paths import OPT_ROOT, SERVICE_NAME
@@ -48,8 +49,22 @@ def main(argv: list[str] | None = None) -> int:
     crt = sub.add_parser("crt", help="fullscreen lookup feed on the console")
     crt.add_argument("--tty", default="/dev/tty1", help="console device (default: /dev/tty1)")
     crt.add_argument("--url", default="", help="lookup JSON URL (default: this machine's status page)")
+    demo = sub.add_parser(
+        "demo",
+        help="local status-page demo with fake live data (no DNS, Mac-friendly)",
+    )
+    demo.add_argument("--host", default=DEMO_HOST, help=f"bind address (default: {DEMO_HOST})")
+    demo.add_argument(
+        "--port",
+        type=int,
+        default=DEFAULT_PORT,
+        help=f"preferred port (default: {DEFAULT_PORT}; tries the next few if busy)",
+    )
 
     args = parser.parse_args(argv)
+    if args.command == "demo":
+        return run_demo(args.host, args.port)
+
     try:
         config = load_config(args.config)
     except ConfigError as exc:
