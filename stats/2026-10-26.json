@@ -1,11 +1,13 @@
 {
   "date": "2026-10-26",
-  "queries": 2130,
-  "blocked": 198,
+  "queries": 2253,
+  "blocked": 214,
   "blocked_domains": {
     "api-js.mixpanel.com": 2,
+    "api.iterable.com": 2,
     "api.mixpanel.com": 4,
     "api.segment.io": 1,
+    "api2.amplitude.com": 4,
     "api3.siftscience.com": 2,
     "app-measurement.com": 1,
     "att.launches.appsflyersdk.com": 2,
@@ -17,15 +19,16 @@
     "http-intake.logs.datadoghq.com": 1,
     "ingestusipv4.quantummetric.com": 6,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 142,
+    "mask.icloud.com": 150,
     "notify.bugsnag.com": 2,
+    "sr-client-cfg.amplitude.com": 2,
     "sstats.adobe.com": 2,
     "tr6.snapchat.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 142
+      "count": 150
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -41,6 +44,10 @@
     },
     {
       "domain": "api.mixpanel.com",
+      "count": 4
+    },
+    {
+      "domain": "api2.amplitude.com",
       "count": 4
     },
     {
@@ -60,6 +67,10 @@
       "count": 2
     },
     {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
       "domain": "api3.siftscience.com",
       "count": 2
     },
@@ -73,6 +84,10 @@
     },
     {
       "domain": "notify.bugsnag.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     },
     {
@@ -97,7 +112,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 9,
+    "timeout": 13,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
