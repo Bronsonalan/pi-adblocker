@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 5197,
-  "blocked": 652,
+  "queries": 5332,
+  "blocked": 666,
   "blocked_domains": {
     "a.teads.tv": 4,
     "aax.amazon-adsystem.com": 8,
@@ -11,7 +11,7 @@
     "api.iterable.com": 4,
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 8,
-    "api.segment.io": 10,
+    "api.segment.io": 12,
     "api2.amplitude.com": 12,
     "api3.branch.io": 2,
     "api3.siftscience.com": 2,
@@ -22,7 +22,7 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "browser-intake-datadoghq.com": 4,
+    "browser-intake-datadoghq.com": 6,
     "bs.serving-sys.com": 2,
     "c.amazon-adsystem.com": 10,
     "c.aps.amazon-adsystem.com": 6,
@@ -59,7 +59,7 @@
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
     "js-agent.newrelic.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 246,
+    "mask.icloud.com": 256,
     "merequartz.com": 2,
     "micro.rubiconproject.com": 6,
     "mparticle.map.fastly.net": 1,
@@ -109,7 +109,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 246
+      "count": 256
     },
     {
       "domain": "www.googletagmanager.com",
@@ -120,12 +120,12 @@
       "count": 13
     },
     {
-      "domain": "api2.amplitude.com",
+      "domain": "api.segment.io",
       "count": 12
     },
     {
-      "domain": "api.segment.io",
-      "count": 10
+      "domain": "api2.amplitude.com",
+      "count": 12
     },
     {
       "domain": "app-measurement.com",
@@ -184,6 +184,10 @@
       "count": 6
     },
     {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 6
+    },
+    {
       "domain": "c.aps.amazon-adsystem.com",
       "count": 6
     },
@@ -233,10 +237,6 @@
     },
     {
       "domain": "bkldaf.skadsdkless.appsflyersdk.com",
-      "count": 4
-    },
-    {
-      "domain": "browser-intake-datadoghq.com",
       "count": 4
     },
     {
@@ -517,7 +517,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 37,
+    "timeout": 39,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
