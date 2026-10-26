@@ -1,11 +1,28 @@
 {
   "date": "2026-10-26",
-  "queries": 21,
-  "blocked": 0,
-  "blocked_domains": {},
-  "top_blocked": [],
+  "queries": 174,
+  "blocked": 24,
+  "blocked_domains": {
+    "api3.siftscience.com": 2,
+    "firebase-settings.crashlytics.com": 6,
+    "mask.icloud.com": 16
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 16
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 6
+    },
+    {
+      "domain": "api3.siftscience.com",
+      "count": 2
+    }
+  ],
   "upstream_errors": {
-    "timeout": 0,
+    "timeout": 1,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
