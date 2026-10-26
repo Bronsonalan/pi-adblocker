@@ -15,11 +15,6 @@ amazon-adsystem.com
 mask.icloud.com
 mask-h2.icloud.com
 
-# Reddit blocked again at owner's request 2026-10-26
-reddit.com
-redd.it
-redditstatic.com
-redditmedia.com
 
 # Added from StevenBlack + OISD on 2026-10-14
 0-02.net
