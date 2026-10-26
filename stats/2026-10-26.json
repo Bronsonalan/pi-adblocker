@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 2028,
-  "blocked": 194,
+  "queries": 2130,
+  "blocked": 198,
   "blocked_domains": {
     "api-js.mixpanel.com": 2,
     "api.mixpanel.com": 4,
@@ -17,7 +17,7 @@
     "http-intake.logs.datadoghq.com": 1,
     "ingestusipv4.quantummetric.com": 6,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 138,
+    "mask.icloud.com": 142,
     "notify.bugsnag.com": 2,
     "sstats.adobe.com": 2,
     "tr6.snapchat.com": 2
@@ -25,7 +25,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 138
+      "count": 142
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -97,7 +97,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 8,
+    "timeout": 9,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
