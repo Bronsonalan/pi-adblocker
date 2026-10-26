@@ -1,57 +1,69 @@
 {
   "date": "2026-10-26",
-  "queries": 2544,
-  "blocked": 242,
+  "queries": 2772,
+  "blocked": 261,
   "blocked_domains": {
     "api-js.mixpanel.com": 2,
     "api.iterable.com": 2,
     "api.mixpanel.com": 4,
-    "api.segment.io": 3,
+    "api.segment.io": 4,
     "api2.amplitude.com": 4,
     "api3.siftscience.com": 2,
     "app-measurement.com": 1,
     "att.launches.appsflyersdk.com": 2,
-    "bam.nr-data.net": 4,
+    "bam.nr-data.net": 6,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "firebase-settings.crashlytics.com": 11,
-    "http-intake.logs.datadoghq.com": 3,
-    "ingestusipv4.quantummetric.com": 6,
+    "http-intake.logs.datadoghq.com": 5,
+    "ingestusipv4.quantummetric.com": 8,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 172,
+    "mask.icloud.com": 178,
     "notify.bugsnag.com": 2,
     "sr-client-cfg.amplitude.com": 2,
-    "sstats.adobe.com": 4,
-    "tr6.snapchat.com": 2
+    "sstats.adobe.com": 8,
+    "tr6.snapchat.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 172
+      "count": 178
     },
     {
       "domain": "firebase-settings.crashlytics.com",
       "count": 11
     },
     {
+      "domain": "ingestusipv4.quantummetric.com",
+      "count": 8
+    },
+    {
+      "domain": "sstats.adobe.com",
+      "count": 8
+    },
+    {
+      "domain": "bam.nr-data.net",
+      "count": 6
+    },
+    {
       "domain": "bkldaf.launches.appsflyersdk.com",
       "count": 6
     },
     {
-      "domain": "ingestusipv4.quantummetric.com",
-      "count": 6
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 5
     },
     {
       "domain": "api.mixpanel.com",
       "count": 4
     },
     {
-      "domain": "api2.amplitude.com",
+      "domain": "api.segment.io",
       "count": 4
     },
     {
-      "domain": "bam.nr-data.net",
+      "domain": "api2.amplitude.com",
       "count": 4
     },
     {
@@ -63,16 +75,8 @@
       "count": 4
     },
     {
-      "domain": "sstats.adobe.com",
+      "domain": "tr6.snapchat.com",
       "count": 4
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 3
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 3
     },
     {
       "domain": "api-js.mixpanel.com",
@@ -103,16 +107,12 @@
       "count": 2
     },
     {
-      "domain": "tr6.snapchat.com",
-      "count": 2
-    },
-    {
       "domain": "app-measurement.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 26,
+    "timeout": 28,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
