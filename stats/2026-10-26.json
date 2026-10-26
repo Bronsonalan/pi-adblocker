@@ -1,97 +1,154 @@
 {
   "date": "2026-10-26",
-  "queries": 4145,
-  "blocked": 490,
+  "queries": 4809,
+  "blocked": 617,
   "blocked_domains": {
     "a.teads.tv": 4,
-    "aax.amazon-adsystem.com": 6,
+    "aax.amazon-adsystem.com": 8,
     "adobedc.demdex.net": 2,
     "analytics.ahrefs.com": 2,
     "api-js.mixpanel.com": 2,
     "api.iterable.com": 4,
+    "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 8,
-    "api.segment.io": 5,
+    "api.segment.io": 7,
     "api2.amplitude.com": 12,
     "api3.siftscience.com": 2,
-    "app-measurement.com": 8,
+    "app-measurement.com": 10,
     "att.launches.appsflyersdk.com": 2,
     "bam.nr-data.net": 6,
+    "bat.bing.com": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
+    "browser-intake-datadoghq.com": 2,
     "bs.serving-sys.com": 2,
-    "c.amazon-adsystem.com": 6,
+    "c.amazon-adsystem.com": 10,
     "c.aps.amazon-adsystem.com": 6,
     "cd.connatix.com": 6,
     "cdn.connatix.com": 2,
-    "cdn.cookielaw.org": 6,
+    "cdn.cookielaw.org": 10,
     "cdn.doubleverify.com": 2,
     "cdn.flashtalking.com": 2,
+    "cdn.p-n.io": 2,
     "cdn.permutive.app": 2,
+    "cdn.segment.com": 4,
+    "cdn.taboola.com": 2,
     "cdn.teads.tv": 2,
-    "client.aps.amazon-adsystem.com": 6,
+    "cdnssl.clicktale.net": 2,
+    "client.aps.amazon-adsystem.com": 10,
     "cmp.dmgmediaprivacy.co.uk": 2,
-    "config.aps.amazon-adsystem.com": 6,
+    "config.aps.amazon-adsystem.com": 10,
     "ct.pinterest.com": 2,
-    "doubleclick.net": 3,
+    "d.agkn.com": 2,
+    "doubleclick.net": 5,
+    "dpm.demdex.net": 2,
+    "dt.adsafeprotected.com": 2,
+    "edge.fullstory.com": 4,
     "fastlane.rubiconproject.com": 2,
-    "firebase-settings.crashlytics.com": 11,
+    "firebase-settings.crashlytics.com": 13,
+    "fmrcorp.tt.omtrdc.net": 2,
+    "googleads.g.doubleclick.net": 2,
+    "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "html-load.cc": 6,
     "http-intake.logs.datadoghq.com": 6,
+    "id.rlcdn.com": 6,
     "ingestusipv4.quantummetric.com": 8,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 216,
-    "micro.rubiconproject.com": 4,
-    "notify.bugsnag.com": 2,
+    "js-agent.newrelic.com": 2,
+    "mads.amazon-adsystem.com": 2,
+    "mask.icloud.com": 226,
+    "merequartz.com": 2,
+    "micro.rubiconproject.com": 6,
+    "mparticle.map.fastly.net": 1,
+    "notify.bugsnag.com": 4,
     "pagead2.googlesyndication.com": 6,
     "pixiedust.buzzfeed.com": 7,
     "prod.us-east-1.cxm-bcn.publisher-services.amazon.dev": 2,
     "pub.doubleverify.com": 4,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
+    "rs.fullstory.com": 2,
     "s.go-mpulse.net": 2,
     "s0.2mdn.net": 2,
-    "sb.scorecardresearch.com": 4,
+    "sb.scorecardresearch.com": 6,
     "scripts.webcontentassessor.com": 2,
     "secure-ds.serving-sys.com": 2,
-    "securepubads.g.doubleclick.net": 6,
+    "securepubads.g.doubleclick.net": 10,
     "servedby.flashtalking.com": 2,
-    "sessions.bugsnag.com": 2,
+    "sessions.bugsnag.com": 4,
     "smetrics.bankofamerica.com": 2,
     "sr-client-cfg.amplitude.com": 4,
+    "ssl.google-analytics.com": 2,
     "sstats.adobe.com": 8,
-    "static.cloudflareinsights.com": 2,
+    "static.addtoany.com": 2,
+    "static.cloudflareinsights.com": 4,
+    "static.getclicky.com": 2,
+    "static.tblcontent.com": 2,
     "storage.cloud.kargo.com": 2,
     "t.dailymail.co.uk": 2,
     "tagan.adlightning.com": 4,
     "tags.tiqcdn.com": 2,
     "ted.dailymail.co.uk": 2,
-    "tpc.googlesyndication.com": 2,
+    "tpc.googlesyndication.com": 4,
     "tr6.snapchat.com": 4,
+    "track.celtra.com": 2,
+    "track.securedvisit.com": 2,
+    "trackcmp.net": 2,
     "tracking.purchasely.io": 4,
     "uk-script.dotmetrics.net": 2,
+    "websdk.appsflyersdk.com": 2,
     "www.google-analytics.com": 6,
-    "www.googleadservices.com": 4,
-    "www.googletagmanager.com": 8
+    "www.googleadservices.com": 6,
+    "www.googletagmanager.com": 16,
+    "zncvgjh8lmjxbkyln-fmrpi.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 216
+      "count": 226
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 16
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 13
     },
     {
       "domain": "api2.amplitude.com",
       "count": 12
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
-      "count": 11
+      "domain": "app-measurement.com",
+      "count": 10
     },
     {
-      "domain": "api.mixpanel.com",
+      "domain": "c.amazon-adsystem.com",
+      "count": 10
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 10
+    },
+    {
+      "domain": "client.aps.amazon-adsystem.com",
+      "count": 10
+    },
+    {
+      "domain": "config.aps.amazon-adsystem.com",
+      "count": 10
+    },
+    {
+      "domain": "securepubads.g.doubleclick.net",
+      "count": 10
+    },
+    {
+      "domain": "aax.amazon-adsystem.com",
       "count": 8
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "api.mixpanel.com",
       "count": 8
     },
     {
@@ -103,16 +160,12 @@
       "count": 8
     },
     {
-      "domain": "www.googletagmanager.com",
-      "count": 8
+      "domain": "api.segment.io",
+      "count": 7
     },
     {
       "domain": "pixiedust.buzzfeed.com",
       "count": 7
-    },
-    {
-      "domain": "aax.amazon-adsystem.com",
-      "count": 6
     },
     {
       "domain": "bam.nr-data.net",
@@ -120,10 +173,6 @@
     },
     {
       "domain": "bkldaf.launches.appsflyersdk.com",
-      "count": 6
-    },
-    {
-      "domain": "c.amazon-adsystem.com",
       "count": 6
     },
     {
@@ -135,18 +184,6 @@
       "count": 6
     },
     {
-      "domain": "cdn.cookielaw.org",
-      "count": 6
-    },
-    {
-      "domain": "client.aps.amazon-adsystem.com",
-      "count": 6
-    },
-    {
-      "domain": "config.aps.amazon-adsystem.com",
-      "count": 6
-    },
-    {
       "domain": "html-load.cc",
       "count": 6
     },
@@ -155,11 +192,19 @@
       "count": 6
     },
     {
+      "domain": "id.rlcdn.com",
+      "count": 6
+    },
+    {
+      "domain": "micro.rubiconproject.com",
+      "count": 6
+    },
+    {
       "domain": "pagead2.googlesyndication.com",
       "count": 6
     },
     {
-      "domain": "securepubads.g.doubleclick.net",
+      "domain": "sb.scorecardresearch.com",
       "count": 6
     },
     {
@@ -167,7 +212,11 @@
       "count": 6
     },
     {
-      "domain": "api.segment.io",
+      "domain": "www.googleadservices.com",
+      "count": 6
+    },
+    {
+      "domain": "doubleclick.net",
       "count": 5
     },
     {
@@ -183,11 +232,19 @@
       "count": 4
     },
     {
+      "domain": "cdn.segment.com",
+      "count": 4
+    },
+    {
+      "domain": "edge.fullstory.com",
+      "count": 4
+    },
+    {
       "domain": "jkllz9.cdn-settings.appsflyersdk.com",
       "count": 4
     },
     {
-      "domain": "micro.rubiconproject.com",
+      "domain": "notify.bugsnag.com",
       "count": 4
     },
     {
@@ -195,7 +252,7 @@
       "count": 4
     },
     {
-      "domain": "sb.scorecardresearch.com",
+      "domain": "sessions.bugsnag.com",
       "count": 4
     },
     {
@@ -203,7 +260,15 @@
       "count": 4
     },
     {
+      "domain": "static.cloudflareinsights.com",
+      "count": 4
+    },
+    {
       "domain": "tagan.adlightning.com",
+      "count": 4
+    },
+    {
+      "domain": "tpc.googlesyndication.com",
       "count": 4
     },
     {
@@ -213,14 +278,6 @@
     {
       "domain": "tracking.purchasely.io",
       "count": 4
-    },
-    {
-      "domain": "www.googleadservices.com",
-      "count": 4
-    },
-    {
-      "domain": "doubleclick.net",
-      "count": 3
     },
     {
       "domain": "adobedc.demdex.net",
@@ -235,6 +292,10 @@
       "count": 2
     },
     {
+      "domain": "api.lab.amplitude.com",
+      "count": 2
+    },
+    {
       "domain": "api3.siftscience.com",
       "count": 2
     },
@@ -243,7 +304,15 @@
       "count": 2
     },
     {
+      "domain": "bat.bing.com",
+      "count": 2
+    },
+    {
       "domain": "bkldaf.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
       "count": 2
     },
     {
@@ -263,11 +332,23 @@
       "count": 2
     },
     {
+      "domain": "cdn.p-n.io",
+      "count": 2
+    },
+    {
       "domain": "cdn.permutive.app",
       "count": 2
     },
     {
+      "domain": "cdn.taboola.com",
+      "count": 2
+    },
+    {
       "domain": "cdn.teads.tv",
+      "count": 2
+    },
+    {
+      "domain": "cdnssl.clicktale.net",
       "count": 2
     },
     {
@@ -279,11 +360,43 @@
       "count": 2
     },
     {
+      "domain": "d.agkn.com",
+      "count": 2
+    },
+    {
+      "domain": "dpm.demdex.net",
+      "count": 2
+    },
+    {
+      "domain": "dt.adsafeprotected.com",
+      "count": 2
+    },
+    {
       "domain": "fastlane.rubiconproject.com",
       "count": 2
     },
     {
-      "domain": "notify.bugsnag.com",
+      "domain": "fmrcorp.tt.omtrdc.net",
+      "count": 2
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "hq2zc2zefnwmg3wcm.ay.delivery",
+      "count": 2
+    },
+    {
+      "domain": "js-agent.newrelic.com",
+      "count": 2
+    },
+    {
+      "domain": "mads.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "merequartz.com",
       "count": 2
     },
     {
@@ -292,6 +405,10 @@
     },
     {
       "domain": "qapyb2.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "rs.fullstory.com",
       "count": 2
     },
     {
@@ -315,15 +432,23 @@
       "count": 2
     },
     {
-      "domain": "sessions.bugsnag.com",
-      "count": 2
-    },
-    {
       "domain": "smetrics.bankofamerica.com",
       "count": 2
     },
     {
-      "domain": "static.cloudflareinsights.com",
+      "domain": "ssl.google-analytics.com",
+      "count": 2
+    },
+    {
+      "domain": "static.addtoany.com",
+      "count": 2
+    },
+    {
+      "domain": "static.getclicky.com",
+      "count": 2
+    },
+    {
+      "domain": "static.tblcontent.com",
       "count": 2
     },
     {
@@ -343,16 +468,36 @@
       "count": 2
     },
     {
-      "domain": "tpc.googlesyndication.com",
+      "domain": "track.celtra.com",
+      "count": 2
+    },
+    {
+      "domain": "track.securedvisit.com",
+      "count": 2
+    },
+    {
+      "domain": "trackcmp.net",
       "count": 2
     },
     {
       "domain": "uk-script.dotmetrics.net",
       "count": 2
+    },
+    {
+      "domain": "websdk.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "zncvgjh8lmjxbkyln-fmrpi.siteintercept.qualtrics.com",
+      "count": 2
+    },
+    {
+      "domain": "mparticle.map.fastly.net",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 33,
+    "timeout": 36,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
