@@ -145,7 +145,13 @@ class DefaultDenylistTests(unittest.TestCase):
             "dkonto.pl",
         ):
             self.assertIn(name, raw)
-        self.assertNotIn("reddit.com", raw)
+        for name in (
+            "reddit.com",
+            "redd.it",
+            "redditstatic.com",
+            "redditmedia.com",
+        ):
+            self.assertIn(name, raw)
         for parent in (
             "google.com",
             "gstatic.com",
@@ -183,6 +189,13 @@ class DefaultDenylistTests(unittest.TestCase):
         self.assertTrue(matcher.is_blocked("mask.icloud.com"))
         self.assertTrue(matcher.is_blocked("mask-h2.icloud.com"))
         self.assertTrue(matcher.is_blocked("a.mask.icloud.com"))
+        for name in (
+            "reddit.com",
+            "redd.it",
+            "redditstatic.com",
+            "redditmedia.com",
+        ):
+            self.assertTrue(matcher.is_blocked(name))
         self.assertFalse(matcher.is_blocked("example.com"))
         self.assertFalse(matcher.is_blocked("google.com"))
         self.assertFalse(matcher.is_blocked("www.google.com"))
