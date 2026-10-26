@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 5669,
-  "blocked": 689,
+  "queries": 5913,
+  "blocked": 703,
   "blocked_domains": {
     "a.teads.tv": 4,
     "aax.amazon-adsystem.com": 8,
@@ -11,7 +11,7 @@
     "api.iterable.com": 4,
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 8,
-    "api.segment.io": 12,
+    "api.segment.io": 14,
     "api2.amplitude.com": 12,
     "api3.branch.io": 2,
     "api3.siftscience.com": 2,
@@ -22,12 +22,12 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "browser-intake-datadoghq.com": 6,
+    "browser-intake-datadoghq.com": 8,
     "bs.serving-sys.com": 2,
     "c.amazon-adsystem.com": 10,
     "c.aps.amazon-adsystem.com": 6,
     "cd.connatix.com": 6,
-    "cdn-settings.segment.com": 2,
+    "cdn-settings.segment.com": 4,
     "cdn.connatix.com": 2,
     "cdn.cookielaw.org": 10,
     "cdn.doubleverify.com": 2,
@@ -60,7 +60,7 @@
     "js-agent.newrelic.com": 2,
     "logs.netflix.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 274,
+    "mask.icloud.com": 282,
     "merequartz.com": 2,
     "micro.rubiconproject.com": 6,
     "mparticle.map.fastly.net": 1,
@@ -110,19 +110,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 274
+      "count": 282
     },
     {
       "domain": "www.googletagmanager.com",
       "count": 16
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
-      "count": 13
+      "domain": "api.segment.io",
+      "count": 14
     },
     {
-      "domain": "api.segment.io",
-      "count": 12
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 13
     },
     {
       "domain": "api2.amplitude.com",
@@ -161,6 +161,10 @@
       "count": 8
     },
     {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 8
+    },
+    {
       "domain": "ingestusipv4.quantummetric.com",
       "count": 8
     },
@@ -182,10 +186,6 @@
     },
     {
       "domain": "bkldaf.launches.appsflyersdk.com",
-      "count": 6
-    },
-    {
-      "domain": "browser-intake-datadoghq.com",
       "count": 6
     },
     {
@@ -246,6 +246,10 @@
     },
     {
       "domain": "bkldaf.skadsdkless.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "cdn-settings.segment.com",
       "count": 4
     },
     {
@@ -330,10 +334,6 @@
     },
     {
       "domain": "bs.serving-sys.com",
-      "count": 2
-    },
-    {
-      "domain": "cdn-settings.segment.com",
       "count": 2
     },
     {
@@ -522,7 +522,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 39,
+    "timeout": 40,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
