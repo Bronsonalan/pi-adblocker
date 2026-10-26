@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 854,
-  "blocked": 123,
+  "queries": 1033,
+  "blocked": 142,
   "blocked_domains": {
     "api-js.mixpanel.com": 2,
     "api.mixpanel.com": 4,
@@ -13,25 +13,29 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "firebase-settings.crashlytics.com": 6,
+    "firebase-settings.crashlytics.com": 11,
     "http-intake.logs.datadoghq.com": 1,
-    "ingestusipv4.quantummetric.com": 2,
+    "ingestusipv4.quantummetric.com": 6,
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
-    "mask.icloud.com": 78,
+    "mask.icloud.com": 88,
     "notify.bugsnag.com": 2,
     "tr6.snapchat.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 78
+      "count": 88
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 11
     },
     {
       "domain": "bkldaf.launches.appsflyersdk.com",
       "count": 6
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
+      "domain": "ingestusipv4.quantummetric.com",
       "count": 6
     },
     {
@@ -64,10 +68,6 @@
     },
     {
       "domain": "bkldaf.cdn-settings.appsflyersdk.com",
-      "count": 2
-    },
-    {
-      "domain": "ingestusipv4.quantummetric.com",
       "count": 2
     },
     {
