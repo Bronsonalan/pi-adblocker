@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 5549,
-  "blocked": 683,
+  "queries": 5669,
+  "blocked": 689,
   "blocked_domains": {
     "a.teads.tv": 4,
     "aax.amazon-adsystem.com": 8,
@@ -60,7 +60,7 @@
     "js-agent.newrelic.com": 2,
     "logs.netflix.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 268,
+    "mask.icloud.com": 274,
     "merequartz.com": 2,
     "micro.rubiconproject.com": 6,
     "mparticle.map.fastly.net": 1,
@@ -110,7 +110,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 268
+      "count": 274
     },
     {
       "domain": "www.googletagmanager.com",
