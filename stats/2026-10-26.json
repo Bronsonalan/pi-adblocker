@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-26",
+  "queries": 21,
+  "blocked": 0,
+  "blocked_domains": {},
+  "top_blocked": [],
+  "upstream_errors": {
+    "timeout": 0,
+    "servfail": 0,
+    "refused": 0,
+    "socket": 0,
+    "truncation": 0
+  }
+}
