@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "queries": 4809,
-  "blocked": 617,
+  "queries": 5068,
+  "blocked": 636,
   "blocked_domains": {
     "a.teads.tv": 4,
     "aax.amazon-adsystem.com": 8,
@@ -11,8 +11,9 @@
     "api.iterable.com": 4,
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 8,
-    "api.segment.io": 7,
+    "api.segment.io": 9,
     "api2.amplitude.com": 12,
+    "api3.branch.io": 2,
     "api3.siftscience.com": 2,
     "app-measurement.com": 10,
     "att.launches.appsflyersdk.com": 2,
@@ -21,11 +22,12 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
-    "browser-intake-datadoghq.com": 2,
+    "browser-intake-datadoghq.com": 4,
     "bs.serving-sys.com": 2,
     "c.amazon-adsystem.com": 10,
     "c.aps.amazon-adsystem.com": 6,
     "cd.connatix.com": 6,
+    "cdn-settings.segment.com": 2,
     "cdn.connatix.com": 2,
     "cdn.cookielaw.org": 10,
     "cdn.doubleverify.com": 2,
@@ -48,7 +50,7 @@
     "fastlane.rubiconproject.com": 2,
     "firebase-settings.crashlytics.com": 13,
     "fmrcorp.tt.omtrdc.net": 2,
-    "googleads.g.doubleclick.net": 2,
+    "googleads.g.doubleclick.net": 4,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "html-load.cc": 6,
     "http-intake.logs.datadoghq.com": 6,
@@ -57,7 +59,7 @@
     "jkllz9.cdn-settings.appsflyersdk.com": 4,
     "js-agent.newrelic.com": 2,
     "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 226,
+    "mask.icloud.com": 232,
     "merequartz.com": 2,
     "micro.rubiconproject.com": 6,
     "mparticle.map.fastly.net": 1,
@@ -96,16 +98,18 @@
     "trackcmp.net": 2,
     "tracking.purchasely.io": 4,
     "uk-script.dotmetrics.net": 2,
+    "use1-turn.fpjs.io": 1,
     "websdk.appsflyersdk.com": 2,
     "www.google-analytics.com": 6,
     "www.googleadservices.com": 6,
     "www.googletagmanager.com": 16,
+    "www.reddit.com": 2,
     "zncvgjh8lmjxbkyln-fmrpi.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 226
+      "count": 232
     },
     {
       "domain": "www.googletagmanager.com",
@@ -144,6 +148,10 @@
       "count": 10
     },
     {
+      "domain": "api.segment.io",
+      "count": 9
+    },
+    {
       "domain": "aax.amazon-adsystem.com",
       "count": 8
     },
@@ -158,10 +166,6 @@
     {
       "domain": "sstats.adobe.com",
       "count": 8
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 7
     },
     {
       "domain": "pixiedust.buzzfeed.com",
@@ -232,11 +236,19 @@
       "count": 4
     },
     {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 4
+    },
+    {
       "domain": "cdn.segment.com",
       "count": 4
     },
     {
       "domain": "edge.fullstory.com",
+      "count": 4
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
       "count": 4
     },
     {
@@ -296,6 +308,10 @@
       "count": 2
     },
     {
+      "domain": "api3.branch.io",
+      "count": 2
+    },
+    {
       "domain": "api3.siftscience.com",
       "count": 2
     },
@@ -312,11 +328,11 @@
       "count": 2
     },
     {
-      "domain": "browser-intake-datadoghq.com",
+      "domain": "bs.serving-sys.com",
       "count": 2
     },
     {
-      "domain": "bs.serving-sys.com",
+      "domain": "cdn-settings.segment.com",
       "count": 2
     },
     {
@@ -377,10 +393,6 @@
     },
     {
       "domain": "fmrcorp.tt.omtrdc.net",
-      "count": 2
-    },
-    {
-      "domain": "googleads.g.doubleclick.net",
       "count": 2
     },
     {
@@ -488,11 +500,19 @@
       "count": 2
     },
     {
+      "domain": "www.reddit.com",
+      "count": 2
+    },
+    {
       "domain": "zncvgjh8lmjxbkyln-fmrpi.siteintercept.qualtrics.com",
       "count": 2
     },
     {
       "domain": "mparticle.map.fastly.net",
+      "count": 1
+    },
+    {
+      "domain": "use1-turn.fpjs.io",
       "count": 1
     }
   ],
