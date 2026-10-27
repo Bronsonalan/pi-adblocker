@@ -1,9 +1,9 @@
 {
   "date": "2026-10-27",
-  "queries": 5516,
-  "blocked": 426,
+  "queries": 5579,
+  "blocked": 428,
   "blocked_domains": {
-    "ads-api.x.com": 2,
+    "ads-api.x.com": 4,
     "analytics.twitter.com": 2,
     "api.mixpanel.com": 7,
     "api.segment.io": 19,
@@ -83,6 +83,10 @@
       "count": 5
     },
     {
+      "domain": "ads-api.x.com",
+      "count": 4
+    },
+    {
       "domain": "c.amazon-adsystem.com",
       "count": 4
     },
@@ -109,10 +113,6 @@
     {
       "domain": "ssl.google-analytics.com",
       "count": 3
-    },
-    {
-      "domain": "ads-api.x.com",
-      "count": 2
     },
     {
       "domain": "analytics.twitter.com",
