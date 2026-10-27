@@ -1,15 +1,15 @@
 {
   "date": "2026-10-27",
-  "queries": 3906,
-  "blocked": 299,
+  "queries": 4098,
+  "blocked": 307,
   "blocked_domains": {
-    "api.mixpanel.com": 5,
-    "api.segment.io": 6,
+    "api.mixpanel.com": 7,
+    "api.segment.io": 8,
     "app-measurement.com": 24,
     "att.launches.appsflyersdk.com": 8,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
-    "cdn-settings.segment.com": 2,
+    "cdn-settings.segment.com": 4,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
@@ -17,7 +17,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 4,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 163,
+    "mask.icloud.com": 165,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -35,7 +35,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 163
+      "count": 165
     },
     {
       "domain": "app-measurement.com",
@@ -50,6 +50,10 @@
       "count": 10
     },
     {
+      "domain": "api.segment.io",
+      "count": 8
+    },
+    {
       "domain": "att.launches.appsflyersdk.com",
       "count": 8
     },
@@ -58,19 +62,19 @@
       "count": 8
     },
     {
-      "domain": "api.segment.io",
-      "count": 6
+      "domain": "api.mixpanel.com",
+      "count": 7
     },
     {
       "domain": "pubads.g.doubleclick.net",
       "count": 6
     },
     {
-      "domain": "api.mixpanel.com",
-      "count": 5
+      "domain": "c.amazon-adsystem.com",
+      "count": 4
     },
     {
-      "domain": "c.amazon-adsystem.com",
+      "domain": "cdn-settings.segment.com",
       "count": 4
     },
     {
@@ -99,10 +103,6 @@
     },
     {
       "domain": "browser-intake-datadoghq.com",
-      "count": 2
-    },
-    {
-      "domain": "cdn-settings.segment.com",
       "count": 2
     },
     {
@@ -147,7 +147,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 12,
+    "timeout": 14,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
