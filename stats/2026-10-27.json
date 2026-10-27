@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 5670,
-  "blocked": 440,
+  "queries": 5672,
+  "blocked": 442,
   "blocked_domains": {
     "ads-api.x.com": 6,
     "analytics.twitter.com": 2,
@@ -22,7 +22,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 247,
+    "mask.icloud.com": 249,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -41,7 +41,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 247
+      "count": 249
     },
     {
       "domain": "app-measurement.com",
