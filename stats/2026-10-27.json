@@ -1,14 +1,14 @@
 {
   "date": "2026-10-27",
-  "queries": 508,
-  "blocked": 56,
+  "queries": 556,
+  "blocked": 60,
   "blocked_domains": {
     "api.mixpanel.com": 3,
     "api.segment.io": 1,
     "app-measurement.com": 11,
     "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 12,
+    "mask.icloud.com": 16,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pubads.g.doubleclick.net": 2,
@@ -22,7 +22,7 @@
     },
     {
       "domain": "mask.icloud.com",
-      "count": 12
+      "count": 16
     },
     {
       "domain": "app-measurement.com",
