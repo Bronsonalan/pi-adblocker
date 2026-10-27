@@ -1,28 +1,29 @@
 {
   "date": "2026-10-27",
-  "queries": 1956,
-  "blocked": 182,
+  "queries": 1999,
+  "blocked": 206,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 3,
-    "app-measurement.com": 14,
+    "app-measurement.com": 16,
     "att.launches.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
-    "c.amazon-adsystem.com": 2,
+    "c.amazon-adsystem.com": 4,
     "cdn-settings.segment.com": 2,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "firebase-settings.crashlytics.com": 2,
-    "googleads.g.doubleclick.net": 6,
+    "googleads.g.doubleclick.net": 8,
     "http-intake.logs.datadoghq.com": 1,
-    "mads.amazon-adsystem.com": 2,
-    "mask.icloud.com": 99,
+    "mads.amazon-adsystem.com": 4,
+    "mask.icloud.com": 105,
+    "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 2,
-    "muf.app-ads-services.com": 2,
-    "odf.app-ads-services.com": 4,
+    "muf.app-ads-services.com": 4,
+    "odf.app-ads-services.com": 6,
     "pagead2.googlesyndication.com": 2,
-    "prebid-server.rubiconproject.com": 2,
-    "pubads.g.doubleclick.net": 4,
+    "prebid-server.rubiconproject.com": 4,
+    "pubads.g.doubleclick.net": 6,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
     "tracking.purchasely.io": 18,
     "www.googletagmanager.com": 2
@@ -30,7 +31,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 99
+      "count": 105
     },
     {
       "domain": "tracking.purchasely.io",
@@ -38,10 +39,18 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 14
+      "count": 16
     },
     {
       "domain": "googleads.g.doubleclick.net",
+      "count": 8
+    },
+    {
+      "domain": "odf.app-ads-services.com",
+      "count": 6
+    },
+    {
+      "domain": "pubads.g.doubleclick.net",
       "count": 6
     },
     {
@@ -49,11 +58,19 @@
       "count": 5
     },
     {
-      "domain": "odf.app-ads-services.com",
+      "domain": "c.amazon-adsystem.com",
       "count": 4
     },
     {
-      "domain": "pubads.g.doubleclick.net",
+      "domain": "mads.amazon-adsystem.com",
+      "count": 4
+    },
+    {
+      "domain": "muf.app-ads-services.com",
+      "count": 4
+    },
+    {
+      "domain": "prebid-server.rubiconproject.com",
       "count": 4
     },
     {
@@ -66,10 +83,6 @@
     },
     {
       "domain": "browser-intake-datadoghq.com",
-      "count": 2
-    },
-    {
-      "domain": "c.amazon-adsystem.com",
       "count": 2
     },
     {
@@ -89,7 +102,7 @@
       "count": 2
     },
     {
-      "domain": "mads.amazon-adsystem.com",
+      "domain": "mdtb-cf-3.ads.aps.amazon-adsystem.com",
       "count": 2
     },
     {
@@ -97,15 +110,7 @@
       "count": 2
     },
     {
-      "domain": "muf.app-ads-services.com",
-      "count": 2
-    },
-    {
       "domain": "pagead2.googlesyndication.com",
-      "count": 2
-    },
-    {
-      "domain": "prebid-server.rubiconproject.com",
       "count": 2
     },
     {
