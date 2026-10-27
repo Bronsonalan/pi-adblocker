@@ -1,11 +1,11 @@
 {
   "date": "2026-10-27",
-  "queries": 4098,
-  "blocked": 307,
+  "queries": 4243,
+  "blocked": 318,
   "blocked_domains": {
     "api.mixpanel.com": 7,
-    "api.segment.io": 8,
-    "app-measurement.com": 24,
+    "api.segment.io": 9,
+    "app-measurement.com": 25,
     "att.launches.appsflyersdk.com": 8,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
@@ -15,9 +15,9 @@
     "distillery.wistia.com": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 10,
-    "http-intake.logs.datadoghq.com": 4,
+    "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 165,
+    "mask.icloud.com": 171,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -29,21 +29,21 @@
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
     "ssl.google-analytics.com": 3,
     "sstats.adobe.com": 2,
-    "tracking.purchasely.io": 18,
+    "tracking.purchasely.io": 20,
     "www.googletagmanager.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 165
+      "count": 171
     },
     {
       "domain": "app-measurement.com",
-      "count": 24
+      "count": 25
     },
     {
       "domain": "tracking.purchasely.io",
-      "count": 18
+      "count": 20
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -51,7 +51,7 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 8
+      "count": 9
     },
     {
       "domain": "att.launches.appsflyersdk.com",
@@ -70,15 +70,15 @@
       "count": 6
     },
     {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 5
+    },
+    {
       "domain": "c.amazon-adsystem.com",
       "count": 4
     },
     {
       "domain": "cdn-settings.segment.com",
-      "count": 4
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
       "count": 4
     },
     {
