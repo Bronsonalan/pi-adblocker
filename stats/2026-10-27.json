@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 4551,
-  "blocked": 324,
+  "queries": 4606,
+  "blocked": 328,
   "blocked_domains": {
     "api.mixpanel.com": 7,
     "api.segment.io": 9,
@@ -17,7 +17,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 177,
+    "mask.icloud.com": 179,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -30,12 +30,13 @@
     "ssl.google-analytics.com": 3,
     "sstats.adobe.com": 2,
     "tracking.purchasely.io": 20,
+    "www.google-analytics.com": 2,
     "www.googletagmanager.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 177
+      "count": 179
     },
     {
       "domain": "app-measurement.com",
@@ -142,12 +143,16 @@
       "count": 2
     },
     {
+      "domain": "www.google-analytics.com",
+      "count": 2
+    },
+    {
       "domain": "www.googletagmanager.com",
       "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 16,
+    "timeout": 17,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
