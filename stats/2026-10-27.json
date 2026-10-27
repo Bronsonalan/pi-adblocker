@@ -1,17 +1,18 @@
 {
   "date": "2026-10-27",
-  "queries": 5579,
-  "blocked": 428,
+  "queries": 5661,
+  "blocked": 438,
   "blocked_domains": {
-    "ads-api.x.com": 4,
+    "ads-api.x.com": 6,
     "analytics.twitter.com": 2,
     "api.mixpanel.com": 7,
     "api.segment.io": 19,
     "api3.branch.io": 2,
     "app-measurement.com": 27,
-    "att.launches.appsflyersdk.com": 8,
+    "att.launches.appsflyersdk.com": 10,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
+    "c6thn4.cdn-settings.appsflyersdk.com": 2,
     "cdn-settings.segment.com": 14,
     "cdn.branch.io": 2,
     "cdn.cookielaw.org": 2,
@@ -21,7 +22,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 241,
+    "mask.icloud.com": 245,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -40,7 +41,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 241
+      "count": 245
     },
     {
       "domain": "app-measurement.com",
@@ -59,12 +60,12 @@
       "count": 14
     },
     {
-      "domain": "googleads.g.doubleclick.net",
+      "domain": "att.launches.appsflyersdk.com",
       "count": 10
     },
     {
-      "domain": "att.launches.appsflyersdk.com",
-      "count": 8
+      "domain": "googleads.g.doubleclick.net",
+      "count": 10
     },
     {
       "domain": "odf.app-ads-services.com",
@@ -75,16 +76,16 @@
       "count": 7
     },
     {
+      "domain": "ads-api.x.com",
+      "count": 6
+    },
+    {
       "domain": "pubads.g.doubleclick.net",
       "count": 6
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 5
-    },
-    {
-      "domain": "ads-api.x.com",
-      "count": 4
     },
     {
       "domain": "c.amazon-adsystem.com",
@@ -124,6 +125,10 @@
     },
     {
       "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "c6thn4.cdn-settings.appsflyersdk.com",
       "count": 2
     },
     {
