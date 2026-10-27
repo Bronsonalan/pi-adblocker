@@ -1,15 +1,15 @@
 {
   "date": "2026-10-27",
-  "queries": 5327,
-  "blocked": 406,
+  "queries": 5370,
+  "blocked": 412,
   "blocked_domains": {
     "api.mixpanel.com": 7,
-    "api.segment.io": 15,
+    "api.segment.io": 17,
     "app-measurement.com": 27,
     "att.launches.appsflyersdk.com": 8,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
-    "cdn-settings.segment.com": 10,
+    "cdn-settings.segment.com": 12,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
@@ -17,7 +17,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 239,
+    "mask.icloud.com": 241,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -36,7 +36,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 239
+      "count": 241
     },
     {
       "domain": "app-measurement.com",
@@ -48,11 +48,11 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 15
+      "count": 17
     },
     {
       "domain": "cdn-settings.segment.com",
-      "count": 10
+      "count": 12
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -152,7 +152,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 28,
+    "timeout": 29,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
