@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 6206,
-  "blocked": 520,
+  "queries": 6255,
+  "blocked": 526,
   "blocked_domains": {
     "ads-api.x.com": 6,
     "analytics.twitter.com": 2,
@@ -20,11 +20,11 @@
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
-    "firebase-settings.crashlytics.com": 4,
+    "firebase-settings.crashlytics.com": 6,
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 307,
+    "mask.icloud.com": 311,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -44,7 +44,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 307
+      "count": 311
     },
     {
       "domain": "app-measurement.com",
@@ -83,6 +83,10 @@
       "count": 6
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 6
+    },
+    {
       "domain": "pubads.g.doubleclick.net",
       "count": 6
     },
@@ -92,10 +96,6 @@
     },
     {
       "domain": "c.amazon-adsystem.com",
-      "count": 4
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
