@@ -1,19 +1,23 @@
 {
   "date": "2026-10-27",
-  "queries": 5370,
-  "blocked": 412,
+  "queries": 5516,
+  "blocked": 426,
   "blocked_domains": {
+    "ads-api.x.com": 2,
+    "analytics.twitter.com": 2,
     "api.mixpanel.com": 7,
-    "api.segment.io": 17,
+    "api.segment.io": 19,
+    "api3.branch.io": 2,
     "app-measurement.com": 27,
     "att.launches.appsflyersdk.com": 8,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
-    "cdn-settings.segment.com": 12,
+    "cdn-settings.segment.com": 14,
+    "cdn.branch.io": 2,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
-    "firebase-settings.crashlytics.com": 2,
+    "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
@@ -48,11 +52,11 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 17
+      "count": 19
     },
     {
       "domain": "cdn-settings.segment.com",
-      "count": 12
+      "count": 14
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -83,6 +87,10 @@
       "count": 4
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 4
+    },
+    {
       "domain": "mads.amazon-adsystem.com",
       "count": 4
     },
@@ -103,7 +111,23 @@
       "count": 3
     },
     {
+      "domain": "ads-api.x.com",
+      "count": 2
+    },
+    {
+      "domain": "analytics.twitter.com",
+      "count": 2
+    },
+    {
+      "domain": "api3.branch.io",
+      "count": 2
+    },
+    {
       "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "cdn.branch.io",
       "count": 2
     },
     {
@@ -116,10 +140,6 @@
     },
     {
       "domain": "distillery.wistia.com",
-      "count": 2
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 2
     },
     {
@@ -152,7 +172,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 29,
+    "timeout": 32,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
