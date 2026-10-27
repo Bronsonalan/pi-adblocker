@@ -1,14 +1,17 @@
 {
   "date": "2026-10-27",
-  "queries": 556,
-  "blocked": 60,
+  "queries": 1288,
+  "blocked": 89,
   "blocked_domains": {
-    "api.mixpanel.com": 3,
-    "api.segment.io": 1,
+    "api.mixpanel.com": 5,
+    "api.segment.io": 3,
     "app-measurement.com": 11,
+    "att.launches.appsflyersdk.com": 2,
+    "browser-intake-datadoghq.com": 2,
+    "cdn-settings.segment.com": 2,
     "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 16,
+    "mask.icloud.com": 35,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pubads.g.doubleclick.net": 2,
@@ -17,12 +20,12 @@
   },
   "top_blocked": [
     {
-      "domain": "tracking.purchasely.io",
-      "count": 18
+      "domain": "mask.icloud.com",
+      "count": 35
     },
     {
-      "domain": "mask.icloud.com",
-      "count": 16
+      "domain": "tracking.purchasely.io",
+      "count": 18
     },
     {
       "domain": "app-measurement.com",
@@ -30,7 +33,23 @@
     },
     {
       "domain": "api.mixpanel.com",
+      "count": 5
+    },
+    {
+      "domain": "api.segment.io",
       "count": 3
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "cdn-settings.segment.com",
+      "count": 2
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -53,16 +72,12 @@
       "count": 2
     },
     {
-      "domain": "api.segment.io",
-      "count": 1
-    },
-    {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 5,
+    "timeout": 10,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
