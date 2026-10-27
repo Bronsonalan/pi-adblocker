@@ -1,12 +1,12 @@
 {
   "date": "2026-10-27",
-  "queries": 3517,
-  "blocked": 270,
+  "queries": 3745,
+  "blocked": 290,
   "blocked_domains": {
     "api.mixpanel.com": 5,
-    "api.segment.io": 5,
+    "api.segment.io": 6,
     "app-measurement.com": 21,
-    "att.launches.appsflyersdk.com": 4,
+    "att.launches.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
     "cdn-settings.segment.com": 2,
@@ -14,14 +14,14 @@
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
     "firebase-settings.crashlytics.com": 2,
-    "googleads.g.doubleclick.net": 8,
-    "http-intake.logs.datadoghq.com": 3,
+    "googleads.g.doubleclick.net": 10,
+    "http-intake.logs.datadoghq.com": 4,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 147,
+    "mask.icloud.com": 159,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
-    "odf.app-ads-services.com": 6,
+    "odf.app-ads-services.com": 8,
     "pagead2.googlesyndication.com": 2,
     "pipedream.wistia.com": 2,
     "prebid-server.rubiconproject.com": 4,
@@ -35,7 +35,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 147
+      "count": 159
     },
     {
       "domain": "app-measurement.com",
@@ -47,10 +47,18 @@
     },
     {
       "domain": "googleads.g.doubleclick.net",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "odf.app-ads-services.com",
+      "count": 8
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 6
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
       "count": 6
     },
     {
@@ -62,15 +70,11 @@
       "count": 5
     },
     {
-      "domain": "api.segment.io",
-      "count": 5
-    },
-    {
-      "domain": "att.launches.appsflyersdk.com",
+      "domain": "c.amazon-adsystem.com",
       "count": 4
     },
     {
-      "domain": "c.amazon-adsystem.com",
+      "domain": "http-intake.logs.datadoghq.com",
       "count": 4
     },
     {
@@ -88,10 +92,6 @@
     {
       "domain": "prebid-server.rubiconproject.com",
       "count": 4
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 3
     },
     {
       "domain": "ssl.google-analytics.com",
