@@ -1,17 +1,17 @@
 {
   "date": "2026-10-27",
-  "queries": 1559,
-  "blocked": 114,
+  "queries": 1608,
+  "blocked": 120,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 3,
-    "app-measurement.com": 11,
+    "app-measurement.com": 13,
     "att.launches.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
     "cdn-settings.segment.com": 2,
     "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 60,
+    "mask.icloud.com": 64,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pubads.g.doubleclick.net": 2,
@@ -21,7 +21,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 60
+      "count": 64
     },
     {
       "domain": "tracking.purchasely.io",
@@ -29,7 +29,7 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 11
+      "count": 13
     },
     {
       "domain": "api.mixpanel.com",
