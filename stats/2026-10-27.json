@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 1999,
-  "blocked": 206,
+  "queries": 2045,
+  "blocked": 215,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 3,
@@ -16,22 +16,23 @@
     "googleads.g.doubleclick.net": 8,
     "http-intake.logs.datadoghq.com": 1,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 105,
+    "mask.icloud.com": 109,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
-    "metricreceiver.cellrebel.com": 2,
+    "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 6,
     "pagead2.googlesyndication.com": 2,
     "prebid-server.rubiconproject.com": 4,
     "pubads.g.doubleclick.net": 6,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
+    "ssl.google-analytics.com": 3,
     "tracking.purchasely.io": 18,
     "www.googletagmanager.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 105
+      "count": 109
     },
     {
       "domain": "tracking.purchasely.io",
@@ -66,6 +67,10 @@
       "count": 4
     },
     {
+      "domain": "metricreceiver.cellrebel.com",
+      "count": 4
+    },
+    {
       "domain": "muf.app-ads-services.com",
       "count": 4
     },
@@ -75,6 +80,10 @@
     },
     {
       "domain": "api.segment.io",
+      "count": 3
+    },
+    {
+      "domain": "ssl.google-analytics.com",
       "count": 3
     },
     {
@@ -103,10 +112,6 @@
     },
     {
       "domain": "mdtb-cf-3.ads.aps.amazon-adsystem.com",
-      "count": 2
-    },
-    {
-      "domain": "metricreceiver.cellrebel.com",
       "count": 2
     },
     {
