@@ -1,15 +1,15 @@
 {
   "date": "2026-10-27",
-  "queries": 5291,
-  "blocked": 398,
+  "queries": 5327,
+  "blocked": 406,
   "blocked_domains": {
     "api.mixpanel.com": 7,
-    "api.segment.io": 13,
+    "api.segment.io": 15,
     "app-measurement.com": 27,
     "att.launches.appsflyersdk.com": 8,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
-    "cdn-settings.segment.com": 8,
+    "cdn-settings.segment.com": 10,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
     "distillery.wistia.com": 2,
@@ -17,7 +17,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 235,
+    "mask.icloud.com": 239,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -36,7 +36,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 235
+      "count": 239
     },
     {
       "domain": "app-measurement.com",
@@ -48,7 +48,11 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 13
+      "count": 15
+    },
+    {
+      "domain": "cdn-settings.segment.com",
+      "count": 10
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -56,10 +60,6 @@
     },
     {
       "domain": "att.launches.appsflyersdk.com",
-      "count": 8
-    },
-    {
-      "domain": "cdn-settings.segment.com",
       "count": 8
     },
     {
