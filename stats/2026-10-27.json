@@ -1,12 +1,12 @@
 {
   "date": "2026-10-27",
-  "queries": 2802,
-  "blocked": 244,
+  "queries": 2996,
+  "blocked": 252,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 5,
     "app-measurement.com": 19,
-    "att.launches.appsflyersdk.com": 2,
+    "att.launches.appsflyersdk.com": 4,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
     "cdn-settings.segment.com": 2,
@@ -16,7 +16,7 @@
     "googleads.g.doubleclick.net": 8,
     "http-intake.logs.datadoghq.com": 3,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 131,
+    "mask.icloud.com": 137,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -32,7 +32,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 131
+      "count": 137
     },
     {
       "domain": "app-measurement.com",
@@ -63,6 +63,10 @@
       "count": 5
     },
     {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 4
+    },
+    {
       "domain": "c.amazon-adsystem.com",
       "count": 4
     },
@@ -89,10 +93,6 @@
     {
       "domain": "ssl.google-analytics.com",
       "count": 3
-    },
-    {
-      "domain": "att.launches.appsflyersdk.com",
-      "count": 2
     },
     {
       "domain": "browser-intake-datadoghq.com",
