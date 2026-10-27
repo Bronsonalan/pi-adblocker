@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 6072,
-  "blocked": 510,
+  "queries": 6128,
+  "blocked": 515,
   "blocked_domains": {
     "ads-api.x.com": 6,
     "analytics.twitter.com": 2,
@@ -10,7 +10,7 @@
     "api.segment.io": 19,
     "api2.amplitude.com": 2,
     "api3.branch.io": 2,
-    "app-measurement.com": 30,
+    "app-measurement.com": 31,
     "att.launches.appsflyersdk.com": 17,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
@@ -24,7 +24,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 301,
+    "mask.icloud.com": 305,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -44,11 +44,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 301
+      "count": 305
     },
     {
       "domain": "app-measurement.com",
-      "count": 30
+      "count": 31
     },
     {
       "domain": "tracking.purchasely.io",
