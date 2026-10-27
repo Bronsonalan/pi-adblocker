@@ -1,11 +1,11 @@
 {
   "date": "2026-10-27",
-  "queries": 2073,
-  "blocked": 219,
+  "queries": 2506,
+  "blocked": 234,
   "blocked_domains": {
     "api.mixpanel.com": 5,
-    "api.segment.io": 3,
-    "app-measurement.com": 16,
+    "api.segment.io": 4,
+    "app-measurement.com": 19,
     "att.launches.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
@@ -14,9 +14,9 @@
     "census-app-x.scorecardresearch.com": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 8,
-    "http-intake.logs.datadoghq.com": 1,
+    "http-intake.logs.datadoghq.com": 2,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 113,
+    "mask.icloud.com": 123,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -32,15 +32,15 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 113
+      "count": 123
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 19
     },
     {
       "domain": "tracking.purchasely.io",
       "count": 18
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 16
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -57,6 +57,10 @@
     {
       "domain": "api.mixpanel.com",
       "count": 5
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 4
     },
     {
       "domain": "c.amazon-adsystem.com",
@@ -77,10 +81,6 @@
     {
       "domain": "prebid-server.rubiconproject.com",
       "count": 4
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 3
     },
     {
       "domain": "ssl.google-analytics.com",
@@ -111,6 +111,10 @@
       "count": 2
     },
     {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 2
+    },
+    {
       "domain": "mdtb-cf-3.ads.aps.amazon-adsystem.com",
       "count": 2
     },
@@ -125,10 +129,6 @@
     {
       "domain": "www.googletagmanager.com",
       "count": 2
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 1
     }
   ],
   "upstream_errors": {
