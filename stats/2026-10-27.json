@@ -1,10 +1,10 @@
 {
   "date": "2026-10-27",
-  "queries": 2506,
-  "blocked": 234,
+  "queries": 2802,
+  "blocked": 244,
   "blocked_domains": {
     "api.mixpanel.com": 5,
-    "api.segment.io": 4,
+    "api.segment.io": 5,
     "app-measurement.com": 19,
     "att.launches.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
@@ -14,9 +14,9 @@
     "census-app-x.scorecardresearch.com": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 8,
-    "http-intake.logs.datadoghq.com": 2,
+    "http-intake.logs.datadoghq.com": 3,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 123,
+    "mask.icloud.com": 131,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -32,7 +32,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 123
+      "count": 131
     },
     {
       "domain": "app-measurement.com",
@@ -60,7 +60,7 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 4
+      "count": 5
     },
     {
       "domain": "c.amazon-adsystem.com",
@@ -81,6 +81,10 @@
     {
       "domain": "prebid-server.rubiconproject.com",
       "count": 4
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 3
     },
     {
       "domain": "ssl.google-analytics.com",
@@ -108,10 +112,6 @@
     },
     {
       "domain": "firebase-settings.crashlytics.com",
-      "count": 2
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
       "count": 2
     },
     {
