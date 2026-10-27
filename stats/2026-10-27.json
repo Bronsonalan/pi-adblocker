@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-27",
+  "queries": 244,
+  "blocked": 13,
+  "blocked_domains": {
+    "api.mixpanel.com": 3,
+    "api.segment.io": 1,
+    "app-measurement.com": 2,
+    "http-intake.logs.datadoghq.com": 1,
+    "mask.icloud.com": 4,
+    "qapyb2.cdn-settings.appsflyersdk.com": 2
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 4
+    },
+    {
+      "domain": "api.mixpanel.com",
+      "count": 3
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 2
+    },
+    {
+      "domain": "qapyb2.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 1
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 1
+    }
+  ],
+  "upstream_errors": {
+    "timeout": 5,
+    "servfail": 0,
+    "refused": 0,
+    "socket": 0,
+    "truncation": 0
+  }
+}
