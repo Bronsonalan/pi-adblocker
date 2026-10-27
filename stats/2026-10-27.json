@@ -1,19 +1,19 @@
 {
   "date": "2026-10-27",
-  "queries": 244,
-  "blocked": 13,
+  "queries": 251,
+  "blocked": 15,
   "blocked_domains": {
     "api.mixpanel.com": 3,
     "api.segment.io": 1,
     "app-measurement.com": 2,
     "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 4,
+    "mask.icloud.com": 6,
     "qapyb2.cdn-settings.appsflyersdk.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 4
+      "count": 6
     },
     {
       "domain": "api.mixpanel.com",
