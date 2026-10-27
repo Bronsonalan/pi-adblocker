@@ -1,7 +1,7 @@
 {
   "date": "2026-10-27",
-  "queries": 1745,
-  "blocked": 140,
+  "queries": 1782,
+  "blocked": 142,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 3,
@@ -11,7 +11,7 @@
     "cdn-settings.segment.com": 2,
     "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 84,
+    "mask.icloud.com": 86,
     "odf.app-ads-services.com": 2,
     "pagead2.googlesyndication.com": 2,
     "pubads.g.doubleclick.net": 2,
@@ -21,7 +21,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 84
+      "count": 86
     },
     {
       "domain": "tracking.purchasely.io",
@@ -77,7 +77,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 10,
+    "timeout": 11,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
