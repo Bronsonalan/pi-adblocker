@@ -1,27 +1,29 @@
 {
   "date": "2026-10-27",
-  "queries": 3273,
-  "blocked": 260,
+  "queries": 3517,
+  "blocked": 270,
   "blocked_domains": {
     "api.mixpanel.com": 5,
     "api.segment.io": 5,
-    "app-measurement.com": 19,
+    "app-measurement.com": 21,
     "att.launches.appsflyersdk.com": 4,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
     "cdn-settings.segment.com": 2,
     "cdn.cookielaw.org": 2,
     "census-app-x.scorecardresearch.com": 2,
+    "distillery.wistia.com": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 8,
     "http-intake.logs.datadoghq.com": 3,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 143,
+    "mask.icloud.com": 147,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 6,
     "pagead2.googlesyndication.com": 2,
+    "pipedream.wistia.com": 2,
     "prebid-server.rubiconproject.com": 4,
     "pubads.g.doubleclick.net": 6,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
@@ -33,11 +35,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 143
+      "count": 147
     },
     {
       "domain": "app-measurement.com",
-      "count": 19
+      "count": 21
     },
     {
       "domain": "tracking.purchasely.io",
@@ -112,6 +114,10 @@
       "count": 2
     },
     {
+      "domain": "distillery.wistia.com",
+      "count": 2
+    },
+    {
       "domain": "firebase-settings.crashlytics.com",
       "count": 2
     },
@@ -121,6 +127,10 @@
     },
     {
       "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
+      "domain": "pipedream.wistia.com",
       "count": 2
     },
     {
@@ -137,7 +147,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 11,
+    "timeout": 12,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
