@@ -1,15 +1,17 @@
 {
   "date": "2026-10-27",
-  "queries": 5998,
-  "blocked": 486,
+  "queries": 6060,
+  "blocked": 500,
   "blocked_domains": {
     "ads-api.x.com": 6,
     "analytics.twitter.com": 2,
+    "api.iterable.com": 2,
     "api.mixpanel.com": 7,
     "api.segment.io": 19,
+    "api2.amplitude.com": 2,
     "api3.branch.io": 2,
     "app-measurement.com": 30,
-    "att.launches.appsflyersdk.com": 15,
+    "att.launches.appsflyersdk.com": 17,
     "browser-intake-datadoghq.com": 2,
     "c.amazon-adsystem.com": 4,
     "c6thn4.cdn-settings.appsflyersdk.com": 2,
@@ -22,7 +24,7 @@
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 5,
     "mads.amazon-adsystem.com": 4,
-    "mask.icloud.com": 285,
+    "mask.icloud.com": 291,
     "mdtb-cf-3.ads.aps.amazon-adsystem.com": 2,
     "metricreceiver.cellrebel.com": 4,
     "muf.app-ads-services.com": 4,
@@ -32,6 +34,7 @@
     "prebid-server.rubiconproject.com": 4,
     "pubads.g.doubleclick.net": 6,
     "qapyb2.cdn-settings.appsflyersdk.com": 2,
+    "sr-client-cfg.amplitude.com": 2,
     "ssl.google-analytics.com": 3,
     "sstats.adobe.com": 2,
     "tracking.purchasely.io": 24,
@@ -41,7 +44,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 285
+      "count": 291
     },
     {
       "domain": "app-measurement.com",
@@ -57,7 +60,7 @@
     },
     {
       "domain": "att.launches.appsflyersdk.com",
-      "count": 15
+      "count": 17
     },
     {
       "domain": "cdn-settings.segment.com",
@@ -120,6 +123,14 @@
       "count": 2
     },
     {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 2
+    },
+    {
       "domain": "api3.branch.io",
       "count": 2
     },
@@ -161,6 +172,10 @@
     },
     {
       "domain": "qapyb2.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     },
     {
