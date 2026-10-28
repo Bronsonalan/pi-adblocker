@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 1287,
-  "blocked": 144,
+  "queries": 1323,
+  "blocked": 150,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
@@ -13,9 +13,9 @@
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "firebase-settings.crashlytics.com": 4,
+    "firebase-settings.crashlytics.com": 6,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 75,
+    "mask.icloud.com": 79,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 8,
     "pagead2.googlesyndication.com": 2,
@@ -27,7 +27,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 75
+      "count": 79
     },
     {
       "domain": "app-measurement.com",
@@ -46,15 +46,15 @@
       "count": 6
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 6
+    },
+    {
       "domain": "googleads.g.doubleclick.net",
       "count": 6
     },
     {
       "domain": "browser-intake-datadoghq.eu",
-      "count": 4
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
