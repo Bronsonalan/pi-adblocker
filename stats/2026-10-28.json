@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 2058,
-  "blocked": 272,
+  "queries": 2161,
+  "blocked": 286,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 2,
@@ -13,6 +13,7 @@
     "app-measurement.com": 10,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 4,
+    "bam.nr-data.net": 2,
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
@@ -21,7 +22,7 @@
     "dsum-sec.casalemedia.com": 2,
     "firebase-settings.crashlytics.com": 12,
     "googleads.g.doubleclick.net": 10,
-    "mask.icloud.com": 125,
+    "mask.icloud.com": 131,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 12,
     "opt.mocortech.com": 4,
@@ -36,16 +37,18 @@
     "ssl.google-analytics.com": 1,
     "stats.g.doubleclick.net": 2,
     "sync.taboola.com": 2,
+    "track.capitaloneshopping.com": 2,
     "tracking.purchasely.io": 12,
     "wridbx.cdn-settings.appsflyersdk.com": 2,
     "wridbx.inapps.appsflyersdk.com": 2,
     "wridbx.launches.appsflyersdk.com": 4,
-    "www.googletagmanager.com": 2
+    "www.googleadservices.com": 2,
+    "www.googletagmanager.com": 4
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 125
+      "count": 131
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -116,6 +119,10 @@
       "count": 4
     },
     {
+      "domain": "www.googletagmanager.com",
+      "count": 4
+    },
+    {
       "domain": "analytics.ad.daum.net",
       "count": 2
     },
@@ -133,6 +140,10 @@
     },
     {
       "domain": "assetsconfigcdn.org",
+      "count": 2
+    },
+    {
+      "domain": "bam.nr-data.net",
       "count": 2
     },
     {
@@ -180,6 +191,10 @@
       "count": 2
     },
     {
+      "domain": "track.capitaloneshopping.com",
+      "count": 2
+    },
+    {
       "domain": "wridbx.cdn-settings.appsflyersdk.com",
       "count": 2
     },
@@ -188,7 +203,7 @@
       "count": 2
     },
     {
-      "domain": "www.googletagmanager.com",
+      "domain": "www.googleadservices.com",
       "count": 2
     },
     {
@@ -197,7 +212,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 4,
+    "timeout": 5,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
