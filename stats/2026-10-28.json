@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 679,
-  "blocked": 69,
+  "queries": 760,
+  "blocked": 83,
   "blocked_domains": {
     "api.mixpanel.com": 2,
     "api2.amplitude.com": 2,
@@ -12,32 +12,41 @@
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "googleads.g.doubleclick.net": 2,
-    "mask.icloud.com": 31,
+    "googleads.g.doubleclick.net": 4,
+    "mask.icloud.com": 35,
     "muf.app-ads-services.com": 4,
-    "odf.app-ads-services.com": 4,
+    "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
-    "ssl.google-analytics.com": 1
+    "ssl.google-analytics.com": 1,
+    "tracking.purchasely.io": 6
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 31
+      "count": 35
     },
     {
       "domain": "app-measurement.com",
       "count": 7
     },
     {
+      "domain": "odf.app-ads-services.com",
+      "count": 6
+    },
+    {
+      "domain": "tracking.purchasely.io",
+      "count": 6
+    },
+    {
       "domain": "browser-intake-datadoghq.eu",
       "count": 4
     },
     {
-      "domain": "muf.app-ads-services.com",
+      "domain": "googleads.g.doubleclick.net",
       "count": 4
     },
     {
-      "domain": "odf.app-ads-services.com",
+      "domain": "muf.app-ads-services.com",
       "count": 4
     },
     {
@@ -66,10 +75,6 @@
     },
     {
       "domain": "cdn.branch.io",
-      "count": 2
-    },
-    {
-      "domain": "googleads.g.doubleclick.net",
       "count": 2
     },
     {
