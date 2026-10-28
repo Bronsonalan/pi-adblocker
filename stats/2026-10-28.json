@@ -1,6 +1,6 @@
 {
   "date": "2026-10-28",
-  "queries": 760,
+  "queries": 765,
   "blocked": 83,
   "blocked_domains": {
     "api.mixpanel.com": 2,
