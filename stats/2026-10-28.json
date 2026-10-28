@@ -1,53 +1,75 @@
 {
   "date": "2026-10-28",
-  "queries": 1538,
-  "blocked": 182,
+  "queries": 1854,
+  "blocked": 239,
   "blocked_domains": {
+    "analytics.ad.daum.net": 2,
+    "analytics.ahrefs.com": 2,
+    "analytics.twitter.com": 2,
     "api.iterable.com": 4,
-    "api.mixpanel.com": 2,
+    "api.mixpanel.com": 6,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 8,
+    "app-measurement.com": 9,
     "assetsconfigcdn.org": 2,
-    "att.launches.appsflyersdk.com": 2,
+    "att.launches.appsflyersdk.com": 4,
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "firebase-settings.crashlytics.com": 8,
+    "cdn.moloco.com": 2,
+    "cm.g.doubleclick.net": 2,
+    "dsum-sec.casalemedia.com": 2,
+    "firebase-settings.crashlytics.com": 10,
     "googleads.g.doubleclick.net": 8,
-    "mask.icloud.com": 99,
+    "mask.icloud.com": 101,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 10,
+    "opt.mocortech.com": 4,
     "pagead2.googlesyndication.com": 4,
+    "pixel.rubiconproject.com": 2,
+    "pixelfnt-us.dsp-api.moloco.com": 4,
+    "pixelfnt-v6-us.dsp-api.moloco.com": 2,
+    "pushstat.api.engagelab.cc": 4,
     "sdk.iad-03.braze.com": 2,
+    "simage2.pubmatic.com": 2,
     "sr-client-cfg.amplitude.com": 4,
     "ssl.google-analytics.com": 1,
-    "tracking.purchasely.io": 8
+    "stats.g.doubleclick.net": 2,
+    "sync.taboola.com": 2,
+    "tracking.purchasely.io": 10,
+    "wridbx.cdn-settings.appsflyersdk.com": 2,
+    "wridbx.inapps.appsflyersdk.com": 2,
+    "wridbx.launches.appsflyersdk.com": 4,
+    "www.googletagmanager.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 99
+      "count": 101
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 10
     },
     {
       "domain": "odf.app-ads-services.com",
       "count": 10
     },
     {
-      "domain": "app-measurement.com",
-      "count": 8
+      "domain": "tracking.purchasely.io",
+      "count": 10
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
-      "count": 8
+      "domain": "app-measurement.com",
+      "count": 9
     },
     {
       "domain": "googleads.g.doubleclick.net",
       "count": 8
     },
     {
-      "domain": "tracking.purchasely.io",
-      "count": 8
+      "domain": "api.mixpanel.com",
+      "count": 6
     },
     {
       "domain": "api2.amplitude.com",
@@ -55,6 +77,10 @@
     },
     {
       "domain": "api.iterable.com",
+      "count": 4
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
       "count": 4
     },
     {
@@ -66,7 +92,19 @@
       "count": 4
     },
     {
+      "domain": "opt.mocortech.com",
+      "count": 4
+    },
+    {
       "domain": "pagead2.googlesyndication.com",
+      "count": 4
+    },
+    {
+      "domain": "pixelfnt-us.dsp-api.moloco.com",
+      "count": 4
+    },
+    {
+      "domain": "pushstat.api.engagelab.cc",
       "count": 4
     },
     {
@@ -74,7 +112,19 @@
       "count": 4
     },
     {
-      "domain": "api.mixpanel.com",
+      "domain": "wridbx.launches.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "analytics.ad.daum.net",
+      "count": 2
+    },
+    {
+      "domain": "analytics.ahrefs.com",
+      "count": 2
+    },
+    {
+      "domain": "analytics.twitter.com",
       "count": 2
     },
     {
@@ -86,10 +136,6 @@
       "count": 2
     },
     {
-      "domain": "att.launches.appsflyersdk.com",
-      "count": 2
-    },
-    {
       "domain": "beyondwickedmapping.org",
       "count": 2
     },
@@ -98,7 +144,51 @@
       "count": 2
     },
     {
+      "domain": "cdn.moloco.com",
+      "count": 2
+    },
+    {
+      "domain": "cm.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "dsum-sec.casalemedia.com",
+      "count": 2
+    },
+    {
+      "domain": "pixel.rubiconproject.com",
+      "count": 2
+    },
+    {
+      "domain": "pixelfnt-v6-us.dsp-api.moloco.com",
+      "count": 2
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
+      "count": 2
+    },
+    {
+      "domain": "simage2.pubmatic.com",
+      "count": 2
+    },
+    {
+      "domain": "stats.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "sync.taboola.com",
+      "count": 2
+    },
+    {
+      "domain": "wridbx.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "wridbx.inapps.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googletagmanager.com",
       "count": 2
     },
     {
@@ -107,7 +197,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 2,
+    "timeout": 4,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
