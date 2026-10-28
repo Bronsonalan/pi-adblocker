@@ -1,9 +1,41 @@
 {
   "date": "2026-10-28",
-  "queries": 12,
-  "blocked": 0,
-  "blocked_domains": {},
-  "top_blocked": [],
+  "queries": 290,
+  "blocked": 25,
+  "blocked_domains": {
+    "app-measurement.com": 6,
+    "googleads.g.doubleclick.net": 2,
+    "mask.icloud.com": 8,
+    "muf.app-ads-services.com": 4,
+    "odf.app-ads-services.com": 4,
+    "ssl.google-analytics.com": 1
+  },
+  "top_blocked": [
+    {
+      "domain": "mask.icloud.com",
+      "count": 8
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 6
+    },
+    {
+      "domain": "muf.app-ads-services.com",
+      "count": 4
+    },
+    {
+      "domain": "odf.app-ads-services.com",
+      "count": 4
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "ssl.google-analytics.com",
+      "count": 1
+    }
+  ],
   "upstream_errors": {
     "timeout": 0,
     "servfail": 0,
