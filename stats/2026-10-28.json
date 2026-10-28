@@ -1,41 +1,45 @@
 {
   "date": "2026-10-28",
-  "queries": 1168,
-  "blocked": 135,
+  "queries": 1287,
+  "blocked": 144,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 7,
+    "app-measurement.com": 8,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 2,
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "firebase-settings.crashlytics.com": 2,
+    "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 71,
+    "mask.icloud.com": 75,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 8,
     "pagead2.googlesyndication.com": 2,
     "sdk.iad-03.braze.com": 2,
     "sr-client-cfg.amplitude.com": 2,
     "ssl.google-analytics.com": 1,
-    "tracking.purchasely.io": 6
+    "tracking.purchasely.io": 8
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 71
+      "count": 75
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 8
     },
     {
       "domain": "odf.app-ads-services.com",
       "count": 8
     },
     {
-      "domain": "app-measurement.com",
-      "count": 7
+      "domain": "tracking.purchasely.io",
+      "count": 8
     },
     {
       "domain": "api2.amplitude.com",
@@ -46,11 +50,11 @@
       "count": 6
     },
     {
-      "domain": "tracking.purchasely.io",
-      "count": 6
+      "domain": "browser-intake-datadoghq.eu",
+      "count": 4
     },
     {
-      "domain": "browser-intake-datadoghq.eu",
+      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
@@ -83,10 +87,6 @@
     },
     {
       "domain": "cdn.branch.io",
-      "count": 2
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 2
     },
     {
