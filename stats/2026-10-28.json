@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 2828,
-  "blocked": 399,
+  "queries": 3057,
+  "blocked": 424,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 4,
@@ -10,10 +10,10 @@
     "api.mixpanel.com": 10,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 12,
+    "app-measurement.com": 13,
     "appboy-images.com": 2,
     "assetsconfigcdn.org": 2,
-    "att.launches.appsflyersdk.com": 6,
+    "att.launches.appsflyersdk.com": 8,
     "b.stats.paypal.com": 2,
     "bam.nr-data.net": 4,
     "bankofamerica1.sc.omtrdc.net": 2,
@@ -32,16 +32,16 @@
     "googleads.g.doubleclick.net": 10,
     "identity.mparticle.com": 2,
     "logx.optimizely.com": 2,
-    "mask.icloud.com": 180,
+    "mask.icloud.com": 194,
     "muf.app-ads-services.com": 4,
     "nativesdks.mparticle.com": 2,
     "odf.app-ads-services.com": 12,
-    "opt.mocortech.com": 6,
+    "opt.mocortech.com": 8,
     "pagead2.googlesyndication.com": 4,
     "pixel.rubiconproject.com": 2,
     "pixelfnt-us.dsp-api.moloco.com": 6,
     "pixelfnt-v6-us.dsp-api.moloco.com": 4,
-    "pushstat.api.engagelab.cc": 6,
+    "pushstat.api.engagelab.cc": 8,
     "s.zkcdn.net": 2,
     "sdk.iad-01.braze.com": 2,
     "sdk.iad-03.braze.com": 2,
@@ -52,8 +52,8 @@
     "stats.g.doubleclick.net": 2,
     "sync.taboola.com": 2,
     "track.capitaloneshopping.com": 2,
-    "tracking.purchasely.io": 12,
-    "wridbx.cdn-settings.appsflyersdk.com": 4,
+    "tracking.purchasely.io": 14,
+    "wridbx.cdn-settings.appsflyersdk.com": 6,
     "wridbx.inapps.appsflyersdk.com": 2,
     "wridbx.launches.appsflyersdk.com": 6,
     "www.googleadservices.com": 2,
@@ -62,22 +62,22 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 180
+      "count": 194
     },
     {
       "domain": "firebase-settings.crashlytics.com",
       "count": 20
     },
     {
+      "domain": "tracking.purchasely.io",
+      "count": 14
+    },
+    {
       "domain": "app-measurement.com",
-      "count": 12
+      "count": 13
     },
     {
       "domain": "odf.app-ads-services.com",
-      "count": 12
-    },
-    {
-      "domain": "tracking.purchasely.io",
       "count": 12
     },
     {
@@ -89,15 +89,19 @@
       "count": 10
     },
     {
-      "domain": "api2.amplitude.com",
-      "count": 6
-    },
-    {
       "domain": "att.launches.appsflyersdk.com",
-      "count": 6
+      "count": 8
     },
     {
       "domain": "opt.mocortech.com",
+      "count": 8
+    },
+    {
+      "domain": "pushstat.api.engagelab.cc",
+      "count": 8
+    },
+    {
+      "domain": "api2.amplitude.com",
       "count": 6
     },
     {
@@ -105,7 +109,7 @@
       "count": 6
     },
     {
-      "domain": "pushstat.api.engagelab.cc",
+      "domain": "wridbx.cdn-settings.appsflyersdk.com",
       "count": 6
     },
     {
@@ -150,10 +154,6 @@
     },
     {
       "domain": "sr-client-cfg.amplitude.com",
-      "count": 4
-    },
-    {
-      "domain": "wridbx.cdn-settings.appsflyersdk.com",
       "count": 4
     },
     {
