@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 3303,
-  "blocked": 444,
+  "queries": 3367,
+  "blocked": 456,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 4,
@@ -20,6 +20,7 @@
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.com": 2,
     "browser-intake-datadoghq.eu": 4,
+    "cdn-settings.segment.com": 2,
     "cdn.branch.io": 2,
     "cdn.moloco.com": 4,
     "cdn.optimizely.com": 2,
@@ -32,7 +33,7 @@
     "googleads.g.doubleclick.net": 10,
     "identity.mparticle.com": 2,
     "logx.optimizely.com": 2,
-    "mask.icloud.com": 208,
+    "mask.icloud.com": 218,
     "muf.app-ads-services.com": 4,
     "nativesdks.mparticle.com": 2,
     "odf.app-ads-services.com": 12,
@@ -62,7 +63,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 208
+      "count": 218
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -190,6 +191,10 @@
     },
     {
       "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "cdn-settings.segment.com",
       "count": 2
     },
     {
