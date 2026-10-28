@@ -1,23 +1,36 @@
 {
   "date": "2026-10-28",
-  "queries": 374,
-  "blocked": 32,
+  "queries": 436,
+  "blocked": 55,
   "blocked_domains": {
-    "app-measurement.com": 6,
+    "api.mixpanel.com": 2,
+    "api2.amplitude.com": 2,
+    "api3.branch.io": 2,
+    "app-measurement.com": 7,
+    "assetsconfigcdn.org": 2,
+    "att.launches.appsflyersdk.com": 2,
+    "beyondwickedmapping.org": 2,
+    "browser-intake-datadoghq.eu": 4,
+    "cdn.branch.io": 2,
     "googleads.g.doubleclick.net": 2,
-    "mask.icloud.com": 15,
+    "mask.icloud.com": 17,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 4,
+    "sdk.iad-03.braze.com": 2,
     "ssl.google-analytics.com": 1
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 15
+      "count": 17
     },
     {
       "domain": "app-measurement.com",
-      "count": 6
+      "count": 7
+    },
+    {
+      "domain": "browser-intake-datadoghq.eu",
+      "count": 4
     },
     {
       "domain": "muf.app-ads-services.com",
@@ -28,7 +41,39 @@
       "count": 4
     },
     {
+      "domain": "api.mixpanel.com",
+      "count": 2
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 2
+    },
+    {
+      "domain": "api3.branch.io",
+      "count": 2
+    },
+    {
+      "domain": "assetsconfigcdn.org",
+      "count": 2
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "beyondwickedmapping.org",
+      "count": 2
+    },
+    {
+      "domain": "cdn.branch.io",
+      "count": 2
+    },
+    {
       "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "sdk.iad-03.braze.com",
       "count": 2
     },
     {
