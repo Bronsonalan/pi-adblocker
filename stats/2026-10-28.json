@@ -1,54 +1,68 @@
 {
   "date": "2026-10-28",
-  "queries": 2161,
-  "blocked": 286,
+  "queries": 2479,
+  "blocked": 351,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
-    "analytics.ahrefs.com": 2,
+    "analytics.ahrefs.com": 4,
     "analytics.twitter.com": 2,
     "api.iterable.com": 4,
-    "api.mixpanel.com": 6,
+    "api.mixpanel.com": 10,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 10,
+    "app-measurement.com": 11,
+    "appboy-images.com": 2,
     "assetsconfigcdn.org": 2,
-    "att.launches.appsflyersdk.com": 4,
-    "bam.nr-data.net": 2,
+    "att.launches.appsflyersdk.com": 6,
+    "b.stats.paypal.com": 2,
+    "bam.nr-data.net": 4,
+    "bankofamerica1.sc.omtrdc.net": 2,
     "beyondwickedmapping.org": 2,
+    "browser-intake-datadoghq.com": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "cdn.moloco.com": 2,
+    "cdn.moloco.com": 4,
+    "cdn.optimizely.com": 2,
     "cm.g.doubleclick.net": 2,
+    "config2.mparticle.com": 2,
     "dsum-sec.casalemedia.com": 2,
+    "dust.iad-01.braze.com": 2,
+    "e-11666.adzerk.net": 2,
     "firebase-settings.crashlytics.com": 12,
     "googleads.g.doubleclick.net": 10,
-    "mask.icloud.com": 131,
+    "identity.mparticle.com": 2,
+    "logx.optimizely.com": 2,
+    "mask.icloud.com": 141,
     "muf.app-ads-services.com": 4,
+    "nativesdks.mparticle.com": 2,
     "odf.app-ads-services.com": 12,
-    "opt.mocortech.com": 4,
+    "opt.mocortech.com": 6,
     "pagead2.googlesyndication.com": 4,
     "pixel.rubiconproject.com": 2,
-    "pixelfnt-us.dsp-api.moloco.com": 4,
-    "pixelfnt-v6-us.dsp-api.moloco.com": 2,
-    "pushstat.api.engagelab.cc": 4,
+    "pixelfnt-us.dsp-api.moloco.com": 6,
+    "pixelfnt-v6-us.dsp-api.moloco.com": 4,
+    "pushstat.api.engagelab.cc": 6,
+    "s.zkcdn.net": 2,
+    "sdk.iad-01.braze.com": 2,
     "sdk.iad-03.braze.com": 2,
     "simage2.pubmatic.com": 2,
+    "slc.stats.paypal.com": 2,
     "sr-client-cfg.amplitude.com": 4,
     "ssl.google-analytics.com": 1,
     "stats.g.doubleclick.net": 2,
     "sync.taboola.com": 2,
     "track.capitaloneshopping.com": 2,
     "tracking.purchasely.io": 12,
-    "wridbx.cdn-settings.appsflyersdk.com": 2,
+    "wridbx.cdn-settings.appsflyersdk.com": 4,
     "wridbx.inapps.appsflyersdk.com": 2,
-    "wridbx.launches.appsflyersdk.com": 4,
+    "wridbx.launches.appsflyersdk.com": 6,
     "www.googleadservices.com": 2,
-    "www.googletagmanager.com": 4
+    "www.googletagmanager.com": 6
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 131
+      "count": 141
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -64,6 +78,10 @@
     },
     {
       "domain": "app-measurement.com",
+      "count": 11
+    },
+    {
+      "domain": "api.mixpanel.com",
       "count": 10
     },
     {
@@ -71,19 +89,43 @@
       "count": 10
     },
     {
-      "domain": "api.mixpanel.com",
+      "domain": "api2.amplitude.com",
       "count": 6
     },
     {
-      "domain": "api2.amplitude.com",
+      "domain": "att.launches.appsflyersdk.com",
       "count": 6
+    },
+    {
+      "domain": "opt.mocortech.com",
+      "count": 6
+    },
+    {
+      "domain": "pixelfnt-us.dsp-api.moloco.com",
+      "count": 6
+    },
+    {
+      "domain": "pushstat.api.engagelab.cc",
+      "count": 6
+    },
+    {
+      "domain": "wridbx.launches.appsflyersdk.com",
+      "count": 6
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 6
+    },
+    {
+      "domain": "analytics.ahrefs.com",
+      "count": 4
     },
     {
       "domain": "api.iterable.com",
       "count": 4
     },
     {
-      "domain": "att.launches.appsflyersdk.com",
+      "domain": "bam.nr-data.net",
       "count": 4
     },
     {
@@ -91,11 +133,11 @@
       "count": 4
     },
     {
-      "domain": "muf.app-ads-services.com",
+      "domain": "cdn.moloco.com",
       "count": 4
     },
     {
-      "domain": "opt.mocortech.com",
+      "domain": "muf.app-ads-services.com",
       "count": 4
     },
     {
@@ -103,11 +145,7 @@
       "count": 4
     },
     {
-      "domain": "pixelfnt-us.dsp-api.moloco.com",
-      "count": 4
-    },
-    {
-      "domain": "pushstat.api.engagelab.cc",
+      "domain": "pixelfnt-v6-us.dsp-api.moloco.com",
       "count": 4
     },
     {
@@ -115,19 +153,11 @@
       "count": 4
     },
     {
-      "domain": "wridbx.launches.appsflyersdk.com",
-      "count": 4
-    },
-    {
-      "domain": "www.googletagmanager.com",
+      "domain": "wridbx.cdn-settings.appsflyersdk.com",
       "count": 4
     },
     {
       "domain": "analytics.ad.daum.net",
-      "count": 2
-    },
-    {
-      "domain": "analytics.ahrefs.com",
       "count": 2
     },
     {
@@ -139,11 +169,19 @@
       "count": 2
     },
     {
+      "domain": "appboy-images.com",
+      "count": 2
+    },
+    {
       "domain": "assetsconfigcdn.org",
       "count": 2
     },
     {
-      "domain": "bam.nr-data.net",
+      "domain": "b.stats.paypal.com",
+      "count": 2
+    },
+    {
+      "domain": "bankofamerica1.sc.omtrdc.net",
       "count": 2
     },
     {
@@ -151,11 +189,15 @@
       "count": 2
     },
     {
+      "domain": "browser-intake-datadoghq.com",
+      "count": 2
+    },
+    {
       "domain": "cdn.branch.io",
       "count": 2
     },
     {
-      "domain": "cdn.moloco.com",
+      "domain": "cdn.optimizely.com",
       "count": 2
     },
     {
@@ -163,7 +205,31 @@
       "count": 2
     },
     {
+      "domain": "config2.mparticle.com",
+      "count": 2
+    },
+    {
       "domain": "dsum-sec.casalemedia.com",
+      "count": 2
+    },
+    {
+      "domain": "dust.iad-01.braze.com",
+      "count": 2
+    },
+    {
+      "domain": "e-11666.adzerk.net",
+      "count": 2
+    },
+    {
+      "domain": "identity.mparticle.com",
+      "count": 2
+    },
+    {
+      "domain": "logx.optimizely.com",
+      "count": 2
+    },
+    {
+      "domain": "nativesdks.mparticle.com",
       "count": 2
     },
     {
@@ -171,7 +237,11 @@
       "count": 2
     },
     {
-      "domain": "pixelfnt-v6-us.dsp-api.moloco.com",
+      "domain": "s.zkcdn.net",
+      "count": 2
+    },
+    {
+      "domain": "sdk.iad-01.braze.com",
       "count": 2
     },
     {
@@ -180,6 +250,10 @@
     },
     {
       "domain": "simage2.pubmatic.com",
+      "count": 2
+    },
+    {
+      "domain": "slc.stats.paypal.com",
       "count": 2
     },
     {
@@ -192,10 +266,6 @@
     },
     {
       "domain": "track.capitaloneshopping.com",
-      "count": 2
-    },
-    {
-      "domain": "wridbx.cdn-settings.appsflyersdk.com",
       "count": 2
     },
     {
