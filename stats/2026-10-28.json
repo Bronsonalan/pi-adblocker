@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 2521,
-  "blocked": 363,
+  "queries": 2598,
+  "blocked": 368,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 4,
@@ -10,7 +10,7 @@
     "api.mixpanel.com": 10,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 11,
+    "app-measurement.com": 12,
     "appboy-images.com": 2,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 6,
@@ -28,11 +28,11 @@
     "dsum-sec.casalemedia.com": 2,
     "dust.iad-01.braze.com": 2,
     "e-11666.adzerk.net": 2,
-    "firebase-settings.crashlytics.com": 12,
+    "firebase-settings.crashlytics.com": 14,
     "googleads.g.doubleclick.net": 10,
     "identity.mparticle.com": 2,
     "logx.optimizely.com": 2,
-    "mask.icloud.com": 153,
+    "mask.icloud.com": 155,
     "muf.app-ads-services.com": 4,
     "nativesdks.mparticle.com": 2,
     "odf.app-ads-services.com": 12,
@@ -62,10 +62,14 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 153
+      "count": 155
     },
     {
       "domain": "firebase-settings.crashlytics.com",
+      "count": 14
+    },
+    {
+      "domain": "app-measurement.com",
       "count": 12
     },
     {
@@ -75,10 +79,6 @@
     {
       "domain": "tracking.purchasely.io",
       "count": 12
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 11
     },
     {
       "domain": "api.mixpanel.com",
