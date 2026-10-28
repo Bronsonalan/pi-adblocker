@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 1897,
-  "blocked": 245,
+  "queries": 1926,
+  "blocked": 249,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 2,
@@ -19,9 +19,9 @@
     "cdn.moloco.com": 2,
     "cm.g.doubleclick.net": 2,
     "dsum-sec.casalemedia.com": 2,
-    "firebase-settings.crashlytics.com": 10,
+    "firebase-settings.crashlytics.com": 12,
     "googleads.g.doubleclick.net": 8,
-    "mask.icloud.com": 107,
+    "mask.icloud.com": 109,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 10,
     "opt.mocortech.com": 4,
@@ -45,11 +45,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 107
+      "count": 109
     },
     {
       "domain": "firebase-settings.crashlytics.com",
-      "count": 10
+      "count": 12
     },
     {
       "domain": "odf.app-ads-services.com",
