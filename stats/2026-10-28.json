@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 3233,
-  "blocked": 437,
+  "queries": 3240,
+  "blocked": 439,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 4,
@@ -32,7 +32,7 @@
     "googleads.g.doubleclick.net": 10,
     "identity.mparticle.com": 2,
     "logx.optimizely.com": 2,
-    "mask.icloud.com": 204,
+    "mask.icloud.com": 206,
     "muf.app-ads-services.com": 4,
     "nativesdks.mparticle.com": 2,
     "odf.app-ads-services.com": 12,
@@ -62,7 +62,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 204
+      "count": 206
     },
     {
       "domain": "firebase-settings.crashlytics.com",
