@@ -1,10 +1,10 @@
 {
   "date": "2026-10-28",
-  "queries": 765,
-  "blocked": 83,
+  "queries": 825,
+  "blocked": 91,
   "blocked_domains": {
     "api.mixpanel.com": 2,
-    "api2.amplitude.com": 2,
+    "api2.amplitude.com": 4,
     "api3.branch.io": 2,
     "app-measurement.com": 7,
     "assetsconfigcdn.org": 2,
@@ -13,7 +13,7 @@
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
     "googleads.g.doubleclick.net": 4,
-    "mask.icloud.com": 35,
+    "mask.icloud.com": 41,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
@@ -23,7 +23,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 35
+      "count": 41
     },
     {
       "domain": "app-measurement.com",
@@ -36,6 +36,10 @@
     {
       "domain": "tracking.purchasely.io",
       "count": 6
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 4
     },
     {
       "domain": "browser-intake-datadoghq.eu",
@@ -51,10 +55,6 @@
     },
     {
       "domain": "api.mixpanel.com",
-      "count": 2
-    },
-    {
-      "domain": "api2.amplitude.com",
       "count": 2
     },
     {
