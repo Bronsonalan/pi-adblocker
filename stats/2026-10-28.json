@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 2005,
-  "blocked": 261,
+  "queries": 2058,
+  "blocked": 272,
   "blocked_domains": {
     "analytics.ad.daum.net": 2,
     "analytics.ahrefs.com": 2,
@@ -10,7 +10,7 @@
     "api.mixpanel.com": 6,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 9,
+    "app-measurement.com": 10,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 4,
     "beyondwickedmapping.org": 2,
@@ -21,7 +21,7 @@
     "dsum-sec.casalemedia.com": 2,
     "firebase-settings.crashlytics.com": 12,
     "googleads.g.doubleclick.net": 10,
-    "mask.icloud.com": 117,
+    "mask.icloud.com": 125,
     "muf.app-ads-services.com": 4,
     "odf.app-ads-services.com": 12,
     "opt.mocortech.com": 4,
@@ -36,7 +36,7 @@
     "ssl.google-analytics.com": 1,
     "stats.g.doubleclick.net": 2,
     "sync.taboola.com": 2,
-    "tracking.purchasely.io": 10,
+    "tracking.purchasely.io": 12,
     "wridbx.cdn-settings.appsflyersdk.com": 2,
     "wridbx.inapps.appsflyersdk.com": 2,
     "wridbx.launches.appsflyersdk.com": 4,
@@ -45,7 +45,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 117
+      "count": 125
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -56,16 +56,16 @@
       "count": 12
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 10
-    },
-    {
       "domain": "tracking.purchasely.io",
-      "count": 10
+      "count": 12
     },
     {
       "domain": "app-measurement.com",
-      "count": 9
+      "count": 10
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 10
     },
     {
       "domain": "api.mixpanel.com",
