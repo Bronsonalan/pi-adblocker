@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
-  "queries": 963,
-  "blocked": 111,
+  "queries": 1043,
+  "blocked": 119,
   "blocked_domains": {
     "api.mixpanel.com": 2,
     "api2.amplitude.com": 4,
@@ -12,10 +12,11 @@
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.eu": 4,
     "cdn.branch.io": 2,
-    "googleads.g.doubleclick.net": 4,
-    "mask.icloud.com": 61,
+    "googleads.g.doubleclick.net": 6,
+    "mask.icloud.com": 63,
     "muf.app-ads-services.com": 4,
-    "odf.app-ads-services.com": 6,
+    "odf.app-ads-services.com": 8,
+    "pagead2.googlesyndication.com": 2,
     "sdk.iad-03.braze.com": 2,
     "ssl.google-analytics.com": 1,
     "tracking.purchasely.io": 6
@@ -23,14 +24,18 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 61
+      "count": 63
+    },
+    {
+      "domain": "odf.app-ads-services.com",
+      "count": 8
     },
     {
       "domain": "app-measurement.com",
       "count": 7
     },
     {
-      "domain": "odf.app-ads-services.com",
+      "domain": "googleads.g.doubleclick.net",
       "count": 6
     },
     {
@@ -43,10 +48,6 @@
     },
     {
       "domain": "browser-intake-datadoghq.eu",
-      "count": 4
-    },
-    {
-      "domain": "googleads.g.doubleclick.net",
       "count": 4
     },
     {
@@ -78,6 +79,10 @@
       "count": 2
     },
     {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 2
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 2
     },
@@ -87,7 +92,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 0,
+    "timeout": 2,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
