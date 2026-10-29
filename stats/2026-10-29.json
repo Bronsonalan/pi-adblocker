@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3734,
-  "blocked": 449,
+  "queries": 3796,
+  "blocked": 457,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -12,7 +12,7 @@
     "api.segment.io": 6,
     "api2.amplitude.com": 8,
     "api3.branch.io": 2,
-    "app-measurement.com": 8,
+    "app-measurement.com": 10,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 4,
@@ -22,7 +22,7 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 330,
+    "mask.icloud.com": 336,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
@@ -33,7 +33,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 330
+      "count": 336
     },
     {
       "domain": "beacon.shazam.com",
@@ -44,11 +44,11 @@
       "count": 10
     },
     {
-      "domain": "api2.amplitude.com",
-      "count": 8
+      "domain": "app-measurement.com",
+      "count": 10
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "api2.amplitude.com",
       "count": 8
     },
     {
