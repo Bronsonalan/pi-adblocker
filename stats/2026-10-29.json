@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 5441,
-  "blocked": 729,
+  "queries": 5485,
+  "blocked": 732,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -12,7 +12,7 @@
     "api.segment.io": 6,
     "api2.amplitude.com": 8,
     "api3.branch.io": 2,
-    "app-measurement.com": 10,
+    "app-measurement.com": 11,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 4,
@@ -22,7 +22,7 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 8,
     "googleads.g.doubleclick.net": 8,
-    "mask.icloud.com": 600,
+    "mask.icloud.com": 602,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
@@ -33,18 +33,18 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 600
+      "count": 602
     },
     {
       "domain": "beacon.shazam.com",
       "count": 20
     },
     {
-      "domain": "api.mixpanel.com",
-      "count": 10
+      "domain": "app-measurement.com",
+      "count": 11
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "api.mixpanel.com",
       "count": 10
     },
     {
