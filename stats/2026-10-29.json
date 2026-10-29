@@ -1,10 +1,16 @@
 {
   "date": "2026-10-29",
-  "queries": 166,
-  "blocked": 26,
+  "queries": 234,
+  "blocked": 40,
   "blocked_domains": {
-    "att.launches.appsflyersdk.com": 2,
-    "mask.icloud.com": 24
+    "api.iterable.com": 2,
+    "api.mixpanel.com": 2,
+    "api2.amplitude.com": 2,
+    "att.launches.appsflyersdk.com": 4,
+    "googleads.g.doubleclick.net": 2,
+    "mask.icloud.com": 24,
+    "odf.app-ads-services.com": 2,
+    "sr-client-cfg.amplitude.com": 2
   },
   "top_blocked": [
     {
@@ -13,6 +19,30 @@
     },
     {
       "domain": "att.launches.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api.mixpanel.com",
+      "count": 2
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 2
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "odf.app-ads-services.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 2
     }
   ],
