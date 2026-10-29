@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3271,
-  "blocked": 382,
+  "queries": 3386,
+  "blocked": 388,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -22,7 +22,7 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 280,
+    "mask.icloud.com": 286,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
@@ -33,7 +33,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 280
+      "count": 286
     },
     {
       "domain": "beacon.shazam.com",
@@ -137,7 +137,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 16,
+    "timeout": 17,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
