@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3728,
-  "blocked": 445,
+  "queries": 3734,
+  "blocked": 449,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -16,13 +16,13 @@
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 4,
-    "beacon.shazam.com": 18,
+    "beacon.shazam.com": 20,
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 328,
+    "mask.icloud.com": 330,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
@@ -33,11 +33,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 328
+      "count": 330
     },
     {
       "domain": "beacon.shazam.com",
-      "count": 18
+      "count": 20
     },
     {
       "domain": "api.mixpanel.com",
