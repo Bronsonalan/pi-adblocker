@@ -1,21 +1,21 @@
 {
   "date": "2026-10-29",
-  "queries": 397,
-  "blocked": 68,
+  "queries": 407,
+  "blocked": 70,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
     "api2.amplitude.com": 2,
     "att.launches.appsflyersdk.com": 4,
     "googleads.g.doubleclick.net": 2,
-    "mask.icloud.com": 52,
+    "mask.icloud.com": 54,
     "odf.app-ads-services.com": 2,
     "sr-client-cfg.amplitude.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 52
+      "count": 54
     },
     {
       "domain": "att.launches.appsflyersdk.com",
@@ -47,7 +47,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 1,
+    "timeout": 2,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
