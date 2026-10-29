@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3465,
-  "blocked": 400,
+  "queries": 3530,
+  "blocked": 407,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -12,7 +12,7 @@
     "api.segment.io": 6,
     "api2.amplitude.com": 6,
     "api3.branch.io": 2,
-    "app-measurement.com": 7,
+    "app-measurement.com": 8,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 2,
@@ -22,7 +22,7 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 296,
+    "mask.icloud.com": 302,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
@@ -33,7 +33,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 296
+      "count": 302
     },
     {
       "domain": "beacon.shazam.com",
@@ -44,12 +44,12 @@
       "count": 10
     },
     {
-      "domain": "att.launches.appsflyersdk.com",
+      "domain": "app-measurement.com",
       "count": 8
     },
     {
-      "domain": "app-measurement.com",
-      "count": 7
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 8
     },
     {
       "domain": "api.segment.io",
