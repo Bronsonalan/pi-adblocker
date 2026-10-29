@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3712,
-  "blocked": 443,
+  "queries": 3728,
+  "blocked": 445,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -16,7 +16,7 @@
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 4,
-    "beacon.shazam.com": 16,
+    "beacon.shazam.com": 18,
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
@@ -37,7 +37,7 @@
     },
     {
       "domain": "beacon.shazam.com",
-      "count": 16
+      "count": 18
     },
     {
       "domain": "api.mixpanel.com",
