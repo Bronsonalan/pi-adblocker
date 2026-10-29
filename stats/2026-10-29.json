@@ -1,14 +1,14 @@
 {
   "date": "2026-10-29",
-  "queries": 56,
-  "blocked": 14,
+  "queries": 66,
+  "blocked": 16,
   "blocked_domains": {
-    "mask.icloud.com": 14
+    "mask.icloud.com": 16
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 14
+      "count": 16
     }
   ],
   "upstream_errors": {
