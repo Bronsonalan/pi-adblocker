@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 5485,
-  "blocked": 732,
+  "queries": 5620,
+  "blocked": 738,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -9,7 +9,7 @@
     "analytics.twitter.com": 2,
     "api.iterable.com": 6,
     "api.mixpanel.com": 10,
-    "api.segment.io": 6,
+    "api.segment.io": 7,
     "api2.amplitude.com": 8,
     "api3.branch.io": 2,
     "app-measurement.com": 11,
@@ -22,7 +22,8 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 8,
     "googleads.g.doubleclick.net": 8,
-    "mask.icloud.com": 602,
+    "http-intake.logs.datadoghq.com": 1,
+    "mask.icloud.com": 606,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
@@ -33,7 +34,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 602
+      "count": 606
     },
     {
       "domain": "beacon.shazam.com",
@@ -64,11 +65,11 @@
       "count": 8
     },
     {
-      "domain": "api.iterable.com",
-      "count": 6
+      "domain": "api.segment.io",
+      "count": 7
     },
     {
-      "domain": "api.segment.io",
+      "domain": "api.iterable.com",
       "count": 6
     },
     {
@@ -134,10 +135,14 @@
     {
       "domain": "ads.x.com",
       "count": 1
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 23,
+    "timeout": 24,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
