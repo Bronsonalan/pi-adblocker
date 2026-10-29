@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 2414,
-  "blocked": 306,
+  "queries": 2492,
+  "blocked": 314,
   "blocked_domains": {
     "ads-api.x.com": 2,
     "ads.x.com": 1,
@@ -20,7 +20,7 @@
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 227,
+    "mask.icloud.com": 235,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
     "sr-client-cfg.amplitude.com": 4,
@@ -29,7 +29,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 227
+      "count": 235
     },
     {
       "domain": "api.mixpanel.com",
