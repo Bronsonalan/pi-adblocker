@@ -1,14 +1,19 @@
 {
   "date": "2026-10-29",
-  "queries": 86,
-  "blocked": 22,
+  "queries": 166,
+  "blocked": 26,
   "blocked_domains": {
-    "mask.icloud.com": 22
+    "att.launches.appsflyersdk.com": 2,
+    "mask.icloud.com": 24
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 22
+      "count": 24
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
+      "count": 2
     }
   ],
   "upstream_errors": {
