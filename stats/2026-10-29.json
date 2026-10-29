@@ -1,6 +1,6 @@
 {
   "date": "2026-10-29",
-  "queries": 590,
+  "queries": 622,
   "blocked": 99,
   "blocked_domains": {
     "api.iterable.com": 2,
@@ -82,7 +82,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 2,
+    "timeout": 3,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
