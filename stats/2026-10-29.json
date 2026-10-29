@@ -1,8 +1,9 @@
 {
   "date": "2026-10-29",
-  "queries": 2492,
-  "blocked": 314,
+  "queries": 2619,
+  "blocked": 330,
   "blocked_domains": {
+    "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
     "ads.x.com": 1,
     "analytics.twitter.com": 2,
@@ -15,21 +16,24 @@
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 2,
+    "beacon.shazam.com": 4,
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 2,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 235,
+    "mask.icloud.com": 241,
+    "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
     "sr-client-cfg.amplitude.com": 4,
-    "track.capitaloneshopping.com": 2
+    "track.capitaloneshopping.com": 2,
+    "tracker.affirm.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 235
+      "count": 241
     },
     {
       "domain": "api.mixpanel.com",
@@ -60,6 +64,10 @@
       "count": 4
     },
     {
+      "domain": "beacon.shazam.com",
+      "count": 4
+    },
+    {
       "domain": "cdn-settings.segment.com",
       "count": 4
     },
@@ -70,6 +78,10 @@
     {
       "domain": "sr-client-cfg.amplitude.com",
       "count": 4
+    },
+    {
+      "domain": "110005626.collect.igodigital.com",
+      "count": 2
     },
     {
       "domain": "ads-api.x.com",
@@ -104,11 +116,19 @@
       "count": 2
     },
     {
+      "domain": "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com",
+      "count": 2
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 2
     },
     {
       "domain": "track.capitaloneshopping.com",
+      "count": 2
+    },
+    {
+      "domain": "tracker.affirm.com",
       "count": 2
     },
     {
