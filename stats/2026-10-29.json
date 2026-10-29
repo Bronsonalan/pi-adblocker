@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3891,
-  "blocked": 471,
+  "queries": 4226,
+  "blocked": 481,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -21,10 +21,10 @@
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
-    "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 350,
+    "googleads.g.doubleclick.net": 8,
+    "mask.icloud.com": 356,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
-    "odf.app-ads-services.com": 4,
+    "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
     "sr-client-cfg.amplitude.com": 6,
     "track.capitaloneshopping.com": 4,
@@ -33,7 +33,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 350
+      "count": 356
     },
     {
       "domain": "beacon.shazam.com",
@@ -56,6 +56,10 @@
       "count": 8
     },
     {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 8
+    },
+    {
       "domain": "api.iterable.com",
       "count": 6
     },
@@ -64,7 +68,7 @@
       "count": 6
     },
     {
-      "domain": "googleads.g.doubleclick.net",
+      "domain": "odf.app-ads-services.com",
       "count": 6
     },
     {
@@ -81,10 +85,6 @@
     },
     {
       "domain": "firebase-settings.crashlytics.com",
-      "count": 4
-    },
-    {
-      "domain": "odf.app-ads-services.com",
       "count": 4
     },
     {
@@ -137,7 +137,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 17,
+    "timeout": 18,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
