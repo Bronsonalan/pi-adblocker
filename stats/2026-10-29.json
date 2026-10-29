@@ -1,13 +1,13 @@
 {
   "date": "2026-10-29",
-  "queries": 1282,
-  "blocked": 218,
+  "queries": 1348,
+  "blocked": 222,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
     "api2.amplitude.com": 4,
     "api3.branch.io": 2,
-    "app-measurement.com": 2,
+    "app-measurement.com": 6,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 4,
     "beyondwickedmapping.org": 2,
@@ -23,6 +23,10 @@
     {
       "domain": "mask.icloud.com",
       "count": 186
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 6
     },
     {
       "domain": "api2.amplitude.com",
@@ -42,10 +46,6 @@
     },
     {
       "domain": "api3.branch.io",
-      "count": 2
-    },
-    {
-      "domain": "app-measurement.com",
       "count": 2
     },
     {
