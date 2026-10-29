@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 3171,
-  "blocked": 368,
+  "queries": 3271,
+  "blocked": 382,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -16,13 +16,13 @@
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
     "bam.nr-data.net": 2,
-    "beacon.shazam.com": 12,
+    "beacon.shazam.com": 14,
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
-    "firebase-settings.crashlytics.com": 2,
+    "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 270,
+    "mask.icloud.com": 280,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
@@ -33,11 +33,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 270
+      "count": 280
     },
     {
       "domain": "beacon.shazam.com",
-      "count": 12
+      "count": 14
     },
     {
       "domain": "api.mixpanel.com",
@@ -69,6 +69,10 @@
     },
     {
       "domain": "cdn-settings.segment.com",
+      "count": 4
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
@@ -112,10 +116,6 @@
       "count": 2
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
-      "count": 2
-    },
-    {
       "domain": "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com",
       "count": 2
     },
@@ -137,7 +137,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 14,
+    "timeout": 16,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
