@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
-  "queries": 4782,
-  "blocked": 599,
+  "queries": 4868,
+  "blocked": 615,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
@@ -20,9 +20,9 @@
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
-    "firebase-settings.crashlytics.com": 6,
+    "firebase-settings.crashlytics.com": 8,
     "googleads.g.doubleclick.net": 8,
-    "mask.icloud.com": 472,
+    "mask.icloud.com": 486,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 6,
     "sdk.iad-03.braze.com": 2,
@@ -33,7 +33,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 472
+      "count": 486
     },
     {
       "domain": "beacon.shazam.com",
@@ -56,6 +56,10 @@
       "count": 8
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 8
+    },
+    {
       "domain": "googleads.g.doubleclick.net",
       "count": 8
     },
@@ -65,10 +69,6 @@
     },
     {
       "domain": "api.segment.io",
-      "count": 6
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 6
     },
     {
