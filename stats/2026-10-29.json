@@ -1,39 +1,39 @@
 {
   "date": "2026-10-29",
-  "queries": 3530,
-  "blocked": 407,
+  "queries": 3617,
+  "blocked": 425,
   "blocked_domains": {
     "110005626.collect.igodigital.com": 2,
     "ads-api.x.com": 2,
     "ads.x.com": 1,
     "analytics.twitter.com": 2,
-    "api.iterable.com": 4,
+    "api.iterable.com": 6,
     "api.mixpanel.com": 10,
     "api.segment.io": 6,
-    "api2.amplitude.com": 6,
+    "api2.amplitude.com": 8,
     "api3.branch.io": 2,
     "app-measurement.com": 8,
     "assetsconfigcdn.org": 2,
     "att.launches.appsflyersdk.com": 8,
-    "bam.nr-data.net": 2,
+    "bam.nr-data.net": 4,
     "beacon.shazam.com": 16,
     "beyondwickedmapping.org": 2,
     "cdn-settings.segment.com": 4,
     "cdn.branch.io": 2,
     "firebase-settings.crashlytics.com": 4,
     "googleads.g.doubleclick.net": 6,
-    "mask.icloud.com": 302,
+    "mask.icloud.com": 310,
     "mc0c2f-k3kbr2qxw2kmy1vg97z0q.device.marketingcloudapis.com": 2,
     "odf.app-ads-services.com": 4,
     "sdk.iad-03.braze.com": 2,
-    "sr-client-cfg.amplitude.com": 4,
-    "track.capitaloneshopping.com": 2,
+    "sr-client-cfg.amplitude.com": 6,
+    "track.capitaloneshopping.com": 4,
     "tracker.affirm.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 302
+      "count": 310
     },
     {
       "domain": "beacon.shazam.com",
@@ -44,6 +44,10 @@
       "count": 10
     },
     {
+      "domain": "api2.amplitude.com",
+      "count": 8
+    },
+    {
       "domain": "app-measurement.com",
       "count": 8
     },
@@ -52,11 +56,11 @@
       "count": 8
     },
     {
-      "domain": "api.segment.io",
+      "domain": "api.iterable.com",
       "count": 6
     },
     {
-      "domain": "api2.amplitude.com",
+      "domain": "api.segment.io",
       "count": 6
     },
     {
@@ -64,7 +68,11 @@
       "count": 6
     },
     {
-      "domain": "api.iterable.com",
+      "domain": "sr-client-cfg.amplitude.com",
+      "count": 6
+    },
+    {
+      "domain": "bam.nr-data.net",
       "count": 4
     },
     {
@@ -80,7 +88,7 @@
       "count": 4
     },
     {
-      "domain": "sr-client-cfg.amplitude.com",
+      "domain": "track.capitaloneshopping.com",
       "count": 4
     },
     {
@@ -104,10 +112,6 @@
       "count": 2
     },
     {
-      "domain": "bam.nr-data.net",
-      "count": 2
-    },
-    {
       "domain": "beyondwickedmapping.org",
       "count": 2
     },
@@ -121,10 +125,6 @@
     },
     {
       "domain": "sdk.iad-03.braze.com",
-      "count": 2
-    },
-    {
-      "domain": "track.capitaloneshopping.com",
       "count": 2
     },
     {
