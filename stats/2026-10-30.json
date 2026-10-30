@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 5703,
-  "blocked": 521,
+  "queries": 5965,
+  "blocked": 533,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -12,7 +12,7 @@
     "api.company-target.com": 2,
     "api.iterable.com": 2,
     "api.mixpanel.com": 2,
-    "api.segment.io": 4,
+    "api.segment.io": 5,
     "api2.amplitude.com": 10,
     "api3.branch.io": 4,
     "app-measurement.com": 5,
@@ -33,11 +33,11 @@
     "firebase-settings.crashlytics.com": 2,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 10,
-    "http-intake.logs.datadoghq.com": 5,
+    "http-intake.logs.datadoghq.com": 6,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask-h2.icloud.com": 2,
-    "mask.icloud.com": 357,
+    "mask-h2.icloud.com": 4,
+    "mask.icloud.com": 365,
     "pagead2.googlesyndication.com": 4,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -65,7 +65,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 357
+      "count": 365
     },
     {
       "domain": "api2.amplitude.com",
@@ -80,23 +80,23 @@
       "count": 6
     },
     {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 6
+    },
+    {
       "domain": "www.googleadservices.com",
       "count": 6
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 5
     },
     {
       "domain": "app-measurement.com",
       "count": 5
     },
     {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 5
-    },
-    {
       "domain": "analytics.tiktok.com",
-      "count": 4
-    },
-    {
-      "domain": "api.segment.io",
       "count": 4
     },
     {
@@ -113,6 +113,10 @@
     },
     {
       "domain": "cdn.branch.io",
+      "count": 4
+    },
+    {
+      "domain": "mask-h2.icloud.com",
       "count": 4
     },
     {
@@ -217,10 +221,6 @@
     },
     {
       "domain": "ingest.quantummetric.com",
-      "count": 2
-    },
-    {
-      "domain": "mask-h2.icloud.com",
       "count": 2
     },
     {
