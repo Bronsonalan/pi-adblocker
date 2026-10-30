@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 6220,
-  "blocked": 551,
+  "queries": 6487,
+  "blocked": 569,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -30,14 +30,14 @@
     "collect.tealiumiq.com": 2,
     "datacloud.tealiumiq.com": 6,
     "dsum-sec.casalemedia.com": 2,
-    "firebase-settings.crashlytics.com": 2,
+    "firebase-settings.crashlytics.com": 4,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 6,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask-h2.icloud.com": 10,
-    "mask.icloud.com": 377,
+    "mask-h2.icloud.com": 14,
+    "mask.icloud.com": 387,
     "pagead2.googlesyndication.com": 4,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -49,6 +49,7 @@
     "smetrics.ups.com": 2,
     "sp.analytics.yahoo.com": 2,
     "sr-client-cfg.amplitude.com": 2,
+    "sstats.adobe.com": 2,
     "static.doubleclick.net": 2,
     "tag-logger.demandbase.com": 2,
     "tags.tiqcdn.com": 2,
@@ -65,7 +66,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 377
+      "count": 387
+    },
+    {
+      "domain": "mask-h2.icloud.com",
+      "count": 14
     },
     {
       "domain": "api2.amplitude.com",
@@ -73,10 +78,6 @@
     },
     {
       "domain": "googleads.g.doubleclick.net",
-      "count": 10
-    },
-    {
-      "domain": "mask-h2.icloud.com",
       "count": 10
     },
     {
@@ -117,6 +118,10 @@
     },
     {
       "domain": "cdn.branch.io",
+      "count": 4
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
@@ -208,10 +213,6 @@
       "count": 2
     },
     {
-      "domain": "firebase-settings.crashlytics.com",
-      "count": 2
-    },
-    {
       "domain": "geolocation.onetrust.com",
       "count": 2
     },
@@ -260,6 +261,10 @@
       "count": 2
     },
     {
+      "domain": "sstats.adobe.com",
+      "count": 2
+    },
+    {
       "domain": "static.doubleclick.net",
       "count": 2
     },
@@ -297,7 +302,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 22,
+    "timeout": 25,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
