@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 11287,
-  "blocked": 1357,
+  "queries": 11418,
+  "blocked": 1375,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "685973.fls.doubleclick.net": 2,
@@ -26,7 +26,7 @@
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 2,
     "api.rlcdn.com": 2,
-    "api.segment.io": 8,
+    "api.segment.io": 10,
     "api2.amplitude.com": 14,
     "api3.branch.io": 4,
     "app-measurement.com": 8,
@@ -52,6 +52,7 @@
     "c.go-mpulse.net": 2,
     "c2.taboola.com": 2,
     "c2shb.ssp.yahoo.com": 10,
+    "cdn-settings.segment.com": 4,
     "cdn.branch.io": 4,
     "cdn.brandmetrics.com": 2,
     "cdn.confiant-integrations.net": 2,
@@ -85,9 +86,9 @@
     "error-tracking.reddit.com": 2,
     "experiments.parsely.com": 8,
     "fastlane.rubiconproject.com": 10,
-    "firebase-settings.crashlytics.com": 8,
+    "firebase-settings.crashlytics.com": 12,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 16,
+    "googleads.g.doubleclick.net": 18,
     "grid-bidder.criteo.com": 10,
     "gum.criteo.com": 8,
     "hbopenbid.pubmatic.com": 10,
@@ -112,15 +113,16 @@
     "lexicon.33across.com": 8,
     "login-ds.dotomi.com": 2,
     "mask-h2.icloud.com": 68,
-    "mask.icloud.com": 577,
+    "mask.icloud.com": 579,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
     "metrics.rapidedge.io": 8,
     "micro.rubiconproject.com": 2,
+    "odf.app-ads-services.com": 2,
     "onetag-sys.com": 2,
     "p1.parsely.com": 2,
-    "pagead2.googlesyndication.com": 4,
+    "pagead2.googlesyndication.com": 6,
     "partner.googleadservices.com": 1,
     "partners.tremorhub.com": 4,
     "pi.reddit.com": 4,
@@ -217,7 +219,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 577
+      "count": 579
     },
     {
       "domain": "mask-h2.icloud.com",
@@ -225,11 +227,15 @@
     },
     {
       "domain": "googleads.g.doubleclick.net",
-      "count": 16
+      "count": 18
     },
     {
       "domain": "api2.amplitude.com",
       "count": 14
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 12
     },
     {
       "domain": "www.googleadservices.com",
@@ -242,6 +248,10 @@
     {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 11
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 10
     },
     {
       "domain": "bam-cell.nr-data.net",
@@ -292,10 +302,6 @@
       "count": 10
     },
     {
-      "domain": "api.segment.io",
-      "count": 8
-    },
-    {
       "domain": "app-measurement.com",
       "count": 8
     },
@@ -309,10 +315,6 @@
     },
     {
       "domain": "experiments.parsely.com",
-      "count": 8
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 8
     },
     {
@@ -356,6 +358,10 @@
       "count": 6
     },
     {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 6
+    },
+    {
       "domain": "alocdn.com",
       "count": 4
     },
@@ -388,6 +394,10 @@
       "count": 4
     },
     {
+      "domain": "cdn-settings.segment.com",
+      "count": 4
+    },
+    {
       "domain": "cdn.branch.io",
       "count": 4
     },
@@ -401,10 +411,6 @@
     },
     {
       "domain": "ingestusipv4.quantummetric.com",
-      "count": 4
-    },
-    {
-      "domain": "pagead2.googlesyndication.com",
       "count": 4
     },
     {
@@ -773,6 +779,10 @@
     },
     {
       "domain": "micro.rubiconproject.com",
+      "count": 2
+    },
+    {
+      "domain": "odf.app-ads-services.com",
       "count": 2
     },
     {
