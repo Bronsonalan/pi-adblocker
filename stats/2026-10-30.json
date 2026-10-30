@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 9471,
-  "blocked": 1139,
+  "queries": 9809,
+  "blocked": 1169,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -19,12 +19,12 @@
     "apex.go.sonobi.com": 2,
     "api.btloader.com": 2,
     "api.company-target.com": 2,
-    "api.iterable.com": 2,
+    "api.iterable.com": 4,
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 2,
     "api.rlcdn.com": 2,
-    "api.segment.io": 5,
-    "api2.amplitude.com": 12,
+    "api.segment.io": 6,
+    "api2.amplitude.com": 14,
     "api3.branch.io": 4,
     "app-measurement.com": 8,
     "assetsconfigcdn.org": 4,
@@ -38,7 +38,7 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.inapps.appsflyersdk.com": 4,
     "bkldaf.launches.appsflyersdk.com": 6,
-    "bkldaf.skadsdkless.appsflyersdk.com": 4,
+    "bkldaf.skadsdkless.appsflyersdk.com": 6,
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
     "bzrcdn.openai.com": 4,
@@ -82,7 +82,7 @@
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 8,
+    "http-intake.logs.datadoghq.com": 9,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -95,8 +95,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 8,
-    "mask-h2.icloud.com": 62,
-    "mask.icloud.com": 500,
+    "mask-h2.icloud.com": 66,
+    "mask.icloud.com": 516,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -135,7 +135,7 @@
     "siteintercept.qualtrics.com": 2,
     "smetrics.ups.com": 2,
     "sp.analytics.yahoo.com": 2,
-    "sr-client-cfg.amplitude.com": 2,
+    "sr-client-cfg.amplitude.com": 4,
     "ssbsync.smartadserver.com": 2,
     "ssc-cms.33across.com": 2,
     "ssp-sync.criteo.com": 2,
@@ -179,19 +179,19 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 500
+      "count": 516
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 62
+      "count": 66
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 14
     },
     {
       "domain": "googleads.g.doubleclick.net",
       "count": 14
-    },
-    {
-      "domain": "api2.amplitude.com",
-      "count": 12
     },
     {
       "domain": "c2shb.ssp.yahoo.com",
@@ -238,6 +238,10 @@
       "count": 10
     },
     {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 9
+    },
+    {
       "domain": "app-measurement.com",
       "count": 8
     },
@@ -259,10 +263,6 @@
     },
     {
       "domain": "gum.criteo.com",
-      "count": 8
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
       "count": 8
     },
     {
@@ -290,16 +290,20 @@
       "count": 8
     },
     {
+      "domain": "api.segment.io",
+      "count": 6
+    },
+    {
       "domain": "bkldaf.launches.appsflyersdk.com",
+      "count": 6
+    },
+    {
+      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 6
     },
     {
       "domain": "datacloud.tealiumiq.com",
       "count": 6
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 5
     },
     {
       "domain": "ad.doubleclick.net",
@@ -311,6 +315,10 @@
     },
     {
       "domain": "analytics.tiktok.com",
+      "count": 4
+    },
+    {
+      "domain": "api.iterable.com",
       "count": 4
     },
     {
@@ -327,10 +335,6 @@
     },
     {
       "domain": "bkldaf.inapps.appsflyersdk.com",
-      "count": 4
-    },
-    {
-      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 4
     },
     {
@@ -363,6 +367,10 @@
     },
     {
       "domain": "sdk.iad-03.braze.com",
+      "count": 4
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
       "count": 4
     },
     {
@@ -431,10 +439,6 @@
     },
     {
       "domain": "api.company-target.com",
-      "count": 2
-    },
-    {
-      "domain": "api.iterable.com",
       "count": 2
     },
     {
@@ -730,10 +734,6 @@
       "count": 2
     },
     {
-      "domain": "sr-client-cfg.amplitude.com",
-      "count": 2
-    },
-    {
       "domain": "ssbsync.smartadserver.com",
       "count": 2
     },
@@ -867,7 +867,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 26,
+    "timeout": 28,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
