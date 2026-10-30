@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 12204,
-  "blocked": 1401,
+  "queries": 12334,
+  "blocked": 1403,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "685973.fls.doubleclick.net": 2,
@@ -26,7 +26,7 @@
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 2,
     "api.rlcdn.com": 2,
-    "api.segment.io": 16,
+    "api.segment.io": 17,
     "api2.amplitude.com": 14,
     "api3.branch.io": 4,
     "app-measurement.com": 8,
@@ -95,7 +95,7 @@
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 17,
+    "http-intake.logs.datadoghq.com": 18,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -231,11 +231,11 @@
     },
     {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 17
+      "count": 18
     },
     {
       "domain": "api.segment.io",
-      "count": 16
+      "count": 17
     },
     {
       "domain": "api2.amplitude.com",
@@ -1067,7 +1067,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 46,
+    "timeout": 47,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
