@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 8961,
-  "blocked": 1108,
+  "queries": 9176,
+  "blocked": 1126,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -26,7 +26,7 @@
     "api.segment.io": 5,
     "api2.amplitude.com": 12,
     "api3.branch.io": 4,
-    "app-measurement.com": 7,
+    "app-measurement.com": 8,
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
     "b-code.liadm.com": 8,
@@ -37,7 +37,7 @@
     "bidder.criteo.com": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.inapps.appsflyersdk.com": 4,
-    "bkldaf.launches.appsflyersdk.com": 4,
+    "bkldaf.launches.appsflyersdk.com": 6,
     "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
@@ -73,7 +73,7 @@
     "error-tracking.reddit.com": 2,
     "experiments.parsely.com": 8,
     "fastlane.rubiconproject.com": 10,
-    "firebase-settings.crashlytics.com": 4,
+    "firebase-settings.crashlytics.com": 8,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
     "grid-bidder.criteo.com": 10,
@@ -82,7 +82,7 @@
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 6,
+    "http-intake.logs.datadoghq.com": 7,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -95,8 +95,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 8,
-    "mask-h2.icloud.com": 56,
-    "mask.icloud.com": 484,
+    "mask-h2.icloud.com": 58,
+    "mask.icloud.com": 492,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -179,11 +179,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 484
+      "count": 492
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 56
+      "count": 58
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -238,6 +238,10 @@
       "count": 10
     },
     {
+      "domain": "app-measurement.com",
+      "count": 8
+    },
+    {
       "domain": "b-code.liadm.com",
       "count": 8
     },
@@ -247,6 +251,10 @@
     },
     {
       "domain": "experiments.parsely.com",
+      "count": 8
+    },
+    {
+      "domain": "firebase-settings.crashlytics.com",
       "count": 8
     },
     {
@@ -278,15 +286,15 @@
       "count": 8
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "http-intake.logs.datadoghq.com",
       "count": 7
     },
     {
-      "domain": "datacloud.tealiumiq.com",
+      "domain": "bkldaf.launches.appsflyersdk.com",
       "count": 6
     },
     {
-      "domain": "http-intake.logs.datadoghq.com",
+      "domain": "datacloud.tealiumiq.com",
       "count": 6
     },
     {
@@ -322,10 +330,6 @@
       "count": 4
     },
     {
-      "domain": "bkldaf.launches.appsflyersdk.com",
-      "count": 4
-    },
-    {
       "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 4
     },
@@ -335,10 +339,6 @@
     },
     {
       "domain": "cdn.branch.io",
-      "count": 4
-    },
-    {
-      "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
