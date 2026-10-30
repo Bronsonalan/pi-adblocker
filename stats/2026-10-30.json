@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 4341,
-  "blocked": 458,
+  "queries": 4470,
+  "blocked": 468,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -9,7 +9,7 @@
     "akamai.tiqcdn.com": 2,
     "api.company-target.com": 2,
     "api.iterable.com": 2,
-    "api.segment.io": 3,
+    "api.segment.io": 4,
     "api2.amplitude.com": 10,
     "api3.branch.io": 4,
     "app-measurement.com": 5,
@@ -27,10 +27,10 @@
     "dsum-sec.casalemedia.com": 2,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 8,
-    "http-intake.logs.datadoghq.com": 3,
+    "http-intake.logs.datadoghq.com": 4,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 321,
+    "mask.icloud.com": 329,
     "pagead2.googlesyndication.com": 2,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -58,7 +58,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 321
+      "count": 329
     },
     {
       "domain": "api2.amplitude.com",
@@ -77,6 +77,10 @@
       "count": 5
     },
     {
+      "domain": "api.segment.io",
+      "count": 4
+    },
+    {
       "domain": "api3.branch.io",
       "count": 4
     },
@@ -86,6 +90,10 @@
     },
     {
       "domain": "cdn.branch.io",
+      "count": 4
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
       "count": 4
     },
     {
@@ -103,14 +111,6 @@
     {
       "domain": "www.googletagmanager.com",
       "count": 4
-    },
-    {
-      "domain": "api.segment.io",
-      "count": 3
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 3
     },
     {
       "domain": "6451349.fls.doubleclick.net",
@@ -262,7 +262,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 10,
+    "timeout": 11,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
