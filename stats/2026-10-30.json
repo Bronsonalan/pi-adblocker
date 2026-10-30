@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 8119,
-  "blocked": 988,
+  "queries": 8487,
+  "blocked": 1047,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -11,6 +11,7 @@
     "ads.pubmatic.com": 2,
     "ads.yieldmo.com": 2,
     "akamai.tiqcdn.com": 2,
+    "alb.reddit.com": 2,
     "alocdn.com": 4,
     "analytics-ipv6.tiktokw.us": 2,
     "analytics.tiktok.com": 4,
@@ -28,7 +29,7 @@
     "app-measurement.com": 7,
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
-    "b-code.liadm.com": 4,
+    "b-code.liadm.com": 6,
     "bam.nr-data.net": 4,
     "bat.bing.com": 2,
     "beacon.bidder.taboola.com": 2,
@@ -51,7 +52,7 @@
     "cdn.cookielaw.org": 2,
     "cdn.id5-sync.com": 2,
     "cdn.p-n.io": 2,
-    "cdn.parsely.com": 4,
+    "cdn.parsely.com": 6,
     "cdn.quantummetric.com": 2,
     "cdn.taboola.com": 2,
     "cdn.undertone.com": 2,
@@ -69,13 +70,14 @@
     "dsum-sec.casalemedia.com": 2,
     "dt.adsafeprotected.com": 2,
     "eb2.3lift.com": 2,
-    "experiments.parsely.com": 4,
+    "error-tracking.reddit.com": 2,
+    "experiments.parsely.com": 6,
     "fastlane.rubiconproject.com": 10,
     "firebase-settings.crashlytics.com": 4,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
     "grid-bidder.criteo.com": 10,
-    "gum.criteo.com": 4,
+    "gum.criteo.com": 6,
     "hbopenbid.pubmatic.com": 10,
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
@@ -83,6 +85,7 @@
     "http-intake.logs.datadoghq.com": 6,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
+    "id.rlcdn.com": 4,
     "idx.liadm.com": 2,
     "image2.pubmatic.com": 2,
     "image8.pubmatic.com": 2,
@@ -91,26 +94,27 @@
     "insight.adsrvr.org": 2,
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
-    "lexicon.33across.com": 4,
-    "mask-h2.icloud.com": 42,
-    "mask.icloud.com": 448,
-    "match.adsrvr.org": 4,
+    "lexicon.33across.com": 6,
+    "mask-h2.icloud.com": 46,
+    "mask.icloud.com": 462,
+    "match.adsrvr.org": 6,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
-    "metrics.rapidedge.io": 4,
+    "metrics.rapidedge.io": 6,
     "micro.rubiconproject.com": 2,
     "onetag-sys.com": 2,
     "p1.parsely.com": 2,
     "pagead2.googlesyndication.com": 4,
     "partner.googleadservices.com": 1,
     "partners.tremorhub.com": 2,
+    "pi.reddit.com": 2,
     "pixel.adsafeprotected.com": 2,
     "pixel.rubiconproject.com": 4,
     "pm-widget.taboola.com": 2,
     "polarcdn-terrax.com": 2,
     "prebid.a-mo.net": 2,
     "prebid.adnxs.com": 2,
-    "pubads.g.doubleclick.net": 2,
+    "pubads.g.doubleclick.net": 3,
     "reporting-api.gannettinnovation.com": 2,
     "rp.liadm.com": 2,
     "rtb.mfadsrvr.com": 2,
@@ -120,14 +124,14 @@
     "s.go-mpulse.net": 2,
     "s.seedtag.com": 2,
     "s0.2mdn.net": 1,
-    "sb.scorecardresearch.com": 4,
+    "sb.scorecardresearch.com": 6,
     "scripts.demandbase.com": 2,
     "scripts.webcontentassessor.com": 2,
     "sdk.iad-03.braze.com": 4,
     "secure-assets.rubiconproject.com": 2,
     "secure.adnxs.com": 2,
     "secure.cdn.fastclick.net": 2,
-    "securepubads.g.doubleclick.net": 4,
+    "securepubads.g.doubleclick.net": 6,
     "siteintercept.qualtrics.com": 2,
     "smetrics.ups.com": 2,
     "sp.analytics.yahoo.com": 2,
@@ -150,7 +154,7 @@
     "tags.crwdcntrl.net": 2,
     "tags.tiqcdn.com": 2,
     "tlx.3lift.com": 10,
-    "tpc.googlesyndication.com": 2,
+    "tpc.googlesyndication.com": 4,
     "tr.blismedia.com": 2,
     "track.capitaloneshopping.com": 2,
     "track.celtra.com": 2,
@@ -159,25 +163,26 @@
     "traxex.gannettdigital.com": 2,
     "trc.taboola.com": 2,
     "u.openx.net": 2,
-    "ups.analytics.yahoo.com": 4,
+    "ups.analytics.yahoo.com": 6,
     "ups.tt.omtrdc.net": 2,
     "user-sync.fwmrm.net": 2,
     "visitor-service.tealiumiq.com": 2,
+    "w3-reporting.reddit.com": 2,
     "wa.appsflyersdk.com": 2,
     "www.google-analytics.com": 4,
-    "www.googleadservices.com": 8,
-    "www.googletagmanager.com": 6,
+    "www.googleadservices.com": 10,
+    "www.googletagmanager.com": 10,
     "www.googletagservices.com": 2,
     "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 448
+      "count": 462
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 42
+      "count": 46
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -225,14 +230,34 @@
     },
     {
       "domain": "www.googleadservices.com",
-      "count": 8
+      "count": 10
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 10
     },
     {
       "domain": "app-measurement.com",
       "count": 7
     },
     {
+      "domain": "b-code.liadm.com",
+      "count": 6
+    },
+    {
+      "domain": "cdn.parsely.com",
+      "count": 6
+    },
+    {
       "domain": "datacloud.tealiumiq.com",
+      "count": 6
+    },
+    {
+      "domain": "experiments.parsely.com",
+      "count": 6
+    },
+    {
+      "domain": "gum.criteo.com",
       "count": 6
     },
     {
@@ -240,7 +265,27 @@
       "count": 6
     },
     {
-      "domain": "www.googletagmanager.com",
+      "domain": "lexicon.33across.com",
+      "count": 6
+    },
+    {
+      "domain": "match.adsrvr.org",
+      "count": 6
+    },
+    {
+      "domain": "metrics.rapidedge.io",
+      "count": 6
+    },
+    {
+      "domain": "sb.scorecardresearch.com",
+      "count": 6
+    },
+    {
+      "domain": "securepubads.g.doubleclick.net",
+      "count": 6
+    },
+    {
+      "domain": "ups.analytics.yahoo.com",
       "count": 6
     },
     {
@@ -268,10 +313,6 @@
       "count": 4
     },
     {
-      "domain": "b-code.liadm.com",
-      "count": 4
-    },
-    {
       "domain": "bam.nr-data.net",
       "count": 4
     },
@@ -292,31 +333,11 @@
       "count": 4
     },
     {
-      "domain": "cdn.parsely.com",
-      "count": 4
-    },
-    {
-      "domain": "experiments.parsely.com",
-      "count": 4
-    },
-    {
       "domain": "firebase-settings.crashlytics.com",
       "count": 4
     },
     {
-      "domain": "gum.criteo.com",
-      "count": 4
-    },
-    {
-      "domain": "lexicon.33across.com",
-      "count": 4
-    },
-    {
-      "domain": "match.adsrvr.org",
-      "count": 4
-    },
-    {
-      "domain": "metrics.rapidedge.io",
+      "domain": "id.rlcdn.com",
       "count": 4
     },
     {
@@ -328,15 +349,11 @@
       "count": 4
     },
     {
-      "domain": "sb.scorecardresearch.com",
-      "count": 4
-    },
-    {
       "domain": "sdk.iad-03.braze.com",
       "count": 4
     },
     {
-      "domain": "securepubads.g.doubleclick.net",
+      "domain": "tpc.googlesyndication.com",
       "count": 4
     },
     {
@@ -344,12 +361,12 @@
       "count": 4
     },
     {
-      "domain": "ups.analytics.yahoo.com",
+      "domain": "www.google-analytics.com",
       "count": 4
     },
     {
-      "domain": "www.google-analytics.com",
-      "count": 4
+      "domain": "pubads.g.doubleclick.net",
+      "count": 3
     },
     {
       "domain": "6451349.fls.doubleclick.net",
@@ -377,6 +394,10 @@
     },
     {
       "domain": "akamai.tiqcdn.com",
+      "count": 2
+    },
+    {
+      "domain": "alb.reddit.com",
       "count": 2
     },
     {
@@ -544,6 +565,10 @@
       "count": 2
     },
     {
+      "domain": "error-tracking.reddit.com",
+      "count": 2
+    },
+    {
       "domain": "geolocation.onetrust.com",
       "count": 2
     },
@@ -616,6 +641,10 @@
       "count": 2
     },
     {
+      "domain": "pi.reddit.com",
+      "count": 2
+    },
+    {
       "domain": "pixel.adsafeprotected.com",
       "count": 2
     },
@@ -633,10 +662,6 @@
     },
     {
       "domain": "prebid.adnxs.com",
-      "count": 2
-    },
-    {
-      "domain": "pubads.g.doubleclick.net",
       "count": 2
     },
     {
@@ -772,10 +797,6 @@
       "count": 2
     },
     {
-      "domain": "tpc.googlesyndication.com",
-      "count": 2
-    },
-    {
       "domain": "tr.blismedia.com",
       "count": 2
     },
@@ -813,6 +834,10 @@
     },
     {
       "domain": "visitor-service.tealiumiq.com",
+      "count": 2
+    },
+    {
+      "domain": "w3-reporting.reddit.com",
       "count": 2
     },
     {
