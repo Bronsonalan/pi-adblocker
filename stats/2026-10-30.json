@@ -1,19 +1,34 @@
 {
   "date": "2026-10-30",
-  "queries": 768,
-  "blocked": 20,
+  "queries": 896,
+  "blocked": 27,
   "blocked_domains": {
-    "mask.icloud.com": 18,
+    "api.segment.io": 1,
+    "app-measurement.com": 1,
+    "http-intake.logs.datadoghq.com": 1,
+    "mask.icloud.com": 22,
     "track.customer.io": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 18
+      "count": 22
     },
     {
       "domain": "track.customer.io",
       "count": 2
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 1
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 1
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 1
     }
   ],
   "upstream_errors": {
