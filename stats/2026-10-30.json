@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 11799,
-  "blocked": 1387,
+  "queries": 11940,
+  "blocked": 1395,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "685973.fls.doubleclick.net": 2,
@@ -26,7 +26,7 @@
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 2,
     "api.rlcdn.com": 2,
-    "api.segment.io": 13,
+    "api.segment.io": 15,
     "api2.amplitude.com": 14,
     "api3.branch.io": 4,
     "app-measurement.com": 8,
@@ -95,7 +95,7 @@
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 14,
+    "http-intake.logs.datadoghq.com": 16,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -113,7 +113,7 @@
     "lexicon.33across.com": 8,
     "login-ds.dotomi.com": 2,
     "mask-h2.icloud.com": 68,
-    "mask.icloud.com": 585,
+    "mask.icloud.com": 589,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -219,7 +219,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 585
+      "count": 589
     },
     {
       "domain": "mask-h2.icloud.com",
@@ -230,16 +230,16 @@
       "count": 18
     },
     {
-      "domain": "api2.amplitude.com",
-      "count": 14
-    },
-    {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 14
+      "count": 16
     },
     {
       "domain": "api.segment.io",
-      "count": 13
+      "count": 15
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 14
     },
     {
       "domain": "firebase-settings.crashlytics.com",
@@ -1067,7 +1067,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 45,
+    "timeout": 46,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
