@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 5185,
-  "blocked": 506,
+  "queries": 5380,
+  "blocked": 514,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -30,13 +30,14 @@
     "collect.tealiumiq.com": 2,
     "datacloud.tealiumiq.com": 6,
     "dsum-sec.casalemedia.com": 2,
+    "firebase-settings.crashlytics.com": 2,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 4,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 351,
-    "pagead2.googlesyndication.com": 2,
+    "mask.icloud.com": 353,
+    "pagead2.googlesyndication.com": 4,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
     "s.company-target.com": 2,
@@ -56,14 +57,14 @@
     "ups.tt.omtrdc.net": 2,
     "visitor-service.tealiumiq.com": 2,
     "www.google-analytics.com": 2,
-    "www.googleadservices.com": 4,
+    "www.googleadservices.com": 6,
     "www.googletagmanager.com": 4,
     "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 351
+      "count": 353
     },
     {
       "domain": "api2.amplitude.com",
@@ -75,6 +76,10 @@
     },
     {
       "domain": "datacloud.tealiumiq.com",
+      "count": 6
+    },
+    {
+      "domain": "www.googleadservices.com",
       "count": 6
     },
     {
@@ -110,15 +115,15 @@
       "count": 4
     },
     {
+      "domain": "pagead2.googlesyndication.com",
+      "count": 4
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 4
     },
     {
       "domain": "tracking.purchasely.io",
-      "count": 4
-    },
-    {
-      "domain": "www.googleadservices.com",
       "count": 4
     },
     {
@@ -198,6 +203,10 @@
       "count": 2
     },
     {
+      "domain": "firebase-settings.crashlytics.com",
+      "count": 2
+    },
+    {
       "domain": "geolocation.onetrust.com",
       "count": 2
     },
@@ -207,10 +216,6 @@
     },
     {
       "domain": "ingest.quantummetric.com",
-      "count": 2
-    },
-    {
-      "domain": "pagead2.googlesyndication.com",
       "count": 2
     },
     {
@@ -287,7 +292,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 14,
+    "timeout": 17,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
