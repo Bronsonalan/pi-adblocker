@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 9176,
-  "blocked": 1126,
+  "queries": 9471,
+  "blocked": 1139,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -82,7 +82,7 @@
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 7,
+    "http-intake.logs.datadoghq.com": 8,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -95,8 +95,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 8,
-    "mask-h2.icloud.com": 58,
-    "mask.icloud.com": 492,
+    "mask-h2.icloud.com": 62,
+    "mask.icloud.com": 500,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -179,11 +179,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 492
+      "count": 500
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 58
+      "count": 62
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -262,6 +262,10 @@
       "count": 8
     },
     {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 8
+    },
+    {
       "domain": "lexicon.33across.com",
       "count": 8
     },
@@ -284,10 +288,6 @@
     {
       "domain": "ups.analytics.yahoo.com",
       "count": 8
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 7
     },
     {
       "domain": "bkldaf.launches.appsflyersdk.com",
