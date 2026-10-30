@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 7615,
-  "blocked": 903,
+  "queries": 7885,
+  "blocked": 943,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -34,13 +34,16 @@
     "beacon.bidder.taboola.com": 2,
     "beyondwickedmapping.org": 2,
     "bidder.criteo.com": 2,
+    "bkldaf.cdn-settings.appsflyersdk.com": 2,
+    "bkldaf.launches.appsflyersdk.com": 2,
+    "bkldaf.skadsdkless.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
     "bzrcdn.openai.com": 4,
     "c.amazon-adsystem.com": 2,
     "c.go-mpulse.net": 2,
     "c2.taboola.com": 2,
-    "c2shb.ssp.yahoo.com": 6,
+    "c2shb.ssp.yahoo.com": 8,
     "cdn.branch.io": 4,
     "cdn.brandmetrics.com": 2,
     "cdn.confiant-integrations.net": 2,
@@ -60,25 +63,25 @@
     "cs.media.net": 2,
     "csync.loopme.me": 2,
     "datacloud.tealiumiq.com": 6,
-    "direct.adsrvr.org": 6,
+    "direct.adsrvr.org": 8,
     "display.bidder.taboola.com": 2,
     "dsum-sec.casalemedia.com": 2,
     "dt.adsafeprotected.com": 2,
     "eb2.3lift.com": 2,
     "experiments.parsely.com": 4,
-    "fastlane.rubiconproject.com": 6,
+    "fastlane.rubiconproject.com": 8,
     "firebase-settings.crashlytics.com": 4,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 12,
-    "grid-bidder.criteo.com": 6,
+    "googleads.g.doubleclick.net": 14,
+    "grid-bidder.criteo.com": 8,
     "gum.criteo.com": 4,
-    "hbopenbid.pubmatic.com": 6,
+    "hbopenbid.pubmatic.com": 8,
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
-    "htlb.casalemedia.com": 6,
+    "htlb.casalemedia.com": 8,
     "http-intake.logs.datadoghq.com": 6,
     "i.liadm.com": 2,
-    "ib.adnxs.com": 6,
+    "ib.adnxs.com": 8,
     "idx.liadm.com": 2,
     "image2.pubmatic.com": 2,
     "image8.pubmatic.com": 2,
@@ -88,8 +91,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 4,
-    "mask-h2.icloud.com": 32,
-    "mask.icloud.com": 424,
+    "mask-h2.icloud.com": 36,
+    "mask.icloud.com": 434,
     "match.adsrvr.org": 4,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -110,7 +113,7 @@
     "reporting-api.gannettinnovation.com": 2,
     "rp.liadm.com": 2,
     "rtb.mfadsrvr.com": 2,
-    "rtb.openx.net": 6,
+    "rtb.openx.net": 8,
     "s.ad.smaato.net": 2,
     "s.company-target.com": 2,
     "s.go-mpulse.net": 2,
@@ -145,7 +148,7 @@
     "tag.simpli.fi": 2,
     "tags.crwdcntrl.net": 2,
     "tags.tiqcdn.com": 2,
-    "tlx.3lift.com": 6,
+    "tlx.3lift.com": 8,
     "tpc.googlesyndication.com": 2,
     "tr.blismedia.com": 2,
     "track.capitaloneshopping.com": 2,
@@ -169,19 +172,55 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 424
+      "count": 434
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 32
+      "count": 36
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 14
     },
     {
       "domain": "api2.amplitude.com",
       "count": 12
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 12
+      "domain": "c2shb.ssp.yahoo.com",
+      "count": 8
+    },
+    {
+      "domain": "direct.adsrvr.org",
+      "count": 8
+    },
+    {
+      "domain": "fastlane.rubiconproject.com",
+      "count": 8
+    },
+    {
+      "domain": "grid-bidder.criteo.com",
+      "count": 8
+    },
+    {
+      "domain": "hbopenbid.pubmatic.com",
+      "count": 8
+    },
+    {
+      "domain": "htlb.casalemedia.com",
+      "count": 8
+    },
+    {
+      "domain": "ib.adnxs.com",
+      "count": 8
+    },
+    {
+      "domain": "rtb.openx.net",
+      "count": 8
+    },
+    {
+      "domain": "tlx.3lift.com",
+      "count": 8
     },
     {
       "domain": "www.googleadservices.com",
@@ -192,47 +231,11 @@
       "count": 6
     },
     {
-      "domain": "c2shb.ssp.yahoo.com",
-      "count": 6
-    },
-    {
       "domain": "datacloud.tealiumiq.com",
       "count": 6
     },
     {
-      "domain": "direct.adsrvr.org",
-      "count": 6
-    },
-    {
-      "domain": "fastlane.rubiconproject.com",
-      "count": 6
-    },
-    {
-      "domain": "grid-bidder.criteo.com",
-      "count": 6
-    },
-    {
-      "domain": "hbopenbid.pubmatic.com",
-      "count": 6
-    },
-    {
-      "domain": "htlb.casalemedia.com",
-      "count": 6
-    },
-    {
       "domain": "http-intake.logs.datadoghq.com",
-      "count": 6
-    },
-    {
-      "domain": "ib.adnxs.com",
-      "count": 6
-    },
-    {
-      "domain": "rtb.openx.net",
-      "count": 6
-    },
-    {
-      "domain": "tlx.3lift.com",
       "count": 6
     },
     {
@@ -421,6 +424,18 @@
     },
     {
       "domain": "bidder.criteo.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.cdn-settings.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.launches.appsflyersdk.com",
+      "count": 2
+    },
+    {
+      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 2
     },
     {
@@ -817,7 +832,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 25,
+    "timeout": 26,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
