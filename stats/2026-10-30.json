@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 7885,
-  "blocked": 943,
+  "queries": 8119,
+  "blocked": 988,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -25,7 +25,7 @@
     "api.segment.io": 5,
     "api2.amplitude.com": 12,
     "api3.branch.io": 4,
-    "app-measurement.com": 6,
+    "app-measurement.com": 7,
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
     "b-code.liadm.com": 4,
@@ -35,7 +35,8 @@
     "beyondwickedmapping.org": 2,
     "bidder.criteo.com": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
-    "bkldaf.launches.appsflyersdk.com": 2,
+    "bkldaf.inapps.appsflyersdk.com": 4,
+    "bkldaf.launches.appsflyersdk.com": 4,
     "bkldaf.skadsdkless.appsflyersdk.com": 2,
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
@@ -43,7 +44,7 @@
     "c.amazon-adsystem.com": 2,
     "c.go-mpulse.net": 2,
     "c2.taboola.com": 2,
-    "c2shb.ssp.yahoo.com": 8,
+    "c2shb.ssp.yahoo.com": 10,
     "cdn.branch.io": 4,
     "cdn.brandmetrics.com": 2,
     "cdn.confiant-integrations.net": 2,
@@ -63,25 +64,25 @@
     "cs.media.net": 2,
     "csync.loopme.me": 2,
     "datacloud.tealiumiq.com": 6,
-    "direct.adsrvr.org": 8,
+    "direct.adsrvr.org": 10,
     "display.bidder.taboola.com": 2,
     "dsum-sec.casalemedia.com": 2,
     "dt.adsafeprotected.com": 2,
     "eb2.3lift.com": 2,
     "experiments.parsely.com": 4,
-    "fastlane.rubiconproject.com": 8,
+    "fastlane.rubiconproject.com": 10,
     "firebase-settings.crashlytics.com": 4,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 14,
-    "grid-bidder.criteo.com": 8,
+    "grid-bidder.criteo.com": 10,
     "gum.criteo.com": 4,
-    "hbopenbid.pubmatic.com": 8,
+    "hbopenbid.pubmatic.com": 10,
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
-    "htlb.casalemedia.com": 8,
+    "htlb.casalemedia.com": 10,
     "http-intake.logs.datadoghq.com": 6,
     "i.liadm.com": 2,
-    "ib.adnxs.com": 8,
+    "ib.adnxs.com": 10,
     "idx.liadm.com": 2,
     "image2.pubmatic.com": 2,
     "image8.pubmatic.com": 2,
@@ -91,8 +92,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 4,
-    "mask-h2.icloud.com": 36,
-    "mask.icloud.com": 434,
+    "mask-h2.icloud.com": 42,
+    "mask.icloud.com": 448,
     "match.adsrvr.org": 4,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -113,7 +114,7 @@
     "reporting-api.gannettinnovation.com": 2,
     "rp.liadm.com": 2,
     "rtb.mfadsrvr.com": 2,
-    "rtb.openx.net": 8,
+    "rtb.openx.net": 10,
     "s.ad.smaato.net": 2,
     "s.company-target.com": 2,
     "s.go-mpulse.net": 2,
@@ -148,7 +149,7 @@
     "tag.simpli.fi": 2,
     "tags.crwdcntrl.net": 2,
     "tags.tiqcdn.com": 2,
-    "tlx.3lift.com": 8,
+    "tlx.3lift.com": 10,
     "tpc.googlesyndication.com": 2,
     "tr.blismedia.com": 2,
     "track.capitaloneshopping.com": 2,
@@ -172,11 +173,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 434
+      "count": 448
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 36
+      "count": 42
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -188,39 +189,39 @@
     },
     {
       "domain": "c2shb.ssp.yahoo.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "direct.adsrvr.org",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "fastlane.rubiconproject.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "grid-bidder.criteo.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "hbopenbid.pubmatic.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "htlb.casalemedia.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "ib.adnxs.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "rtb.openx.net",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "tlx.3lift.com",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "www.googleadservices.com",
@@ -228,7 +229,7 @@
     },
     {
       "domain": "app-measurement.com",
-      "count": 6
+      "count": 7
     },
     {
       "domain": "datacloud.tealiumiq.com",
@@ -272,6 +273,14 @@
     },
     {
       "domain": "bam.nr-data.net",
+      "count": 4
+    },
+    {
+      "domain": "bkldaf.inapps.appsflyersdk.com",
+      "count": 4
+    },
+    {
+      "domain": "bkldaf.launches.appsflyersdk.com",
       "count": 4
     },
     {
@@ -428,10 +437,6 @@
     },
     {
       "domain": "bkldaf.cdn-settings.appsflyersdk.com",
-      "count": 2
-    },
-    {
-      "domain": "bkldaf.launches.appsflyersdk.com",
       "count": 2
     },
     {
