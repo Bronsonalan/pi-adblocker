@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 7113,
-  "blocked": 808,
+  "queries": 7357,
+  "blocked": 867,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -11,7 +11,7 @@
     "ads.pubmatic.com": 2,
     "ads.yieldmo.com": 2,
     "akamai.tiqcdn.com": 2,
-    "alocdn.com": 2,
+    "alocdn.com": 4,
     "analytics-ipv6.tiktokw.us": 2,
     "analytics.tiktok.com": 4,
     "ap.lijit.com": 2,
@@ -28,7 +28,7 @@
     "app-measurement.com": 5,
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
-    "b-code.liadm.com": 2,
+    "b-code.liadm.com": 4,
     "bam.nr-data.net": 4,
     "bat.bing.com": 2,
     "beacon.bidder.taboola.com": 2,
@@ -40,14 +40,14 @@
     "c.amazon-adsystem.com": 2,
     "c.go-mpulse.net": 2,
     "c2.taboola.com": 2,
-    "c2shb.ssp.yahoo.com": 2,
+    "c2shb.ssp.yahoo.com": 4,
     "cdn.branch.io": 4,
     "cdn.brandmetrics.com": 2,
     "cdn.confiant-integrations.net": 2,
     "cdn.cookielaw.org": 2,
     "cdn.id5-sync.com": 2,
     "cdn.p-n.io": 2,
-    "cdn.parsely.com": 2,
+    "cdn.parsely.com": 4,
     "cdn.quantummetric.com": 2,
     "cdn.taboola.com": 2,
     "cdn.undertone.com": 2,
@@ -60,25 +60,25 @@
     "cs.media.net": 2,
     "csync.loopme.me": 2,
     "datacloud.tealiumiq.com": 6,
-    "direct.adsrvr.org": 2,
+    "direct.adsrvr.org": 4,
     "display.bidder.taboola.com": 2,
     "dsum-sec.casalemedia.com": 2,
     "dt.adsafeprotected.com": 2,
     "eb2.3lift.com": 2,
-    "experiments.parsely.com": 2,
-    "fastlane.rubiconproject.com": 2,
+    "experiments.parsely.com": 4,
+    "fastlane.rubiconproject.com": 4,
     "firebase-settings.crashlytics.com": 4,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 12,
-    "grid-bidder.criteo.com": 2,
-    "gum.criteo.com": 2,
-    "hbopenbid.pubmatic.com": 2,
+    "grid-bidder.criteo.com": 4,
+    "gum.criteo.com": 4,
+    "hbopenbid.pubmatic.com": 4,
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
-    "htlb.casalemedia.com": 2,
+    "htlb.casalemedia.com": 4,
     "http-intake.logs.datadoghq.com": 6,
     "i.liadm.com": 2,
-    "ib.adnxs.com": 2,
+    "ib.adnxs.com": 4,
     "idx.liadm.com": 2,
     "image2.pubmatic.com": 2,
     "image8.pubmatic.com": 2,
@@ -87,13 +87,13 @@
     "insight.adsrvr.org": 2,
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
-    "lexicon.33across.com": 2,
-    "mask-h2.icloud.com": 20,
-    "mask.icloud.com": 401,
-    "match.adsrvr.org": 2,
+    "lexicon.33across.com": 4,
+    "mask-h2.icloud.com": 26,
+    "mask.icloud.com": 413,
+    "match.adsrvr.org": 4,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
-    "metrics.rapidedge.io": 2,
+    "metrics.rapidedge.io": 4,
     "micro.rubiconproject.com": 2,
     "onetag-sys.com": 2,
     "p1.parsely.com": 2,
@@ -106,24 +106,24 @@
     "polarcdn-terrax.com": 2,
     "prebid.a-mo.net": 2,
     "prebid.adnxs.com": 2,
-    "pubads.g.doubleclick.net": 1,
+    "pubads.g.doubleclick.net": 2,
     "reporting-api.gannettinnovation.com": 2,
     "rp.liadm.com": 2,
     "rtb.mfadsrvr.com": 2,
-    "rtb.openx.net": 2,
+    "rtb.openx.net": 4,
     "s.ad.smaato.net": 2,
     "s.company-target.com": 2,
     "s.go-mpulse.net": 2,
     "s.seedtag.com": 2,
     "s0.2mdn.net": 1,
-    "sb.scorecardresearch.com": 2,
+    "sb.scorecardresearch.com": 4,
     "scripts.demandbase.com": 2,
     "scripts.webcontentassessor.com": 2,
     "sdk.iad-03.braze.com": 4,
     "secure-assets.rubiconproject.com": 2,
     "secure.adnxs.com": 2,
     "secure.cdn.fastclick.net": 2,
-    "securepubads.g.doubleclick.net": 2,
+    "securepubads.g.doubleclick.net": 4,
     "siteintercept.qualtrics.com": 2,
     "smetrics.ups.com": 2,
     "sp.analytics.yahoo.com": 2,
@@ -145,7 +145,7 @@
     "tag.simpli.fi": 2,
     "tags.crwdcntrl.net": 2,
     "tags.tiqcdn.com": 2,
-    "tlx.3lift.com": 2,
+    "tlx.3lift.com": 4,
     "tpc.googlesyndication.com": 2,
     "tr.blismedia.com": 2,
     "track.capitaloneshopping.com": 2,
@@ -155,7 +155,7 @@
     "traxex.gannettdigital.com": 2,
     "trc.taboola.com": 2,
     "u.openx.net": 2,
-    "ups.analytics.yahoo.com": 2,
+    "ups.analytics.yahoo.com": 4,
     "ups.tt.omtrdc.net": 2,
     "user-sync.fwmrm.net": 2,
     "visitor-service.tealiumiq.com": 2,
@@ -169,11 +169,11 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 401
+      "count": 413
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 20
+      "count": 26
     },
     {
       "domain": "api2.amplitude.com",
@@ -212,6 +212,10 @@
       "count": 4
     },
     {
+      "domain": "alocdn.com",
+      "count": 4
+    },
+    {
       "domain": "analytics.tiktok.com",
       "count": 4
     },
@@ -224,6 +228,10 @@
       "count": 4
     },
     {
+      "domain": "b-code.liadm.com",
+      "count": 4
+    },
+    {
       "domain": "bam.nr-data.net",
       "count": 4
     },
@@ -232,11 +240,63 @@
       "count": 4
     },
     {
+      "domain": "c2shb.ssp.yahoo.com",
+      "count": 4
+    },
+    {
       "domain": "cdn.branch.io",
       "count": 4
     },
     {
+      "domain": "cdn.parsely.com",
+      "count": 4
+    },
+    {
+      "domain": "direct.adsrvr.org",
+      "count": 4
+    },
+    {
+      "domain": "experiments.parsely.com",
+      "count": 4
+    },
+    {
+      "domain": "fastlane.rubiconproject.com",
+      "count": 4
+    },
+    {
       "domain": "firebase-settings.crashlytics.com",
+      "count": 4
+    },
+    {
+      "domain": "grid-bidder.criteo.com",
+      "count": 4
+    },
+    {
+      "domain": "gum.criteo.com",
+      "count": 4
+    },
+    {
+      "domain": "hbopenbid.pubmatic.com",
+      "count": 4
+    },
+    {
+      "domain": "htlb.casalemedia.com",
+      "count": 4
+    },
+    {
+      "domain": "ib.adnxs.com",
+      "count": 4
+    },
+    {
+      "domain": "lexicon.33across.com",
+      "count": 4
+    },
+    {
+      "domain": "match.adsrvr.org",
+      "count": 4
+    },
+    {
+      "domain": "metrics.rapidedge.io",
       "count": 4
     },
     {
@@ -248,11 +308,31 @@
       "count": 4
     },
     {
+      "domain": "rtb.openx.net",
+      "count": 4
+    },
+    {
+      "domain": "sb.scorecardresearch.com",
+      "count": 4
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 4
     },
     {
+      "domain": "securepubads.g.doubleclick.net",
+      "count": 4
+    },
+    {
+      "domain": "tlx.3lift.com",
+      "count": 4
+    },
+    {
       "domain": "tracking.purchasely.io",
+      "count": 4
+    },
+    {
+      "domain": "ups.analytics.yahoo.com",
       "count": 4
     },
     {
@@ -285,10 +365,6 @@
     },
     {
       "domain": "akamai.tiqcdn.com",
-      "count": 2
-    },
-    {
-      "domain": "alocdn.com",
       "count": 2
     },
     {
@@ -332,10 +408,6 @@
       "count": 2
     },
     {
-      "domain": "b-code.liadm.com",
-      "count": 2
-    },
-    {
       "domain": "bat.bing.com",
       "count": 2
     },
@@ -372,10 +444,6 @@
       "count": 2
     },
     {
-      "domain": "c2shb.ssp.yahoo.com",
-      "count": 2
-    },
-    {
       "domain": "cdn.brandmetrics.com",
       "count": 2
     },
@@ -393,10 +461,6 @@
     },
     {
       "domain": "cdn.p-n.io",
-      "count": 2
-    },
-    {
-      "domain": "cdn.parsely.com",
       "count": 2
     },
     {
@@ -444,10 +508,6 @@
       "count": 2
     },
     {
-      "domain": "direct.adsrvr.org",
-      "count": 2
-    },
-    {
       "domain": "display.bidder.taboola.com",
       "count": 2
     },
@@ -464,27 +524,7 @@
       "count": 2
     },
     {
-      "domain": "experiments.parsely.com",
-      "count": 2
-    },
-    {
-      "domain": "fastlane.rubiconproject.com",
-      "count": 2
-    },
-    {
       "domain": "geolocation.onetrust.com",
-      "count": 2
-    },
-    {
-      "domain": "grid-bidder.criteo.com",
-      "count": 2
-    },
-    {
-      "domain": "gum.criteo.com",
-      "count": 2
-    },
-    {
-      "domain": "hbopenbid.pubmatic.com",
       "count": 2
     },
     {
@@ -496,15 +536,7 @@
       "count": 2
     },
     {
-      "domain": "htlb.casalemedia.com",
-      "count": 2
-    },
-    {
       "domain": "i.liadm.com",
-      "count": 2
-    },
-    {
-      "domain": "ib.adnxs.com",
       "count": 2
     },
     {
@@ -540,23 +572,11 @@
       "count": 2
     },
     {
-      "domain": "lexicon.33across.com",
-      "count": 2
-    },
-    {
-      "domain": "match.adsrvr.org",
-      "count": 2
-    },
-    {
       "domain": "match.sharethrough.com",
       "count": 2
     },
     {
       "domain": "merequartz.com",
-      "count": 2
-    },
-    {
-      "domain": "metrics.rapidedge.io",
       "count": 2
     },
     {
@@ -596,6 +616,10 @@
       "count": 2
     },
     {
+      "domain": "pubads.g.doubleclick.net",
+      "count": 2
+    },
+    {
       "domain": "reporting-api.gannettinnovation.com",
       "count": 2
     },
@@ -605,10 +629,6 @@
     },
     {
       "domain": "rtb.mfadsrvr.com",
-      "count": 2
-    },
-    {
-      "domain": "rtb.openx.net",
       "count": 2
     },
     {
@@ -625,10 +645,6 @@
     },
     {
       "domain": "s.seedtag.com",
-      "count": 2
-    },
-    {
-      "domain": "sb.scorecardresearch.com",
       "count": 2
     },
     {
@@ -649,10 +665,6 @@
     },
     {
       "domain": "secure.cdn.fastclick.net",
-      "count": 2
-    },
-    {
-      "domain": "securepubads.g.doubleclick.net",
       "count": 2
     },
     {
@@ -740,10 +752,6 @@
       "count": 2
     },
     {
-      "domain": "tlx.3lift.com",
-      "count": 2
-    },
-    {
       "domain": "tpc.googlesyndication.com",
       "count": 2
     },
@@ -776,10 +784,6 @@
       "count": 2
     },
     {
-      "domain": "ups.analytics.yahoo.com",
-      "count": 2
-    },
-    {
       "domain": "ups.tt.omtrdc.net",
       "count": 2
     },
@@ -805,10 +809,6 @@
     },
     {
       "domain": "partner.googleadservices.com",
-      "count": 1
-    },
-    {
-      "domain": "pubads.g.doubleclick.net",
       "count": 1
     },
     {
