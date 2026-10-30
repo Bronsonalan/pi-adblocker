@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 4105,
-  "blocked": 450,
+  "queries": 4194,
+  "blocked": 454,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -26,11 +26,11 @@
     "datacloud.tealiumiq.com": 6,
     "dsum-sec.casalemedia.com": 2,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 6,
+    "googleads.g.doubleclick.net": 8,
     "http-intake.logs.datadoghq.com": 3,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 315,
+    "mask.icloud.com": 317,
     "pagead2.googlesyndication.com": 2,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -58,18 +58,18 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 315
+      "count": 317
     },
     {
       "domain": "api2.amplitude.com",
       "count": 10
     },
     {
-      "domain": "datacloud.tealiumiq.com",
-      "count": 6
+      "domain": "googleads.g.doubleclick.net",
+      "count": 8
     },
     {
-      "domain": "googleads.g.doubleclick.net",
+      "domain": "datacloud.tealiumiq.com",
       "count": 6
     },
     {
