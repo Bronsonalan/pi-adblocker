@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 8747,
-  "blocked": 1082,
+  "queries": 8961,
+  "blocked": 1108,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
@@ -38,7 +38,7 @@
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.inapps.appsflyersdk.com": 4,
     "bkldaf.launches.appsflyersdk.com": 4,
-    "bkldaf.skadsdkless.appsflyersdk.com": 2,
+    "bkldaf.skadsdkless.appsflyersdk.com": 4,
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
     "bzrcdn.openai.com": 4,
@@ -95,8 +95,8 @@
     "jadserve.postrelease.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 8,
-    "mask-h2.icloud.com": 50,
-    "mask.icloud.com": 468,
+    "mask-h2.icloud.com": 56,
+    "mask.icloud.com": 484,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -173,17 +173,17 @@
     "www.googleadservices.com": 10,
     "www.googletagmanager.com": 10,
     "www.googletagservices.com": 2,
-    "www.reddit.com": 2,
+    "www.reddit.com": 4,
     "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 468
+      "count": 484
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 50
+      "count": 56
     },
     {
       "domain": "googleads.g.doubleclick.net",
@@ -326,6 +326,10 @@
       "count": 4
     },
     {
+      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
+      "count": 4
+    },
+    {
       "domain": "bzrcdn.openai.com",
       "count": 4
     },
@@ -371,6 +375,10 @@
     },
     {
       "domain": "www.google-analytics.com",
+      "count": 4
+    },
+    {
+      "domain": "www.reddit.com",
       "count": 4
     },
     {
@@ -463,10 +471,6 @@
     },
     {
       "domain": "bkldaf.cdn-settings.appsflyersdk.com",
-      "count": 2
-    },
-    {
-      "domain": "bkldaf.skadsdkless.appsflyersdk.com",
       "count": 2
     },
     {
@@ -847,10 +851,6 @@
     },
     {
       "domain": "www.googletagservices.com",
-      "count": 2
-    },
-    {
-      "domain": "www.reddit.com",
       "count": 2
     },
     {
