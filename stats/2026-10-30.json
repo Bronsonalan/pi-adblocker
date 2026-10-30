@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 5965,
-  "blocked": 533,
+  "queries": 6220,
+  "blocked": 551,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -36,8 +36,8 @@
     "http-intake.logs.datadoghq.com": 6,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask-h2.icloud.com": 4,
-    "mask.icloud.com": 365,
+    "mask-h2.icloud.com": 10,
+    "mask.icloud.com": 377,
     "pagead2.googlesyndication.com": 4,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -65,7 +65,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 365
+      "count": 377
     },
     {
       "domain": "api2.amplitude.com",
@@ -73,6 +73,10 @@
     },
     {
       "domain": "googleads.g.doubleclick.net",
+      "count": 10
+    },
+    {
+      "domain": "mask-h2.icloud.com",
       "count": 10
     },
     {
@@ -113,10 +117,6 @@
     },
     {
       "domain": "cdn.branch.io",
-      "count": 4
-    },
-    {
-      "domain": "mask-h2.icloud.com",
       "count": 4
     },
     {
@@ -297,7 +297,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 20,
+    "timeout": 22,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
