@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 4194,
-  "blocked": 454,
+  "queries": 4341,
+  "blocked": 458,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -30,7 +30,7 @@
     "http-intake.logs.datadoghq.com": 3,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 317,
+    "mask.icloud.com": 321,
     "pagead2.googlesyndication.com": 2,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -58,7 +58,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 317
+      "count": 321
     },
     {
       "domain": "api2.amplitude.com",
