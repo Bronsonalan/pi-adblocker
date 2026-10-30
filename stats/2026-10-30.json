@@ -1,23 +1,28 @@
 {
   "date": "2026-10-30",
-  "queries": 4914,
-  "blocked": 486,
+  "queries": 5185,
+  "blocked": 506,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
     "ad.doubleclick.net": 2,
     "akamai.tiqcdn.com": 2,
+    "analytics-ipv6.tiktokw.us": 2,
+    "analytics.tiktok.com": 4,
     "api.company-target.com": 2,
     "api.iterable.com": 2,
+    "api.mixpanel.com": 2,
     "api.segment.io": 4,
     "api2.amplitude.com": 10,
     "api3.branch.io": 4,
     "app-measurement.com": 5,
     "assetsconfigcdn.org": 4,
+    "att.launches.appsflyersdk.com": 2,
     "bam.nr-data.net": 2,
     "bat.bing.com": 2,
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.com": 2,
+    "bzrcdn.openai.com": 4,
     "c.go-mpulse.net": 2,
     "cdn.branch.io": 4,
     "cdn.cookielaw.org": 2,
@@ -26,11 +31,11 @@
     "datacloud.tealiumiq.com": 6,
     "dsum-sec.casalemedia.com": 2,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 8,
+    "googleads.g.doubleclick.net": 10,
     "http-intake.logs.datadoghq.com": 4,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 347,
+    "mask.icloud.com": 351,
     "pagead2.googlesyndication.com": 2,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -58,7 +63,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 347
+      "count": 351
     },
     {
       "domain": "api2.amplitude.com",
@@ -66,7 +71,7 @@
     },
     {
       "domain": "googleads.g.doubleclick.net",
-      "count": 8
+      "count": 10
     },
     {
       "domain": "datacloud.tealiumiq.com",
@@ -75,6 +80,10 @@
     {
       "domain": "app-measurement.com",
       "count": 5
+    },
+    {
+      "domain": "analytics.tiktok.com",
+      "count": 4
     },
     {
       "domain": "api.segment.io",
@@ -86,6 +95,10 @@
     },
     {
       "domain": "assetsconfigcdn.org",
+      "count": 4
+    },
+    {
+      "domain": "bzrcdn.openai.com",
       "count": 4
     },
     {
@@ -129,11 +142,23 @@
       "count": 2
     },
     {
+      "domain": "analytics-ipv6.tiktokw.us",
+      "count": 2
+    },
+    {
       "domain": "api.company-target.com",
       "count": 2
     },
     {
       "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api.mixpanel.com",
+      "count": 2
+    },
+    {
+      "domain": "att.launches.appsflyersdk.com",
       "count": 2
     },
     {
@@ -262,7 +287,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 12,
+    "timeout": 14,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
