@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 3823,
-  "blocked": 428,
+  "queries": 4105,
+  "blocked": 450,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -26,11 +26,12 @@
     "datacloud.tealiumiq.com": 6,
     "dsum-sec.casalemedia.com": 2,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 2,
+    "googleads.g.doubleclick.net": 6,
     "http-intake.logs.datadoghq.com": 3,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 305,
+    "mask.icloud.com": 315,
+    "pagead2.googlesyndication.com": 2,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
     "s.company-target.com": 2,
@@ -41,6 +42,7 @@
     "smetrics.ups.com": 2,
     "sp.analytics.yahoo.com": 2,
     "sr-client-cfg.amplitude.com": 2,
+    "static.doubleclick.net": 2,
     "tag-logger.demandbase.com": 2,
     "tags.tiqcdn.com": 2,
     "track.capitaloneshopping.com": 2,
@@ -49,14 +51,14 @@
     "ups.tt.omtrdc.net": 2,
     "visitor-service.tealiumiq.com": 2,
     "www.google-analytics.com": 2,
-    "www.googleadservices.com": 2,
-    "www.googletagmanager.com": 2,
+    "www.googleadservices.com": 4,
+    "www.googletagmanager.com": 4,
     "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 305
+      "count": 315
     },
     {
       "domain": "api2.amplitude.com",
@@ -64,6 +66,10 @@
     },
     {
       "domain": "datacloud.tealiumiq.com",
+      "count": 6
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
       "count": 6
     },
     {
@@ -88,6 +94,14 @@
     },
     {
       "domain": "tracking.purchasely.io",
+      "count": 4
+    },
+    {
+      "domain": "www.googleadservices.com",
+      "count": 4
+    },
+    {
+      "domain": "www.googletagmanager.com",
       "count": 4
     },
     {
@@ -163,15 +177,15 @@
       "count": 2
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 2
-    },
-    {
       "domain": "image2.pubmatic.com",
       "count": 2
     },
     {
       "domain": "ingest.quantummetric.com",
+      "count": 2
+    },
+    {
+      "domain": "pagead2.googlesyndication.com",
       "count": 2
     },
     {
@@ -211,6 +225,10 @@
       "count": 2
     },
     {
+      "domain": "static.doubleclick.net",
+      "count": 2
+    },
+    {
       "domain": "tag-logger.demandbase.com",
       "count": 2
     },
@@ -239,20 +257,12 @@
       "count": 2
     },
     {
-      "domain": "www.googleadservices.com",
-      "count": 2
-    },
-    {
-      "domain": "www.googletagmanager.com",
-      "count": 2
-    },
-    {
       "domain": "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com",
       "count": 2
     }
   ],
   "upstream_errors": {
-    "timeout": 8,
+    "timeout": 10,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
