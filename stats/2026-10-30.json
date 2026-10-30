@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 5380,
-  "blocked": 514,
+  "queries": 5703,
+  "blocked": 521,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -33,10 +33,11 @@
     "firebase-settings.crashlytics.com": 2,
     "geolocation.onetrust.com": 2,
     "googleads.g.doubleclick.net": 10,
-    "http-intake.logs.datadoghq.com": 4,
+    "http-intake.logs.datadoghq.com": 5,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 353,
+    "mask-h2.icloud.com": 2,
+    "mask.icloud.com": 357,
     "pagead2.googlesyndication.com": 4,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
@@ -64,7 +65,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 353
+      "count": 357
     },
     {
       "domain": "api2.amplitude.com",
@@ -84,6 +85,10 @@
     },
     {
       "domain": "app-measurement.com",
+      "count": 5
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
       "count": 5
     },
     {
@@ -108,10 +113,6 @@
     },
     {
       "domain": "cdn.branch.io",
-      "count": 4
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
       "count": 4
     },
     {
@@ -219,6 +220,10 @@
       "count": 2
     },
     {
+      "domain": "mask-h2.icloud.com",
+      "count": 2
+    },
+    {
       "domain": "partners.tremorhub.com",
       "count": 2
     },
@@ -292,7 +297,7 @@
     }
   ],
   "upstream_errors": {
-    "timeout": 17,
+    "timeout": 20,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
