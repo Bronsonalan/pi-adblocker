@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 1929,
-  "blocked": 159,
+  "queries": 1942,
+  "blocked": 161,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.segment.io": 2,
@@ -13,7 +13,7 @@
     "browser-intake-datadoghq.com": 2,
     "cdn.branch.io": 4,
     "http-intake.logs.datadoghq.com": 2,
-    "mask.icloud.com": 116,
+    "mask.icloud.com": 118,
     "sdk.iad-03.braze.com": 4,
     "sr-client-cfg.amplitude.com": 2,
     "track.customer.io": 2
@@ -21,7 +21,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 116
+      "count": 118
     },
     {
       "domain": "api2.amplitude.com",
