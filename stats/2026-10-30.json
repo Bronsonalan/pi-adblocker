@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 3549,
-  "blocked": 413,
+  "queries": 3678,
+  "blocked": 420,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "ace8a422.akstat.io": 2,
@@ -12,7 +12,7 @@
     "api.segment.io": 3,
     "api2.amplitude.com": 10,
     "api3.branch.io": 4,
-    "app-measurement.com": 4,
+    "app-measurement.com": 5,
     "assetsconfigcdn.org": 4,
     "bam.nr-data.net": 2,
     "bat.bing.com": 2,
@@ -30,7 +30,7 @@
     "http-intake.logs.datadoghq.com": 3,
     "image2.pubmatic.com": 2,
     "ingest.quantummetric.com": 2,
-    "mask.icloud.com": 293,
+    "mask.icloud.com": 297,
     "partners.tremorhub.com": 2,
     "pixel.rubiconproject.com": 2,
     "s.company-target.com": 2,
@@ -45,7 +45,7 @@
     "tags.tiqcdn.com": 2,
     "track.capitaloneshopping.com": 2,
     "track.customer.io": 2,
-    "tracking.purchasely.io": 2,
+    "tracking.purchasely.io": 4,
     "ups.tt.omtrdc.net": 2,
     "visitor-service.tealiumiq.com": 2,
     "www.google-analytics.com": 2,
@@ -56,7 +56,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 293
+      "count": 297
     },
     {
       "domain": "api2.amplitude.com",
@@ -67,11 +67,11 @@
       "count": 6
     },
     {
-      "domain": "api3.branch.io",
-      "count": 4
+      "domain": "app-measurement.com",
+      "count": 5
     },
     {
-      "domain": "app-measurement.com",
+      "domain": "api3.branch.io",
       "count": 4
     },
     {
@@ -84,6 +84,10 @@
     },
     {
       "domain": "sdk.iad-03.braze.com",
+      "count": 4
+    },
+    {
+      "domain": "tracking.purchasely.io",
       "count": 4
     },
     {
@@ -220,10 +224,6 @@
     },
     {
       "domain": "track.customer.io",
-      "count": 2
-    },
-    {
-      "domain": "tracking.purchasely.io",
       "count": 2
     },
     {
