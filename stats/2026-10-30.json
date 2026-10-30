@@ -1,32 +1,70 @@
 {
   "date": "2026-10-30",
-  "queries": 3045,
-  "blocked": 327,
+  "queries": 3337,
+  "blocked": 405,
   "blocked_domains": {
+    "6451349.fls.doubleclick.net": 2,
+    "ace8a422.akstat.io": 2,
+    "ad.doubleclick.net": 2,
+    "akamai.tiqcdn.com": 2,
+    "api.company-target.com": 2,
     "api.iterable.com": 2,
     "api.segment.io": 2,
     "api2.amplitude.com": 10,
     "api3.branch.io": 4,
     "app-measurement.com": 4,
     "assetsconfigcdn.org": 4,
+    "bam.nr-data.net": 2,
+    "bat.bing.com": 2,
     "beyondwickedmapping.org": 2,
     "browser-intake-datadoghq.com": 2,
+    "c.go-mpulse.net": 2,
     "cdn.branch.io": 4,
+    "cdn.cookielaw.org": 2,
+    "cdn.quantummetric.com": 2,
+    "collect.tealiumiq.com": 2,
+    "datacloud.tealiumiq.com": 6,
+    "dsum-sec.casalemedia.com": 2,
+    "geolocation.onetrust.com": 2,
+    "googleads.g.doubleclick.net": 2,
     "http-intake.logs.datadoghq.com": 2,
-    "mask.icloud.com": 281,
+    "image2.pubmatic.com": 2,
+    "ingest.quantummetric.com": 2,
+    "mask.icloud.com": 287,
+    "partners.tremorhub.com": 2,
+    "pixel.rubiconproject.com": 2,
+    "s.company-target.com": 2,
+    "s.go-mpulse.net": 2,
+    "scripts.demandbase.com": 2,
     "sdk.iad-03.braze.com": 4,
+    "siteintercept.qualtrics.com": 2,
+    "smetrics.ups.com": 2,
+    "sp.analytics.yahoo.com": 2,
     "sr-client-cfg.amplitude.com": 2,
+    "tag-logger.demandbase.com": 2,
+    "tags.tiqcdn.com": 2,
+    "track.capitaloneshopping.com": 2,
     "track.customer.io": 2,
-    "tracking.purchasely.io": 2
+    "tracking.purchasely.io": 2,
+    "ups.tt.omtrdc.net": 2,
+    "visitor-service.tealiumiq.com": 2,
+    "www.google-analytics.com": 2,
+    "www.googleadservices.com": 2,
+    "www.googletagmanager.com": 2,
+    "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 281
+      "count": 287
     },
     {
       "domain": "api2.amplitude.com",
       "count": 10
+    },
+    {
+      "domain": "datacloud.tealiumiq.com",
+      "count": 6
     },
     {
       "domain": "api3.branch.io",
@@ -49,11 +87,39 @@
       "count": 4
     },
     {
+      "domain": "6451349.fls.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "ace8a422.akstat.io",
+      "count": 2
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "akamai.tiqcdn.com",
+      "count": 2
+    },
+    {
+      "domain": "api.company-target.com",
+      "count": 2
+    },
+    {
       "domain": "api.iterable.com",
       "count": 2
     },
     {
       "domain": "api.segment.io",
+      "count": 2
+    },
+    {
+      "domain": "bam.nr-data.net",
+      "count": 2
+    },
+    {
+      "domain": "bat.bing.com",
       "count": 2
     },
     {
@@ -65,11 +131,91 @@
       "count": 2
     },
     {
+      "domain": "c.go-mpulse.net",
+      "count": 2
+    },
+    {
+      "domain": "cdn.cookielaw.org",
+      "count": 2
+    },
+    {
+      "domain": "cdn.quantummetric.com",
+      "count": 2
+    },
+    {
+      "domain": "collect.tealiumiq.com",
+      "count": 2
+    },
+    {
+      "domain": "dsum-sec.casalemedia.com",
+      "count": 2
+    },
+    {
+      "domain": "geolocation.onetrust.com",
+      "count": 2
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 2
+    },
+    {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 2
     },
     {
+      "domain": "image2.pubmatic.com",
+      "count": 2
+    },
+    {
+      "domain": "ingest.quantummetric.com",
+      "count": 2
+    },
+    {
+      "domain": "partners.tremorhub.com",
+      "count": 2
+    },
+    {
+      "domain": "pixel.rubiconproject.com",
+      "count": 2
+    },
+    {
+      "domain": "s.company-target.com",
+      "count": 2
+    },
+    {
+      "domain": "s.go-mpulse.net",
+      "count": 2
+    },
+    {
+      "domain": "scripts.demandbase.com",
+      "count": 2
+    },
+    {
+      "domain": "siteintercept.qualtrics.com",
+      "count": 2
+    },
+    {
+      "domain": "smetrics.ups.com",
+      "count": 2
+    },
+    {
+      "domain": "sp.analytics.yahoo.com",
+      "count": 2
+    },
+    {
       "domain": "sr-client-cfg.amplitude.com",
+      "count": 2
+    },
+    {
+      "domain": "tag-logger.demandbase.com",
+      "count": 2
+    },
+    {
+      "domain": "tags.tiqcdn.com",
+      "count": 2
+    },
+    {
+      "domain": "track.capitaloneshopping.com",
       "count": 2
     },
     {
@@ -78,6 +224,30 @@
     },
     {
       "domain": "tracking.purchasely.io",
+      "count": 2
+    },
+    {
+      "domain": "ups.tt.omtrdc.net",
+      "count": 2
+    },
+    {
+      "domain": "visitor-service.tealiumiq.com",
+      "count": 2
+    },
+    {
+      "domain": "www.google-analytics.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googleadservices.com",
+      "count": 2
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 2
+    },
+    {
+      "domain": "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com",
       "count": 2
     }
   ],
