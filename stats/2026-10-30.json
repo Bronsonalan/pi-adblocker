@@ -1,38 +1,53 @@
 {
   "date": "2026-10-30",
-  "queries": 1190,
-  "blocked": 51,
+  "queries": 1373,
+  "blocked": 73,
   "blocked_domains": {
-    "api.segment.io": 1,
+    "api.iterable.com": 2,
+    "api.segment.io": 2,
+    "api2.amplitude.com": 4,
     "app-measurement.com": 1,
-    "http-intake.logs.datadoghq.com": 1,
-    "mask.icloud.com": 46,
+    "http-intake.logs.datadoghq.com": 2,
+    "mask.icloud.com": 58,
+    "sr-client-cfg.amplitude.com": 2,
     "track.customer.io": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 46
+      "count": 58
+    },
+    {
+      "domain": "api2.amplitude.com",
+      "count": 4
+    },
+    {
+      "domain": "api.iterable.com",
+      "count": 2
+    },
+    {
+      "domain": "api.segment.io",
+      "count": 2
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 2
+    },
+    {
+      "domain": "sr-client-cfg.amplitude.com",
+      "count": 2
     },
     {
       "domain": "track.customer.io",
       "count": 2
     },
     {
-      "domain": "api.segment.io",
-      "count": 1
-    },
-    {
       "domain": "app-measurement.com",
-      "count": 1
-    },
-    {
-      "domain": "http-intake.logs.datadoghq.com",
       "count": 1
     }
   ],
   "upstream_errors": {
-    "timeout": 1,
+    "timeout": 3,
     "servfail": 0,
     "refused": 0,
     "socket": 0,
