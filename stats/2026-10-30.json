@@ -1,25 +1,51 @@
 {
   "date": "2026-10-30",
-  "queries": 1373,
-  "blocked": 73,
+  "queries": 1559,
+  "blocked": 105,
   "blocked_domains": {
     "api.iterable.com": 2,
     "api.segment.io": 2,
-    "api2.amplitude.com": 4,
-    "app-measurement.com": 1,
+    "api2.amplitude.com": 10,
+    "api3.branch.io": 4,
+    "app-measurement.com": 3,
+    "assetsconfigcdn.org": 4,
+    "beyondwickedmapping.org": 2,
+    "browser-intake-datadoghq.com": 2,
+    "cdn.branch.io": 4,
     "http-intake.logs.datadoghq.com": 2,
-    "mask.icloud.com": 58,
+    "mask.icloud.com": 62,
+    "sdk.iad-03.braze.com": 4,
     "sr-client-cfg.amplitude.com": 2,
     "track.customer.io": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 58
+      "count": 62
     },
     {
       "domain": "api2.amplitude.com",
+      "count": 10
+    },
+    {
+      "domain": "api3.branch.io",
       "count": 4
+    },
+    {
+      "domain": "assetsconfigcdn.org",
+      "count": 4
+    },
+    {
+      "domain": "cdn.branch.io",
+      "count": 4
+    },
+    {
+      "domain": "sdk.iad-03.braze.com",
+      "count": 4
+    },
+    {
+      "domain": "app-measurement.com",
+      "count": 3
     },
     {
       "domain": "api.iterable.com",
@@ -27,6 +53,14 @@
     },
     {
       "domain": "api.segment.io",
+      "count": 2
+    },
+    {
+      "domain": "beyondwickedmapping.org",
+      "count": 2
+    },
+    {
+      "domain": "browser-intake-datadoghq.com",
       "count": 2
     },
     {
@@ -40,10 +74,6 @@
     {
       "domain": "track.customer.io",
       "count": 2
-    },
-    {
-      "domain": "app-measurement.com",
-      "count": 1
     }
   ],
   "upstream_errors": {
