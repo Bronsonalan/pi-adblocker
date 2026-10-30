@@ -1,13 +1,15 @@
 {
   "date": "2026-10-30",
-  "queries": 10248,
-  "blocked": 1187,
+  "queries": 10847,
+  "blocked": 1311,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
+    "685973.fls.doubleclick.net": 2,
     "a.teads.tv": 2,
     "aax.amazon-adsystem.com": 2,
     "ace8a422.akstat.io": 2,
-    "ad.doubleclick.net": 4,
+    "ad.doubleclick.net": 6,
+    "adobedc.net.ssl.sc.omtrdc.net": 1,
     "ads.pubmatic.com": 2,
     "ads.yieldmo.com": 2,
     "akamai.tiqcdn.com": 2,
@@ -15,6 +17,7 @@
     "alocdn.com": 4,
     "analytics-ipv6.tiktokw.us": 2,
     "analytics.tiktok.com": 4,
+    "analytics.twitter.com": 2,
     "ap.lijit.com": 2,
     "apex.go.sonobi.com": 2,
     "api.btloader.com": 2,
@@ -23,17 +26,19 @@
     "api.lab.amplitude.com": 2,
     "api.mixpanel.com": 2,
     "api.rlcdn.com": 2,
-    "api.segment.io": 7,
+    "api.segment.io": 8,
     "api2.amplitude.com": 14,
     "api3.branch.io": 4,
     "app-measurement.com": 8,
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
     "b-code.liadm.com": 8,
-    "bam.nr-data.net": 4,
+    "bam-cell.nr-data.net": 6,
+    "bam.nr-data.net": 8,
     "bat.bing.com": 2,
     "beacon.bidder.taboola.com": 2,
     "beyondwickedmapping.org": 2,
+    "bh.contextweb.com": 2,
     "bidder.criteo.com": 2,
     "bkldaf.cdn-settings.appsflyersdk.com": 2,
     "bkldaf.inapps.appsflyersdk.com": 4,
@@ -42,7 +47,8 @@
     "browser-intake-datadoghq.com": 2,
     "btloader.com": 2,
     "bzrcdn.openai.com": 4,
-    "c.amazon-adsystem.com": 2,
+    "c.amazon-adsystem.com": 4,
+    "c.bing.com": 2,
     "c.go-mpulse.net": 2,
     "c2.taboola.com": 2,
     "c2shb.ssp.yahoo.com": 10,
@@ -53,20 +59,26 @@
     "cdn.id5-sync.com": 2,
     "cdn.p-n.io": 2,
     "cdn.parsely.com": 8,
-    "cdn.quantummetric.com": 2,
+    "cdn.quantummetric.com": 4,
     "cdn.taboola.com": 2,
     "cdn.undertone.com": 2,
     "ce.lijit.com": 2,
     "client.aps.amazon-adsystem.com": 2,
+    "cm.g.doubleclick.net": 2,
+    "cms.analytics.yahoo.com": 2,
     "collect.tealiumiq.com": 2,
     "config.aps.amazon-adsystem.com": 2,
     "crb.kargo.com": 2,
     "cs.admanmedia.com": 2,
     "cs.media.net": 2,
     "csync.loopme.me": 2,
+    "ct.pinterest.com": 2,
+    "d.adroll.com": 2,
+    "d.turn.com": 2,
     "datacloud.tealiumiq.com": 6,
     "direct.adsrvr.org": 10,
     "display.bidder.taboola.com": 2,
+    "dpm.demdex.net": 2,
     "dsum-sec.casalemedia.com": 2,
     "dt.adsafeprotected.com": 2,
     "eb2.3lift.com": 2,
@@ -75,14 +87,14 @@
     "fastlane.rubiconproject.com": 10,
     "firebase-settings.crashlytics.com": 8,
     "geolocation.onetrust.com": 2,
-    "googleads.g.doubleclick.net": 14,
+    "googleads.g.doubleclick.net": 16,
     "grid-bidder.criteo.com": 10,
     "gum.criteo.com": 8,
     "hbopenbid.pubmatic.com": 10,
     "hbx.media.net": 2,
     "hq2zc2zefnwmg3wcm.ay.delivery": 2,
     "htlb.casalemedia.com": 10,
-    "http-intake.logs.datadoghq.com": 10,
+    "http-intake.logs.datadoghq.com": 11,
     "i.liadm.com": 2,
     "ib.adnxs.com": 10,
     "id.rlcdn.com": 4,
@@ -91,12 +103,16 @@
     "image8.pubmatic.com": 2,
     "img.connatix.com": 2,
     "ingest.quantummetric.com": 2,
+    "ingestusipv4.quantummetric.com": 2,
     "insight.adsrvr.org": 2,
+    "ipv4.d.adroll.com": 2,
     "jadserve.postrelease.com": 2,
+    "js-agent.newrelic.com": 2,
     "k.p-n.io": 2,
     "lexicon.33across.com": 8,
-    "mask-h2.icloud.com": 66,
-    "mask.icloud.com": 532,
+    "login-ds.dotomi.com": 2,
+    "mask-h2.icloud.com": 68,
+    "mask.icloud.com": 545,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -106,25 +122,37 @@
     "p1.parsely.com": 2,
     "pagead2.googlesyndication.com": 4,
     "partner.googleadservices.com": 1,
-    "partners.tremorhub.com": 2,
+    "partners.tremorhub.com": 4,
     "pi.reddit.com": 4,
     "pixel.adsafeprotected.com": 2,
     "pixel.rubiconproject.com": 4,
+    "pixel.tapad.com": 2,
     "pm-widget.taboola.com": 2,
+    "pnapi.invoca.net": 2,
     "polarcdn-terrax.com": 2,
     "prebid.a-mo.net": 2,
     "prebid.adnxs.com": 2,
+    "pt.ispot.tv": 2,
     "pubads.g.doubleclick.net": 4,
+    "px.ads.linkedin.com": 2,
     "reporting-api.gannettinnovation.com": 2,
+    "resources.xg4ken.com": 2,
     "rp.liadm.com": 2,
     "rtb.mfadsrvr.com": 2,
     "rtb.openx.net": 10,
+    "rtr.innovid.com": 2,
+    "s-a.innovid.com": 2,
+    "s-static.innovid.com": 2,
     "s.ad.smaato.net": 2,
+    "s.adroll.com": 2,
+    "s.amazon-adsystem.com": 2,
     "s.company-target.com": 2,
     "s.go-mpulse.net": 2,
     "s.seedtag.com": 2,
     "s0.2mdn.net": 1,
+    "sanalytics.verizon.com": 2,
     "sb.scorecardresearch.com": 8,
+    "sc-static.net": 2,
     "scripts.demandbase.com": 2,
     "scripts.webcontentassessor.com": 2,
     "sdk.iad-03.braze.com": 4,
@@ -132,19 +160,24 @@
     "secure.adnxs.com": 2,
     "secure.cdn.fastclick.net": 2,
     "securepubads.g.doubleclick.net": 8,
-    "siteintercept.qualtrics.com": 2,
+    "siteintercept.qualtrics.com": 4,
     "smetrics.ups.com": 2,
-    "sp.analytics.yahoo.com": 2,
+    "snap.licdn.com": 2,
+    "solutions.invocacdn.com": 2,
+    "sp.analytics.yahoo.com": 4,
     "sr-client-cfg.amplitude.com": 4,
     "ssbsync.smartadserver.com": 2,
     "ssc-cms.33across.com": 2,
     "ssp-sync.criteo.com": 2,
     "sstats.adobe.com": 2,
     "ssum-sec.casalemedia.com": 2,
+    "stags.bluekai.com": 1,
+    "static.ads-twitter.com": 2,
     "static.adsafeprotected.com": 2,
     "static.cdn.trustx.org": 2,
     "static.doubleclick.net": 2,
     "static.tblcontent.com": 2,
+    "stats.g.doubleclick.net": 2,
     "sync.1rx.io": 2,
     "sync.colossusssp.com": 2,
     "sync.go.sonobi.com": 2,
@@ -152,46 +185,63 @@
     "tag-logger.demandbase.com": 2,
     "tag.simpli.fi": 2,
     "tags.crwdcntrl.net": 2,
-    "tags.tiqcdn.com": 2,
+    "tags.pw.adn.cloud": 2,
+    "tags.tiqcdn.com": 3,
     "tlx.3lift.com": 10,
     "tpc.googlesyndication.com": 4,
     "tr.blismedia.com": 2,
-    "track.capitaloneshopping.com": 2,
+    "tr.snapchat.com": 2,
+    "tr6.snapchat.com": 2,
+    "track.capitaloneshopping.com": 4,
     "track.celtra.com": 2,
     "track.customer.io": 2,
     "tracking.purchasely.io": 4,
     "traxex.gannettdigital.com": 2,
-    "trc.taboola.com": 2,
+    "trc.taboola.com": 4,
     "u.openx.net": 2,
-    "ups.analytics.yahoo.com": 8,
+    "ups.analytics.yahoo.com": 10,
     "ups.tt.omtrdc.net": 2,
     "user-sync.fwmrm.net": 2,
     "visitor-service.tealiumiq.com": 2,
     "w3-reporting.reddit.com": 2,
     "wa.appsflyersdk.com": 2,
     "www.google-analytics.com": 4,
-    "www.googleadservices.com": 10,
-    "www.googletagmanager.com": 10,
+    "www.googleadservices.com": 12,
+    "www.googletagmanager.com": 12,
     "www.googletagservices.com": 2,
     "www.reddit.com": 4,
-    "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2
+    "www.redditstatic.com": 2,
+    "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com": 2,
+    "zn9nssxmv9itcz7nq-verizoncx.siteintercept.qualtrics.com": 2
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 532
+      "count": 545
     },
     {
       "domain": "mask-h2.icloud.com",
-      "count": 66
+      "count": 68
+    },
+    {
+      "domain": "googleads.g.doubleclick.net",
+      "count": 16
     },
     {
       "domain": "api2.amplitude.com",
       "count": 14
     },
     {
-      "domain": "googleads.g.doubleclick.net",
-      "count": 14
+      "domain": "www.googleadservices.com",
+      "count": 12
+    },
+    {
+      "domain": "www.googletagmanager.com",
+      "count": 12
+    },
+    {
+      "domain": "http-intake.logs.datadoghq.com",
+      "count": 11
     },
     {
       "domain": "c2shb.ssp.yahoo.com",
@@ -218,10 +268,6 @@
       "count": 10
     },
     {
-      "domain": "http-intake.logs.datadoghq.com",
-      "count": 10
-    },
-    {
       "domain": "ib.adnxs.com",
       "count": 10
     },
@@ -234,12 +280,12 @@
       "count": 10
     },
     {
-      "domain": "www.googleadservices.com",
+      "domain": "ups.analytics.yahoo.com",
       "count": 10
     },
     {
-      "domain": "www.googletagmanager.com",
-      "count": 10
+      "domain": "api.segment.io",
+      "count": 8
     },
     {
       "domain": "app-measurement.com",
@@ -247,6 +293,10 @@
     },
     {
       "domain": "b-code.liadm.com",
+      "count": 8
+    },
+    {
+      "domain": "bam.nr-data.net",
       "count": 8
     },
     {
@@ -286,12 +336,12 @@
       "count": 8
     },
     {
-      "domain": "ups.analytics.yahoo.com",
-      "count": 8
+      "domain": "ad.doubleclick.net",
+      "count": 6
     },
     {
-      "domain": "api.segment.io",
-      "count": 7
+      "domain": "bam-cell.nr-data.net",
+      "count": 6
     },
     {
       "domain": "bkldaf.launches.appsflyersdk.com",
@@ -304,10 +354,6 @@
     {
       "domain": "datacloud.tealiumiq.com",
       "count": 6
-    },
-    {
-      "domain": "ad.doubleclick.net",
-      "count": 4
     },
     {
       "domain": "alocdn.com",
@@ -330,10 +376,6 @@
       "count": 4
     },
     {
-      "domain": "bam.nr-data.net",
-      "count": 4
-    },
-    {
       "domain": "bkldaf.inapps.appsflyersdk.com",
       "count": 4
     },
@@ -342,7 +384,15 @@
       "count": 4
     },
     {
+      "domain": "c.amazon-adsystem.com",
+      "count": 4
+    },
+    {
       "domain": "cdn.branch.io",
+      "count": 4
+    },
+    {
+      "domain": "cdn.quantummetric.com",
       "count": 4
     },
     {
@@ -351,6 +401,10 @@
     },
     {
       "domain": "pagead2.googlesyndication.com",
+      "count": 4
+    },
+    {
+      "domain": "partners.tremorhub.com",
       "count": 4
     },
     {
@@ -370,6 +424,14 @@
       "count": 4
     },
     {
+      "domain": "siteintercept.qualtrics.com",
+      "count": 4
+    },
+    {
+      "domain": "sp.analytics.yahoo.com",
+      "count": 4
+    },
+    {
       "domain": "sr-client-cfg.amplitude.com",
       "count": 4
     },
@@ -378,7 +440,15 @@
       "count": 4
     },
     {
+      "domain": "track.capitaloneshopping.com",
+      "count": 4
+    },
+    {
       "domain": "tracking.purchasely.io",
+      "count": 4
+    },
+    {
+      "domain": "trc.taboola.com",
       "count": 4
     },
     {
@@ -390,7 +460,15 @@
       "count": 4
     },
     {
+      "domain": "tags.tiqcdn.com",
+      "count": 3
+    },
+    {
       "domain": "6451349.fls.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "685973.fls.doubleclick.net",
       "count": 2
     },
     {
@@ -423,6 +501,10 @@
     },
     {
       "domain": "analytics-ipv6.tiktokw.us",
+      "count": 2
+    },
+    {
+      "domain": "analytics.twitter.com",
       "count": 2
     },
     {
@@ -470,6 +552,10 @@
       "count": 2
     },
     {
+      "domain": "bh.contextweb.com",
+      "count": 2
+    },
+    {
       "domain": "bidder.criteo.com",
       "count": 2
     },
@@ -486,7 +572,7 @@
       "count": 2
     },
     {
-      "domain": "c.amazon-adsystem.com",
+      "domain": "c.bing.com",
       "count": 2
     },
     {
@@ -518,10 +604,6 @@
       "count": 2
     },
     {
-      "domain": "cdn.quantummetric.com",
-      "count": 2
-    },
-    {
       "domain": "cdn.taboola.com",
       "count": 2
     },
@@ -535,6 +617,14 @@
     },
     {
       "domain": "client.aps.amazon-adsystem.com",
+      "count": 2
+    },
+    {
+      "domain": "cm.g.doubleclick.net",
+      "count": 2
+    },
+    {
+      "domain": "cms.analytics.yahoo.com",
       "count": 2
     },
     {
@@ -562,7 +652,23 @@
       "count": 2
     },
     {
+      "domain": "ct.pinterest.com",
+      "count": 2
+    },
+    {
+      "domain": "d.adroll.com",
+      "count": 2
+    },
+    {
+      "domain": "d.turn.com",
+      "count": 2
+    },
+    {
       "domain": "display.bidder.taboola.com",
+      "count": 2
+    },
+    {
+      "domain": "dpm.demdex.net",
       "count": 2
     },
     {
@@ -618,7 +724,15 @@
       "count": 2
     },
     {
+      "domain": "ingestusipv4.quantummetric.com",
+      "count": 2
+    },
+    {
       "domain": "insight.adsrvr.org",
+      "count": 2
+    },
+    {
+      "domain": "ipv4.d.adroll.com",
       "count": 2
     },
     {
@@ -626,7 +740,15 @@
       "count": 2
     },
     {
+      "domain": "js-agent.newrelic.com",
+      "count": 2
+    },
+    {
       "domain": "k.p-n.io",
+      "count": 2
+    },
+    {
+      "domain": "login-ds.dotomi.com",
       "count": 2
     },
     {
@@ -650,15 +772,19 @@
       "count": 2
     },
     {
-      "domain": "partners.tremorhub.com",
-      "count": 2
-    },
-    {
       "domain": "pixel.adsafeprotected.com",
       "count": 2
     },
     {
+      "domain": "pixel.tapad.com",
+      "count": 2
+    },
+    {
       "domain": "pm-widget.taboola.com",
+      "count": 2
+    },
+    {
+      "domain": "pnapi.invoca.net",
       "count": 2
     },
     {
@@ -674,7 +800,19 @@
       "count": 2
     },
     {
+      "domain": "pt.ispot.tv",
+      "count": 2
+    },
+    {
+      "domain": "px.ads.linkedin.com",
+      "count": 2
+    },
+    {
       "domain": "reporting-api.gannettinnovation.com",
+      "count": 2
+    },
+    {
+      "domain": "resources.xg4ken.com",
       "count": 2
     },
     {
@@ -686,7 +824,27 @@
       "count": 2
     },
     {
+      "domain": "rtr.innovid.com",
+      "count": 2
+    },
+    {
+      "domain": "s-a.innovid.com",
+      "count": 2
+    },
+    {
+      "domain": "s-static.innovid.com",
+      "count": 2
+    },
+    {
       "domain": "s.ad.smaato.net",
+      "count": 2
+    },
+    {
+      "domain": "s.adroll.com",
+      "count": 2
+    },
+    {
+      "domain": "s.amazon-adsystem.com",
       "count": 2
     },
     {
@@ -699,6 +857,14 @@
     },
     {
       "domain": "s.seedtag.com",
+      "count": 2
+    },
+    {
+      "domain": "sanalytics.verizon.com",
+      "count": 2
+    },
+    {
+      "domain": "sc-static.net",
       "count": 2
     },
     {
@@ -722,15 +888,15 @@
       "count": 2
     },
     {
-      "domain": "siteintercept.qualtrics.com",
-      "count": 2
-    },
-    {
       "domain": "smetrics.ups.com",
       "count": 2
     },
     {
-      "domain": "sp.analytics.yahoo.com",
+      "domain": "snap.licdn.com",
+      "count": 2
+    },
+    {
+      "domain": "solutions.invocacdn.com",
       "count": 2
     },
     {
@@ -754,6 +920,10 @@
       "count": 2
     },
     {
+      "domain": "static.ads-twitter.com",
+      "count": 2
+    },
+    {
       "domain": "static.adsafeprotected.com",
       "count": 2
     },
@@ -767,6 +937,10 @@
     },
     {
       "domain": "static.tblcontent.com",
+      "count": 2
+    },
+    {
+      "domain": "stats.g.doubleclick.net",
       "count": 2
     },
     {
@@ -798,7 +972,7 @@
       "count": 2
     },
     {
-      "domain": "tags.tiqcdn.com",
+      "domain": "tags.pw.adn.cloud",
       "count": 2
     },
     {
@@ -806,7 +980,11 @@
       "count": 2
     },
     {
-      "domain": "track.capitaloneshopping.com",
+      "domain": "tr.snapchat.com",
+      "count": 2
+    },
+    {
+      "domain": "tr6.snapchat.com",
       "count": 2
     },
     {
@@ -819,10 +997,6 @@
     },
     {
       "domain": "traxex.gannettdigital.com",
-      "count": 2
-    },
-    {
-      "domain": "trc.taboola.com",
       "count": 2
     },
     {
@@ -854,8 +1028,20 @@
       "count": 2
     },
     {
+      "domain": "www.redditstatic.com",
+      "count": 2
+    },
+    {
       "domain": "zn1gqrxzvrld7vjwm-upscx.siteintercept.qualtrics.com",
       "count": 2
+    },
+    {
+      "domain": "zn9nssxmv9itcz7nq-verizoncx.siteintercept.qualtrics.com",
+      "count": 2
+    },
+    {
+      "domain": "adobedc.net.ssl.sc.omtrdc.net",
+      "count": 1
     },
     {
       "domain": "partner.googleadservices.com",
@@ -863,6 +1049,10 @@
     },
     {
       "domain": "s0.2mdn.net",
+      "count": 1
+    },
+    {
+      "domain": "stags.bluekai.com",
       "count": 1
     }
   ],
