@@ -114616,3 +114616,11 @@ zwllqfwfyrutt.online
 
 # Blocked reddit.com on request 2026-10-30
 reddit.com
+
+# Reddit domains blocked on request 2026-10-30
+redd.it
+redditstatic.com
+redditmedia.com
+reddituploads.com
+redditinc.com
+reddit.app.link
