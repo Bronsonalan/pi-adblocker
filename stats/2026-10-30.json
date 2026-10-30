@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 10993,
-  "blocked": 1321,
+  "queries": 11106,
+  "blocked": 1337,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "685973.fls.doubleclick.net": 2,
@@ -33,7 +33,7 @@
     "assetsconfigcdn.org": 4,
     "att.launches.appsflyersdk.com": 2,
     "b-code.liadm.com": 8,
-    "bam-cell.nr-data.net": 8,
+    "bam-cell.nr-data.net": 10,
     "bam.nr-data.net": 10,
     "bat.bing.com": 2,
     "beacon.bidder.taboola.com": 2,
@@ -103,7 +103,7 @@
     "image8.pubmatic.com": 2,
     "img.connatix.com": 2,
     "ingest.quantummetric.com": 2,
-    "ingestusipv4.quantummetric.com": 2,
+    "ingestusipv4.quantummetric.com": 4,
     "insight.adsrvr.org": 2,
     "ipv4.d.adroll.com": 2,
     "jadserve.postrelease.com": 2,
@@ -112,7 +112,7 @@
     "lexicon.33across.com": 8,
     "login-ds.dotomi.com": 2,
     "mask-h2.icloud.com": 68,
-    "mask.icloud.com": 551,
+    "mask.icloud.com": 557,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -134,7 +134,7 @@
     "prebid.adnxs.com": 2,
     "pt.ispot.tv": 2,
     "pubads.g.doubleclick.net": 4,
-    "px.ads.linkedin.com": 2,
+    "px.ads.linkedin.com": 4,
     "reporting-api.gannettinnovation.com": 2,
     "resources.xg4ken.com": 2,
     "rp.liadm.com": 2,
@@ -190,8 +190,8 @@
     "tlx.3lift.com": 10,
     "tpc.googlesyndication.com": 4,
     "tr.blismedia.com": 2,
-    "tr.snapchat.com": 2,
-    "tr6.snapchat.com": 2,
+    "tr.snapchat.com": 4,
+    "tr6.snapchat.com": 4,
     "track.capitaloneshopping.com": 4,
     "track.celtra.com": 2,
     "track.customer.io": 2,
@@ -217,7 +217,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 551
+      "count": 557
     },
     {
       "domain": "mask-h2.icloud.com",
@@ -242,6 +242,10 @@
     {
       "domain": "http-intake.logs.datadoghq.com",
       "count": 11
+    },
+    {
+      "domain": "bam-cell.nr-data.net",
+      "count": 10
     },
     {
       "domain": "bam.nr-data.net",
@@ -297,10 +301,6 @@
     },
     {
       "domain": "b-code.liadm.com",
-      "count": 8
-    },
-    {
-      "domain": "bam-cell.nr-data.net",
       "count": 8
     },
     {
@@ -400,6 +400,10 @@
       "count": 4
     },
     {
+      "domain": "ingestusipv4.quantummetric.com",
+      "count": 4
+    },
+    {
       "domain": "pagead2.googlesyndication.com",
       "count": 4
     },
@@ -420,6 +424,10 @@
       "count": 4
     },
     {
+      "domain": "px.ads.linkedin.com",
+      "count": 4
+    },
+    {
       "domain": "sdk.iad-03.braze.com",
       "count": 4
     },
@@ -437,6 +445,14 @@
     },
     {
       "domain": "tpc.googlesyndication.com",
+      "count": 4
+    },
+    {
+      "domain": "tr.snapchat.com",
+      "count": 4
+    },
+    {
+      "domain": "tr6.snapchat.com",
       "count": 4
     },
     {
@@ -724,10 +740,6 @@
       "count": 2
     },
     {
-      "domain": "ingestusipv4.quantummetric.com",
-      "count": 2
-    },
-    {
       "domain": "insight.adsrvr.org",
       "count": 2
     },
@@ -801,10 +813,6 @@
     },
     {
       "domain": "pt.ispot.tv",
-      "count": 2
-    },
-    {
-      "domain": "px.ads.linkedin.com",
       "count": 2
     },
     {
@@ -977,14 +985,6 @@
     },
     {
       "domain": "tr.blismedia.com",
-      "count": 2
-    },
-    {
-      "domain": "tr.snapchat.com",
-      "count": 2
-    },
-    {
-      "domain": "tr6.snapchat.com",
       "count": 2
     },
     {
