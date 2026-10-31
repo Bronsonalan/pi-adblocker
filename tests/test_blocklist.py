@@ -143,9 +143,15 @@ class DefaultDenylistTests(unittest.TestCase):
             "gvt2.com",
             "dfirma.pl",
             "dkonto.pl",
+            "reddit.com",
+            "redd.it",
+            "redditstatic.com",
+            "redditmedia.com",
+            "reddituploads.com",
+            "redditinc.com",
+            "reddit.app.link",
         ):
             self.assertIn(name, raw)
-        self.assertNotIn("reddit.com", raw)
         for parent in (
             "google.com",
             "gstatic.com",
@@ -179,6 +185,10 @@ class DefaultDenylistTests(unittest.TestCase):
         self.assertIn("gvt2.com", matcher.denied)
         self.assertTrue(matcher.is_blocked("doubleclick.net"))
         self.assertTrue(matcher.is_blocked("ads.doubleclick.net"))
+        self.assertTrue(matcher.is_blocked("reddit.com"))
+        self.assertTrue(matcher.is_blocked("www.reddit.com"))
+        self.assertTrue(matcher.is_blocked("redd.it"))
+        self.assertTrue(matcher.is_blocked("reddit.app.link"))
         self.assertTrue(matcher.is_blocked("pagead2.googlesyndication.com"))
         self.assertTrue(matcher.is_blocked("mask.icloud.com"))
         self.assertTrue(matcher.is_blocked("mask-h2.icloud.com"))
