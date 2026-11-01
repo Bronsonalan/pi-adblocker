@@ -226,7 +226,16 @@ class BootstrapTests(unittest.TestCase):
                 self.assertIn("doubleclick.net", installed_domains)
                 self.assertIn("mask.icloud.com", installed_domains)
                 self.assertIn("mask-h2.icloud.com", installed_domains)
-                self.assertNotIn("reddit.com", installed_domains)
+                for name in (
+                    "reddit.com",
+                    "redd.it",
+                    "redditstatic.com",
+                    "redditmedia.com",
+                    "reddituploads.com",
+                    "redditinc.com",
+                    "reddit.app.link",
+                ):
+                    self.assertIn(name, installed_domains)
                 self.assertEqual(installed["port"], port)
                 self.assertEqual(installed["blocklists"], [])
                 self.assertFalse(installed["auto_update"])
