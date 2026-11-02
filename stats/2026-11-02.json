@@ -1,16 +1,16 @@
 {
   "date": "2026-11-02",
-  "queries": 538,
-  "blocked": 69,
+  "queries": 566,
+  "blocked": 71,
   "blocked_domains": {
     "app-measurement.com": 1,
     "browser-intake-datadoghq.com": 20,
-    "mask.icloud.com": 48
+    "mask.icloud.com": 50
   },
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 48
+      "count": 50
     },
     {
       "domain": "browser-intake-datadoghq.com",
