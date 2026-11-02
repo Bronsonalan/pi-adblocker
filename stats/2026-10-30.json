@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
-  "queries": 12334,
-  "blocked": 1403,
+  "queries": 12440,
+  "blocked": 1407,
   "blocked_domains": {
     "6451349.fls.doubleclick.net": 2,
     "685973.fls.doubleclick.net": 2,
@@ -113,7 +113,7 @@
     "lexicon.33across.com": 8,
     "login-ds.dotomi.com": 2,
     "mask-h2.icloud.com": 68,
-    "mask.icloud.com": 593,
+    "mask.icloud.com": 597,
     "match.adsrvr.org": 8,
     "match.sharethrough.com": 2,
     "merequartz.com": 2,
@@ -219,7 +219,7 @@
   "top_blocked": [
     {
       "domain": "mask.icloud.com",
-      "count": 593
+      "count": 597
     },
     {
       "domain": "mask-h2.icloud.com",
