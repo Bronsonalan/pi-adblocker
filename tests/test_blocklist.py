@@ -145,7 +145,16 @@ class DefaultDenylistTests(unittest.TestCase):
             "dkonto.pl",
         ):
             self.assertIn(name, raw)
-        self.assertNotIn("reddit.com", raw)
+        for name in (
+            "reddit.com",
+            "redd.it",
+            "redditstatic.com",
+            "redditmedia.com",
+            "reddituploads.com",
+            "redditinc.com",
+            "reddit.app.link",
+        ):
+            self.assertIn(name, raw)
         for parent in (
             "google.com",
             "gstatic.com",
